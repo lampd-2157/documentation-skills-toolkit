@@ -41,6 +41,8 @@ theme:
     - content.tabs.link
     - toc.follow
     - header.autohide
+    - navigation.instant
+    - navigation.instant.progress
   icon:
     repo: fontawesome/brands/github
     admonition:
@@ -92,6 +94,9 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/extra.js
 
 copyright: "Copyright &copy; 2026 DulapReal — Documentation Skills Toolkit"
 

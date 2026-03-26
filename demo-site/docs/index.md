@@ -3,116 +3,145 @@ title: Infrastructure Documentation
 description: "Tài liệu hạ tầng — demo Documentation Skills Toolkit"
 status: approved
 updated: 2026-03-26
+hide:
+  - toc
+  - navigation
 ---
 
-<div class="hero" markdown>
+<div class="hero-banner">
+  <div class="hero-pattern"></div>
+  <h1>Infrastructure Documentation</h1>
+  <p class="hero-subtitle">Tài liệu vận hành, hướng dẫn, và training cho team<br>Powered by Documentation Skills Toolkit</p>
+  <div class="hero-badges">
+    <span class="hero-badge">&#10003; Production Ready</span>
+    <span class="hero-badge">&#128196; 8 Templates</span>
+    <span class="hero-badge">&#9881; Auto Lint</span>
+    <span class="hero-badge">&#127793; Docs-as-Code</span>
+  </div>
+</div>
 
-# :material-book-open-variant: Infrastructure Documentation
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-value">8</div>
+    <div class="stat-label">Templates</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">3</div>
+    <div class="stat-label">Skills</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">9</div>
+    <div class="stat-label">Examples</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">5</div>
+    <div class="stat-label">Guides</div>
+  </div>
+</div>
 
-<p class="subtitle">Tài liệu vận hành, hướng dẫn, và training cho team — powered by Documentation Skills Toolkit</p>
+## Quick Navigation
 
-<div class="badges">
-  <span class="badge status-approved">:material-check-circle: Production Ready</span>
-  <span class="badge status-approved">:material-file-document: 8 Templates</span>
-  <span class="badge status-approved">:material-auto-fix: Auto Lint</span>
+<div class="grid-cards">
+
+<div class="card">
+  <span class="card-icon">&#128640;</span>
+  <h3>Getting Started</h3>
+  <p>Setup MkDocs cho project mới trong 15 phút. Multi-platform support.</p>
+  <a class="card-link" href="getting-started/quick-start/">Quick Start &#8594;</a>
+</div>
+
+<div class="card">
+  <span class="card-icon">&#9881;</span>
+  <h3>Operations</h3>
+  <p>Runbooks, network topology, incident postmortem, maintenance windows.</p>
+  <a class="card-link" href="operations/runbooks/proxmox-vm-runbook/">Runbooks &#8594;</a>
+</div>
+
+<div class="card">
+  <span class="card-icon">&#128736;</span>
+  <h3>Development</h3>
+  <p>Architecture Decision Records, release notes, technical specs.</p>
+  <a class="card-link" href="development/adr/adr-001-mkdocs/">ADR &#8594;</a>
+</div>
+
+<div class="card">
+  <span class="card-icon">&#127891;</span>
+  <h3>Training</h3>
+  <p>Onboarding modules với hands-on labs cho team members mới.</p>
+  <a class="card-link" href="training/training-module-example/">Git Basics &#8594;</a>
+</div>
+
+<div class="card">
+  <span class="card-icon">&#128214;</span>
+  <h3>Guides</h3>
+  <p>Step-by-step how-to guides cho common admin tasks.</p>
+  <a class="card-link" href="guides/how-to/google-workspace-new-user/">How-to &#8594;</a>
 </div>
 
 </div>
 
----
+## All Templates (T1-T8)
 
-## :material-compass: Quick Navigation
+<div class="template-gallery">
 
-<div class="grid-cards" markdown>
+<a class="template-item" href="operations/runbooks/proxmox-vm-runbook/">
+  <div class="template-id">T1 Runbook</div>
+  <div class="template-name">Proxmox VM Management</div>
+  <div class="template-desc">Vận hành hệ thống, health checks, troubleshooting</div>
+</a>
 
-<div class="card" markdown>
+<a class="template-item" href="development/adr/adr-001-mkdocs/">
+  <div class="template-id">T2 ADR</div>
+  <div class="template-name">Why MkDocs-Material</div>
+  <div class="template-desc">Architecture decision records, alternatives analysis</div>
+</a>
 
-### :material-rocket-launch: Getting Started
+<a class="template-item" href="guides/how-to/google-workspace-new-user/">
+  <div class="template-id">T3 How-to Guide</div>
+  <div class="template-name">Google Workspace New User</div>
+  <div class="template-desc">Step-by-step instructions với expected results</div>
+</a>
 
-Setup MkDocs cho project mới trong 15 phút
+<a class="template-item" href="training/training-module-example/">
+  <div class="template-id">T4 Training Module</div>
+  <div class="template-name">Git Basics for Team</div>
+  <div class="template-desc">Lessons, hands-on labs, knowledge checks</div>
+</a>
 
-[:octicons-arrow-right-24: Quick Start](getting-started/quick-start.md)
+<a class="template-item" href="operations/network-topology-example/">
+  <div class="template-id">T5 Network Topology</div>
+  <div class="template-name">Demo Lab Network</div>
+  <div class="template-desc">VLAN layout, firewall rules, server inventory</div>
+</a>
 
-</div>
+<a class="template-item" href="operations/postmortem-example/">
+  <div class="template-id">T6 Incident Postmortem</div>
+  <div class="template-name">DB Connection Pool</div>
+  <div class="template-desc">Timeline, root cause, action items, lessons</div>
+</a>
 
-<div class="card" markdown>
+<a class="template-item" href="operations/maintenance-window-example/">
+  <div class="template-id">T7 Maintenance Window</div>
+  <div class="template-name">PostgreSQL Upgrade</div>
+  <div class="template-desc">Pre-checks, procedure, rollback, post-checks</div>
+</a>
 
-### :material-server: Operations
-
-Runbooks, network docs, incident response, maintenance
-
-[:octicons-arrow-right-24: Runbooks](operations/runbooks/proxmox-vm-runbook.md)
-
-</div>
-
-<div class="card" markdown>
-
-### :material-source-branch: Development
-
-Architecture decisions, release notes, tech specs
-
-[:octicons-arrow-right-24: ADR](development/adr/adr-001-mkdocs.md)
-
-</div>
-
-<div class="card" markdown>
-
-### :material-school: Training
-
-Onboarding modules, hands-on labs cho team members
-
-[:octicons-arrow-right-24: Git Basics](training/training-module-example.md)
-
-</div>
-
-<div class="card" markdown>
-
-### :material-book-open-page-variant: Guides
-
-Step-by-step how-to guides cho common tasks
-
-[:octicons-arrow-right-24: How-to Guides](guides/how-to/google-workspace-new-user.md)
+<a class="template-item" href="development/release-notes-example/">
+  <div class="template-id">T8 Release Notes</div>
+  <div class="template-name">v2.5.0 Release</div>
+  <div class="template-desc">Features, bug fixes, breaking changes, upgrade</div>
+</a>
 
 </div>
 
-</div>
-
----
-
-## :material-file-document-multiple: All Examples (T1-T8)
-
-Demo site này chứa ví dụ thực tế cho tất cả **8 document templates**:
-
-| | Template | Example | Skill |
-|---|----------|---------|-------|
-| :material-book-cog: | **T1 Runbook** | [Proxmox VM Management](operations/runbooks/proxmox-vm-runbook.md) | ops-runbook-writer |
-| :material-file-tree: | **T2 ADR** | [Why MkDocs-Material](development/adr/adr-001-mkdocs.md) | training-guide-writer |
-| :material-list-status: | **T3 How-to** | [Google Workspace New User](guides/how-to/google-workspace-new-user.md) | training-guide-writer |
-| :material-school-outline: | **T4 Training** | [Git Basics for New Members](training/training-module-example.md) | training-guide-writer |
-| :material-lan: | **T5 Network** | [Demo Lab Network Topology](operations/network-topology-example.md) | ops-runbook-writer |
-| :material-alert-circle: | **T6 Postmortem** | [DB Connection Pool Exhaustion](operations/postmortem-example.md) | ops-runbook-writer |
-| :material-wrench-clock: | **T7 Maintenance** | [PostgreSQL 15 → 16 Upgrade](operations/maintenance-window-example.md) | ops-runbook-writer |
-| :material-tag: | **T8 Release Notes** | [v2.5.0 Release](development/release-notes-example.md) | training-guide-writer |
-
----
-
-## :material-lightbulb: About This Site
+## About This Site
 
 !!! tip "Built with Documentation Skills Toolkit"
     Site này là **demo output** khi áp dụng bộ [Documentation Skills Toolkit](https://github.com/lampd-2157/documentation-skills-toolkit). Mỗi trang tương ứng với 1 template (T1-T8), viết theo skill guidelines.
 
-!!! info "Tech Stack"
-    - **Platform:** [MkDocs-Material](https://squidfunk.github.io/mkdocs-material/) — theme + components
-    - **Diagrams:** [Mermaid](https://mermaid.js.org/) — flowcharts, topology, sequence diagrams
-    - **Quality:** markdownlint + cspell — auto-lint on commit
-    - **Deploy:** GitHub Pages via `mkdocs gh-deploy`
-
 !!! example "Try It Yourself"
     ```bash
-    # Clone toolkit
     git clone https://github.com/lampd-2157/documentation-skills-toolkit.git
     cd documentation-skills-toolkit
-
-    # Create your first doc
     ./scripts/docs-toolkit new runbook "My Service"
     ```
