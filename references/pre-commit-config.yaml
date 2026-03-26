@@ -1,0 +1,41 @@
+# Pre-commit Configuration for Documentation Projects
+# Tự động lint Markdown trước mỗi commit
+#
+# Setup:
+#   pip install pre-commit
+#   pre-commit install
+#
+# Usage:
+#   Copy file này vào root project → rename thành .pre-commit-config.yaml
+#   Chạy: pre-commit install
+#   Từ giờ mỗi git commit sẽ tự động kiểm tra markdown
+
+repos:
+  # ── Markdown Lint ────────────────────────────────────────
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.14.0
+    hooks:
+      - id: markdownlint-cli2
+        args: ["--config", ".markdownlint.json"]
+        types: [markdown]
+
+  # ── Trailing Whitespace & End of File ────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        types: [markdown]
+      - id: end-of-file-fixer
+        types: [markdown]
+      - id: check-yaml
+        files: mkdocs\.yml$
+      - id: check-json
+        files: \.markdownlint\.json$
+
+  # ── Check Markdown Links (optional) ─────────────────────
+  # Uncomment nếu muốn kiểm tra broken links
+  # - repo: https://github.com/tcort/markdown-link-check
+  #   rev: v3.12.2
+  #   hooks:
+  #     - id: markdown-link-check
+  #       args: ["--config", ".markdown-link-check.json"]

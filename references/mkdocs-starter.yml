@@ -1,0 +1,141 @@
+# MkDocs Starter Configuration
+# Ready-to-use mkdocs.yml cho documentation project
+# Source: mkdocs-material best practices
+# Usage: Copy file này vào root project → rename thành mkdocs.yml
+
+site_name: "Project Documentation"
+site_description: "Technical documentation for [Project Name]"
+site_author: "[Team Name]"
+site_url: "https://docs.example.com"
+
+# Repository (optional — hiện Edit button)
+repo_name: "[org/repo]"
+repo_url: "https://github.com/[org/repo]"
+edit_uri: "edit/main/docs/"
+
+# Theme: Material for MkDocs
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Chuyển sang Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Chuyển sang Light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs           # Tab navigation ở top
+    - navigation.sections       # Bold section headers
+    - navigation.expand         # Auto-expand navigation
+    - navigation.top            # "Back to top" button
+    - navigation.indexes        # Section index pages
+    - search.highlight          # Highlight search terms
+    - search.suggest            # Search suggestions
+    - content.code.copy         # Copy button trên code blocks
+    - content.tabs.link         # Sync content tabs
+    - toc.follow                # Auto-scroll TOC
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
+plugins:
+  - search:
+      lang: [vi, en]
+  - awesome-pages              # Custom nav ordering via .pages
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - minify:
+      minify_html: true
+  - mermaid2                   # Mermaid diagrams
+  - glightbox                  # Image lightbox
+  # - print-site               # Uncomment khi cần print/PDF
+
+# Markdown Extensions
+markdown_extensions:
+  # Admonitions (note, warning, danger, tip, etc.)
+  - admonition
+  - pymdownx.details
+
+  # Code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+
+  # Tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Text formatting
+  - pymdownx.mark             # ==highlight==
+  - pymdownx.keys             # ++ctrl+s++
+  - pymdownx.smartsymbols     # (c) → ©
+  - pymdownx.caret             # ^^superscript^^
+  - pymdownx.tilde             # ~~strikethrough~~
+
+  # Structure
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - footnotes
+  - def_list                   # Definition lists
+
+# Navigation (customize theo project structure)
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quick-start.md
+    - Prerequisites: getting-started/prerequisites.md
+  - Operations:
+    - operations/index.md
+    - Runbooks: operations/runbooks/
+    - Server Management: operations/server/
+    - Network: operations/network/
+  - Training:
+    - training/index.md
+    - Onboarding: training/onboarding/
+    - Advanced: training/advanced/
+  - Development:
+    - development/index.md
+    - Architecture: development/architecture/
+    - ADR: development/adr/
+    - API Reference: development/api/
+  - Guides:
+    - guides/index.md
+    - How-to: guides/how-to/
+    - Reference: guides/reference/
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/[org]
+  generator: false             # Hide "Made with MkDocs"
+
+# Custom CSS (optional)
+extra_css:
+  - assets/stylesheets/extra.css
+
+# Copyright
+copyright: "Copyright &copy; 2026 [Organization Name]"

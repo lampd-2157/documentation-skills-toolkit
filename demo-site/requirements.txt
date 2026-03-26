@@ -1,0 +1,4 @@
+# MkDocs Dependencies for Demo Site
+# Install: pip install -r requirements.txt
+mkdocs-material>=9.5
+mkdocs-mermaid2-plugin>=1.1

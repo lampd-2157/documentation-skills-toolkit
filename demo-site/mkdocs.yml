@@ -1,0 +1,53 @@
+site_name: "Demo — Documentation Skills Toolkit"
+site_description: "Example docs site built with the Documentation Skills Toolkit"
+
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle: { icon: material/brightness-7, name: Dark mode }
+    - scheme: slate
+      primary: indigo
+      toggle: { icon: material/brightness-4, name: Light mode }
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search: { lang: [vi, en] }
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.tabbed: { alternate_style: true }
+  - pymdownx.highlight: { anchor_linenums: true }
+  - pymdownx.inlinehilite
+  - tables
+  - toc: { permalink: true }
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: getting-started/quick-start.md
+  - Operations:
+    - Runbooks:
+      - Proxmox VM: operations/runbooks/proxmox-vm-runbook.md
+  - Development:
+    - ADR:
+      - "ADR-001: MkDocs": development/adr/adr-001-mkdocs.md
+  - Guides:
+    - How-to:
+      - Google Workspace New User: guides/how-to/google-workspace-new-user.md

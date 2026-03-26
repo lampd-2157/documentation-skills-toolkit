@@ -1,0 +1,113 @@
+# GitHub Actions: Docs CI/CD Pipeline
+# Tự động lint, build, và deploy documentation
+#
+# Usage: Copy file này vào .github/workflows/docs.yml
+# Triggers: Push to main branch khi có thay đổi trong docs/
+
+name: "📝 Docs CI/CD"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - ".markdownlint.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - ".markdownlint.json"
+
+permissions:
+  contents: write  # Required for gh-pages deploy
+
+jobs:
+  # ── Stage 1: Lint ────────────────────────────────────────
+  lint:
+    name: "✅ Markdown Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install markdownlint-cli2
+        run: npm install -g markdownlint-cli2
+
+      - name: Run markdownlint
+        run: markdownlint-cli2 "docs/**/*.md" --config .markdownlint.json
+
+  # ── Stage 2: Build ───────────────────────────────────────
+  build:
+    name: "🔨 MkDocs Build"
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for git-revision-date plugin
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install MkDocs + plugins
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-awesome-pages-plugin \
+            mkdocs-git-revision-date-localized-plugin \
+            mkdocs-minify-plugin \
+            mkdocs-mermaid2-plugin \
+            mkdocs-glightbox
+
+      - name: Build docs
+        run: mkdocs build --strict
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-site
+          path: site/
+
+  # ── Stage 3: Deploy (chỉ trên main branch) ──────────────
+  deploy:
+    name: "🚀 Deploy to GitHub Pages"
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install MkDocs + plugins
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-awesome-pages-plugin \
+            mkdocs-git-revision-date-localized-plugin \
+            mkdocs-minify-plugin \
+            mkdocs-mermaid2-plugin \
+            mkdocs-glightbox
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
