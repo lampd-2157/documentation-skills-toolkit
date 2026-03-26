@@ -8,7 +8,9 @@ status: reviewed
 tags: [incident, postmortem, database, P2]
 ---
 
-# Postmortem: Database Connection Pool Exhaustion
+# :material-alert-circle: Postmortem: Database Connection Pool Exhaustion
+
+!!! danger "Severity: P2 — Major | Duration: 45 min | Impact: 12% error rate"
 
 | Field        | Value                              |
 | ------------ | ---------------------------------- |

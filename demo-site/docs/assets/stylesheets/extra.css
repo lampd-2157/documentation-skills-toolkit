@@ -1,0 +1,174 @@
+/* ============================================================
+   Documentation Skills Toolkit — Custom Styles
+   Enhances MkDocs-Material default theme
+   ============================================================ */
+
+/* ── Root Variables ──────────────────────────────────────── */
+:root {
+  --md-admonition-icon--tip: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>');
+}
+
+/* ── Card Grid ───────────────────────────────────────────── */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.grid-cards .card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.2s ease;
+  background: var(--md-default-bg-color);
+}
+
+.grid-cards .card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.grid-cards .card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grid-cards .card p {
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.5rem;
+}
+
+.grid-cards .card a {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* ── Hero Section ────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1.5rem;
+}
+
+.hero .badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero .badges .badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ── Status Badges ───────────────────────────────────────── */
+.status-approved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-draft {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.status-review {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+[data-md-color-scheme="slate"] .status-approved {
+  background: #1b5e20;
+  color: #a5d6a7;
+}
+
+[data-md-color-scheme="slate"] .status-draft {
+  background: #bf360c;
+  color: #ffcc80;
+}
+
+[data-md-color-scheme="slate"] .status-review {
+  background: #0d47a1;
+  color: #90caf9;
+}
+
+/* ── Section Dividers ────────────────────────────────────── */
+.section-divider {
+  border: none;
+  border-top: 2px solid var(--md-accent-fg-color);
+  margin: 2.5rem 0;
+  opacity: 0.3;
+}
+
+/* ── Metadata Table Styling ──────────────────────────────── */
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+/* ── Better Admonition Styling ───────────────────────────── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+  border-width: 0 0 0 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Code Block Enhancements ─────────────────────────────── */
+.md-typeset pre > code {
+  border-radius: 6px;
+}
+
+.md-typeset code {
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+
+/* ── Mermaid Diagram Styling ─────────────────────────────── */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* ── Footer Enhancement ──────────────────────────────────── */
+.md-footer-meta {
+  background: var(--md-primary-fg-color);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .grid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+}

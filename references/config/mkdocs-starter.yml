@@ -19,20 +19,20 @@ theme:
   language: vi
   palette:
     - scheme: default
-      primary: indigo
-      accent: teal
+      primary: deep purple
+      accent: amber
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-sunny
         name: Chuyển sang Dark mode
     - scheme: slate
-      primary: indigo
-      accent: teal
+      primary: deep purple
+      accent: amber
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: Chuyển sang Light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.tabs           # Tab navigation ở top
     - navigation.sections       # Bold section headers
@@ -44,8 +44,15 @@ theme:
     - content.code.copy         # Copy button trên code blocks
     - content.tabs.link         # Sync content tabs
     - toc.follow                # Auto-scroll TOC
+    - header.autohide           # Auto-hide header on scroll
   icon:
     repo: fontawesome/brands/github
+    admonition:
+      note: fontawesome/solid/note-sticky
+      tip: fontawesome/solid/lightbulb
+      warning: fontawesome/solid/triangle-exclamation
+      danger: fontawesome/solid/skull-crossbones
+      info: fontawesome/solid/circle-info
 
 # Plugins
 plugins:
@@ -99,6 +106,9 @@ markdown_extensions:
       toc_depth: 3
   - footnotes
   - def_list                   # Definition lists
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Navigation (customize theo project structure)
 nav:

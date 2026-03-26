@@ -8,16 +8,16 @@ status: approved
 tags: [proxmox, vm, operations, runbook]
 ---
 
-# Runbook: Proxmox VM Management
+# :material-book-cog: Runbook: Proxmox VM Management
 
-> Last verified: 2026-03-26 | Owner: Infrastructure Team
+!!! info "Last verified: 2026-03-26 | Owner: Infrastructure Team"
 
 ## Overview
 
 | Field           | Value                     |
 | --------------- | ------------------------- |
 | **Service**     | Proxmox VE Cluster        |
-| **Environment** | production                |
+| **Environment** | :material-server: production |
 | **URL**         | `https://pve.example.com` |
 | **Version**     | Proxmox VE 8.x            |
 
@@ -103,40 +103,42 @@ qmrestore /mnt/backup/vzdump-qemu-200-*.vma.zst 201 --storage local-lvm
 
 ### Issue: VM không start được
 
-**Symptoms:** `qm start 200` → TASK ERROR
-**Root Cause:** Thường do thiếu storage hoặc lock file
-**Fix:**
+??? warning "Symptoms: `qm start 200` → TASK ERROR"
+    **Root Cause:** Thường do thiếu storage hoặc lock file
 
-```bash
-# Check lý do
-qm config 200 | grep lock
-# Nếu có lock → unlock
-qm unlock 200
+    **Fix:**
 
-# Check storage
-pvesm status
-# Nếu storage full → cleanup old backups
-```
+    ```bash
+    # Check lý do
+    qm config 200 | grep lock
+    # Nếu có lock → unlock
+    qm unlock 200
 
-**Prevention:** Monitor storage usage, set alert at 80%
+    # Check storage
+    pvesm status
+    # Nếu storage full → cleanup old backups
+    ```
+
+    **Prevention:** Monitor storage usage, set alert at 80%
 
 ### Issue: Cluster quorum lost
 
-**Symptoms:** `pvecm status` → Quorate: No
-**Root Cause:** ≥ 50% nodes offline
-**Fix:**
+??? danger "Symptoms: `pvecm status` → Quorate: No"
+    **Root Cause:** ≥ 50% nodes offline
 
-```bash
-# Check nodes
-pvecm nodes
+    **Fix:**
 
-# Nếu 2/3 nodes down → restart corosync trên nodes available
-systemctl restart corosync
+    ```bash
+    # Check nodes
+    pvecm nodes
 
-# ⚠️ KHÔNG restart nếu chỉ 1 node available — risk data loss
-```
+    # Nếu 2/3 nodes down → restart corosync trên nodes available
+    systemctl restart corosync
+    ```
 
-**Prevention:** Minimum 3 nodes, never take 2 nodes offline simultaneously
+    !!! danger "KHÔNG restart nếu chỉ 1 node available — risk data loss"
+
+    **Prevention:** Minimum 3 nodes, never take 2 nodes offline simultaneously
 
 ## Escalation
 

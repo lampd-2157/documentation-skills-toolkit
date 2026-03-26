@@ -1,27 +1,58 @@
 site_name: "Demo — Documentation Skills Toolkit"
 site_description: "Example docs site built with the Documentation Skills Toolkit"
+site_url: "https://lampd-2157.github.io/documentation-skills-toolkit/"
+
+repo_name: lampd-2157/documentation-skills-toolkit
+repo_url: https://github.com/lampd-2157/documentation-skills-toolkit
+edit_uri: ""
 
 theme:
   name: material
   language: vi
   palette:
     - scheme: default
-      primary: indigo
-      toggle: { icon: material/brightness-7, name: Dark mode }
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
     - scheme: slate
-      primary: indigo
-      toggle: { icon: material/brightness-4, name: Light mode }
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.indexes
+    - navigation.path
     - search.highlight
+    - search.suggest
+    - search.share
     - content.code.copy
+    - content.code.annotate
     - content.tabs.link
+    - toc.follow
+    - header.autohide
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      note: fontawesome/solid/note-sticky
+      tip: fontawesome/solid/lightbulb
+      warning: fontawesome/solid/triangle-exclamation
+      danger: fontawesome/solid/skull-crossbones
+      info: fontawesome/solid/circle-info
 
 plugins:
-  - search: { lang: [vi, en] }
+  - search:
+      lang: [vi, en]
   - mermaid2
 
 markdown_extensions:
@@ -32,11 +63,37 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:mermaid2.fence_mermaid
-  - pymdownx.tabbed: { alternate_style: true }
-  - pymdownx.highlight: { anchor_linenums: true }
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
   - pymdownx.inlinehilite
+  - pymdownx.mark
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - attr_list
+  - md_in_html
+  - def_list
   - tables
-  - toc: { permalink: true }
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lampd-2157/documentation-skills-toolkit
+  generator: false
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+copyright: "Copyright &copy; 2026 DulapReal — Documentation Skills Toolkit"
 
 nav:
   - Home: index.md

@@ -8,27 +8,41 @@ status: approved
 tags: [getting-started, mkdocs, setup]
 ---
 
-# How to Setup MkDocs cho Documentation Project
+# :material-rocket-launch: Quick Start — Setup MkDocs
 
-> **Audience:** Mọi thành viên team
-> **Time:** ~15 minutes
-> **Difficulty:** ⭐ Beginner
+!!! abstract "Overview"
+    **Audience:** Mọi thành viên team | **Time:** ~15 minutes | **Difficulty:** Beginner
 
 ## Prerequisites
 
-- [ ] Python 3.8+ installed (`python3 --version`)
-- [ ] pip installed (`pip --version`)
-- [ ] Git configured
+- [x] Python 3.8+ installed (`python3 --version`)
+- [x] pip installed (`pip --version`)
+- [x] Git configured
+
+---
 
 ## Steps
 
-### Step 1: Install MkDocs và plugins
+### Step 1: Install MkDocs + plugins
 
-MkDocs-Material là theme chính thức, hỗ trợ dark mode, search, navigation, admonitions.
+=== ":material-linux: Linux / WSL"
 
-```bash
-pip install mkdocs-material mkdocs-mermaid2-plugin
-```
+    ```bash
+    pip install mkdocs-material mkdocs-mermaid2-plugin
+    export PATH="$HOME/.local/bin:$PATH"
+    ```
+
+=== ":material-apple: macOS"
+
+    ```bash
+    pip3 install mkdocs-material mkdocs-mermaid2-plugin
+    ```
+
+=== ":material-microsoft-windows: Windows"
+
+    ```powershell
+    pip install mkdocs-material mkdocs-mermaid2-plugin
+    ```
 
 **Expected result:**
 
@@ -39,17 +53,20 @@ Successfully installed mkdocs-material-... mkdocs-mermaid2-plugin-...
 ### Step 2: Copy starter config
 
 ```bash
-# Copy từ toolkit
 cp references/config/mkdocs-starter.yml mkdocs.yml
 cp references/config/markdownlint-config.json .markdownlint.json
 ```
 
-**Expected result:** 2 files config xuất hiện ở root project.
+!!! tip "Hoặc dùng one-command setup"
+    ```bash
+    bash references/config/setup.sh
+    ```
+    Script sẽ cài tất cả: MkDocs, markdownlint, pre-commit hooks, VS Code snippets.
 
 ### Step 3: Tạo folder structure
 
 ```bash
-mkdir -p docs/{getting-started,operations/runbooks,development/adr,guides/how-to,assets/images}
+mkdir -p docs/{getting-started,operations/runbooks,development/adr,guides/how-to,training,assets/images}
 echo "# Project Documentation" > docs/index.md
 ```
 
@@ -59,32 +76,50 @@ echo "# Project Documentation" > docs/index.md
 mkdocs serve
 ```
 
-**Expected result:** Mở browser tại `http://localhost:8000` → thấy docs site.
+**Expected result:** Mở browser tại `http://localhost:8000` — docs site hiện ra với Material theme.
 
-!!! tip
-    MkDocs auto-reload khi bạn sửa file `.md`. Không cần restart.
+!!! tip "Auto-reload"
+    MkDocs tự reload khi bạn sửa file `.md`. Không cần restart server.
+
+---
 
 ## Verify
 
-- [ ] `mkdocs serve` chạy thành công
-- [ ] Browser hiển thị docs site tại localhost:8000
-- [ ] Dark mode toggle hoạt động
+- [x] `mkdocs serve` chạy thành công
+- [x] Browser hiển thị docs site tại localhost:8000
+- [x] Dark mode toggle hoạt động (icon góc phải trên)
+
+---
 
 ## Troubleshooting
 
-### Error: `mkdocs: command not found`
+??? warning "Error: `mkdocs: command not found`"
+    **Cause:** MkDocs chưa trong PATH (phổ biến trên Linux/WSL).
 
-**Cause:** MkDocs chưa trong PATH.
-**Fix:**
+    **Fix:**
+    ```bash
+    export PATH="$HOME/.local/bin:$PATH"
+    # Để fix vĩnh viễn:
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
 
-```bash
-# Kiểm tra pip install location
-pip show mkdocs | grep Location
-# Thêm vào PATH nếu cần
-export PATH="$HOME/.local/bin:$PATH"
-```
+??? warning "Error: `mermaid2 plugin not found`"
+    **Cause:** Plugin chưa cài hoặc sai version.
+
+    **Fix:**
+    ```bash
+    pip install mkdocs-mermaid2-plugin --upgrade
+    ```
+
+---
 
 ## Next Steps
 
-- [Proxmox VM Runbook](../operations/runbooks/proxmox-vm-runbook.md)
-- [Google Workspace New User](../guides/how-to/google-workspace-new-user.md)
+!!! example "Tạo doc đầu tiên"
+    ```bash
+    ./scripts/docs-toolkit new runbook "My Service"
+    ```
+
+- [Proxmox VM Runbook](../operations/runbooks/proxmox-vm-runbook.md) — Ví dụ T1 Runbook
+- [Google Workspace New User](../guides/how-to/google-workspace-new-user.md) — Ví dụ T3 How-to
