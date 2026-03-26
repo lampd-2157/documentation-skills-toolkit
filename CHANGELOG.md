@@ -20,6 +20,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 - **Version + Last Updated** metadata fields in all skill Context tables
 - **OS detection** in setup.sh (Linux, macOS, WSL, Windows)
 - **5 new demo-site examples** — T4 Training, T5 Network, T6 Postmortem, T7 Maintenance, T8 Release Notes
+- **`references/guides/getting-started-guide.md`** — Comprehensive guide for first-time users
 - **CHANGELOG.md** (this file)
 
 ### Changed

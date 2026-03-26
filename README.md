@@ -9,6 +9,37 @@
 
 ---
 
+## Toolkit này giải quyết vấn đề gì?
+
+| Vấn đề                                    | Toolkit giải quyết                          |
+| ----------------------------------------- | ------------------------------------------- |
+| Docs rải rác, format không thống nhất     | **3 Skills** chuẩn hóa cách viết mọi loại doc |
+| Viết doc từ đầu mất thời gian             | **8 Templates** copy-paste, điền nội dung là xong |
+| Không biết viết runbook/guide đúng cách   | Mỗi skill có **Iron Law** + **Guardrails** hướng dẫn |
+| Docs cũ, không ai review                  | **Docs-as-Code** pipeline: lint → review → deploy → audit |
+| Mỗi người viết 1 kiểu                    | **CLI tool** tự tạo doc đúng format chuẩn    |
+
+## Cách hoạt động (3 bước)
+
+```text
+1. CHỌN SKILL        Bạn cần viết gì? → Chọn 1 trong 3 skills hướng dẫn
+   ┌─────────────────────────────────────────────────────────┐
+   │  docs-engineer        → Setup MkDocs, chuẩn Markdown   │
+   │  ops-runbook-writer   → Runbook, network, server docs  │
+   │  training-guide-writer → Training, guide, ADR           │
+   └─────────────────────────────────────────────────────────┘
+
+2. COPY TEMPLATE      Chọn template phù hợp (T1-T8) → copy → điền nội dung
+   Hoặc dùng CLI:  ./scripts/docs-toolkit new runbook "Tên service"
+
+3. VERIFY & PUBLISH   Lint → Review → Deploy
+   markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
+```
+
+> **Lần đầu dùng?** Đọc [Getting Started Guide](references/guides/getting-started-guide.md) — hướng dẫn chi tiết từ A-Z.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -16,15 +47,55 @@
 git clone https://github.com/lampd-2157/documentation-skills-toolkit.git
 cd documentation-skills-toolkit
 
-# One-command setup
+# One-command setup (MkDocs + markdownlint + pre-commit)
 bash references/config/setup.sh
 
-# Scaffold a new doc
+# Tạo doc mới từ template
 ./scripts/docs-toolkit new runbook "My Service"
 
-# Preview demo site
+# Xem demo site
 cd demo-site && pip install -r requirements.txt && mkdocs serve
 ```
+
+---
+
+## 3 Skills
+
+Mỗi skill là một **bộ quy tắc** hướng dẫn cách viết 1 loại documentation cụ thể. Tất cả skills tuân thủ cùng cấu trúc 6 sections: Context → Iron Law → Guardrails → Red Flags → Remember → Related Skills.
+
+| Skill | Khi nào dùng | Iron Law (quy tắc tối thượng) |
+|-------|-------------|-------------------------------|
+| [docs-engineer](skills/docs-engineer.md) | Setup MkDocs, chuẩn hóa markdown, chọn plugins | "Every document MUST pass markdownlint AND render correctly in MkDocs" |
+| [ops-runbook-writer](skills/ops-runbook-writer.md) | Viết runbook, ops manual, network/server docs | "Every runbook MUST have copy-paste commands AND expected output" |
+| [training-guide-writer](skills/training-guide-writer.md) | Viết training, guide, ADR, tech spec | "Every guide MUST have Prerequisites → Steps → Expected Result → Troubleshooting" |
+
+## 8 Templates (T1-T8)
+
+Copy-paste từ [doc-templates-library.md](references/templates/doc-templates-library.md), hoặc dùng CLI:
+
+| ID  | Template            | CLI command | Use Case |
+| --- | ------------------- | ----------- | -------- |
+| T1  | Runbook             | `docs-toolkit new runbook "Name"` | Vận hành hệ thống |
+| T2  | ADR                 | `docs-toolkit new adr "Decision"` | Ghi nhận architecture decision |
+| T3  | How-to Guide        | `docs-toolkit new howto "Task"` | Hướng dẫn step-by-step |
+| T4  | Training Module     | `docs-toolkit new training "Topic"` | Training nội bộ |
+| T5  | Network Topology    | `docs-toolkit new network "Env"` | Document network infrastructure |
+| T6  | Incident Postmortem | `docs-toolkit new postmortem "Title"` | Phân tích sau sự cố |
+| T7  | Maintenance Window  | `docs-toolkit new maintenance "Title"` | Kế hoạch bảo trì |
+| T8  | Release Notes       | `docs-toolkit new release-notes "vX.Y"` | Tóm tắt version release |
+
+---
+
+## Tooling
+
+| Tool | Command | Mô tả |
+|------|---------|-------|
+| Scaffold | `./scripts/docs-toolkit new <type> <title>` | Tạo doc mới từ template |
+| Validate | `python3 scripts/validate_skill.py` | Kiểm tra cấu trúc skill file |
+| Lint | `npx markdownlint-cli2 "**/*.md"` | Kiểm tra markdown format |
+| Spell | `npx cspell "**/*.md"` | Kiểm tra chính tả |
+| Preview | `mkdocs serve` | Xem trước trên localhost:8000 |
+| Build | `mkdocs build --strict` | Build production |
 
 ---
 
@@ -32,92 +103,36 @@ cd demo-site && pip install -r requirements.txt && mkdocs serve
 
 ```text
 documentation-skills-toolkit/
-├── skills/                         # Skill files (3 core + 1 template)
-│   ├── docs-engineer.md            # MkDocs platform & Markdown standards
-│   ├── ops-runbook-writer.md       # Runbook & operations docs
-│   ├── training-guide-writer.md    # Training & guide docs
-│   └── skill-template.md           # Universal 6-section template
+├── skills/                         # 3 skills + 1 template
+│   ├── docs-engineer.md            # Skill 1: MkDocs & Markdown
+│   ├── ops-runbook-writer.md       # Skill 2: Runbook & operations
+│   ├── training-guide-writer.md    # Skill 3: Training & guides
+│   └── skill-template.md           # Template tạo skill mới
 ├── references/
-│   ├── config/                     # Machine-readable configs
-│   │   ├── setup.sh               # One-command setup script
-│   │   ├── mkdocs-starter.yml     # Ready-to-use MkDocs config
-│   │   ├── markdownlint-config.json
-│   │   ├── pre-commit-config.yaml
-│   │   ├── github-actions-docs.yml # CI/CD pipeline
-│   │   ├── cspell.json            # Spell check config
-│   │   ├── requirements.txt       # Python dependencies
-│   │   └── docs.code-snippets     # VS Code snippets (9 templates)
-│   ├── guides/                     # Human-readable guides
-│   │   ├── docs-lifecycle-guide.md # Write → Lint → Review → Publish → Audit
-│   │   ├── skill-composition-recipes.md  # Task → skill combinations
-│   │   ├── doc-quality-scorecard.md      # Scoring rubric (0-10)
-│   │   ├── doc-anti-patterns.md          # Top 10 mistakes to avoid
-│   │   ├── infra-knowledge-base.md       # Starter structure for infra teams
-│   │   └── mkdocs-plugins-catalog.md     # 20 curated MkDocs plugins
-│   └── templates/
-│       └── doc-templates-library.md      # 8 copy-paste templates (T1-T8)
-├── scripts/
-│   ├── docs-toolkit                # CLI: scaffold new docs from templates
-│   └── validate_skill.py          # Validate skill file structure
-├── demo-site/                      # Working MkDocs example site
-├── CHANGELOG.md
-├── CONTRIBUTING.md
+│   ├── config/                     # Configs (setup.sh, markdownlint, cspell...)
+│   ├── guides/                     # Hướng dẫn chi tiết
+│   └── templates/                  # 8 doc templates (T1-T8)
+├── scripts/                        # CLI tools
+├── demo-site/                      # MkDocs demo site (all 8 examples)
+├── CHANGELOG.md                    # Version history
+├── CONTRIBUTING.md                 # Hướng dẫn đóng góp
 └── LICENSE                         # MIT
 ```
 
 ---
 
-## Skill Map
+## Tài liệu & Hướng dẫn
 
-```text
-Bạn cần làm gì?
-  ├── Setup MkDocs / chuẩn hóa Markdown?     → skills/docs-engineer.md
-  ├── Viết runbook / ops manual / network?    → skills/ops-runbook-writer.md
-  ├── Viết training / guide / ADR?            → skills/training-guide-writer.md
-  ├── Cần template copy-paste nhanh?          → references/templates/doc-templates-library.md
-  └── Cần combine nhiều skills?               → references/guides/skill-composition-recipes.md
-```
-
-## Templates (T1-T8)
-
-| ID  | Template            | Skill                | Use Case                    |
-| --- | ------------------- | -------------------- | --------------------------- |
-| T1  | Runbook             | ops-runbook-writer   | System operation procedures |
-| T2  | ADR                 | training-guide-writer | Architecture decisions     |
-| T3  | How-to Guide        | training-guide-writer | Step-by-step instructions  |
-| T4  | Training Module     | training-guide-writer | Internal training          |
-| T5  | Network Topology    | ops-runbook-writer   | Network documentation      |
-| T6  | Incident Postmortem | ops-runbook-writer   | Post-incident learning     |
-| T7  | Maintenance Window  | ops-runbook-writer   | Planned change requests    |
-| T8  | Release Notes       | training-guide-writer | Version release summary    |
-
----
-
-## Tooling
-
-| Tool | Command | Purpose |
-|------|---------|---------|
-| Scaffold | `./scripts/docs-toolkit new <type> <title>` | Create doc from template |
-| Validate | `python3 scripts/validate_skill.py` | Check skill file structure |
-| Lint | `npx markdownlint-cli2 "**/*.md"` | Check markdown format |
-| Spell | `npx cspell "**/*.md"` | Check spelling |
-| Preview | `mkdocs serve` | Local preview |
-| Build | `mkdocs build --strict` | Production build |
-
----
-
-## Documentation
-
-| Doc | Purpose |
-|-----|---------|
-| [Lifecycle Guide](references/guides/docs-lifecycle-guide.md) | Write → Lint → Review → Publish → Audit |
-| [Composition Recipes](references/guides/skill-composition-recipes.md) | Which skills to combine for common tasks |
-| [Quality Scorecard](references/guides/doc-quality-scorecard.md) | Score your docs objectively (0-10) |
-| [Anti-Patterns](references/guides/doc-anti-patterns.md) | Top 10 documentation mistakes |
-| [Plugin Catalog](references/guides/mkdocs-plugins-catalog.md) | 20 curated MkDocs plugins |
-| [Infra Knowledge Base](references/guides/infra-knowledge-base.md) | Starter structure for infra teams |
-| [Contributing](CONTRIBUTING.md) | How to contribute skills & templates |
-| [Changelog](CHANGELOG.md) | Version history |
+| Doc | Mô tả | Đọc khi... |
+|-----|-------|-------------|
+| [Getting Started Guide](references/guides/getting-started-guide.md) | Hướng dẫn từ A-Z cho người mới | Lần đầu dùng toolkit |
+| [Lifecycle Guide](references/guides/docs-lifecycle-guide.md) | Write → Lint → Review → Publish → Audit | Setup Docs-as-Code pipeline |
+| [Composition Recipes](references/guides/skill-composition-recipes.md) | Kết hợp skills cho task thực tế | Không biết dùng skill nào |
+| [Quality Scorecard](references/guides/doc-quality-scorecard.md) | Chấm điểm chất lượng doc (0-10) | Review / audit docs |
+| [Anti-Patterns](references/guides/doc-anti-patterns.md) | 10 lỗi documentation phổ biến | Tránh sai lầm khi viết |
+| [Plugin Catalog](references/guides/mkdocs-plugins-catalog.md) | MkDocs plugins chọn lọc | Mở rộng MkDocs site |
+| [Infra Knowledge Base](references/guides/infra-knowledge-base.md) | Cấu trúc docs cho team infra | Team infra/ops mới bắt đầu |
+| [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
 
 ---
 
