@@ -32,10 +32,18 @@ repos:
       - id: check-json
         files: \.markdownlint\.json$
 
-  # ── Check Markdown Links (optional) ─────────────────────
-  # Uncomment nếu muốn kiểm tra broken links
-  # - repo: https://github.com/tcort/markdown-link-check
-  #   rev: v3.12.2
-  #   hooks:
-  #     - id: markdown-link-check
-  #       args: ["--config", ".markdown-link-check.json"]
+  # ── Spell Check ─────────────────────────────────────────
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v8.6.0
+    hooks:
+      - id: cspell
+        args: ["--config", ".cspell.json"]
+        types: [markdown]
+
+  # ── Check Markdown Links ───────────────────────────────
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.12.2
+    hooks:
+      - id: markdown-link-check
+        args: ["--quiet", "--config", ".markdown-link-check.json"]
+        types: [markdown]

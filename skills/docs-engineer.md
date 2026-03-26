@@ -15,7 +15,9 @@
 | **Priority** | core                                                                               |
 | **Triggers** | Khi khởi tạo docs project, setup MkDocs, hoặc review docs                          |
 | **Output**   | mkdocs.yml config, .markdownlint.json, cấu trúc docs/                              |
-| **Scope**    | IN: MkDocs setup, markdown standards, doc structure. OUT: nội dung domain-specific |
+| **Scope**        | IN: MkDocs setup, markdown standards, doc structure. OUT: nội dung domain-specific |
+| **Version**      | 1.0.0                                                                              |
+| **Last Updated** | 2026-03-26                                                                         |
 
 > Foundation skill cho mọi documentation project. Setup MkDocs platform, enforce markdown standards, chuẩn hóa cấu trúc thư mục.
 
@@ -117,7 +119,7 @@ markdown_extensions:
   - toc: { permalink: true }
 ```
 
-> 📖 **Plugin catalog đầy đủ** → [mkdocs-plugins-catalog.md](references/mkdocs-plugins-catalog.md)
+> 📖 **Plugin catalog đầy đủ** → [mkdocs-plugins-catalog.md](../references/guides/mkdocs-plugins-catalog.md)
 
 ---
 
@@ -295,7 +297,7 @@ Trước khi báo "done", verify:
 | ------------------------- | -------------------------------------- |
 | Viết runbook/ops docs     | `ops-runbook-writer.md`                |
 | Viết training/guide docs  | `training-guide-writer.md`             |
-| Plugin catalog cho MkDocs | `references/mkdocs-plugins-catalog.md` |
-| Copy-paste doc templates  | `references/doc-templates-library.md`  |
+| Plugin catalog cho MkDocs | `references/guides/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates  | `references/templates/doc-templates-library.md`  |
 
 <!-- Used: 2026-03-26 -->

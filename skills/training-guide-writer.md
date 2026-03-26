@@ -15,7 +15,9 @@
 | **Priority** | high                                                                                           |
 | **Triggers** | Khi cần viết training docs, project specs, how-to guides, onboarding docs                      |
 | **Output**   | Training material .md, ADR .md, how-to guide .md, quick reference .md                          |
-| **Scope**    | IN: training, development docs, guides, reference cards. OUT: runbook, ops manual, deploy docs |
+| **Scope**        | IN: training, development docs, guides, reference cards. OUT: runbook, ops manual, deploy docs |
+| **Version**      | 1.0.0                                                                                          |
+| **Last Updated** | 2026-03-26                                                                                     |
 
 > Chuyên viết tài liệu training nội bộ, phát triển dự án, và hướng dẫn sử dụng. Mọi guide phải có Prerequisites → Steps → Expected Result.
 
@@ -361,7 +363,7 @@ changelog:
 ---
 ```
 
-> 📖 **Template library đầy đủ** → [doc-templates-library.md](references/doc-templates-library.md)
+> 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
 
 ---
 
@@ -407,7 +409,7 @@ Trước khi báo "done", verify:
 | -------------------------------- | -------------------------------------- |
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết runbook / ops docs          | `ops-runbook-writer.md`                |
-| Copy-paste doc templates         | `references/doc-templates-library.md`  |
-| MkDocs plugins recommendation    | `references/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
+| MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
 
 <!-- Used: 2026-03-26 -->

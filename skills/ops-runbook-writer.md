@@ -15,7 +15,9 @@
 | **Priority** | high                                                                                     |
 | **Triggers** | Khi cần viết runbook, ops manual, network/server docs, incident docs                     |
 | **Output**   | Runbook .md, operations manual .md, network topology docs, incident SOP                  |
-| **Scope**    | IN: runbook, ops manual, server/network docs, incident. OUT: training, guides, code docs |
+| **Scope**        | IN: runbook, ops manual, server/network docs, incident. OUT: training, guides, code docs |
+| **Version**      | 1.0.0                                                                                    |
+| **Last Updated** | 2026-03-26                                                                               |
 
 > Chuyên viết tài liệu vận hành hệ thống, runbook, quản lý server/network. Mọi runbook phải có commands chạy được + expected output.
 
@@ -276,7 +278,7 @@ graph TB
 - [ ] Stakeholders notified: maintenance complete
 ```
 
-> 📖 **Template library đầy đủ** → [doc-templates-library.md](references/doc-templates-library.md)
+> 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
 
 ---
 
@@ -333,7 +335,7 @@ Trước khi báo "done", verify:
 | -------------------------------- | -------------------------------------- |
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết training/guide docs         | `training-guide-writer.md`             |
-| Copy-paste doc templates         | `references/doc-templates-library.md`  |
-| MkDocs plugins recommendation    | `references/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
+| MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
 
 <!-- Used: 2026-03-26 -->

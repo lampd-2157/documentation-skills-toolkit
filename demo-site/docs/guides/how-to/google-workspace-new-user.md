@@ -90,5 +90,5 @@ Mở [admin.google.com](https://admin.google.com) → đăng nhập bằng admin
 
 ## Next Steps
 
-- [Security 2FA Guide](../security-2fa.md) — Chi tiết setup 2FA
+- Security 2FA Guide — *coming soon*
 - [Proxmox VM Runbook](../../operations/runbooks/proxmox-vm-runbook.md) — Setup VM cho user mới

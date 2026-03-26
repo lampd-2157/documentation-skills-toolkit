@@ -40,8 +40,8 @@ Successfully installed mkdocs-material-... mkdocs-mermaid2-plugin-...
 
 ```bash
 # Copy từ toolkit
-cp templates/references/mkdocs-starter.yml mkdocs.yml
-cp templates/references/markdownlint-config.json .markdownlint.json
+cp references/config/mkdocs-starter.yml mkdocs.yml
+cp references/config/markdownlint-config.json .markdownlint.json
 ```
 
 **Expected result:** 2 files config xuất hiện ở root project.

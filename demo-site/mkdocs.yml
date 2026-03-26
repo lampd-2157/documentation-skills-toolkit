@@ -44,10 +44,16 @@ nav:
     - Quick Start: getting-started/quick-start.md
   - Operations:
     - Runbooks:
-      - Proxmox VM: operations/runbooks/proxmox-vm-runbook.md
+      - Proxmox VM (T1): operations/runbooks/proxmox-vm-runbook.md
+    - Network Topology (T5): operations/network-topology-example.md
+    - Postmortem (T6): operations/postmortem-example.md
+    - Maintenance Window (T7): operations/maintenance-window-example.md
   - Development:
     - ADR:
-      - "ADR-001: MkDocs": development/adr/adr-001-mkdocs.md
+      - "ADR-001: MkDocs (T2)": development/adr/adr-001-mkdocs.md
+    - Release Notes (T8): development/release-notes-example.md
+  - Training:
+    - Git Basics (T4): training/training-module-example.md
   - Guides:
     - How-to:
-      - Google Workspace New User: guides/how-to/google-workspace-new-user.md
+      - Google Workspace New User (T3): guides/how-to/google-workspace-new-user.md

@@ -21,6 +21,8 @@
 ║  3. Xóa các "💡 Hướng dẫn:" và section không cần    ║
 ║  4. Sections có ⚠️ OPTIONAL → xóa nếu không cần     ║
 ║  5. Giữ thứ tự sections — KHÔNG đảo                  ║
+║  6. Version: set to 1.0.0 for new skills             ║
+║  7. Last Updated: set to current date (YYYY-MM-DD)   ║
 ╚══════════════════════════════════════════════════════╝
 -->
 
@@ -28,13 +30,15 @@
 
 ## Context / Bối cảnh
 
-| Key          | Value                                            |
-| ------------ | ------------------------------------------------ |
-| **Category** | [infrastructure / development / qa / docs / ops] |
-| **Priority** | [core / high / medium / low]                     |
-| **Triggers** | [Khi nào agent nên tự động dùng skill này?]      |
-| **Output**   | [Skill này tạo ra cái gì? Code / doc / config?]  |
-| **Scope**    | [Phạm vi: IN scope ↔ OUT of scope]               |
+| Key              | Value                                            |
+| ---------------- | ------------------------------------------------ |
+| **Category**     | [infrastructure / development / qa / docs / ops] |
+| **Priority**     | [core / high / medium / low]                     |
+| **Triggers**     | [Khi nào agent nên tự động dùng skill này?]      |
+| **Output**       | [Skill này tạo ra cái gì? Code / doc / config?]  |
+| **Scope**        | [Phạm vi: IN scope ↔ OUT of scope]               |
+| **Version**      | [1.0.0]                                           |
+| **Last Updated** | [YYYY-MM-DD]                                      |
 
 > [Mô tả narrative 1-2 câu — skill này dùng để làm gì, agent nào chịu trách nhiệm.]
 
@@ -47,6 +51,8 @@
    - Triggers: điều kiện cụ thể để agent activate skill
    - Output: sản phẩm cụ thể (measurable)
    - Scope: rõ ràng IN/OUT — tránh dùng sai skill
+   - Version: semver format (1.0.0) — bump when skill content changes
+   - Last Updated: date of last modification (YYYY-MM-DD)
 -->
 
 ---

@@ -1,0 +1,652 @@
+#!/bin/bash
+# ============================================================
+# Documentation Skills Toolkit — CLI Tool
+# Author: DulapReal (https://github.com/lampd-2157)
+# License: MIT
+# Version: 2.0.0
+# ============================================================
+# Usage:
+#   ./scripts/docs-toolkit new <type> <title>
+#   ./scripts/docs-toolkit list
+#   ./scripts/docs-toolkit validate <file>
+# ============================================================
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TOOLKIT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+# ── Colors ───────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# ── Helpers ──────────────────────────────────────────────
+usage() {
+  echo "Documentation Skills Toolkit — CLI"
+  echo ""
+  echo "Usage:"
+  echo "  $(basename "$0") new <type> <title>    Create a new document from template"
+  echo "  $(basename "$0") list                  List available document types"
+  echo "  $(basename "$0") validate <file>       Validate a skill or markdown file"
+  echo ""
+  echo "Types: runbook, adr, howto, training, network, postmortem, maintenance, release-notes"
+  echo ""
+  echo "Examples:"
+  echo "  $(basename "$0") new runbook \"Nginx Load Balancer\""
+  echo "  $(basename "$0") new adr \"Switch to PostgreSQL 16\""
+  echo "  $(basename "$0") new postmortem \"DB Connection Pool Exhaustion\""
+}
+
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//'
+}
+
+get_author() {
+  git config user.name 2>/dev/null || echo "[Your Name]"
+}
+
+today() {
+  date +%Y-%m-%d
+}
+
+# ── Template Generators ──────────────────────────────────
+gen_runbook() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Runbook: ${title}"
+description: "Operations runbook for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [operations, runbook]
+---
+
+# Runbook: ${title}
+
+> Last verified: $(today) | Owner: [Team]
+
+## Overview
+
+| Field           | Value              |
+| --------------- | ------------------ |
+| **Service**     | ${title}           |
+| **Environment** | production         |
+| **URL**         | [endpoint URL]     |
+| **Repository**  | [git repo link]    |
+| **On-call**     | [rotation link]    |
+
+## Architecture
+
+\`\`\`mermaid
+graph LR
+    A[Client] --> B[${title}]
+    B --> C[(Database)]
+\`\`\`
+
+## Health Checks
+
+| Check        | Command                | Expected | Alert If    |
+| ------------ | ---------------------- | -------- | ----------- |
+| Service alive | \`curl -s localhost/hz\` | \`200 OK\` | Non-200     |
+
+## Start / Stop / Restart
+
+| Action  | Command                          | Verify With              |
+| ------- | -------------------------------- | ------------------------ |
+| Start   | \`sudo systemctl start myapp\`    | \`systemctl status myapp\` |
+| Stop    | \`sudo systemctl stop myapp\`     | \`systemctl status myapp\` |
+| Restart | \`sudo systemctl restart myapp\`  | \`systemctl status myapp\` |
+
+## Troubleshooting
+
+### [Issue Title]
+
+**Symptoms:** [what you see]
+**Root Cause:** [why it happens]
+**Fix:**
+1. \`[command]\` — [explain]
+2. Verify: [expected output]
+**Prevention:** [how to prevent]
+
+## Escalation
+
+| Severity | Response | Contact         |
+| -------- | -------- | --------------- |
+| P1       | 15 min   | [name/rotation] |
+| P2       | 1 hour   | [team/Slack]    |
+| P3       | 4 hours  | [email/ticket]  |
+EOF
+}
+
+gen_adr() {
+  local title="$1"
+  local number="$2"
+  cat <<EOF
+---
+title: "ADR-${number}: ${title}"
+description: "Architecture decision record for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: proposed
+tags: [architecture, adr]
+---
+
+# ADR-${number}: ${title}
+
+| Field         | Value     |
+| ------------- | --------- |
+| **Status**    | Proposed  |
+| **Date**      | $(today)  |
+| **Author**    | $(get_author) |
+| **Reviewers** | [Names]   |
+
+## Context
+
+[What is the issue or opportunity that motivates this decision?]
+
+## Decision
+
+[What is the change that we're proposing?]
+
+## Alternatives Considered
+
+| Option         | Pros       | Cons        |
+| -------------- | ---------- | ----------- |
+| Option A       | [benefits] | [drawbacks] |
+| **Option B** | [benefits] | [drawbacks] |
+
+## Consequences
+
+- **Positive:** [benefits we gain]
+- **Negative:** [trade-offs we accept]
+- **Risks:** [things to monitor]
+EOF
+}
+
+gen_howto() {
+  local title="$1"
+  cat <<EOF
+---
+title: "How to ${title}"
+description: "Step-by-step guide for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [guide, how-to]
+---
+
+# How to ${title}
+
+> **Audience:** [role/skill level] | **Time:** ~X min | **Difficulty:** Beginner
+
+## Prerequisites
+
+- [ ] [Tool/access needed 1]
+- [ ] [Tool/access needed 2]
+
+## Steps
+
+### Step 1: [Action verb + object]
+
+[Brief explanation]
+
+\`\`\`bash
+[copy-paste command]
+\`\`\`
+
+**Expected result:**
+
+\`\`\`text
+[what you should see]
+\`\`\`
+
+### Step 2: [Action verb + object]
+
+[...]
+
+## Verify
+
+- [ ] [How to confirm success]
+
+## Troubleshooting
+
+### Error: [common error message]
+
+**Cause:** [why it happens]
+**Fix:** [how to resolve]
+
+## Next Steps
+
+- [Related guide](link)
+EOF
+}
+
+gen_training() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Training: ${title}"
+description: "Training module for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [training, onboarding]
+---
+
+# Training: ${title}
+
+| Field             | Value                   |
+| ----------------- | ----------------------- |
+| **Audience**      | [role] — [level]        |
+| **Duration**      | [time estimate]         |
+| **Prerequisites** | [prior knowledge/tools] |
+| **Objectives**    | [what learner achieves] |
+
+## Lesson 1: [Topic]
+
+### Concepts
+
+- **[Concept 1]:** [explanation]
+- **[Concept 2]:** [explanation]
+
+### Hands-on Lab
+
+1. [Step] — \`[command/action]\`
+   Expected: \`[output]\`
+2. [Step] — \`[command/action]\`
+   Expected: \`[output]\`
+
+### Knowledge Check
+
+- [ ] Can learner explain [concept]?
+- [ ] Did learner complete lab successfully?
+
+## Assessment
+
+| Criteria        | Pass Condition  |
+| --------------- | --------------- |
+| Lab completion  | 100% steps done |
+| Knowledge check | >= 80% correct  |
+EOF
+}
+
+gen_network() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Network Documentation: ${title}"
+description: "Network topology and infrastructure for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [network, infrastructure]
+---
+
+# Network Documentation: ${title}
+
+## Topology Diagram
+
+\`\`\`mermaid
+graph TB
+    INET[Internet] --> FW[Firewall]
+    FW --> DMZ[DMZ]
+    FW --> PROD[Production]
+    FW --> MGMT[Management]
+\`\`\`
+
+## VLAN Layout
+
+| VLAN ID | Name   | Subnet       | Purpose |
+| ------- | ------ | ------------ | ------- |
+| [id]    | [name] | [x.x.x.x/xx] | [desc]  |
+
+## Server Inventory
+
+| Hostname   | IP   | OS           | Role   | VLAN |
+| ---------- | ---- | ------------ | ------ | ---- |
+| [hostname] | [ip] | [os version] | [role] | [id] |
+
+## Firewall Rules
+
+| #   | Source   | Dest   | Port | Action | Note   |
+| --- | -------- | ------ | ---- | ------ | ------ |
+| 1   | [source] | [dest] | [port] | ALLOW | [note] |
+
+## Certificate Register
+
+| Domain   | Issuer   | Expiry     | Auto-renew |
+| -------- | -------- | ---------- | ---------- |
+| [domain] | [issuer] | YYYY-MM-DD | Yes/No     |
+EOF
+}
+
+gen_postmortem() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Postmortem: ${title}"
+description: "Incident postmortem for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [incident, postmortem]
+---
+
+# Postmortem: ${title}
+
+| Field        | Value            |
+| ------------ | ---------------- |
+| **Severity** | P1 / P2 / P3    |
+| **Date**     | $(today)         |
+| **Duration** | HH:MM — HH:MM   |
+| **Impact**   | [users/services] |
+| **Owner**    | [incident lead]  |
+| **Status**   | Draft            |
+
+## Summary
+
+[1-2 sentences: what happened and impact]
+
+## Timeline
+
+| Time (UTC+7) | Event              | Actor |
+| ------------- | ------------------ | ----- |
+| HH:MM         | [first detection]  | [who] |
+| HH:MM         | [escalation]       | [who] |
+| HH:MM         | [fix applied]      | [who] |
+| HH:MM         | [service restored] | [who] |
+
+## Root Cause
+
+[Detailed analysis]
+
+## What Went Wrong
+
+- [thing 1]
+
+## What Went Right
+
+- [thing 1]
+
+## Action Items
+
+| #   | Action          | Owner  | Due Date   | Status |
+| --- | --------------- | ------ | ---------- | ------ |
+| 1   | [action needed] | [name] | YYYY-MM-DD | Open   |
+
+## Lessons Learned
+
+- [lesson 1]
+EOF
+}
+
+gen_maintenance() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Maintenance: ${title}"
+description: "Planned maintenance window for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [maintenance, operations]
+---
+
+# Maintenance: ${title}
+
+| Field           | Value                          |
+| --------------- | ------------------------------ |
+| **Schedule**    | YYYY-MM-DD HH:MM — HH:MM (UTC+7) |
+| **Duration**    | [X hours]                      |
+| **Impact**      | [services affected]            |
+| **Downtime**    | None / Partial / Full          |
+| **Owner**       | [team/person]                  |
+| **Approved by** | [approver]                     |
+
+## Pre-checks
+
+- [ ] Backup completed and verified
+- [ ] Rollback plan ready and tested
+- [ ] Stakeholders notified (>= 24h advance)
+- [ ] Monitoring dashboard open
+
+## Procedure
+
+| #   | Step          | Command       | Verify            |
+| --- | ------------- | ------------- | ----------------- |
+| 1   | [description] | \`[command]\`   | [expected output] |
+
+## Rollback
+
+| #   | Step            | Command     |
+| --- | --------------- | ----------- |
+| 1   | [rollback step] | \`[command]\` |
+
+## Post-checks
+
+- [ ] All services healthy
+- [ ] No error spike (15 min observation)
+- [ ] Performance within SLA
+- [ ] Stakeholders notified: complete
+EOF
+}
+
+gen_release_notes() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Release Notes — ${title}"
+description: "Release notes for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [release, changelog]
+---
+
+# Release Notes — ${title}
+
+**Date:** $(today) | **Author:** $(get_author)
+
+## Highlights
+
+- [Major feature 1]
+- [Bug fix 1]
+- [Improvement 1]
+
+## New Features
+
+| Feature        | Description         |
+| -------------- | ------------------- |
+| [feature name] | [brief description] |
+
+## Bug Fixes
+
+| Issue             | Fix                |
+| ----------------- | ------------------ |
+| [bug description] | [how it was fixed] |
+
+## Breaking Changes
+
+> [If any — describe migration steps]
+
+## Known Issues
+
+| Issue   | Workaround   | ETA Fix |
+| ------- | ------------ | ------- |
+| [issue] | [workaround] | [date]  |
+
+## Upgrade Instructions
+
+1. [Step 1]
+2. [Step 2]
+EOF
+}
+
+# ── Command: list ────────────────────────────────────────
+cmd_list() {
+  echo -e "${BLUE}Available document types:${NC}"
+  echo ""
+  echo "  runbook          System operation runbook (T1)"
+  echo "  adr              Architecture Decision Record (T2)"
+  echo "  howto            Step-by-step how-to guide (T3)"
+  echo "  training         Training module (T4)"
+  echo "  network          Network topology documentation (T5)"
+  echo "  postmortem       Incident postmortem (T6)"
+  echo "  maintenance      Maintenance window plan (T7)"
+  echo "  release-notes    Version release notes (T8)"
+  echo ""
+  echo -e "Usage: ${GREEN}$(basename "$0") new <type> <title>${NC}"
+}
+
+# ── Command: validate ────────────────────────────────────
+cmd_validate() {
+  local file="$1"
+  if [ -z "$file" ]; then
+    echo -e "${RED}Error: specify a file to validate${NC}"
+    exit 1
+  fi
+
+  if [[ "$file" == *skills/* ]] && [ -f "$TOOLKIT_ROOT/scripts/validate_skill.py" ]; then
+    echo -e "${BLUE}Validating skill file...${NC}"
+    python3 "$TOOLKIT_ROOT/scripts/validate_skill.py" "$file"
+  else
+    echo -e "${BLUE}Linting markdown...${NC}"
+    if command -v npx &> /dev/null; then
+      # Look for project config
+      local config_flag=""
+      if [ -f ".markdownlint.json" ]; then
+        config_flag="--config .markdownlint.json"
+      elif [ -f "$TOOLKIT_ROOT/references/config/markdownlint-config.json" ]; then
+        config_flag="--config $TOOLKIT_ROOT/references/config/markdownlint-config.json"
+      fi
+      npx markdownlint-cli2 "$file" $config_flag
+    else
+      echo -e "${YELLOW}markdownlint-cli2 not found. Run: npm install -g markdownlint-cli2${NC}"
+      exit 1
+    fi
+  fi
+}
+
+# ── Command: new ─────────────────────────────────────────
+cmd_new() {
+  local type="$1"
+  local title="$2"
+
+  if [ -z "$type" ] || [ -z "$title" ]; then
+    echo -e "${RED}Error: specify type and title${NC}"
+    echo "Usage: $(basename "$0") new <type> <title>"
+    exit 1
+  fi
+
+  local slug
+  slug=$(slugify "$title")
+  local output_dir=""
+  local filename=""
+  local content=""
+
+  case "$type" in
+    runbook)
+      output_dir="docs/operations/runbooks"
+      filename="${slug}-runbook.md"
+      content=$(gen_runbook "$title")
+      ;;
+    adr)
+      output_dir="docs/development/adr"
+      # Auto-number: find highest ADR-NNN and increment
+      local last_num=0
+      if [ -d "$output_dir" ]; then
+        last_num=$(ls "$output_dir"/adr-*.md 2>/dev/null | sed 's/.*adr-0*\([0-9]*\).*/\1/' | sort -n | tail -1 || echo 0)
+      fi
+      local next_num
+      next_num=$(printf "%03d" $((last_num + 1)))
+      filename="adr-${next_num}-${slug}.md"
+      content=$(gen_adr "$title" "$next_num")
+      ;;
+    howto)
+      output_dir="docs/guides/how-to"
+      filename="${slug}-guide.md"
+      content=$(gen_howto "$title")
+      ;;
+    training)
+      output_dir="docs/training"
+      filename="${slug}-training.md"
+      content=$(gen_training "$title")
+      ;;
+    network)
+      output_dir="docs/operations/network"
+      filename="${slug}-topology.md"
+      content=$(gen_network "$title")
+      ;;
+    postmortem)
+      output_dir="docs/incidents/postmortem"
+      filename="$(today)-${slug}.md"
+      content=$(gen_postmortem "$title")
+      ;;
+    maintenance)
+      output_dir="docs/operations"
+      filename="maintenance-${slug}.md"
+      content=$(gen_maintenance "$title")
+      ;;
+    release-notes)
+      output_dir="docs/development"
+      filename="release-notes-${slug}.md"
+      content=$(gen_release_notes "$title")
+      ;;
+    *)
+      echo -e "${RED}Unknown type: ${type}${NC}"
+      echo "Run '$(basename "$0") list' to see available types."
+      exit 1
+      ;;
+  esac
+
+  # Create directory and file
+  mkdir -p "$output_dir"
+  local filepath="${output_dir}/${filename}"
+
+  if [ -f "$filepath" ]; then
+    echo -e "${YELLOW}File already exists: ${filepath}${NC}"
+    exit 1
+  fi
+
+  echo "$content" > "$filepath"
+  echo -e "${GREEN}Created: ${filepath}${NC}"
+  echo ""
+  echo "Next steps:"
+  echo "  1. Edit the file and fill in the placeholders"
+  echo "  2. Run: $(basename "$0") validate ${filepath}"
+  echo "  3. Preview: mkdocs serve"
+  echo "  4. Add to mkdocs.yml nav section"
+}
+
+# ── Main ─────────────────────────────────────────────────
+case "${1:-}" in
+  new)
+    cmd_new "$2" "$3"
+    ;;
+  list)
+    cmd_list
+    ;;
+  validate)
+    cmd_validate "$2"
+    ;;
+  -h|--help|"")
+    usage
+    ;;
+  *)
+    echo -e "${RED}Unknown command: $1${NC}"
+    usage
+    exit 1
+    ;;
+esac
