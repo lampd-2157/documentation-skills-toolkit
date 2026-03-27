@@ -31,15 +31,15 @@
 
 /* ── Tier 1: CSS Fallback Page Transitions ────────────────── */
 .content-enter {
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .content-enter-forward {
-  animation: slideInRight 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .content-enter-backward {
-  animation: slideInLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ── Tier 2 & 3: View Transitions API ─────────────────────
@@ -84,9 +84,9 @@
 /* ── Scroll Reveal ───────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(12px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
 }
 
 .reveal-visible {
@@ -501,28 +501,31 @@
   border-radius: 10px;
   border-width: 0 0 0 4px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
 }
 
 .md-typeset .admonition:hover,
 .md-typeset details:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .md-typeset .admonition .admonition-title,
 .md-typeset details summary {
   font-weight: 700 !important;
+  transition: padding-left 0.3s ease;
 }
+
 
 /* ── Code Blocks ─────────────────────────────────────────── */
 .md-typeset pre {
   border-radius: 10px;
-  transition: box-shadow 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid transparent;
 }
 
 .md-typeset pre:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .md-typeset pre > code {
@@ -532,7 +535,14 @@
 .md-typeset code {
   border-radius: 4px;
   font-weight: 600;
+  transition: background-color 0.2s ease;
 }
+
+/* Table row transition */
+.md-typeset table:not([class]) tr {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
 
 /* ── Mermaid ─────────────────────────────────────────────── */
 .mermaid {
@@ -552,6 +562,20 @@
 
 .md-typeset .tabbed-content {
   transition: opacity 0.4s ease;
+}
+
+/* ── Content Links ──────────────────────────────────────── */
+.md-typeset a:not([class]) {
+  text-decoration: none;
+  background-image: linear-gradient(var(--md-primary-fg-color), var(--md-primary-fg-color));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.md-typeset a:not([class]):hover {
+  background-size: 100% 2px;
 }
 
 /* ── Navigation Tabs ─────────────────────────────────────── */

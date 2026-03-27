@@ -2,7 +2,7 @@
 title: Infrastructure Documentation
 description: "Tài liệu hạ tầng — demo Documentation Skills Toolkit"
 status: approved
-updated: 2026-03-26
+updated: 2026-03-28
 hide:
   - toc
   - navigation
