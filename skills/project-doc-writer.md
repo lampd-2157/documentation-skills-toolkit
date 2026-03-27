@@ -14,7 +14,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ## Viết tài liệu Phát triển dự án & Hướng dẫn
 
-**Agent:** :pencil: [Documentation Agent]
+**Agent:** 📝 [Documentation Agent]
 **Source:** Adapted — [Google Developer Style Guide](https://developers.google.com/style), [gitlab.com/tgdp/templates](https://gitlab.com/tgdp/templates), [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 
 ---
@@ -35,13 +35,13 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :no_entry: THE IRON LAW
+## ⛔ THE IRON LAW
 
 **Every project doc MUST have clear structure with Context → Decision/Steps → Consequences/Result — ambiguous docs = wasted decisions.**
 
 ---
 
-## :shield: Guardrails
+## 🛡 Guardrails
 
 - [ ] ADR có đầy đủ: Context → Decision → Alternatives → Consequences
 - [ ] How-to guide có: Prerequisites → Steps → Expected Result → Troubleshooting
@@ -50,7 +50,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :dart: Khi nào dùng Skill này
+## 🎯 Khi nào dùng Skill này
 
 ```text
 User request
@@ -263,7 +263,7 @@ command pattern here
 
 ---
 
-## :white_check_mark: Pre-delivery Checklist — Project Docs
+## ✅ Pre-delivery Checklist — Project Docs
 
 Trước khi báo "done", verify:
 
@@ -276,7 +276,7 @@ Trước khi báo "done", verify:
 
 ---
 
-## :triangular_flag_on_post: Red Flags — STOP
+## 🚩 Red Flags — STOP
 
 | Action                            | Problem                                                 |
 | --------------------------------- | ------------------------------------------------------- |
@@ -298,7 +298,7 @@ Trước khi báo "done", verify:
 | **Active voice**        | "Click Save" not "Save should be clicked"                 |
 | **Concise reference**   | Quick reference ≤ 2 trang — chỉ essential commands/info   |
 
-## :link: Related Skills
+## 🔗 Related Skills
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |

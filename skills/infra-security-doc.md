@@ -14,7 +14,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ## Viết tài liệu Bảo mật Hạ tầng
 
-**Agent:** :pencil: [Documentation Agent]
+**Agent:** 📝 [Documentation Agent]
 **Source:** Adapted — [NIST SP 800-53](https://csf.tools/reference/nist-sp-800-53/), [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks), [OWASP](https://owasp.org/)
 
 ---
@@ -35,13 +35,13 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :no_entry: THE IRON LAW
+## ⛔ THE IRON LAW
 
 **Every security doc MUST have Scope → Policy → Enforcement → Audit — policy without enforcement = decoration.**
 
 ---
 
-## :shield: Guardrails
+## 🛡 Guardrails
 
 - [ ] Không chứa credentials, keys, hoặc secrets thực tế — chỉ dùng placeholders
 - [ ] Scope xác định rõ: áp dụng cho ai, hệ thống nào, từ khi nào
@@ -50,7 +50,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :dart: Khi nào dùng Skill này
+## 🎯 Khi nào dùng Skill này
 
 ```text
 User request
@@ -351,7 +351,7 @@ User request
 
 ---
 
-## :white_check_mark: Pre-delivery Checklist — Security Docs
+## ✅ Pre-delivery Checklist — Security Docs
 
 Trước khi báo "done", verify:
 
@@ -364,7 +364,7 @@ Trước khi báo "done", verify:
 
 ---
 
-## :notebook: Error Journal — Never Repeat Failures
+## 📓 Error Journal — Never Repeat Failures
 
 | Date     | Error                             | Root Cause             | Prevention Rule                  |
 | -------- | --------------------------------- | ---------------------- | -------------------------------- |
@@ -376,7 +376,7 @@ Trước khi báo "done", verify:
 
 ---
 
-## :triangular_flag_on_post: Red Flags — STOP
+## 🚩 Red Flags — STOP
 
 | Action                                | Problem                                          |
 | ------------------------------------- | ------------------------------------------------ |
@@ -399,7 +399,7 @@ Trước khi báo "done", verify:
 | **Least privilege**    | Default to minimal access, grant more when justified  |
 | **Log everything**     | Authentication, authorization, config changes         |
 
-## :link: Related Skills
+## 🔗 Related Skills
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |

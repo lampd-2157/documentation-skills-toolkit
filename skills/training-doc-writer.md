@@ -14,7 +14,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ## Viết tài liệu Training & Onboarding
 
-**Agent:** :pencil: [Documentation Agent]
+**Agent:** 📝 [Documentation Agent]
 **Source:** Adapted — [Google Developer Style Guide](https://developers.google.com/style), [gitlab.com/tgdp/templates](https://gitlab.com/tgdp/templates), [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 
 ---
@@ -35,13 +35,13 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :no_entry: THE IRON LAW
+## ⛔ THE IRON LAW
 
 **Every training doc MUST have Prerequisites → Steps → Expected Result → Troubleshooting — skip any = incomplete.**
 
 ---
 
-## :shield: Guardrails
+## 🛡 Guardrails
 
 - [ ] Target audience được xác định rõ (beginner / intermediate / advanced)
 - [ ] Prerequisites listed — reader biết cần gì trước khi bắt đầu
@@ -50,7 +50,7 @@ compatibility: "MkDocs Material >= 9.0"
 
 ---
 
-## :dart: Khi nào dùng Skill này
+## 🎯 Khi nào dùng Skill này
 
 ```text
 User request
@@ -189,11 +189,11 @@ changelog:
 ---
 ```
 
-> :book: **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
+> 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
 
 ---
 
-## :white_check_mark: Pre-delivery Checklist — Training Docs
+## ✅ Pre-delivery Checklist — Training Docs
 
 Trước khi báo "done", verify:
 
@@ -206,7 +206,7 @@ Trước khi báo "done", verify:
 
 ---
 
-## :triangular_flag_on_post: Red Flags — STOP
+## 🚩 Red Flags — STOP
 
 | Action                             | Problem                                             |
 | ---------------------------------- | --------------------------------------------------- |
@@ -229,7 +229,7 @@ Trước khi báo "done", verify:
 | **Non-author test**  | Ít nhất 1 người khác đọc hiểu trước khi publish        |
 | **Version control**  | YAML header: version, status, changelog                |
 
-## :link: Related Skills
+## 🔗 Related Skills
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
