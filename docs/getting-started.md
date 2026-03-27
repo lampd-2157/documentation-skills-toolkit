@@ -99,6 +99,19 @@ Write → Lint → Review → Publish → Audit
 
 ## 3. Setup (lần đầu)
 
+### Prerequisites
+
+Trước khi bắt đầu, đảm bảo đã cài:
+
+| Tool | Kiểm tra | Cài đặt (Ubuntu/WSL) | Cài đặt (macOS) |
+|------|----------|----------------------|------------------|
+| **Python 3.8+** | `python3 --version` | `sudo apt update && sudo apt install python3 python3-pip` | `brew install python3` |
+| **Node.js 18+** | `node --version` | [nvm](https://github.com/nvm-sh/nvm) hoặc `sudo apt install nodejs npm` | `brew install node` |
+| **Git** | `git --version` | `sudo apt install git` | `brew install git` |
+| **VS Code** *(optional)* | `code --version` | Cài trên Windows → mở VS Code → `Ctrl+Shift+P` → "Install code command in PATH" | `brew install --cask visual-studio-code` |
+
+> **Ubuntu/Debian:** Luôn chạy `sudo apt update` trước khi cài đặt packages để đảm bảo package index mới nhất.
+
 ### Bước 1: Clone và cài đặt
 
 ```bash
@@ -114,8 +127,6 @@ Script sẽ tự động cài:
 - Pre-commit hooks (tự lint khi commit)
 - VS Code snippets (gõ `doc-` → autocomplete)
 - cspell + link-check configs
-
-> **Gặp lỗi `python3-pip has no installation candidate`?** Chạy `sudo apt update` trước rồi thử lại. Trên Ubuntu/Debian, package index cần được cập nhật trước khi cài đặt.
 
 ### Bước 2: Xem demo site
 
