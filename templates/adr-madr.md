@@ -4,11 +4,14 @@
 
 # [Decision Title]
 
-- Status: proposed | accepted | deprecated | superseded by [ADR-NNN]
-- Date: YYYY-MM-DD
-- Decision-makers: [names]
-- Consulted: [names of those consulted]
-- Informed: [names of those informed]
+!!! info "Document Metadata"
+    | Field | Value |
+    |-------|-------|
+    | **Status** | proposed / accepted / deprecated / superseded by [ADR-NNN] |
+    | **Date** | YYYY-MM-DD |
+    | **Decision-makers** | [names] |
+    | **Consulted** | [names of those consulted] |
+    | **Informed** | [names of those informed] |
 
 ## Context and Problem Statement
 
@@ -32,9 +35,14 @@ Chosen option: "[Option N]", because [justification. e.g., only option which mee
 
 ### Consequences
 
-- Good, because [positive consequence, e.g., improvement of one or more desired qualities, ...]
-- Bad, because [negative consequence, e.g., compromising one or more desired qualities, ...]
-- Neutral, because [neutral consequence, e.g., no impact on desired quality, ...]
+!!! success "Positive"
+    - [positive consequence, e.g., improvement of one or more desired qualities, ...]
+
+!!! warning "Negative"
+    - [negative consequence, e.g., compromising one or more desired qualities, ...]
+
+!!! note "Neutral"
+    - [neutral consequence, e.g., no impact on desired quality, ...]
 
 ### Confirmation
 

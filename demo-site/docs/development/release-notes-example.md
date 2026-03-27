@@ -45,15 +45,15 @@ tags: [release, v2.5.0, changelog]
 | Search latency | 350ms    | 150ms    | -57%        |
 | Bundle size    | 1.8 MB   | 1.2 MB   | -33%        |
 
-## Breaking Changes
+!!! danger "Breaking Changes"
 
-> **API v1 endpoints deprecated.** All `/api/v1/*` endpoints will be removed in v3.0.0. Migrate to `/api/v2/*` before then.
+    **API v1 endpoints deprecated.** All `/api/v1/*` endpoints will be removed in v3.0.0. Migrate to `/api/v2/*` before then.
 
-Migration steps:
+    Migration steps:
 
-1. Update API base URL from `/api/v1/` to `/api/v2/`
-2. Update authentication header from `X-API-Key` to `Authorization: Bearer <token>`
-3. Response format changed: `{ data: [...] }` wrapper added to all list endpoints
+    1. Update API base URL from `/api/v1/` to `/api/v2/`
+    2. Update authentication header from `X-API-Key` to `Authorization: Bearer <token>`
+    3. Response format changed: `{ data: [...] }` wrapper added to all list endpoints
 
 ## Known Issues
 

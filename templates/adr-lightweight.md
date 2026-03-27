@@ -3,7 +3,12 @@
 
 # ADR: [Decision Title]
 
-**Date:** YYYY-MM-DD | **Status:** Proposed / Accepted / Deprecated | **Author:** [Name]
+!!! info "Document Metadata"
+    | Field | Value |
+    |-------|-------|
+    | **Date** | YYYY-MM-DD |
+    | **Status** | Proposed / Accepted / Deprecated |
+    | **Author** | [Name] |
 
 ## Problem
 

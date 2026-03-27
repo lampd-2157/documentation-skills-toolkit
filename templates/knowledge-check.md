@@ -2,12 +2,13 @@
 
 # Knowledge Check: [Module/Topic Name]
 
-| Field             | Value                          |
-| ----------------- | ------------------------------ |
-| **Module**        | [Module name]                  |
-| **Audience**      | [Junior/Mid/Senior] + [Role]   |
-| **Pass Criteria** | ≥80% correct answers           |
-| **Duration**      | [Estimated time, e.g. 15 min]  |
+!!! info "Document Metadata"
+    | Field | Value |
+    |-------|-------|
+    | **Module** | [Module name] |
+    | **Audience** | [Junior/Mid/Senior] + [Role] |
+    | **Pass Criteria** | ≥80% correct answers |
+    | **Duration** | [Estimated time, e.g. 15 min] |
 
 ---
 

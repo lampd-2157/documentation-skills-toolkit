@@ -70,13 +70,21 @@ def score_doc(filepath):
     details["metadata"] = (1 if meta_ok else 0.5 if has_title else 0,
                            "complete" if meta_ok else "partial" if has_title else "missing")
 
-    # 5. Markdown quality (1pt): no obvious issues (deferred to lint job, give benefit)
-    # Check for common issues: trailing spaces, multiple blank lines
-    has_trailing = bool(re.search(r" +$", content, re.MULTILINE))
-    has_multi_blank = bool(re.search(r"\n{4,}", content))
-    md_ok = not has_trailing and not has_multi_blank
-    details["markdown"] = (1 if md_ok else 0.5,
-                           "clean" if md_ok else "minor issues")
+    # 5. Visual & UI/UX (1pt): diagrams/admonitions/task lists
+    has_mermaid = bool(re.search(r"```mermaid", content))
+    has_admonition = bool(re.search(r"^!!! ", content, re.MULTILINE))
+    has_tasklist = bool(re.search(r"^- \[[ x]\] ", content, re.MULTILINE))
+    visual_hits = sum([has_mermaid, has_admonition, has_tasklist])
+    visual_score = 1 if visual_hits >= 2 else 0.5 if visual_hits == 1 else 0
+    visual_parts = []
+    if has_mermaid:
+        visual_parts.append("mermaid")
+    if has_admonition:
+        visual_parts.append("admonitions")
+    if has_tasklist:
+        visual_parts.append("task lists")
+    details["visual_uiux"] = (visual_score,
+                              " + ".join(visual_parts) if visual_parts else "plain text")
 
     # 6. Freshness (1pt): updated/created date within 90 days
     date_match = re.search(r"(?:updated|created|date|cập nhật|Last Updated|Used:).*?(\d{4}-\d{2}-\d{2})", content, re.IGNORECASE)

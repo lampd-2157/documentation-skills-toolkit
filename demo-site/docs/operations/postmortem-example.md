@@ -12,14 +12,16 @@ tags: [incident, postmortem, database, P2]
 
 !!! danger "Severity: P2 — Major | Duration: 45 min | Impact: 12% error rate"
 
-| Field        | Value                              |
-| ------------ | ---------------------------------- |
-| **Severity** | P2 — Major                         |
-| **Date**     | 2026-03-15                         |
-| **Duration** | 14:22 — 15:07 (UTC+7) — 45 min    |
-| **Impact**   | API latency 5x normal, 12% errors |
-| **Owner**    | DulaP (Incident Lead)              |
-| **Status**   | Reviewed                           |
+!!! info "Incident Metadata"
+
+    | Field        | Value                              |
+    | ------------ | ---------------------------------- |
+    | **Severity** | P2 — Major                         |
+    | **Date**     | 2026-03-15                         |
+    | **Duration** | 14:22 — 15:07 (UTC+7) — 45 min    |
+    | **Impact**   | API latency 5x normal, 12% errors |
+    | **Owner**    | DulaP (Incident Lead)              |
+    | **Status**   | Reviewed                           |
 
 ## Summary
 
@@ -64,18 +66,16 @@ async function searchUsers(query) {
 }
 ```
 
-## What Went Wrong
+!!! failure "What Went Wrong"
+    - Code review missed the missing `finally` block in PR #342
+    - No integration test for connection pool behavior under error conditions
+    - Alert threshold (p95 > 1000ms) was too slow — should have caught at 500ms
 
-- Code review missed the missing `finally` block in PR #342
-- No integration test for connection pool behavior under error conditions
-- Alert threshold (p95 > 1000ms) was too slow — should have caught at 500ms
-
-## What Went Right
-
-- Prometheus alerting detected the issue within 3 minutes
-- On-call response was fast (3 min to acknowledge)
-- Root cause identified within 15 minutes
-- Hotfix deployed within 20 minutes of root cause identification
+!!! success "What Went Right"
+    - Prometheus alerting detected the issue within 3 minutes
+    - On-call response was fast (3 min to acknowledge)
+    - Root cause identified within 15 minutes
+    - Hotfix deployed within 20 minutes of root cause identification
 
 ## Action Items
 

@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [4.0.0] — 2026-03-28
+
+### Added
+
+- **AI-Agent-First workflow** — Recommended approach: AI agent tạo docs từ prompt templates (tool-agnostic: Claude, ChatGPT, Antigravity, Copilot, hoặc bất kỳ agent nào)
+- **`AGENTS.md`** — Agent context file duy nhất, tool-agnostic, hướng dẫn AI agent cách dùng toolkit
+- **`prompts/` directory** — 12 prompt templates cho AI agent tạo docs (create-runbook, create-adr, select-skill, review-doc...)
+- **`skills/AGENT-CARDS.json`** — JSON summary of all 5 skills cho agent fast-lookup (<2KB thay vì ~16K tokens)
+
+### Changed
+
+- **`docs/getting-started.md`** — Restructure: AI Agent (Recommended) + Manual workflow, thêm Prompts concept section
+- **`docs/walkthrough-first-doc.md`** — Thêm Bước 2.5 chọn cách tiếp cận, trỏ tới prompt templates
+- **`README.md`** — v4.0.0, thêm `prompts/` vào project structure + guides table, update workflow diagram
+- **`CONTRIBUTING.md`** — Update directory map, thêm `prompts/` contribution guide
+
+---
+
 ## [3.1.0] — 2026-03-27
 
 ### Added

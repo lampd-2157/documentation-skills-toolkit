@@ -10,11 +10,15 @@ tags: [adr, database, architecture]
 
 # Choose PostgreSQL over MongoDB
 
-- Status: accepted
-- Date: 2026-03-15
-- Decision-makers: Tech Lead, DBA, Backend Team
-- Consulted: DevOps, Security
-- Informed: All engineering
+!!! info "ADR Metadata"
+
+    | Field               | Value                            |
+    | ------------------- | -------------------------------- |
+    | **Status**          | Accepted                         |
+    | **Date**            | 2026-03-15                       |
+    | **Decision-makers** | Tech Lead, DBA, Backend Team     |
+    | **Consulted**       | DevOps, Security                 |
+    | **Informed**        | All engineering                  |
 
 ## Context and Problem Statement
 
@@ -39,10 +43,15 @@ Chosen option: "PostgreSQL", because nó đáp ứng ACID requirements, team đ�
 
 ### Consequences
 
-- Good, because ACID compliance built-in cho transactions
-- Good, because team không cần training mới
-- Bad, because horizontal scaling phức tạp hơn MongoDB
-- Neutral, because cả hai đều có managed cloud options
+!!! success "Good"
+    - ACID compliance built-in cho transactions
+    - Team không cần training mới
+
+!!! warning "Bad"
+    - Horizontal scaling phức tạp hơn MongoDB
+
+!!! note "Neutral"
+    - Cả hai đều có managed cloud options
 
 ## Pros and Cons of the Options
 
