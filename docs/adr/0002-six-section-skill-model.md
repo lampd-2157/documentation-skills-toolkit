@@ -13,6 +13,7 @@ Cần chuẩn hóa cấu trúc skill files. Mỗi skill phải consistent, dễ 
 ## Decision
 
 Áp dụng 6-section model bắt buộc cho mọi skill:
+
 1. Context / Bối cảnh (metadata + narrative)
 2. THE IRON LAW (1 rule tối thượng)
 3. Guardrails (2-5 proactive checks)

@@ -135,6 +135,7 @@ documentation-skills-toolkit/
 | Doc | Mô tả | Đọc khi... |
 |-----|-------|-------------|
 | [Getting Started](docs/getting-started.md) | Hướng dẫn từ A-Z cho người mới | Lần đầu dùng toolkit |
+| [Walkthrough](docs/walkthrough-first-doc.md) | Step-by-step tạo document đầu tiên | Muốn làm theo ví dụ cụ thể |
 | [Lifecycle Guide](docs/docs-lifecycle.md) | Write → Lint → Review → Publish → Audit | Setup Docs-as-Code pipeline |
 | [Composition Recipes](docs/skill-composition-recipes.md) | Kết hợp skills cho task thực tế | Không biết dùng skill nào |
 | [Quality Scorecard](docs/doc-quality-scorecard.md) | Chấm điểm chất lượng doc (0-10) | Review / audit docs |

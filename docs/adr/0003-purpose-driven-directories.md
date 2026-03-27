@@ -13,6 +13,7 @@
 ## Decision
 
 Eliminate `references/`, thay bằng 4 directories:
+
 - `config/` — project configs consumed by tooling
 - `docs/` — human-readable guides
 - `examples/` — starter configs cho other projects
