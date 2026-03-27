@@ -108,7 +108,7 @@ Trước khi bắt đầu, đảm bảo đã cài:
 | **Python 3.8+** | `python3 --version` | `sudo apt update && sudo apt install python3 python3-pip` | `brew install python3` |
 | **Node.js 18+** | `node --version` | [nvm](https://github.com/nvm-sh/nvm) hoặc `sudo apt install nodejs npm` | `brew install node` |
 | **Git** | `git --version` | `sudo apt install git` | `brew install git` |
-| **VS Code** *(optional)* | `code --version` | Cài trên Windows → mở VS Code → `Ctrl+Shift+P` → "Install code command in PATH" | `brew install --cask visual-studio-code` |
+
 
 > **Ubuntu/Debian:** Luôn chạy `sudo apt update` trước khi cài đặt packages để đảm bảo package index mới nhất.
 

@@ -85,12 +85,21 @@ Next steps:
 
 ## Bước 5: Điền nội dung vào template
 
-Mở file vừa tạo và thay thế các `[placeholder]`:
+Mở file `docs/operations/runbooks/nginx-load-balancer-runbook.md` và thay thế các `[placeholder]`.
 
-```bash
-# Mở file
-code docs/operations/runbooks/nginx-load-balancer-runbook.md
+Có 2 cách tiếp cận:
+
+**Cách 1: Dùng AI Agent** — Dùng skill file làm prompt cho AI (Claude, ChatGPT, Copilot...):
+
+```text
+Đọc file skills/ops-runbook-writer.md, sau đó điền nội dung vào file
+docs/operations/runbooks/nginx-load-balancer-runbook.md
+theo đúng Iron Law và Guardrails của skill.
 ```
+
+AI sẽ tạo nội dung theo đúng cấu trúc và quy tắc. Bạn chỉ cần **review và chỉnh sửa** cho phù hợp thực tế.
+
+**Cách 2: Viết thủ công** — Mở file bằng editor, thay từng `[placeholder]` theo hướng dẫn trong skill. Đọc **Iron Law** (1 câu) + **Guardrails** (3-5 checkboxes) của skill tương ứng để biết tiêu chuẩn cần đạt.
 
 **Trước (template):**
 
