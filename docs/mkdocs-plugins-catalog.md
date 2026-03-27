@@ -56,7 +56,7 @@
 
 | Plugin                                                                       | Mô tả                        | Install                                    |
 | ---------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------ |
-| [markdownlint-cli2](https://www.npmjs.com/package/markdownlint-cli2)         | Markdown lint CLI (CI-ready) | `npm install markdownlint-cli2 --save-dev` |
+| [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)        | Markdown lint CLI (CI-ready) | `npm install markdownlint-cli2 --save-dev` |
 | [mkdocs-spellcheck](https://pypi.org/project/mkdocs-spellcheck/)            | Spell checking for MkDocs    | `pip install mkdocs-spellcheck`            |
 | [mkdocs-htmlproofer](https://pypi.org/project/mkdocs-htmlproofer-plugin/)   | Validate HTML links          | `pip install mkdocs-htmlproofer-plugin`    |
 
