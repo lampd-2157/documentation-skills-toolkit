@@ -14,5 +14,9 @@
 | T6 | Incident Postmortem | [incident-postmortem.md](incident-postmortem.md) | Post-incident learning | ops-runbook-writer.md |
 | T7 | Maintenance Window | [maintenance-window.md](maintenance-window.md) | Planned change request | ops-runbook-writer.md |
 | T8 | Release Notes | [release-notes.md](release-notes.md) | Version release summary | project-doc-writer.md |
+| T9 | ADR (MADR) | [adr-madr.md](adr-madr.md) | Complex decisions, structured evaluation | project-doc-writer.md |
+| T10 | ADR (Lightweight) | [adr-lightweight.md](adr-lightweight.md) | Quick decisions, POC, experiments | project-doc-writer.md |
 
 > **CLI scaffold:** `./scripts/docs-toolkit new <type> <title>`
+>
+> **ADR format guide:** [adr-catalog.md](../docs/adr-catalog.md) — khi nào dùng T2 vs T9 vs T10
