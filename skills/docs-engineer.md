@@ -1,3 +1,14 @@
+---
+name: docs-engineer
+description: "Quản lý nền tảng MkDocs và tiêu chuẩn Markdown (.md): setup project,
+  cấu hình mkdocs.yml, markdownlint, chuẩn hóa folder structure. Dùng skill này khi
+  người dùng đề cập đến: khởi tạo docs project, setup MkDocs, review markdown quality,
+  chọn plugins, cấu trúc thư mục tài liệu, thêm admonition/tabs/diagram — dù không
+  gọi đích danh là 'docs engineer'. Khi có từ khóa: MkDocs, markdown, lint, docs
+  setup, documentation platform, tạo site tài liệu → trigger skill này."
+compatibility: "MkDocs Material >= 9.0"
+---
+
 # Skill: Docs Engineer
 
 ## Quản lý nền tảng MkDocs & Tiêu chuẩn Markdown
@@ -47,7 +58,7 @@ User request
   │     └── NO
   │           ├── Review/fix markdown quality?
   │           │     ├── YES → Dùng skill này (Section 2: Style Guide)
-  │           │     └── NO  → Xem ops-runbook-writer.md hoặc training-guide-writer.md
+  │           │     └── NO  → Xem ops-runbook-writer.md hoặc training-doc-writer.md / project-doc-writer.md
   │           └── Thêm component (admonition, tabs, diagram)?
   │                 └── YES → Dùng skill này (Section 3: Components)
 ```
@@ -69,7 +80,7 @@ User request
 # Install
 pip install mkdocs-material mkdocs-awesome-pages-plugin \
   mkdocs-git-revision-date-localized-plugin mkdocs-minify-plugin \
-  mkdocs-print-site-plugin mkdocs-mermaid2-plugin
+  mkdocs-print-site-plugin
 
 # Init
 mkdocs new my-docs && cd my-docs
@@ -103,12 +114,10 @@ plugins:
   - awesome-pages
   - git-revision-date-localized: { enable_creation_date: true }
   - minify: { minify_html: true }
-  - mermaid2
-
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences: { custom_fences: [{ name: mermaid, class: mermaid, format: !!python/name:mermaid2.fence_mermaid }] }
+  - pymdownx.superfences: { custom_fences: [{ name: mermaid, class: mermaid, format: !!python/name:pymdownx.superfences.fence_code_format }] }
   - pymdownx.tabbed: { alternate_style: true }
   - pymdownx.highlight: { anchor_linenums: true }
   - pymdownx.inlinehilite
@@ -296,7 +305,8 @@ Trước khi báo "done", verify:
 | Khi cần...                | Xem skill                              |
 | ------------------------- | -------------------------------------- |
 | Viết runbook/ops docs     | `ops-runbook-writer.md`                |
-| Viết training/guide docs  | `training-guide-writer.md`             |
+| Viết training/onboarding  | `training-doc-writer.md`               |
+| Viết ADR, guide, tech spec | `project-doc-writer.md`               |
 | Plugin catalog cho MkDocs | `references/guides/mkdocs-plugins-catalog.md` |
 | Copy-paste doc templates  | `references/templates/doc-templates-library.md`  |
 

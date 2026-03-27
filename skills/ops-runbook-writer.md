@@ -1,3 +1,15 @@
+---
+name: ops-runbook-writer
+description: "Viết tài liệu vận hành hệ thống (.md): runbook, SOP, incident response,
+  on-call guide, network topology, server/infra docs. Dùng skill này khi người dùng
+  đề cập đến: sự cố hệ thống, quy trình deploy, backup/restore, setup server mới,
+  firewall rules, VLAN, maintenance window, escalation plan, on-call rotation —
+  dù không gọi đích danh là 'runbook'. Khi có từ khóa: vận hành, hạ tầng,
+  incident, outage, ops, infra, server, network, SOP, playbook, postmortem,
+  disaster recovery → trigger skill này."
+compatibility: "MkDocs Material >= 9.0"
+---
+
 # Skill: Ops Runbook Writer
 
 ## Viết tài liệu vận hành & Runbook
@@ -50,8 +62,10 @@ User request
   │     └── YES → Dùng skill này (Section 2)
   ├── Viết incident response docs?
   │     └── YES → Dùng skill này (Section 4)
-  └── Viết training / guide?
-        └── NO  → Xem training-guide-writer.md
+  ├── Viết training / onboarding?
+  │     └── NO  → Xem training-doc-writer.md
+  └── Viết ADR / guide / tech spec?
+        └── NO  → Xem project-doc-writer.md
 ```
 
 | Dùng skill này khi...             | KHÔNG dùng khi...              |
@@ -334,7 +348,8 @@ Trước khi báo "done", verify:
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
-| Viết training/guide docs         | `training-guide-writer.md`             |
+| Viết training/onboarding         | `training-doc-writer.md`               |
+| Viết ADR, guide, tech spec      | `project-doc-writer.md`                |
 | Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
 | MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
 

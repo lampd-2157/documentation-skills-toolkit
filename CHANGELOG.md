@@ -6,6 +6,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [2.1.0] — 2026-03-27
+
+### Added
+
+- **YAML frontmatter** in all skill files — enables automatic skill triggering with `name`, `description`, `compatibility` fields
+- **`skills/training-doc-writer.md`** — New skill: training, onboarding, curriculum, learning path (split from training-guide-writer)
+- **`skills/project-doc-writer.md`** — New skill: ADR, tech spec, how-to guide, quick reference (split from training-guide-writer)
+- **`evals/` directory** — Eval test suite with `evals.json` and per-skill `test-cases.md` for verifying skill triggers and output format
+- **"Pushy" descriptions** in YAML frontmatter — extensive trigger keywords for better skill matching
+
+### Changed
+
+- **`training-guide-writer.md` → split into 2 skills** — single-responsibility: training-doc-writer (training/onboarding) + project-doc-writer (ADR/spec/guide)
+- **Mermaid config** — Removed `mermaid2` plugin dependency, using native MkDocs Material `pymdownx.superfences.fence_code_format` (compatible with Material >= 9.0)
+- **`docs-engineer.md`** — Updated mkdocs.yml sample to remove mermaid2, updated cross-references to new skills
+- **`ops-runbook-writer.md`** — Updated cross-references to new split skills
+- **README.md** — Updated to reflect 4 skills, new project structure with `evals/`, version bump to 2.1.0
+
+### Removed
+
+- **`skills/training-guide-writer.md`** — Replaced by `training-doc-writer.md` + `project-doc-writer.md`
+- **`mkdocs-mermaid2-plugin`** dependency — No longer needed with MkDocs Material >= 9.0
+
+---
+
 ## [2.0.0] — 2026-03-26
 
 ### Added

@@ -53,17 +53,17 @@
 
 | Field | Value |
 |-------|-------|
-| **Primary** | `training-guide-writer.md` |
+| **Primary** | `training-doc-writer.md` |
 | **Secondary** | `docs-engineer.md` |
 | **Templates** | T4 (Training Module) |
 
 **Steps:**
 
-1. Define audience + prerequisites (`training-guide-writer` §1.1)
+1. Define audience + prerequisites (`training-doc-writer` §1.1)
 2. Copy T4 Training template
-3. Viết lessons + hands-on labs (`training-guide-writer` §1)
-4. Tạo onboarding checklist (`training-guide-writer` §1.2)
-5. Design learning path (`training-guide-writer` §1.3)
+3. Viết lessons + hands-on labs (`training-doc-writer` §1)
+4. Tạo onboarding checklist (`training-doc-writer` §1.2)
+5. Design learning path (`training-doc-writer` §1.3)
 
 ---
 
@@ -89,14 +89,14 @@
 | Field | Value |
 |-------|-------|
 | **Primary** | `ops-runbook-writer.md` |
-| **Secondary** | `training-guide-writer.md` |
+| **Secondary** | `project-doc-writer.md` |
 | **Templates** | T6 (Incident Postmortem) |
 
 **Steps:**
 
 1. Copy T6 Postmortem template
 2. Điền timeline + root cause (`ops-runbook-writer` §4)
-3. Viết "Lessons Learned" dưới dạng how-to guide (`training-guide-writer` §3)
+3. Viết "Lessons Learned" dưới dạng how-to guide (`project-doc-writer` §2)
 4. Tạo action items + prevention rules
 
 ---
@@ -105,14 +105,14 @@
 
 | Field | Value |
 |-------|-------|
-| **Primary** | `training-guide-writer.md` |
+| **Primary** | `project-doc-writer.md` |
 | **Secondary** | — |
 | **Templates** | T2 (ADR) |
 
 **Steps:**
 
 1. Copy T2 ADR template
-2. Follow ADR structure (`training-guide-writer` §2.1)
+2. Follow ADR structure (`project-doc-writer` §1.1)
 3. Document alternatives considered (pros/cons table)
 4. Record consequences + risks
 
@@ -139,7 +139,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Primary** | `training-guide-writer.md` |
+| **Primary** | `project-doc-writer.md` |
 | **Secondary** | — |
 | **Templates** | T8 (Release Notes) |
 
@@ -147,7 +147,7 @@
 
 1. Copy T8 Release Notes template
 2. List features, bug fixes, breaking changes
-3. Viết upgrade instructions dạng step-by-step (`training-guide-writer` §3)
+3. Viết upgrade instructions dạng step-by-step (`project-doc-writer` §2)
 
 ---
 
@@ -156,7 +156,7 @@
 | Field | Value |
 |-------|-------|
 | **Primary** | `docs-engineer.md` |
-| **Secondary** | `ops-runbook-writer.md` + `training-guide-writer.md` |
+| **Secondary** | `ops-runbook-writer.md` + `training-doc-writer.md` + `project-doc-writer.md` |
 | **Templates** | All (T1-T8) |
 
 **Steps:**
@@ -164,7 +164,7 @@
 1. Setup MkDocs + folder structure (`docs-engineer` §1, §3)
 2. Dùng `infra-knowledge-base.md` để tạo domain folders
 3. Viết runbooks cho critical systems (`ops-runbook-writer`)
-4. Viết onboarding + training (`training-guide-writer`)
+4. Viết onboarding + training (`training-doc-writer`)
 5. Setup CI/CD auto-deploy (`docs-lifecycle-guide.md`)
 6. Quarterly audit schedule (`docs-lifecycle-guide.md` Phase 5)
 
@@ -176,14 +176,14 @@
 |------|--------------|----------|
 | Setup docs project | docs-engineer | mkdocs-starter.yml |
 | Write runbook | ops-runbook + docs-engineer | T1 |
-| Create training | training-guide + docs-engineer | T4 |
+| Create training | training-doc + docs-engineer | T4 |
 | Document network | ops-runbook + docs-engineer | T5 |
-| Post-incident review | ops-runbook + training-guide | T6 |
-| Architecture decision | training-guide | T2 |
-| How-to guide | training-guide + docs-engineer | T3 |
+| Post-incident review | ops-runbook + project-doc | T6 |
+| Architecture decision | project-doc | T2 |
+| How-to guide | project-doc + docs-engineer | T3 |
 | Plan maintenance | ops-runbook | T7 |
-| Release notes | training-guide | T8 |
-| Full docs site | All 3 skills | All templates |
+| Release notes | project-doc | T8 |
+| Full docs site | All 4 skills | All templates |
 
 ---
 

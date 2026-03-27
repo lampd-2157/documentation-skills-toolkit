@@ -11,13 +11,13 @@
 | #   | Template                    | Use Case                    | Related Skill            |
 | --- | --------------------------- | --------------------------- | ------------------------ |
 | T1  | Runbook                     | System operation procedures | ops-runbook-writer.md    |
-| T2  | ADR (Architecture Decision) | Design decisions log        | training-guide-writer.md |
-| T3  | How-to Guide                | Step-by-step instructions   | training-guide-writer.md |
-| T4  | Training Module             | Internal training           | training-guide-writer.md |
+| T2  | ADR (Architecture Decision) | Design decisions log        | project-doc-writer.md    |
+| T3  | How-to Guide                | Step-by-step instructions   | project-doc-writer.md    |
+| T4  | Training Module             | Internal training           | training-doc-writer.md   |
 | T5  | Network Topology            | Network documentation       | ops-runbook-writer.md    |
 | T6  | Incident Postmortem         | Post-incident learning      | ops-runbook-writer.md    |
 | T7  | Maintenance Window          | Planned change request      | ops-runbook-writer.md    |
-| T8  | Release Notes               | Version release summary     | training-guide-writer.md |
+| T8  | Release Notes               | Version release summary     | project-doc-writer.md    |
 
 ---
 

@@ -43,7 +43,8 @@ Mỗi skill là một file `.md` chứa bộ quy tắc cho 1 loại documentatio
 |-------|-------------|------|
 | **Docs Engineer** | Setup MkDocs, chuẩn Markdown, cấu trúc thư mục | `skills/docs-engineer.md` |
 | **Ops Runbook Writer** | Runbook vận hành, network docs, incident docs | `skills/ops-runbook-writer.md` |
-| **Training Guide Writer** | Training, how-to guide, ADR, tech spec | `skills/training-guide-writer.md` |
+| **Training Doc Writer** | Training, onboarding, curriculum, learning path | `skills/training-doc-writer.md` |
+| **Project Doc Writer** | ADR, tech spec, how-to guide, quick reference | `skills/project-doc-writer.md` |
 
 Mỗi skill có cấu trúc giống nhau:
 
@@ -221,11 +222,11 @@ Bạn cần viết gì?
   ├── Liên quan đến HƯỚNG DẪN / ĐÀO TẠO?
   │     ├── Step-by-step cho 1 task cụ thể?      → T3 How-to Guide
   │     ├── Module training cho team?             → T4 Training Module
-  │     └── Cheat sheet / quick reference?       → training-guide-writer §4
+  │     └── Cheat sheet / quick reference?       → project-doc-writer §3
   │
   ├── Liên quan đến DỰ ÁN / KIẾN TRÚC?
   │     ├── Ghi nhận quyết định architecture?    → T2 ADR
-  │     ├── Technical specification?              → training-guide-writer §2.2
+  │     ├── Technical specification?              → project-doc-writer §1.2
   │     └── Release notes cho version mới?        → T8 Release Notes
   │
   └── Không biết chọn gì?
@@ -237,13 +238,13 @@ Bạn cần viết gì?
 | Scenario | Template | Skill |
 |----------|----------|-------|
 | "Setup monitoring cho production cluster" | T1 Runbook | ops-runbook-writer |
-| "Tại sao team chọn PostgreSQL thay MongoDB" | T2 ADR | training-guide-writer |
-| "Hướng dẫn member mới setup dev environment" | T3 How-to | training-guide-writer |
-| "Training Git workflow cho intern" | T4 Training | training-guide-writer |
+| "Tại sao team chọn PostgreSQL thay MongoDB" | T2 ADR | project-doc-writer |
+| "Hướng dẫn member mới setup dev environment" | T3 How-to | project-doc-writer |
+| "Training Git workflow cho intern" | T4 Training | training-doc-writer |
 | "Document VLAN layout office mới" | T5 Network | ops-runbook-writer |
 | "DB crash hôm qua, cần postmortem" | T6 Postmortem | ops-runbook-writer |
 | "Upgrade PostgreSQL cuối tuần này" | T7 Maintenance | ops-runbook-writer |
-| "Release v3.0 cần release notes" | T8 Release Notes | training-guide-writer |
+| "Release v3.0 cần release notes" | T8 Release Notes | project-doc-writer |
 
 ---
 

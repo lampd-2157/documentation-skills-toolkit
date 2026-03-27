@@ -1,0 +1,116 @@
+{
+  "version": "1.0.0",
+  "description": "Test prompts cho Documentation Skills Toolkit — dùng để verify skill trigger đúng và output format chuẩn",
+  "skills": [
+    {
+      "skill_name": "docs-engineer",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Khởi tạo documentation project mới với MkDocs Material",
+          "expected_trigger": "docs-engineer",
+          "expected_output": "mkdocs.yml config đầy đủ, folder structure chuẩn, markdownlint config"
+        },
+        {
+          "id": 2,
+          "prompt": "Review và fix markdown quality cho thư mục docs/",
+          "expected_trigger": "docs-engineer",
+          "expected_output": "Markdownlint rules applied, heading hierarchy fixed, code blocks có language"
+        },
+        {
+          "id": 3,
+          "prompt": "Thêm admonitions và tabs vào trang documentation hiện có",
+          "expected_trigger": "docs-engineer",
+          "expected_output": "MkDocs-Material components: admonitions, content tabs, đúng syntax"
+        }
+      ]
+    },
+    {
+      "skill_name": "ops-runbook-writer",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Viết runbook cho service nginx trên Ubuntu 22.04",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Markdown file có: YAML header, Health Checks table, Commands với expected output, Escalation matrix"
+        },
+        {
+          "id": 2,
+          "prompt": "Document network topology cho môi trường production với 3 VLAN",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Mermaid diagram, VLAN table, Firewall rules table"
+        },
+        {
+          "id": 3,
+          "prompt": "Tạo incident response playbook cho database outage",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Severity matrix, step-by-step với commands, rollback procedure, escalation contacts"
+        },
+        {
+          "id": 4,
+          "prompt": "Hệ thống bị lỗi, cần quy trình xử lý",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Incident response SOP với severity classification, commands, expected output"
+        },
+        {
+          "id": 5,
+          "prompt": "Viết maintenance window plan cho database migration",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Maintenance window template: pre-checks, steps với commands, post-checks, rollback plan"
+        }
+      ]
+    },
+    {
+      "skill_name": "training-doc-writer",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Viết training module Git cơ bản cho nhân viên mới",
+          "expected_trigger": "training-doc-writer",
+          "expected_output": "Training template: Audience, Duration, Prerequisites, Lessons với hands-on labs, Assessment"
+        },
+        {
+          "id": 2,
+          "prompt": "Tạo onboarding checklist cho DevOps engineer mới join team",
+          "expected_trigger": "training-doc-writer",
+          "expected_output": "3-week onboarding checklist: Week 1 Foundation, Week 2 Deep Dive, Week 3 Autonomy"
+        },
+        {
+          "id": 3,
+          "prompt": "Thiết kế learning path cho team infrastructure",
+          "expected_trigger": "training-doc-writer",
+          "expected_output": "Mermaid diagram learning path: Beginner → Intermediate → Advanced → Expert"
+        }
+      ]
+    },
+    {
+      "skill_name": "project-doc-writer",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Viết ADR cho quyết định chọn PostgreSQL thay vì MongoDB",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "ADR template: Status, Context, Decision, Alternatives Considered với pros/cons table, Consequences"
+        },
+        {
+          "id": 2,
+          "prompt": "Viết technical spec cho tính năng authentication mới",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "Tech spec: Overview, Design với Architecture Diagram, API Contracts, Implementation Plan, Testing Strategy"
+        },
+        {
+          "id": 3,
+          "prompt": "Tạo how-to guide cách setup Google Workspace cho user mới",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "How-to guide: Prerequisites, Steps với commands + expected result, Verify, Troubleshooting"
+        },
+        {
+          "id": 4,
+          "prompt": "Làm cheat sheet cho Docker commands thường dùng",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "Quick reference: Essential Commands table, Common Patterns, Glossary"
+        }
+      ]
+    }
+  ]
+}

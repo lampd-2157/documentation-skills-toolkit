@@ -121,12 +121,12 @@ Mỗi loại doc map tới template cụ thể trong `doc-templates-library.md`:
 | ---------------- | -------- | -------------------------- |
 | Runbook          | T1       | `ops-runbook-writer.md`    |
 | Network topology | T5       | `ops-runbook-writer.md`    |
-| How-to guide     | T3       | `training-guide-writer.md` |
-| ADR              | T2       | `training-guide-writer.md` |
+| How-to guide     | T3       | `project-doc-writer.md`    |
+| ADR              | T2       | `project-doc-writer.md`    |
 | Postmortem       | T6       | `ops-runbook-writer.md`    |
 | Maintenance      | T7       | `ops-runbook-writer.md`    |
-| Training         | T4       | `training-guide-writer.md` |
-| Release notes    | T8       | `training-guide-writer.md` |
+| Training         | T4       | `training-doc-writer.md`   |
+| Release notes    | T8       | `project-doc-writer.md`    |
 
 ---
 

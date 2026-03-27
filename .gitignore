@@ -13,3 +13,7 @@ __pycache__/
 
 # MkDocs build
 site/
+
+# Internal docs (không push lên remote)
+AUDIT.md
+push.md

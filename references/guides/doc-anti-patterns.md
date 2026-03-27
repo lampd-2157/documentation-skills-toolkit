@@ -45,7 +45,7 @@ sudo /opt/scripts/cleanup-logs.sh --older-than 7d
 <!-- Last verified: 2026-03-26 | Matches v2.5.0 UI -->
 ```
 
-**Prevented by:** `training-guide-writer.md` Guardrail — "Screenshots/diagrams up-to-date — match current UI/system"
+**Prevented by:** `training-doc-writer.md` Guardrail — "Screenshots/diagrams up-to-date — match current UI/system"
 
 ---
 
@@ -70,7 +70,7 @@ Run the deploy script to push to production.
 ### Step 1: Deploy the application
 ```
 
-**Prevented by:** `training-guide-writer.md` Iron Law — "Prerequisites -> Steps -> Expected Result -> Troubleshooting — skip any = incomplete"
+**Prevented by:** `training-doc-writer.md` Iron Law — "Prerequisites -> Steps -> Expected Result -> Troubleshooting — skip any = incomplete"
 
 ---
 
