@@ -115,6 +115,8 @@ Script sẽ tự động cài:
 - VS Code snippets (gõ `doc-` → autocomplete)
 - cspell + link-check configs
 
+> **Gặp lỗi `python3-pip has no installation candidate`?** Chạy `sudo apt update` trước rồi thử lại. Trên Ubuntu/Debian, package index cần được cập nhật trước khi cài đặt.
+
 ### Bước 2: Xem demo site
 
 ```bash

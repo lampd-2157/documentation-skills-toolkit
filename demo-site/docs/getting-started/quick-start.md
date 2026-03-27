@@ -19,6 +19,9 @@ tags: [getting-started, mkdocs, setup]
 - [x] pip installed (`pip --version`)
 - [x] Git configured
 
+!!! tip "Ubuntu/Debian: `python3-pip` not found?"
+    Chạy `sudo apt update` trước khi cài đặt. Package index cần được cập nhật để tìm thấy `python3-pip`.
+
 ---
 
 ## Steps

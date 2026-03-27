@@ -45,7 +45,7 @@ if ! command -v pip &> /dev/null; then
     if [ "$OS" = "macos" ]; then
       echo "    brew install python3"
     elif [ "$OS" = "wsl" ] || [ "$OS" = "linux" ]; then
-      echo "    sudo apt install python3 python3-pip"
+      echo "    sudo apt update && sudo apt install python3 python3-pip"
     fi
     exit 1
   fi
