@@ -56,7 +56,7 @@ bash scripts/setup.sh
 ./scripts/docs-toolkit new runbook "My Service"
 
 # Xem demo site
-cd demo-site && pip install -r requirements.txt && mkdocs serve
+pip install -r demo-site/requirements.txt && make serve
 
 # Hoặc dùng Makefile
 make setup    # One-command setup
@@ -106,7 +106,7 @@ Copy-paste từ [templates/](templates/), hoặc dùng CLI:
 | Validate | `python3 scripts/validate_skill.py` | Kiểm tra cấu trúc skill file |
 | Lint | `npx markdownlint-cli2 "**/*.md"` | Kiểm tra markdown format |
 | Spell | `npx cspell "**/*.md"` | Kiểm tra chính tả |
-| Preview | `mkdocs serve` | Xem trước trên localhost:8000 |
+| Preview | `make serve` | Xem trước trên localhost:8000 |
 | Score | `python3 scripts/score_docs.py` | Chấm điểm chất lượng doc (6 criteria) |
 | Build | `mkdocs build --strict` | Build production |
 

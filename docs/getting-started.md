@@ -120,9 +120,8 @@ Script sẽ tự động cài:
 ### Bước 2: Xem demo site
 
 ```bash
-cd demo-site
-pip install -r requirements.txt
-mkdocs serve
+pip install -r demo-site/requirements.txt
+make serve
 # Mở http://localhost:8000
 ```
 
@@ -200,7 +199,7 @@ Mở file vừa tạo, điền các placeholder `[...]`. Quan trọng nhất:
 npx markdownlint-cli2 docs/operations/runbooks/nginx-load-balancer-runbook.md
 
 # Preview
-mkdocs serve
+make serve
 # → Mở localhost:8000, navigate tới runbook, kiểm tra render
 ```
 
@@ -270,7 +269,7 @@ Bạn cần viết gì?
 npx markdownlint-cli2 path/to/your-doc.md
 
 # 4. Preview
-mkdocs serve
+make serve
 
 # 5. Commit + PR
 git add path/to/your-doc.md
@@ -374,7 +373,7 @@ Cần viết doc?
   → Đọc Iron Law + Guardrails của skill tương ứng
   → Viết nội dung, điền placeholders
   → Lint: markdownlint + cspell
-  → Preview: mkdocs serve
+  → Preview: make serve
   → Commit + PR
   → Done!
 ```

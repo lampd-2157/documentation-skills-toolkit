@@ -77,7 +77,7 @@ Created: docs/operations/runbooks/nginx-load-balancer-runbook.md
 Next steps:
   1. Edit the file and fill in the placeholders
   2. Run: docs-toolkit validate docs/operations/runbooks/nginx-load-balancer-runbook.md
-  3. Preview: mkdocs serve
+  3. Preview: make serve
   4. Add to mkdocs.yml nav section
 ```
 

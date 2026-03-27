@@ -187,10 +187,10 @@ echo "# Project Documentation" > docs/index.md
 
 ```bash
 # Build test
-mkdocs build --strict
+make build
 
 # Preview local
-mkdocs serve
+make serve
 # → Mở http://localhost:8000
 ```
 
