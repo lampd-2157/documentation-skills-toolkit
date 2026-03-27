@@ -21,22 +21,27 @@
 
 ## Cách hoạt động (3 bước)
 
+**Bước 1: CHỌN SKILL** — Bạn cần viết gì?
+
+| Skill | Khi nào dùng |
+|-------|-------------|
+| `docs-engineer` | Setup MkDocs, chuẩn Markdown |
+| `ops-runbook-writer` | Runbook, network, server docs |
+| `training-doc-writer` | Training, onboarding, curriculum |
+| `project-doc-writer` | ADR, tech spec, how-to, guide |
+| `infra-security-doc` | Security policy, RBAC, audit |
+
+**Bước 2: TẠO DOCUMENT** — Có 2 cách:
+
+| Cách | Workflow |
+|------|---------|
+| **AI Agent** (Recommended) | Copy prompt từ `prompts/` → paste vào AI agent → review |
+| **Manual** | `./scripts/docs-toolkit new runbook "Tên"` → đọc skill → điền nội dung |
+
+**Bước 3: VERIFY & PUBLISH**
+
 ```text
-1. CHỌN SKILL        Bạn cần viết gì? → Chọn 1 trong 5 skills hướng dẫn
-   ┌──────────────────────────────────────────────────────────┐
-   │  docs-engineer        → Setup MkDocs, chuẩn Markdown    │
-   │  ops-runbook-writer   → Runbook, network, server docs   │
-   │  training-doc-writer  → Training, onboarding, curriculum │
-   │  project-doc-writer   → ADR, tech spec, how-to, guide   │
-   │  infra-security-doc   → Security policy, RBAC, audit    │
-   └──────────────────────────────────────────────────────────┘
-
-2. TẠO DOCUMENT      Có 2 cách:
-   AI Agent (Recommended): Copy prompt từ prompts/ → paste vào AI agent
-   Manual:  ./scripts/docs-toolkit new runbook "Tên service" → điền nội dung
-
-3. VERIFY & PUBLISH   Lint → Review → Deploy
-   markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
+markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
 ```
 
 > **Lần đầu dùng?** Đọc [Getting Started Guide](docs/getting-started.md) — hướng dẫn chi tiết từ A-Z.
