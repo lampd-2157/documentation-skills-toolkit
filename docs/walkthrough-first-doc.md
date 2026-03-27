@@ -135,41 +135,32 @@ Mở file bằng editor, thay từng `[placeholder]` theo hướng dẫn trong s
 
 ---
 
-## Bước 6: Verify document
+## Bước 6: Lint — kiểm tra format
 
 Mở terminal, **đảm bảo đang ở thư mục root** của toolkit (nơi có file `Makefile`):
 
 ```bash
 cd ~/documentation-skills-toolkit
-
-# Kiểm tra format markdown (tất cả file .md trong project)
 make lint
-
-# Kiểm tra cấu trúc skill files (chỉ cần khi sửa files trong skills/)
-make validate
 ```
 
-> `make lint` chạy `markdownlint` trên tất cả `.md` files. `make validate` chạy `validate_skill.py` kiểm tra 6-section structure.
+| Kết quả | Hành động |
+|---------|-----------|
+| `Summary: 0 error(s)` | PASS — tiếp tục Bước 7 |
+| Có errors | FIX — xem bên dưới, sửa xong chạy lại `make lint` |
 
-**Kết quả mong đợi:**
+**Cách fix lint errors:**
 
-```text
-Summary: 0 error(s)
-```
-
-> Nếu có lỗi, đọc error message và fix. Phổ biến nhất:
->
-> - MD031: Thiếu blank line trước/sau code block
-> - MD040: Code block thiếu language tag (thêm `bash`, `text`, `json`...)
+- **AI Agent:** Copy toàn bộ error output, paste vào AI agent, yêu cầu fix
+- **Manual:** Mở file:line được báo lỗi, sửa theo rule name (MD022 = thêm blank line sau heading, MD031 = blank line quanh code fence, MD040 = thêm language cho code fence)
 
 ---
 
 ## Bước 7: Kiểm tra mkdocs.yml
 
-CLI `docs-toolkit` đã **tự động thêm** doc mới vào `mkdocs.yml` nav. Tuy nhiên, nó append ở cuối file — bạn cần mở `mkdocs.yml` và **di chuyển entry** vào đúng section:
+CLI `docs-toolkit` đã **tự động thêm** doc mới vào `mkdocs.yml` nav. Mở `mkdocs.yml` và **di chuyển entry** từ cuối file vào đúng section:
 
 ```yaml
-# Mở demo-site/mkdocs.yml, tìm entry vừa được thêm ở cuối, di chuyển vào đúng section:
 nav:
   - Operations:
     - Runbooks:
@@ -177,44 +168,52 @@ nav:
       - Nginx LB: operations/runbooks/nginx-load-balancer-runbook.md  # ← di chuyển vào đây
 ```
 
+| Kết quả | Hành động |
+|---------|-----------|
+| Entry đã ở đúng section | PASS — tiếp tục Bước 8 |
+| Entry ở cuối file | Di chuyển vào đúng section, save |
+
 ---
 
-## Bước 8: Chấm điểm chất lượng
+## Bước 8: Score — chấm điểm chất lượng
 
 ```bash
-# Chấm điểm doc vừa tạo (6 tiêu chí tự động, max 6/6)
 python3 scripts/score_docs.py docs/operations/runbooks/nginx-load-balancer-runbook.md
 ```
 
-**Kết quả mong đợi:**
+| Kết quả | Hành động |
+|---------|-----------|
+| `PASS` (>= 4/6) | Tiếp tục Bước 9 |
+| `WARN` (3/6) | Cải thiện tiêu chí bị 0 — xem chi tiết trong output `[criteria:score]` |
+| `FAIL` (< 3/6) | Cần bổ sung nhiều — dùng [prompts/review-doc.md](../prompts/review-doc.md) để AI review đầy đủ 10 tiêu chí |
 
-```text
-  PASS 5.0/6 nginx-load-balancer-runbook.md [structure:1 | commands:1 | prerequisites:1 | metadata:0.5 | visual_uiux:0.5 | freshness:1]
-```
+**Cách fix score thấp:**
 
-> Score >= 4/6 là PASS. Nếu thấp hơn, xem tiêu chí nào bị 0 và cải thiện.
-> Muốn review đầy đủ 10 tiêu chí? Dùng prompt [prompts/review-doc.md](../prompts/review-doc.md).
+- **AI Agent:** Paste output score vào AI agent, yêu cầu "cải thiện các tiêu chí bị 0"
+- **Manual:** Xem tiêu chí nào bị 0 trong output, đối chiếu [doc-quality-scorecard.md](doc-quality-scorecard.md)
 
 ---
 
-## Bước 9: Preview trên browser
+## Bước 9: Preview — xem trên browser
 
 ```bash
-# Start dev server
 make serve
 ```
 
-Mở browser tại `http://localhost:8000` — tìm document vừa tạo trong navigation.
+Mở `http://localhost:8000` — tìm document vừa tạo trong navigation.
 
-**Kiểm tra:**
-
-- [ ] Markdown render đúng (tables, code blocks, headings)
-- [ ] Mermaid diagrams hiển thị (nếu có)
-- [ ] Links hoạt động
+| Kiểm tra | Pass | Fail → Fix |
+|----------|------|------------|
+| Markdown render đúng | Tables, code blocks, headings hiển thị OK | Kiểm tra markdown syntax, chạy lại `make lint` |
+| Admonitions hiển thị | Boxes có màu, icon đúng | Kiểm tra `!!! info/warning/danger` syntax + indentation 4 spaces |
+| Links hoạt động | Click không bị 404 | Kiểm tra relative path, file tồn tại |
+| Doc xuất hiện trong nav | Thấy trong sidebar | Kiểm tra `mkdocs.yml` nav entry (Bước 7) |
 
 ---
 
 ## Bước 10: Commit và Push
+
+Chỉ commit khi **Bước 6 (lint) PASS** và **Bước 8 (score) >= WARN**:
 
 ```bash
 # Stage file mới + mkdocs.yml
