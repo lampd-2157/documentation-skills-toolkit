@@ -59,5 +59,8 @@
     },
     "MD048": {
         "style": "backtick"
-    }
+    },
+    "MD056": false,
+    "MD058": false,
+    "MD060": false
 }
