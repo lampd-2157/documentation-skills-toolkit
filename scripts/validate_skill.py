@@ -9,7 +9,6 @@ Usage:
 
 import re
 import sys
-import yaml
 from pathlib import Path
 
 # ── Colors ───────────────────────────────────────────────
@@ -96,29 +95,23 @@ def validate_skill(filepath):
     # ── Check YAML frontmatter ──────────────────────────
     frontmatter_match = re.match(r"^---\s*\n(.*?)\n---", content, re.DOTALL)
     if frontmatter_match:
-        try:
-            fm = yaml.safe_load(frontmatter_match.group(1))
-            if fm and isinstance(fm, dict):
-                missing_fm = [f for f in REQUIRED_FRONTMATTER if f not in fm]
-                if not missing_fm:
-                    print(f"  {GREEN}✅ YAML frontmatter: name, description{RESET}")
-                    passes += 1
-                else:
-                    print(f"  {RED}❌ YAML frontmatter missing: {', '.join(missing_fm)}{RESET}")
-                    fails += 1
+        fm_text = frontmatter_match.group(1)
+        fm_keys = re.findall(r"^(\w[\w-]*):", fm_text, re.MULTILINE)
 
-                if "compatibility" in fm:
-                    print(f"  {GREEN}✅ Compatibility field present{RESET}")
-                    passes += 1
-                else:
-                    print(f"  {YELLOW}⚠️  Missing compatibility field (recommended){RESET}")
-                    warnings += 1
-            else:
-                print(f"  {RED}❌ YAML frontmatter: empty or invalid{RESET}")
-                fails += 1
-        except yaml.YAMLError as e:
-            print(f"  {RED}❌ YAML frontmatter: parse error — {e}{RESET}")
+        missing_fm = [f for f in REQUIRED_FRONTMATTER if f not in fm_keys]
+        if not missing_fm:
+            print(f"  {GREEN}✅ YAML frontmatter: name, description{RESET}")
+            passes += 1
+        else:
+            print(f"  {RED}❌ YAML frontmatter missing: {', '.join(missing_fm)}{RESET}")
             fails += 1
+
+        if "compatibility" in fm_keys:
+            print(f"  {GREEN}✅ Compatibility field present{RESET}")
+            passes += 1
+        else:
+            print(f"  {YELLOW}⚠️  Missing compatibility field (recommended){RESET}")
+            warnings += 1
     else:
         print(f"  {RED}❌ YAML frontmatter: MISSING (required: ---\\nname:\\ndescription:\\n---){RESET}")
         fails += 1
