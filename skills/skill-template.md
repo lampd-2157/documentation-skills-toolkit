@@ -249,7 +249,7 @@ Ghi lại lỗi đã fix để không lặp lại:
 <!--
 💡 Hướng dẫn: Cross-references giúp agent navigate giữa skills.
    Chỉ link skills TRỰC TIẾP liên quan.
-   Tối đa 4 entries (quá nhiều = noise).
+   Tối đa 5 entries (quá nhiều = noise). Dùng "See also" cho external refs.
 -->
 
 | Khi cần...             | Xem skill            |
@@ -271,8 +271,8 @@ Ghi lại lỗi đã fix để không lặp lại:
 ║  □ Sections theo đúng thứ tự template                ║
 ║                                                      ║
 ║  Content:                                            ║
-║  □ Tổng lines ≤ 250 (threshold cognitive load)       ║
-║  □ Mỗi section ≤ 50 dòng                             ║
+║  □ Tổng tokens ≤ 8K (~800 dòng, hard limit 1000)    ║
+║  □ Mỗi section ≤ 100 dòng                            ║
 ║  □ Code examples có ✅/❌ so sánh                     ║
 ║  □ Không có placeholder [ ] chưa điền                ║
 ║  □ <!-- Used: yyyy-mm-dd --> ở cuối file             ║
@@ -286,7 +286,7 @@ Ghi lại lỗi đã fix để không lặp lại:
 ║  Anti-patterns:                                      ║
 ║  ✗ Iron Law > 1 câu                                  ║
 ║  ✗ Guardrails > 5 items (agent bỏ qua hết)           ║
-║  ✗ Section > 50 dòng mà chưa tách references         ║
+║  ✗ Section > 100 dòng mà chưa tách references        ║
 ║  ✗ Red Flags mơ hồ ("be careful")                    ║
 ║  ✗ Remember > 6 rules                                ║
 ╚══════════════════════════════════════════════════════╝

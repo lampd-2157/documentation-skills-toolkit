@@ -14,13 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Markdownlint
         run: npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json
+
+  link-check:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        run: |
+          npx markdown-link-check \
+            --config config/link-check.json \
+            --quiet \
+            $(find skills/ docs/ -name '*.md' ! -name 'skill-template.md' | head -30)
 
   validate-skills:
     name: Validate Skills
@@ -46,6 +54,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'demo-site/requirements.txt'
 
       - name: Install dependencies
         run: pip install mkdocs-material

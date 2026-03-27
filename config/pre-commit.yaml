@@ -1,5 +1,5 @@
-# Pre-commit Configuration for Documentation Projects
-# Tự động lint Markdown trước mỗi commit
+# Pre-commit hooks template — copy to project root as .pre-commit-config.yaml
+# Requires: setup.sh to create .markdownlint.json, .cspell.json, .markdown-link-check.json
 #
 # Setup:
 #   pip install pre-commit

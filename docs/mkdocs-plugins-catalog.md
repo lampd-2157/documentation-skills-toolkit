@@ -26,9 +26,9 @@
 
 | Plugin                                                                 | Mô tả                   | Install                              |
 | ---------------------------------------------------------------------- | ----------------------- | ------------------------------------ |
-| [mkdocs-mermaid2](https://github.com/fralber/mkdocs-mermaid2-plugin)   | Mermaid diagrams native | `pip install mkdocs-mermaid2-plugin` |
-| [mkdocs-drawio](https://github.com/LukeCarrier/mkdocs-drawio-exporter) | Embed draw.io diagrams  | `pip install mkdocs-drawio-exporter` |
-| [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox)       | Image lightbox zoom     | `pip install mkdocs-glightbox`       |
+| [mkdocs-mermaid2](https://pypi.org/project/mkdocs-mermaid2-plugin/)       | Mermaid diagrams native | `pip install mkdocs-mermaid2-plugin` |
+| [mkdocs-drawio](https://pypi.org/project/mkdocs-drawio-exporter/)        | Embed draw.io diagrams  | `pip install mkdocs-drawio-exporter` |
+| [mkdocs-glightbox](https://pypi.org/project/mkdocs-glightbox/)           | Image lightbox zoom     | `pip install mkdocs-glightbox`       |
 
 ---
 
@@ -36,9 +36,9 @@
 
 | Plugin                                                                                              | Mô tả                       | Install                                                 |
 | --------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------------------------------------- |
-| [git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin) | "Last updated" date tự động | `pip install mkdocs-git-revision-date-localized-plugin` |
-| [git-authors](https://github.com/timvink/mkdocs-git-authors-plugin)                                 | Author info từ git history  | `pip install mkdocs-git-authors-plugin`                 |
-| [mike](https://github.com/jimporter/mike)                                                           | Multi-version docs          | `pip install mike`                                      |
+| [git-revision-date-localized](https://pypi.org/project/mkdocs-git-revision-date-localized-plugin/) | "Last updated" date tự động | `pip install mkdocs-git-revision-date-localized-plugin` |
+| [git-authors](https://pypi.org/project/mkdocs-git-authors-plugin/)                                 | Author info từ git history  | `pip install mkdocs-git-authors-plugin`                 |
+| [mike](https://pypi.org/project/mike/)                                                             | Multi-version docs          | `pip install mike`                                      |
 
 ---
 
@@ -46,9 +46,9 @@
 
 | Plugin                                                                      | Mô tả                      | Install                                |
 | --------------------------------------------------------------------------- | -------------------------- | -------------------------------------- |
-| [mkdocs-print-site](https://github.com/timvink/mkdocs-print-site-plugin)    | Print-friendly single page | `pip install mkdocs-print-site-plugin` |
-| [mkdocs-pdf-export](https://github.com/zhaoterryy/mkdocs-pdf-export-plugin) | Export pages to PDF        | `pip install mkdocs-pdf-export-plugin` |
-| [mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf)                 | Full site PDF generation   | `pip install mkdocs-with-pdf`          |
+| [mkdocs-print-site](https://pypi.org/project/mkdocs-print-site-plugin/)    | Print-friendly single page | `pip install mkdocs-print-site-plugin` |
+| [mkdocs-pdf-export](https://pypi.org/project/mkdocs-pdf-export-plugin/)   | Export pages to PDF        | `pip install mkdocs-pdf-export-plugin` |
+| [mkdocs-with-pdf](https://pypi.org/project/mkdocs-with-pdf/)              | Full site PDF generation   | `pip install mkdocs-with-pdf`          |
 
 ---
 
@@ -56,9 +56,9 @@
 
 | Plugin                                                                       | Mô tả                        | Install                                    |
 | ---------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------ |
-| [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)         | Markdown lint CLI (CI-ready) | `npm install markdownlint-cli2 --save-dev` |
-| [mkdocs-spellcheck](https://github.com/pawamoy/mkdocs-spellcheck)            | Spell checking for MkDocs    | `pip install mkdocs-spellcheck`            |
-| [mkdocs-htmlproofer](https://github.com/manuzhang/mkdocs-htmlproofer-plugin) | Validate HTML links          | `pip install mkdocs-htmlproofer-plugin`    |
+| [markdownlint-cli2](https://github.com/DavidAnson/markdownlint-cli2)        | Markdown lint CLI (CI-ready) | `npm install markdownlint-cli2 --save-dev` |
+| [mkdocs-spellcheck](https://pypi.org/project/mkdocs-spellcheck/)            | Spell checking for MkDocs    | `pip install mkdocs-spellcheck`            |
+| [mkdocs-htmlproofer](https://pypi.org/project/mkdocs-htmlproofer-plugin/)   | Validate HTML links          | `pip install mkdocs-htmlproofer-plugin`    |
 
 ---
 
@@ -66,7 +66,7 @@
 
 | Plugin                                                               | Mô tả                       | Install                          |
 | -------------------------------------------------------------------- | --------------------------- | -------------------------------- |
-| [mkdocs-static-i18n](https://github.com/ultrabug/mkdocs-static-i18n) | Multi-language static sites | `pip install mkdocs-static-i18n` |
+| [mkdocs-static-i18n](https://pypi.org/project/mkdocs-static-i18n/) | Multi-language static sites | `pip install mkdocs-static-i18n` |
 
 ---
 
@@ -74,8 +74,8 @@
 
 | Plugin                                                                               | Mô tả                                 | Install                                      |
 | ------------------------------------------------------------------------------------ | ------------------------------------- | -------------------------------------------- |
-| [mkdocs-macros](https://github.com/fralber/mkdocs_macros_plugin)                     | Variables, macros, filters trong docs | `pip install mkdocs-macros-plugin`           |
-| [mkdocs-include-markdown](https://github.com/mondeja/mkdocs-include-markdown-plugin) | Include .md files vào pages           | `pip install mkdocs-include-markdown-plugin` |
+| [mkdocs-macros](https://pypi.org/project/mkdocs-macros-plugin/)                     | Variables, macros, filters trong docs | `pip install mkdocs-macros-plugin`           |
+| [mkdocs-include-markdown](https://pypi.org/project/mkdocs-include-markdown-plugin/) | Include .md files vào pages           | `pip install mkdocs-include-markdown-plugin` |
 
 ---
 

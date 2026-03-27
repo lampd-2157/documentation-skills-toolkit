@@ -223,4 +223,4 @@ Trước khi share bộ toolkit cho team:
 
 ---
 
-> **Version:** 2.0.0 | **Cập nhật:** 2026-03-26
+> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27

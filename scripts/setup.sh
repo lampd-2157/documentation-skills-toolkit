@@ -163,6 +163,39 @@ else
   echo "  .markdown-link-check.json already exists"
 fi
 
+# ── Step 8: Post-install validation ──────────────────────
+echo ""
+echo "Verifying installations..."
+
+VERIFY_PASS=0
+VERIFY_FAIL=0
+
+if python3 -c "import mkdocs" 2>/dev/null; then
+  MKDOCS_VER=$(python3 -c "import mkdocs; print(mkdocs.__version__)")
+  echo "  ✅ MkDocs: $MKDOCS_VER"
+  VERIFY_PASS=$((VERIFY_PASS + 1))
+else
+  echo "  ❌ MkDocs: not found"
+  VERIFY_FAIL=$((VERIFY_FAIL + 1))
+fi
+
+if command -v npx &>/dev/null && npx markdownlint-cli2 --help &>/dev/null 2>&1; then
+  echo "  ✅ markdownlint-cli2: available"
+  VERIFY_PASS=$((VERIFY_PASS + 1))
+else
+  echo "  ⚠️  markdownlint-cli2: not found (optional)"
+fi
+
+if command -v pre-commit &>/dev/null; then
+  echo "  ✅ pre-commit: $(pre-commit --version 2>&1 | head -1)"
+  VERIFY_PASS=$((VERIFY_PASS + 1))
+else
+  echo "  ⚠️  pre-commit: not found (optional)"
+fi
+
+echo ""
+echo "  Verified: $VERIFY_PASS passed, $VERIFY_FAIL failed"
+
 # ── Done ──────────────────────────────────────────────────
 echo ""
 echo "========================================="

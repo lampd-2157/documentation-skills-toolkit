@@ -1,4 +1,4 @@
-.PHONY: serve lint validate build setup all
+.PHONY: serve lint link-check validate build setup all
 
 ## Development
 
@@ -12,6 +12,9 @@ build:  ## Build demo site (strict mode)
 
 lint:  ## Run markdownlint on all .md files
 	npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json
+
+link-check:  ## Check internal/external links in docs
+	find skills/ docs/ -name '*.md' | xargs npx markdown-link-check --config config/link-check.json --quiet
 
 validate:  ## Validate skill files structure
 	python3 scripts/validate_skill.py
@@ -41,3 +44,4 @@ new-training:  ## Create new training: make new-training TITLE="Topic"
 ## Combined
 
 all: lint validate build  ## Run lint + validate + build
+check: lint link-check validate  ## Run all quality checks

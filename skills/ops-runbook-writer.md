@@ -427,11 +427,11 @@ Trước khi báo "done", verify:
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
-| Setup MkDocs, markdown standards | `docs-engineer.md`                     |
-| Viết training/onboarding         | `training-doc-writer.md`               |
-| Viết ADR, guide, tech spec      | `project-doc-writer.md`                |
-| Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `templates/`  |
-| MkDocs plugins recommendation    | `docs/mkdocs-plugins-catalog.md` |
+| Setup MkDocs, markdown standards | `docs-engineer.md`       |
+| Viết training/onboarding         | `training-doc-writer.md` |
+| Viết ADR, guide, tech spec      | `project-doc-writer.md`  |
+| Viết security/compliance docs   | `infra-security-doc.md`  |
 
-<!-- Used: 2026-03-26 -->
+> **See also:** [Incident Patterns](../docs/incident-patterns.md) · [Templates](../templates/)
+
+<!-- Used: 2026-03-27 -->

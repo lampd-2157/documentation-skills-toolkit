@@ -65,7 +65,7 @@ npx markdownlint-cli2 skills/your-new-skill.md
 
 ### Thêm template mới
 
-1. Chọn ID tiếp theo: `T9`, `T10`, ...
+1. Chọn ID tiếp theo: `T12`, `T13`, ...
 2. Tạo file mới trong `templates/` — ví dụ: `templates/your-template.md`
 3. Template là file markdown thuần — copy-paste được ngay
 4. Cập nhật `templates/README.md` index table
@@ -105,7 +105,7 @@ Trước khi tạo Pull Request:
 
 ```text
 skills/                    # 5 skills + template (core product)
-templates/                 # 8 document templates (T1-T8)
+templates/                 # 11 document templates (T1-T11)
 docs/                      # Guides: getting-started, lifecycle, recipes...
 config/                    # Configs: markdownlint, cspell, pre-commit...
 examples/                  # Starter configs cho project khác
@@ -124,4 +124,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 2.2.1 | **Cập nhật:** 2026-03-27
+> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27

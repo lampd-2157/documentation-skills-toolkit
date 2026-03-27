@@ -322,11 +322,11 @@ Trước khi báo "done", verify:
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
-| Viết training / onboarding docs  | `training-doc-writer.md`               |
-| Setup MkDocs, markdown standards | `docs-engineer.md`                     |
-| Viết runbook / ops docs          | `ops-runbook-writer.md`                |
-| Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `templates/`  |
-| MkDocs plugins recommendation    | `docs/mkdocs-plugins-catalog.md` |
+| Viết training / onboarding docs  | `training-doc-writer.md` |
+| Setup MkDocs, markdown standards | `docs-engineer.md`       |
+| Viết runbook / ops docs          | `ops-runbook-writer.md`  |
+| Viết security/compliance docs   | `infra-security-doc.md`  |
+
+> **See also:** [ADR Catalog](../docs/adr-catalog.md) · [Templates](../templates/)
 
 <!-- Used: 2026-03-27 -->

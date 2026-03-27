@@ -65,7 +65,7 @@ Skill
 
 ### Templates = "File mẫu"
 
-8 templates (T1-T8) là file mẫu copy-paste sẵn. Mỗi template map tới 1 use case:
+11 templates (T1-T11) là file mẫu copy-paste sẵn. Mỗi template map tới 1 use case:
 
 | Khi bạn cần... | Dùng template | CLI command |
 |----------------|--------------|-------------|
@@ -121,7 +121,7 @@ mkdocs serve
 # Mở http://localhost:8000
 ```
 
-Demo site có ví dụ thực tế cho cả 8 templates — xem để biết output mong đợi.
+Demo site có ví dụ thực tế cho các templates — xem để biết output mong đợi.
 
 ### Bước 3: Áp dụng vào dự án của bạn
 
@@ -364,7 +364,7 @@ Có. Skills được thiết kế để cả human và AI agent đọc hiểu:
 
 ```text
 Cần viết doc?
-  → Chọn template (T1-T8)
+  → Chọn template (T1-T11)
   → Tạo bằng CLI: docs-toolkit new <type> "<title>"
   → Đọc Iron Law + Guardrails của skill tương ứng
   → Viết nội dung, điền placeholders
@@ -384,4 +384,4 @@ Cần viết doc?
 
 ---
 
-> **Version:** 2.0.0 | **Cập nhật:** 2026-03-26
+> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27
