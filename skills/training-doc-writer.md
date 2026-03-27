@@ -165,6 +165,7 @@ graph LR
 Three validation patterns for training documents:
 
 **Pattern 1: Q&A Collapsible (MkDocs compatible)**
+
 ```markdown
 ??? question "Câu hỏi: [question text]"
     **Đáp án:** [answer]
@@ -172,6 +173,7 @@ Three validation patterns for training documents:
 ```
 
 **Pattern 2: Scenario-based Assessment**
+
 ```markdown
 ## Scenario: [situation description]
 Given: [context]
@@ -180,6 +182,7 @@ Expected: [what learner should do/answer]
 ```
 
 **Pattern 3: Competency Matrix**
+
 ```markdown
 | Skill | Beginner | Intermediate | Advanced |
 |-------|----------|-------------|----------|
