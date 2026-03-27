@@ -124,4 +124,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 2.2.1 | **Cập nhật:** 2026-03-27
+> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27

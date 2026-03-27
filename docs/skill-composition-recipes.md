@@ -9,7 +9,7 @@
 1. **`docs-engineer` là foundation** — Mọi task documentation đều cần markdown standards + MkDocs setup
 2. **1 skill = 1 domain** — Không cố nhồi mọi thứ vào 1 skill
 3. **Primary skill quyết định structure** — Secondary skill bổ sung quality/format
-4. **Template trước, skill sau** — Copy template (T1-T8) rồi dùng skill để customize
+4. **Template trước, skill sau** — Copy template (T1-T11) rồi dùng skill để customize
 
 ---
 
@@ -157,7 +157,7 @@
 |-------|-------|
 | **Primary** | `docs-engineer.md` |
 | **Secondary** | `ops-runbook-writer.md` + `training-doc-writer.md` + `project-doc-writer.md` |
-| **Templates** | All (T1-T8) |
+| **Templates** | All (T1-T11) |
 
 **Steps:**
 

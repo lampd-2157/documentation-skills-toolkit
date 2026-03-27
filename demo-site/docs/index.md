@@ -80,7 +80,7 @@ hide:
 
 </div>
 
-## All Templates (T1-T8)
+## All Templates (T1-T11)
 
 <div class="template-gallery">
 
@@ -137,7 +137,7 @@ hide:
 ## About This Site
 
 !!! tip "Built with Documentation Skills Toolkit"
-    Site này là **demo output** khi áp dụng bộ [Documentation Skills Toolkit](https://github.com/lampd-2157/documentation-skills-toolkit). Mỗi trang tương ứng với 1 template (T1-T8), viết theo skill guidelines.
+    Site này là **demo output** khi áp dụng bộ [Documentation Skills Toolkit](https://github.com/lampd-2157/documentation-skills-toolkit). Mỗi trang tương ứng với 1 template (T1-T11), viết theo skill guidelines.
 
 !!! example "Try It Yourself"
     ```bash

@@ -31,7 +31,7 @@
    │  infra-security-doc   → Security policy, RBAC, audit    │
    └──────────────────────────────────────────────────────────┘
 
-2. COPY TEMPLATE      Chọn template phù hợp (T1-T8) → copy → điền nội dung
+2. COPY TEMPLATE      Chọn template phù hợp (T1-T11) → copy → điền nội dung
    Hoặc dùng CLI:  ./scripts/docs-toolkit new runbook "Tên service"
 
 3. VERIFY & PUBLISH   Lint → Review → Deploy
@@ -122,7 +122,7 @@ documentation-skills-toolkit/
 ├── examples/                  # Starter configs cho project khác (mkdocs, CI, snippets)
 ├── scripts/                   # CLI tools: setup.sh, docs-toolkit, validate_skill.py
 ├── evals/                     # Eval test suite cho mỗi skill
-├── demo-site/                 # MkDocs demo site (all 8 examples)
+├── demo-site/                 # MkDocs demo site
 ├── .github/workflows/         # CI/CD: lint + validate + build
 ├── Makefile                   # make serve/lint/validate/build
 ├── README.md / CHANGELOG.md / CONTRIBUTING.md / LICENSE
