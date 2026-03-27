@@ -5,7 +5,9 @@
     { "pattern": "^https?://10\\." },
     { "pattern": "^https?://.*\\.local" },
     { "pattern": "^https?://.*\\.internal" },
-    { "pattern": "^#" }
+    { "pattern": "^#" },
+    { "pattern": "\\[.*\\]\\(.*link-to-.*\\)" },
+    { "pattern": "\\[.*\\]\\(.*\\[.*\\].*\\)" }
   ],
   "timeout": "10s",
   "retryOn429": true,
