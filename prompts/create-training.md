@@ -64,4 +64,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Có hands-on lab với commands chạy được
 - [ ] Expected result cho mỗi lab step
 - [ ] Knowledge check hoặc quiz ở cuối
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

@@ -63,4 +63,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Mỗi step có action cụ thể (không mơ hồ)
 - [ ] Có expected output mô tả kết quả mong đợi
 - [ ] Troubleshooting cover ít nhất 2-3 common issues
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

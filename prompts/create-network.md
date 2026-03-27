@@ -61,4 +61,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Server inventory table đầy đủ
 - [ ] Có diagram (Mermaid) hoặc ASCII topology
 - [ ] Health check commands cho network devices
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

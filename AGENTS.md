@@ -64,6 +64,7 @@ make build      # Build demo site (strict)
 
 ## Validation Rules
 
+- Every new doc MUST be added to `mkdocs.yml` nav section to appear on site — update nav after creating the file
 - Every doc MUST pass `make lint` (0 errors)
 - Every doc MUST have YAML frontmatter with title + status
 - Runbooks MUST have copy-paste commands + expected output

@@ -72,4 +72,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Root cause rõ ràng (không blame cá nhân)
 - [ ] Action items có owner + deadline cụ thể
 - [ ] Lessons learned có prevention measures
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

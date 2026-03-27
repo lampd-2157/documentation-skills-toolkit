@@ -64,4 +64,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Enforcement table (violation type → consequence → escalation)
 - [ ] Audit schedule và method
 - [ ] Review date (6 tháng từ effective date)
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

@@ -66,4 +66,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Rollback: plan B nếu fail, với trigger conditions
 - [ ] Post-checks: verify service healthy sau maintenance
 - [ ] Communication: notify stakeholders trước/sau
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

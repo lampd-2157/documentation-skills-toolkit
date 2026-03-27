@@ -164,7 +164,22 @@ Summary: 0 error(s)
 
 ---
 
-## Bước 7: Preview trên browser
+## Bước 7: Kiểm tra mkdocs.yml
+
+CLI `docs-toolkit` đã **tự động thêm** doc mới vào `mkdocs.yml` nav. Tuy nhiên, nó append ở cuối file — bạn cần mở `mkdocs.yml` và **di chuyển entry** vào đúng section:
+
+```yaml
+# Mở demo-site/mkdocs.yml, tìm entry vừa được thêm ở cuối, di chuyển vào đúng section:
+nav:
+  - Operations:
+    - Runbooks:
+      - Proxmox VM (T1): operations/runbooks/proxmox-vm-runbook.md
+      - Nginx LB: operations/runbooks/nginx-load-balancer-runbook.md  # ← di chuyển vào đây
+```
+
+---
+
+## Bước 8: Preview trên browser
 
 ```bash
 # Start dev server
@@ -181,11 +196,11 @@ Mở browser tại `http://localhost:8000` — tìm document vừa tạo trong n
 
 ---
 
-## Bước 8: Commit và Push
+## Bước 9: Commit và Push
 
 ```bash
-# Stage file mới
-git add docs/operations/runbooks/nginx-load-balancer-runbook.md
+# Stage file mới + mkdocs.yml
+git add docs/operations/runbooks/nginx-load-balancer-runbook.md demo-site/mkdocs.yml
 
 # Commit theo conventional format
 git commit -m "docs(ops): add nginx load balancer runbook"
@@ -196,7 +211,7 @@ git push
 
 ---
 
-## Bước 9: Pre-delivery Checklist
+## Bước 10: Pre-delivery Checklist
 
 Trước khi gọi "done", verify theo skill's checklist:
 

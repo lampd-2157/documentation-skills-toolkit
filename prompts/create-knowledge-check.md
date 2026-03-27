@@ -63,4 +63,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Mỗi câu có answer + explanation trong collapsible block
 - [ ] Assessment summary table ở cuối
 - [ ] Pass criteria rõ ràng
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

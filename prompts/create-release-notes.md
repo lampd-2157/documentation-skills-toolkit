@@ -59,4 +59,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Changes phân loại đúng (Added/Changed/Fixed/Removed)
 - [ ] Breaking changes có migration guide
 - [ ] Highlights tóm tắt 2-3 điểm quan trọng nhất
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

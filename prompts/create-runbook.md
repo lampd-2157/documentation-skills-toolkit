@@ -60,4 +60,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Có troubleshooting section với common issues
 - [ ] Có rollback procedure
 - [ ] Có escalation matrix
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```

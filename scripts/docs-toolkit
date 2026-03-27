@@ -903,12 +903,38 @@ cmd_new() {
 
   echo "$content" > "$filepath"
   echo -e "${GREEN}Created: ${filepath}${NC}"
+
+  # Auto-register in mkdocs.yml nav
+  local mkdocs_file=""
+  if [ -f "mkdocs.yml" ]; then
+    mkdocs_file="mkdocs.yml"
+  elif [ -f "demo-site/mkdocs.yml" ]; then
+    mkdocs_file="demo-site/mkdocs.yml"
+  fi
+
+  if [ -n "$mkdocs_file" ]; then
+    # Convert filepath to relative path from docs/
+    local nav_path="${filepath#docs/}"
+    if [ "$mkdocs_file" = "demo-site/mkdocs.yml" ]; then
+      nav_path="${filepath#demo-site/docs/}"
+    fi
+    local nav_entry="      - \"${title}\": ${nav_path}"
+
+    if grep -q "$nav_path" "$mkdocs_file" 2>/dev/null; then
+      echo -e "  ${YELLOW}Already in ${mkdocs_file} nav${NC}"
+    else
+      echo "$nav_entry" >> "$mkdocs_file"
+      echo -e "  ${GREEN}Added to ${mkdocs_file} nav${NC}"
+      echo -e "  ${YELLOW}Review the nav section to place it in the correct location${NC}"
+    fi
+  fi
+
   echo ""
   echo "Next steps:"
   echo "  1. Edit the file and fill in the placeholders"
-  echo "  2. Run: $(basename "$0") validate ${filepath}"
-  echo "  3. Preview: mkdocs serve"
-  echo "  4. Add to mkdocs.yml nav section"
+  echo "     AI Agent: copy prompt from prompts/create-${type}.md"
+  echo "  2. Verify: make lint"
+  echo "  3. Preview: make serve"
 }
 
 # ── Command: adr ─────────────────────────────────────────

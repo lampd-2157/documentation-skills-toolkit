@@ -68,4 +68,5 @@ Tự kiểm tra trước khi hoàn thành:
 - [ ] Decision rõ ràng, không mập mờ
 - [ ] Consequences có cả positive VÀ negative
 - [ ] Status field: Proposed / Accepted / Deprecated
+- [ ] Đã thêm vào mkdocs.yml nav section
 ```
