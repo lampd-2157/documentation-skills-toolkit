@@ -51,6 +51,12 @@ if ! command -v pip &> /dev/null; then
   fi
 fi
 
+# ── Ensure ~/.local/bin is on PATH (pip installs binaries here) ──
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+  echo "  Added ~/.local/bin to PATH"
+fi
+
 # ── Step 1: Python dependencies ────────────────────────────
 echo "Installing MkDocs + plugins..."
 if [ -f "requirements.txt" ]; then
