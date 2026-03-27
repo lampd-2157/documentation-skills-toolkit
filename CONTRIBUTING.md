@@ -104,8 +104,9 @@ Trước khi tạo Pull Request:
 ## Directory Map
 
 ```text
-skills/                    # 5 skills + template (core product)
+skills/                    # 5 skills + template + AGENT-CARDS.json
 templates/                 # 11 document templates (T1-T11)
+prompts/                   # 12 prompt templates cho AI agent
 docs/                      # Guides: getting-started, lifecycle, recipes...
 config/                    # Configs: markdownlint, cspell, pre-commit...
 examples/                  # Starter configs cho project khác
@@ -113,6 +114,12 @@ scripts/                   # CLI tools: setup.sh, docs-toolkit, validate_skill.p
 evals/                     # Eval test suite cho mỗi skill
 demo-site/                 # MkDocs example site
 ```
+
+### Thêm prompt template mới
+
+- **File location:** `prompts/` directory
+- **Naming:** `create-<type>.md` hoặc `<action>.md` (ví dụ: `create-runbook.md`, `review-doc.md`)
+- **Format:** Theo cấu trúc trong `prompts/README.md` — phải có: Cách dùng (AI + Manual), Prompt section, Validation checklist
 
 ---
 
@@ -124,4 +131,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27
+> **Version:** 4.0.0 | **Cập nhật:** 2026-03-28
