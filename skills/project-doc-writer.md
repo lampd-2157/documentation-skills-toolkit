@@ -79,7 +79,27 @@ User request
 
 ## 1. Project Development Docs
 
-### 1.1 Architecture Decision Record (ADR) Template
+### 1.1 Chọn ADR Format
+
+```text
+Decision cần document
+  ├── Quick decision, team nhỏ, low-risk?
+  │     └── Lightweight ADR → templates/adr-lightweight.md (T10)
+  ├── Standard decision, cần alternatives analysis?
+  │     └── Nygard ADR → templates/adr.md (T2)
+  └── Complex decision, nhiều stakeholders, high-impact?
+        └── MADR → templates/adr-madr.md (T9)
+```
+
+| Format | Khi nào dùng | Độ dài | Template |
+| ------ | ------------ | ------ | -------- |
+| **Nygard** (default) | Standard decisions, team quen ADR | ~30 dòng | T2 |
+| **MADR** | Complex decisions, nhiều options, cần structured evaluation | ~50 dòng | T9 |
+| **Lightweight** | Quick decisions, experiments, POC | ~15 dòng | T10 |
+
+> 📖 **ADR Catalog đầy đủ** → [adr-catalog.md](../docs/adr-catalog.md) — lifecycle, naming, registry
+
+### 1.2 Nygard ADR Template (Default)
 
 ```markdown
 # ADR-[NNN]: [Decision Title]
@@ -110,7 +130,7 @@ User request
 - **Risks:** [Rủi ro cần monitor]
 ```
 
-### 1.2 Technical Spec Template
+### 1.3 Technical Spec Template
 
 ````markdown
 # Technical Spec: [Feature Name]

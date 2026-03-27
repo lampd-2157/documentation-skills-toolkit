@@ -2,7 +2,7 @@
 
 ![Version](https://img.shields.io/badge/version-2.2.1-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
-![Templates](https://img.shields.io/badge/templates-8-orange)
+![Templates](https://img.shields.io/badge/templates-10-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
 > **Bộ skill chuẩn hóa cho documentation** — dùng được cho mọi dự án, không phụ thuộc vào bất kỳ hệ thống cụ thể nào.

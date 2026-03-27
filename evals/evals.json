@@ -109,6 +109,18 @@
           "prompt": "Làm cheat sheet cho Docker commands thường dùng",
           "expected_trigger": "project-doc-writer",
           "expected_output": "Quick reference: Essential Commands table, Common Patterns, Glossary"
+        },
+        {
+          "id": 5,
+          "prompt": "Viết ADR phức tạp cho quyết định migration từ monolith sang microservices với nhiều options",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "MADR format: Decision Drivers, Considered Options, Pros/Cons per option, Decision Outcome, Confirmation"
+        },
+        {
+          "id": 6,
+          "prompt": "Ghi nhận nhanh quyết định chọn library date-fns thay moment.js",
+          "expected_trigger": "project-doc-writer",
+          "expected_output": "Lightweight ADR: Problem, Decision, Reason, Impact — concise 1-page format"
         }
       ]
     },
