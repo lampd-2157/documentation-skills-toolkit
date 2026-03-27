@@ -371,7 +371,7 @@ graph TB
 ```
 
 > 📖 **Failure taxonomy đầy đủ** → [incident-patterns.md](../docs/incident-patterns.md)
-
+>
 > 📖 **Template library đầy đủ** → [doc-templates-library.md](../templates/)
 
 ---
