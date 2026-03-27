@@ -179,7 +179,25 @@ nav:
 
 ---
 
-## Bước 8: Preview trên browser
+## Bước 8: Chấm điểm chất lượng
+
+```bash
+# Chấm điểm doc vừa tạo (6 tiêu chí tự động, max 6/6)
+python3 scripts/score_docs.py docs/operations/runbooks/nginx-load-balancer-runbook.md
+```
+
+**Kết quả mong đợi:**
+
+```text
+  PASS 5.0/6 nginx-load-balancer-runbook.md [structure:1 | commands:1 | prerequisites:1 | metadata:0.5 | visual_uiux:0.5 | freshness:1]
+```
+
+> Score >= 4/6 là PASS. Nếu thấp hơn, xem tiêu chí nào bị 0 và cải thiện.
+> Muốn review đầy đủ 10 tiêu chí? Dùng prompt [prompts/review-doc.md](../prompts/review-doc.md).
+
+---
+
+## Bước 9: Preview trên browser
 
 ```bash
 # Start dev server
@@ -196,7 +214,7 @@ Mở browser tại `http://localhost:8000` — tìm document vừa tạo trong n
 
 ---
 
-## Bước 9: Commit và Push
+## Bước 10: Commit và Push
 
 ```bash
 # Stage file mới + mkdocs.yml
@@ -211,7 +229,7 @@ git push
 
 ---
 
-## Bước 10: Pre-delivery Checklist
+## Bước 11: Pre-delivery Checklist
 
 Trước khi gọi "done", verify theo skill's checklist:
 
@@ -226,13 +244,23 @@ Trước khi gọi "done", verify theo skill's checklist:
 ## Tổng kết Flow
 
 ```text
-1. CHỌN SKILL     → Đọc Iron Law + Guardrails
-2. SCAFFOLD        → ./scripts/docs-toolkit new <type> <title>
-3. ĐIỀN NỘI DUNG  → Thay [placeholder] bằng content thật
-4. VERIFY          → make lint (0 errors)
-5. PREVIEW         → make serve (check browser)
-6. COMMIT          → git add + commit + push
-7. CHECKLIST       → Verify theo skill's Pre-delivery Checklist
+AI Agent (Recommended):
+  1. CHỌN PROMPT    → prompts/create-<type>.md
+  2. AI TẠO DOC     → Paste prompt vào AI agent → review kết quả
+  3. MKDOCS.YML     → Thêm doc vào nav (AI agent tự làm)
+  4. LINT            → make lint (0 errors)
+  5. SCORE           → python3 scripts/score_docs.py <file> (>= 4/6)
+  6. PREVIEW         → make serve (check browser)
+  7. COMMIT          → git add + commit + push
+
+Manual:
+  1. CHỌN SKILL     → Đọc Iron Law + Guardrails
+  2. SCAFFOLD        → ./scripts/docs-toolkit new <type> <title> (auto thêm mkdocs.yml)
+  3. ĐIỀN NỘI DUNG  → Thay placeholder bằng content thật
+  4. LINT            → make lint (0 errors)
+  5. SCORE           → python3 scripts/score_docs.py <file> (>= 4/6)
+  6. PREVIEW         → make serve (check browser)
+  7. COMMIT          → git add + commit + push
 ```
 
 ## Các loại document khác
