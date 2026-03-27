@@ -6,6 +6,33 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [3.0.0] — 2026-03-27
+
+### Added
+
+- **`docs/diataxis-mapping.md`** — Diátaxis framework alignment guide: maps toolkit skills/templates to 4 documentation quadrants (Tutorials, How-to, Reference, Explanation)
+- **`docs/adr-catalog.md`** — ADR format guide: 3 formats (Nygard/MADR/Lightweight) + decision tree + lifecycle + naming conventions
+- **`docs/incident-patterns.md`** — 6-category failure taxonomy (Config/Hardware/Resource/Time/Database/Cascading) with real-world examples + investigation checklists
+- **`docs/training-assessment-guide.md`** — Assessment design with Bloom's Taxonomy mapping + competency tracking
+- **`templates/adr-madr.md` (T9)** — MADR format ADR for complex decisions with structured pros/cons
+- **`templates/adr-lightweight.md` (T10)** — Lightweight ADR for quick decisions (~15 lines)
+- **`templates/knowledge-check.md` (T11)** — Knowledge check with collapsible Q&A + scenario-based assessment
+- **4 new CLI generators** in `docs-toolkit`: `adr-madr`, `knowledge-check`, `security-policy`, `quick-reference`
+- **YAML frontmatter validation** in `validate_skill.py` — checks `name`, `description`, `compatibility` fields
+- **Token-based size check** in `validate_skill.py` — replaces arbitrary line limits with token warning (>8K) + section length check (≤100 lines/section)
+- **Post-install validation** in `setup.sh` — verifies MkDocs, markdownlint, pre-commit after installation
+- **`scripts/**` path trigger** in CI — scripts changes now trigger CI pipeline
+
+### Changed
+
+- **Related Skills** in all 5 skills trimmed to ≤4 entries + "See also" for external references
+- **`skill-template.md`** quality checklist updated: "≤250 lines" → "≤8K tokens, section ≤100 lines"
+- **`validate_skill.py`** — zero external dependencies (removed PyYAML, uses regex), Related Skills limit 4→5
+- **README.md** — 11 templates (T1-T11), v3.0.0, added 4 new guides to docs table
+- **CONTRIBUTING.md** — updated template IDs "T12, T13...", directory map shows 11 templates
+
+---
+
 ## [2.2.1] — 2026-03-27
 
 ### Changed

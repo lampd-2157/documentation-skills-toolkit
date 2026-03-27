@@ -264,10 +264,11 @@ Trước khi báo "done", verify:
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
-| Viết ADR, tech spec, how-to     | `project-doc-writer.md`                |
-| Setup MkDocs, markdown standards | `docs-engineer.md`                     |
-| Viết runbook / ops docs          | `ops-runbook-writer.md`                |
-| Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `templates/`  |
+| Viết ADR, tech spec, how-to      | `project-doc-writer.md`  |
+| Setup MkDocs, markdown standards | `docs-engineer.md`       |
+| Viết runbook / ops docs          | `ops-runbook-writer.md`  |
+| Viết security/compliance docs   | `infra-security-doc.md`  |
+
+> **See also:** [Assessment Guide](../docs/training-assessment-guide.md) · [Templates](../templates/)
 
 <!-- Used: 2026-03-27 -->

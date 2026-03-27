@@ -403,10 +403,11 @@ Trước khi báo "done", verify:
 
 | Khi cần...                       | Xem skill                              |
 | -------------------------------- | -------------------------------------- |
-| Viết runbook / ops docs          | `ops-runbook-writer.md`                |
-| Setup MkDocs, markdown standards | `docs-engineer.md`                     |
-| Viết training / onboarding docs  | `training-doc-writer.md`               |
-| Viết ADR, guide, tech spec       | `project-doc-writer.md`                |
-| Copy-paste doc templates         | `templates/`  |
+| Viết runbook / ops docs          | `ops-runbook-writer.md`  |
+| Setup MkDocs, markdown standards | `docs-engineer.md`       |
+| Viết training / onboarding docs  | `training-doc-writer.md` |
+| Viết ADR, guide, tech spec       | `project-doc-writer.md`  |
+
+> **See also:** [Templates](../templates/)
 
 <!-- Used: 2026-03-27 -->

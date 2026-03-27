@@ -32,7 +32,8 @@ usage() {
   echo "  $(basename "$0") list                  List available document types"
   echo "  $(basename "$0") validate <file>       Validate a skill or markdown file"
   echo ""
-  echo "Types: runbook, adr, howto, training, network, postmortem, maintenance, release-notes"
+  echo "Types: runbook, adr, adr-madr, howto, training, knowledge-check, network,"
+  echo "       postmortem, maintenance, release-notes, security-policy, quick-reference"
   echo ""
   echo "Examples:"
   echo "  $(basename "$0") new runbook \"Nginx Load Balancer\""
@@ -494,18 +495,272 @@ tags: [release, changelog]
 EOF
 }
 
+# ── Generator: knowledge-check (T11) ────────────────────
+gen_knowledge_check() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Knowledge Check: $title"
+description: "Bài kiểm tra kiến thức — $title"
+author: "$AUTHOR"
+created: $TODAY
+updated: $TODAY
+status: draft
+tags: [training, assessment, knowledge-check]
+---
+
+# Knowledge Check: $title
+
+| Field             | Value             |
+| ----------------- | ----------------- |
+| **Module**        | $title            |
+| **Audience**      | [role — level]    |
+| **Pass Criteria** | ≥ 80% correct     |
+| **Duration**      | ~[X] minutes      |
+
+## Multiple Choice
+
+### Q1: [Question text]
+
+??? question "Show Answer"
+    **Answer:** [Correct option]
+    **Explanation:** [Why this is correct]
+
+### Q2: [Question text]
+
+??? question "Show Answer"
+    **Answer:** [Correct option]
+    **Explanation:** [Why this is correct]
+
+### Q3: [Question text]
+
+??? question "Show Answer"
+    **Answer:** [Correct option]
+    **Explanation:** [Why this is correct]
+
+## Scenario-based
+
+### Scenario 1: [Situation description]
+
+**Given:** [Context]
+**When:** [Action/trigger]
+**Expected:** [What learner should do/answer]
+
+## Assessment Summary
+
+| Category | Questions | Pass Score | Learner Score | Status |
+| -------- | --------- | ---------- | ------------- | ------ |
+| MC       | 3         | ≥ 80%      |               |        |
+| Scenario | 1         | Pass/Fail  |               |        |
+| **Total** |          |            |               |        |
+EOF
+}
+
+# ── Generator: security-policy ──────────────────────────
+gen_security_policy() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Security Policy: $title"
+description: "Chính sách bảo mật — $title"
+author: "$AUTHOR"
+created: $TODAY
+updated: $TODAY
+status: draft
+tags: [security, policy, compliance]
+---
+
+# Security Policy: $title
+
+| Field              | Value                  |
+| ------------------ | ---------------------- |
+| **Policy ID**      | SEC-001                |
+| **Version**        | 1.0                    |
+| **Status**         | Draft                  |
+| **Effective date** | $TODAY                 |
+| **Review date**    | [+6 months from today] |
+| **Owner**          | [Team/Person]          |
+| **Approved by**    | [Manager/CISO]         |
+
+## Purpose
+
+[Why this policy exists — 1-2 sentences]
+
+## Scope
+
+- **Applies to:** [Teams, systems, environments]
+- **Exceptions:** [If any]
+
+## Policy Statements
+
+1. **[Statement 1]** — [Enforcement detail]
+2. **[Statement 2]** — [Enforcement detail]
+3. **[Statement 3]** — [Enforcement detail]
+
+## Enforcement
+
+| Violation type | Consequence             | Escalation        |
+| -------------- | ----------------------- | ----------------- |
+| Minor          | Warning + remediation   | Team lead         |
+| Major          | Access revoked + review | Security team     |
+| Critical       | Immediate lockdown      | CISO + Management |
+
+## Related Documents
+
+- [Link to related policies]
+EOF
+}
+
+# ── Generator: quick-reference ──────────────────────────
+gen_quick_reference() {
+  local title="$1"
+  cat <<EOF
+---
+title: "$title — Quick Reference"
+description: "Quick reference card — $title"
+author: "$AUTHOR"
+created: $TODAY
+updated: $TODAY
+status: draft
+tags: [reference, cheat-sheet]
+---
+
+# $title — Quick Reference
+
+## Essential Commands
+
+| Action     | Command          | Example              |
+| ---------- | ---------------- | -------------------- |
+| [Action 1] | \`command [args]\` | \`command --flag val\` |
+| [Action 2] | \`command [args]\` | \`command --flag val\` |
+| [Action 3] | \`command [args]\` | \`command --flag val\` |
+
+## Keyboard Shortcuts
+
+| Action | Shortcut       |
+| ------ | -------------- |
+| Save   | \`Ctrl+S\`       |
+| Search | \`Ctrl+Shift+F\` |
+
+## Common Patterns
+
+\`\`\`bash
+# Pattern 1: [description]
+command pattern here
+
+# Pattern 2: [description]
+command pattern here
+\`\`\`
+
+## Glossary
+
+| Term     | Definition               |
+| -------- | ------------------------ |
+| [Term 1] | [Brief explanation]      |
+| [Term 2] | [Brief explanation]      |
+EOF
+}
+
+# ── Generator: adr-madr (T9) ───────────────────────────
+gen_adr_madr() {
+  local title="$1"
+  # Auto-number: find highest ADR number and increment
+  local adr_dir="docs/development/adr"
+  local next_num=1
+  if [ -d "$adr_dir" ]; then
+    local max_num
+    max_num=$(ls "$adr_dir"/adr-*.md 2>/dev/null | grep -oP 'adr-\K\d+' | sort -n | tail -1)
+    if [ -n "$max_num" ]; then
+      next_num=$((max_num + 1))
+    fi
+  fi
+  local adr_num
+  adr_num=$(printf "%03d" $next_num)
+
+  cat <<EOF
+---
+title: "ADR-$adr_num: $title"
+description: "Architecture Decision Record (MADR) — $title"
+author: "$AUTHOR"
+created: $TODAY
+updated: $TODAY
+status: proposed
+tags: [adr, architecture, decision]
+---
+
+# $title
+
+- Status: proposed
+- Date: $TODAY
+- Decision-makers: [$AUTHOR]
+- Consulted: [names]
+- Informed: [names]
+
+## Context and Problem Statement
+
+[Describe the context and problem — 2-3 sentences]
+
+## Decision Drivers
+
+- [Driver 1, e.g., performance requirement]
+- [Driver 2, e.g., team expertise]
+- [Driver 3, e.g., cost constraint]
+
+## Considered Options
+
+- [Option 1]
+- [Option 2]
+- [Option 3]
+
+## Decision Outcome
+
+Chosen option: "[Option N]", because [justification].
+
+### Consequences
+
+- Good, because [positive consequence]
+- Bad, because [negative consequence]
+
+## Pros and Cons of the Options
+
+### [Option 1]
+
+- Good, because [argument a]
+- Good, because [argument b]
+- Bad, because [argument c]
+
+### [Option 2]
+
+- Good, because [argument a]
+- Bad, because [argument b]
+
+### [Option 3]
+
+- Good, because [argument a]
+- Bad, because [argument b]
+
+## More Information
+
+[Links to related ADRs, design docs, meeting notes]
+EOF
+}
+
 # ── Command: list ────────────────────────────────────────
 cmd_list() {
   echo -e "${BLUE}Available document types:${NC}"
   echo ""
   echo "  runbook          System operation runbook (T1)"
-  echo "  adr              Architecture Decision Record (T2)"
+  echo "  adr              Architecture Decision Record — Nygard (T2)"
   echo "  howto            Step-by-step how-to guide (T3)"
   echo "  training         Training module (T4)"
   echo "  network          Network topology documentation (T5)"
   echo "  postmortem       Incident postmortem (T6)"
   echo "  maintenance      Maintenance window plan (T7)"
   echo "  release-notes    Version release notes (T8)"
+  echo "  adr-madr         ADR — MADR format for complex decisions (T9)"
+  echo "  knowledge-check  Training knowledge check (T11)"
+  echo "  security-policy  Infrastructure security policy"
+  echo "  quick-reference  Quick reference / cheat sheet"
   echo ""
   echo -e "Usage: ${GREEN}$(basename "$0") new <type> <title>${NC}"
 }
@@ -603,6 +858,32 @@ cmd_new() {
       output_dir="docs/development"
       filename="release-notes-${slug}.md"
       content=$(gen_release_notes "$title")
+      ;;
+    adr-madr)
+      output_dir="docs/development/adr"
+      local last_madr=0
+      if [ -d "$output_dir" ]; then
+        last_madr=$(ls "$output_dir"/adr-*.md 2>/dev/null | sed 's/.*adr-0*\([0-9]*\).*/\1/' | sort -n | tail -1 || echo 0)
+      fi
+      local next_madr
+      next_madr=$(printf "%03d" $((last_madr + 1)))
+      filename="adr-${next_madr}-${slug}.md"
+      content=$(gen_adr_madr "$title")
+      ;;
+    knowledge-check)
+      output_dir="docs/training"
+      filename="${slug}-knowledge-check.md"
+      content=$(gen_knowledge_check "$title")
+      ;;
+    security-policy)
+      output_dir="docs/security"
+      filename="${slug}-security-policy.md"
+      content=$(gen_security_policy "$title")
+      ;;
+    quick-reference)
+      output_dir="docs/guides/reference"
+      filename="${slug}-reference.md"
+      content=$(gen_quick_reference "$title")
       ;;
     *)
       echo -e "${RED}Unknown type: ${type}${NC}"
