@@ -351,7 +351,26 @@ graph TB
 - [Key takeaway 1 — actionable]
 - [Key takeaway 2 — actionable]
 - [Key takeaway 3 — actionable]
+
+## Failure Category
+| Field                  | Value                                                              |
+| ---------------------- | ------------------------------------------------------------------ |
+| **Failure Category**   | Config / Hardware / Resource / Time / Database / Cascading / Other |
+| **Category rationale** | [Giải thích tại sao classify vào category này]                     |
+
+## SLA Impact
+| Metric              | Target   | Actual   | Breach? |
+| ------------------- | -------- | -------- | ------- |
+| Uptime              | 99.9%    | [actual] | Yes/No  |
+| Response time (p95) | < 500ms  | [actual] | Yes/No  |
+| Recovery time (RTO) | < 1 hour | [actual] | Yes/No  |
+
+## Blameless Retro
+> Postmortem này tuân theo nguyên tắc blameless — focus vào system improvement,
+> không blame cá nhân. Mọi action items phải ở level hệ thống (automation, guardrails).
 ```
+
+> 📖 **Failure taxonomy đầy đủ** → [incident-patterns.md](../docs/incident-patterns.md)
 
 > 📖 **Template library đầy đủ** → [doc-templates-library.md](../templates/)
 
