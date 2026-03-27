@@ -1,4 +1,4 @@
-.PHONY: serve lint link-check validate build setup all
+.PHONY: serve lint link-check validate score build setup all check
 
 ## Development
 
@@ -22,6 +22,9 @@ validate:  ## Validate skill files structure
 spell:  ## Run spell check
 	npx cspell "**/*.md"
 
+score:  ## Score documentation quality
+	python3 scripts/score_docs.py
+
 ## Setup
 
 setup:  ## One-command setup (MkDocs + markdownlint + pre-commit)
@@ -40,6 +43,30 @@ new-howto:  ## Create new how-to: make new-howto TITLE="Task"
 
 new-training:  ## Create new training: make new-training TITLE="Topic"
 	./scripts/docs-toolkit new training "$(TITLE)"
+
+new-network:  ## Create new network topology: make new-network TITLE="Env"
+	./scripts/docs-toolkit new network "$(TITLE)"
+
+new-postmortem:  ## Create new postmortem: make new-postmortem TITLE="Incident"
+	./scripts/docs-toolkit new postmortem "$(TITLE)"
+
+new-maintenance:  ## Create new maintenance window: make new-maintenance TITLE="Task"
+	./scripts/docs-toolkit new maintenance "$(TITLE)"
+
+new-release-notes:  ## Create new release notes: make new-release-notes TITLE="vX.Y"
+	./scripts/docs-toolkit new release-notes "$(TITLE)"
+
+new-adr-madr:  ## Create new MADR ADR: make new-adr-madr TITLE="Decision"
+	./scripts/docs-toolkit new adr-madr "$(TITLE)"
+
+new-knowledge-check:  ## Create new knowledge check: make new-knowledge-check TITLE="Topic"
+	./scripts/docs-toolkit new knowledge-check "$(TITLE)"
+
+new-security-policy:  ## Create new security policy: make new-security-policy TITLE="Policy"
+	./scripts/docs-toolkit new security-policy "$(TITLE)"
+
+new-quick-reference:  ## Create new quick reference: make new-quick-reference TITLE="Tool"
+	./scripts/docs-toolkit new quick-reference "$(TITLE)"
 
 ## Combined
 

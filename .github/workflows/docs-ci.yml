@@ -44,6 +44,20 @@ jobs:
       - name: Validate skill files
         run: python3 scripts/validate_skill.py
 
+  score-docs:
+    name: Doc Quality Score
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Score documentation quality
+        run: python3 scripts/score_docs.py
+
   build-demo:
     name: Build Demo Site
     runs-on: ubuntu-latest

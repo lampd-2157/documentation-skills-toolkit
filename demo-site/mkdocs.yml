@@ -112,9 +112,12 @@ nav:
   - Development:
     - ADR:
       - "ADR-001: MkDocs (T2)": development/adr/adr-001-mkdocs.md
+      - "ADR-002: PostgreSQL — MADR (T9)": development/adr/adr-002-choose-postgresql.md
+      - "ADR-003: API Versioning — Lightweight (T10)": development/adr/adr-003-api-versioning.md
     - Release Notes (T8): development/release-notes-example.md
   - Training:
     - Git Basics (T4): training/training-module-example.md
+    - Docker Knowledge Check (T11): training/docker-basics-knowledge-check.md
   - Guides:
     - How-to:
       - Google Workspace New User (T3): guides/how-to/google-workspace-new-user.md
