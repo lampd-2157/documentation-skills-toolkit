@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [3.1.0] — 2026-03-27
+
+### Added
+
+- **ADR tracking system** — `docs/adr/` directory with 3 toolkit ADRs (MkDocs Material, 6-section model, directory restructure) + registry README
+- **`docs-toolkit adr list`** — CLI command to display ADR registry from `docs/adr/`
+- **Demo site T9-T11** — 3 new examples: ADR-002 PostgreSQL MADR (T9), ADR-003 API Versioning Lightweight (T10), Docker Knowledge Check (T11)
+- **`scripts/score_docs.py`** — Automated doc quality scorer: 6 automatable criteria (structure, commands, prerequisites, metadata, markdown, freshness)
+- **CI `score-docs` job** — 5th CI job runs doc quality scoring on every PR
+- **Makefile** — 8 new scaffold targets (T5-T11 + security-policy + quick-reference) + `score` target
+
+---
+
 ## [3.0.0] — 2026-03-27
 
 ### Added

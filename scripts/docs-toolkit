@@ -911,6 +911,43 @@ cmd_new() {
   echo "  4. Add to mkdocs.yml nav section"
 }
 
+# ── Command: adr ─────────────────────────────────────────
+cmd_adr() {
+  local subcmd="${1:-list}"
+  local adr_dir="docs/adr"
+
+  case "$subcmd" in
+    list)
+      if [ ! -d "$adr_dir" ]; then
+        echo -e "${YELLOW}No ADR directory found at $adr_dir${NC}"
+        exit 0
+      fi
+
+      echo -e "${BLUE}${BOLD}Architecture Decision Records${NC}"
+      echo ""
+      printf "  %-6s %-50s %-12s %s\n" "#" "Title" "Status" "Date"
+      printf "  %-6s %-50s %-12s %s\n" "------" "--------------------------------------------------" "------------" "----------"
+
+      for file in "$adr_dir"/[0-9]*.md; do
+        [ -f "$file" ] || continue
+        local num title status date
+        num=$(basename "$file" | grep -oP '^\d+')
+        title=$(grep -m1 "^# " "$file" | sed 's/^# //')
+        status=$(grep -oP '\*\*Status\*\*\s*\|\s*\K[^|]+' "$file" | tr -d ' ')
+        date=$(grep -oP '\*\*Date\*\*\s*\|\s*\K[^|]+' "$file" | tr -d ' ')
+        printf "  %-6s %-50s %-12s %s\n" "$num" "$title" "$status" "$date"
+      done
+      echo ""
+      echo -e "  Total: $(ls "$adr_dir"/[0-9]*.md 2>/dev/null | wc -l) ADR(s)"
+      ;;
+    *)
+      echo -e "${RED}Unknown adr subcommand: $subcmd${NC}"
+      echo "Usage: $(basename "$0") adr list"
+      exit 1
+      ;;
+  esac
+}
+
 # ── Main ─────────────────────────────────────────────────
 case "${1:-}" in
   new)
@@ -918,6 +955,9 @@ case "${1:-}" in
     ;;
   list)
     cmd_list
+    ;;
+  adr)
+    cmd_adr "$2"
     ;;
   validate)
     cmd_validate "$2"
