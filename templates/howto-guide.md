@@ -1,15 +1,22 @@
 <!-- Template T3: How-to Guide — Copy this file and customize -->
 # How to [Action Verb + Object]
 
-> **Audience:** [role/skill level] | **Time:** ~X min | **Difficulty:** ⭐/⭐⭐/⭐⭐⭐
+!!! info "Document Metadata"
+    | Field | Value |
+    |-------|-------|
+    | **Audience** | [role/skill level] |
+    | **Time** | ~X min |
+    | **Difficulty** | ⭐/⭐⭐/⭐⭐⭐ |
 
 ## Prerequisites
+
 - [ ] [thing needed 1]
 - [ ] [thing needed 2]
 
 ## Steps
 
 ### Step 1: [Action verb + object]
+
 [Brief explanation of why this step is needed]
 
 ```bash
@@ -17,17 +24,21 @@
 ```
 
 **Expected result:**
-```
+
+```text
 [what you should see]
 ```
 
 ### Step 2: [Action verb + object]
+
 [...]
 
 ## Verify
+
 - [ ] [How to confirm success]
 
 ## Troubleshooting
+
 <details>
 <summary>Error: [common error message]</summary>
 
@@ -36,4 +47,5 @@
 </details>
 
 ## Next Steps
+
 - [Related guide](link)

@@ -423,28 +423,76 @@
   line-height: 1.4;
 }
 
+/* ── Expanded Content Width ──────────────────────────────── */
+/* Pattern: Gothic MC — wider content area for better table display */
+@media (min-width: 76.25em) {
+  .md-grid {
+    max-width: 68rem;
+  }
+}
+
 /* ── Better Tables ───────────────────────────────────────── */
+/* Use !important to override MkDocs Material built-in styles */
 .md-typeset table:not([class]) {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  display: table !important;
+  width: 100% !important;
+  border: 1px solid var(--md-default-fg-color--lightest) !important;
+}
+
+/* Responsive: wrap long code in table cells */
+.md-typeset table:not([class]) td code {
+  word-break: break-all !important;
+  white-space: pre-wrap !important;
+  font-size: 0.8em !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 4px !important;
+  background: rgba(103, 58, 183, 0.06) !important;
 }
 
 .md-typeset table:not([class]) th {
-  background-color: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  background-color: var(--md-primary-fg-color) !important;
+  color: var(--md-primary-bg-color) !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.75rem 1rem !important;
+  white-space: nowrap !important;
 }
 
-.md-typeset table:not([class]) tr {
-  transition: background-color 0.2s ease;
+.md-typeset table:not([class]) td {
+  vertical-align: top !important;
+  padding: 0.65rem 1rem !important;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
 }
 
 .md-typeset table:not([class]) tr:hover td {
-  background-color: rgba(103, 58, 183, 0.04);
+  background-color: rgba(103, 58, 183, 0.04) !important;
+}
+
+/* Zebra striping for readability */
+.md-typeset table:not([class]) tbody tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.015) !important;
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even):hover td {
+  background-color: rgba(103, 58, 183, 0.04) !important;
+}
+
+/* Bold first column (Field/Check names) */
+.md-typeset table:not([class]) td:first-child {
+  font-weight: 600 !important;
+}
+
+/* Cell borders — kẻ hàng + cột rõ ràng */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border: 1px solid var(--md-default-fg-color--lightest) !important;
 }
 
 /* ── Better Admonitions ──────────────────────────────────── */
@@ -611,12 +659,59 @@ html {
   background-clip: text;
 }
 
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td code {
+  background: rgba(206, 147, 216, 0.1) !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover td {
-  background-color: rgba(206, 147, 216, 0.06);
+  background-color: rgba(206, 147, 216, 0.06) !important;
 }
 
 [data-md-color-scheme="slate"] .md-typeset pre:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Task List Styling ───────────────────────────────────── */
+.md-typeset .task-list-item {
+  list-style-type: none;
+}
+
+.md-typeset .task-list-control input[type="checkbox"] {
+  border-radius: 4px;
+}
+
+/* ── Admonition with tables (metadata pattern) ──────────── */
+.md-typeset .admonition table,
+.md-typeset details table {
+  margin: 0.5rem 0 0;
+  box-shadow: none;
+  border: none;
+}
+
+.md-typeset .admonition table th,
+.md-typeset details table th {
+  background: transparent;
+  color: inherit;
+  text-transform: none;
+  font-size: inherit;
+  letter-spacing: normal;
+}
+
+.md-typeset .admonition table tr:hover td,
+.md-typeset details table tr:hover td {
+  background: transparent;
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

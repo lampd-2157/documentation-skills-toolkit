@@ -63,6 +63,21 @@ Skill
 
 **Bạn không cần đọc hết skill.** Chỉ cần đọc **Iron Law** (1 câu) và **Guardrails** (3-5 checkboxes) là đủ để bắt đầu.
 
+### Prompts = "Prompt cho AI"
+
+12 prompt templates trong [prompts/](../prompts/) giúp AI agent tạo doc đúng chuẩn. Hoạt động với mọi AI agent (Claude, ChatGPT, Antigravity, Copilot...):
+
+| Khi bạn cần... | Dùng prompt | AI sẽ đọc skill + template |
+|---|---|---|
+| Tạo runbook | [create-runbook.md](../prompts/create-runbook.md) | ops-runbook-writer + T1 |
+| Tạo ADR | [create-adr.md](../prompts/create-adr.md) | project-doc-writer + T2/T9/T10 |
+| Viết how-to guide | [create-howto.md](../prompts/create-howto.md) | project-doc-writer + T3 |
+| Tạo training module | [create-training.md](../prompts/create-training.md) | training-doc-writer + T4 |
+| Không biết dùng gì | [select-skill.md](../prompts/select-skill.md) | Tất cả skills |
+| Review doc | [review-doc.md](../prompts/review-doc.md) | doc-quality-scorecard |
+
+> Xem danh sách đầy đủ: [prompts/README.md](../prompts/README.md)
+
 ### Templates = "File mẫu"
 
 11 templates (T1-T11) là file mẫu copy-paste sẵn. Mỗi template map tới 1 use case:
@@ -108,7 +123,6 @@ Trước khi bắt đầu, đảm bảo đã cài:
 | **Python 3.8+** | `python3 --version` | `sudo apt update && sudo apt install python3 python3-pip` | `brew install python3` |
 | **Node.js 18+** | `node --version` | [nvm](https://github.com/nvm-sh/nvm) hoặc `sudo apt install nodejs npm` | `brew install node` |
 | **Git** | `git --version` | `sudo apt install git` | `brew install git` |
-
 
 > **Ubuntu/Debian:** Luôn chạy `sudo apt update` trước khi cài đặt packages để đảm bảo package index mới nhất.
 
@@ -165,7 +179,16 @@ mkdocs serve
 
 ## 4. Viết doc đầu tiên
 
-### Ví dụ: Viết runbook cho Nginx
+### Cách 1: Dùng AI Agent (Recommended)
+
+1. Mở [prompts/create-runbook.md](../prompts/create-runbook.md)
+2. Copy phần **Prompt**, paste vào AI agent (Claude, ChatGPT, Antigravity, Copilot...)
+3. Sửa đoạn có dấu `<<<< SỬA ... >>>>` bằng thông tin thực tế (ví dụ: "Nginx Load Balancer trên Ubuntu 22.04")
+4. AI tạo doc → bạn **review và chỉnh sửa** thông tin kỹ thuật
+5. Validate: `make lint`
+6. Commit + PR
+
+### Cách 2: Viết thủ công
 
 **Bước 1:** Tạo file từ template
 
@@ -270,19 +293,25 @@ Bạn cần viết gì?
 
 ### Viết doc mới
 
+**AI Agent (Recommended):**
+
+```bash
+# 1. Chọn prompt từ prompts/ → copy → paste vào AI agent
+# 2. AI tạo doc → review + chỉnh sửa
+# 3. Validate
+make lint
+# 4. Commit + PR
+```
+
+**Manual:**
+
 ```bash
 # 1. Tạo từ template
 ./scripts/docs-toolkit new <type> "<title>"
-
-# 2. Viết nội dung (theo skill guidelines)
-
-# 3. Lint trước khi commit
-npx markdownlint-cli2 path/to/your-doc.md
-
-# 4. Preview
-make serve
-
-# 5. Commit + PR
+# 2. Đọc skill → điền nội dung
+# 3. Validate
+make lint
+# 4. Commit + PR
 git add path/to/your-doc.md
 git commit -m "docs: add <description>"
 ```
@@ -366,12 +395,12 @@ Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifec
 
 ### "Toolkit này dùng cho AI agent được không?"
 
-Có. Skills được thiết kế để cả human và AI agent đọc hiểu:
+Có, đây là cách tiếp cận **recommended**. Toolkit có sẵn:
 
-- Context table → agent biết scope
-- Iron Law → agent biết constraint tuyệt đối
-- Decision tree → agent biết khi nào activate skill
-- Guardrails → agent verify trước khi bắt đầu
+- **12 prompt templates** trong `prompts/` — copy-paste vào AI agent
+- **AGENT-CARDS.json** — agent scan nhanh tất cả skills
+- **AGENTS.md** — agent context file tự động load
+- Skills có cấu trúc chuẩn → AI đọc hiểu ngay (Iron Law, Guardrails, Decision Tree)
 
 ---
 
@@ -379,6 +408,13 @@ Có. Skills được thiết kế để cả human và AI agent đọc hiểu:
 
 ```text
 Cần viết doc?
+
+  AI Agent (Recommended):
+  → Chọn prompt từ prompts/
+  → Copy + paste vào AI agent
+  → Review + make lint → Commit
+
+  Manual:
   → Chọn template (T1-T11)
   → Tạo bằng CLI: docs-toolkit new <type> "<title>"
   → Đọc Iron Law + Guardrails của skill tương ứng
@@ -399,4 +435,4 @@ Cần viết doc?
 
 ---
 
-> **Version:** 3.0.0 | **Cập nhật:** 2026-03-27
+> **Version:** 4.0.0 | **Cập nhật:** 2026-03-28

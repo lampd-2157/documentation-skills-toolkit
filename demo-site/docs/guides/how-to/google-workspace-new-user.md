@@ -10,9 +10,11 @@ tags: [google-workspace, how-to, onboarding]
 
 # How to Tạo User Google Workspace Mới
 
-> **Audience:** IT Admin / HR
-> **Time:** ~10 minutes
-> **Difficulty:** ⭐ Beginner
+!!! info "Quick Info"
+
+    **Audience:** IT Admin / HR
+    **Time:** ~10 minutes
+    **Difficulty:** ⭐ Beginner
 
 ## Prerequisites
 

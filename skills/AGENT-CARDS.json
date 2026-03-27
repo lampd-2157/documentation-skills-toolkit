@@ -1,0 +1,51 @@
+{
+  "version": "4.0.0",
+  "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 5 skill files (~16K tokens).",
+  "skills": [
+    {
+      "id": "docs-engineer",
+      "file": "skills/docs-engineer.md",
+      "iron_law": "Every document MUST pass markdownlint AND render correctly in MkDocs — NO exceptions.",
+      "triggers": ["mkdocs", "setup docs", "markdown", "documentation site", "plugins", "site structure"],
+      "templates": [],
+      "scope_in": ["MkDocs setup", "markdown standards", "site structure", "plugin config", "theme customization"],
+      "scope_out": ["runbook content", "training content", "security policy", "ADR content"]
+    },
+    {
+      "id": "ops-runbook-writer",
+      "file": "skills/ops-runbook-writer.md",
+      "iron_law": "Every runbook MUST have copy-paste commands AND expected output — prose-only = useless.",
+      "triggers": ["runbook", "SOP", "ops", "incident", "network", "maintenance", "postmortem", "server", "troubleshooting"],
+      "templates": ["T1", "T5", "T6", "T7"],
+      "scope_in": ["runbook", "ops manual", "network topology", "incident postmortem", "maintenance window"],
+      "scope_out": ["training", "ADR", "code documentation", "security policy"]
+    },
+    {
+      "id": "training-doc-writer",
+      "file": "skills/training-doc-writer.md",
+      "iron_law": "Every training doc MUST have Prerequisites \u2192 Steps \u2192 Expected Result \u2192 Troubleshooting — skip any = incomplete.",
+      "triggers": ["training", "onboarding", "curriculum", "learning", "knowledge check", "assessment"],
+      "templates": ["T4", "T11"],
+      "scope_in": ["training module", "onboarding guide", "curriculum", "knowledge check", "learning path"],
+      "scope_out": ["runbook", "ADR", "security policy", "release notes"]
+    },
+    {
+      "id": "project-doc-writer",
+      "file": "skills/project-doc-writer.md",
+      "iron_law": "Every project doc MUST have clear structure with Context \u2192 Decision/Steps \u2192 Consequences/Result — ambiguous docs = wasted decisions.",
+      "triggers": ["ADR", "tech spec", "how-to", "guide", "release notes", "decision", "quick reference"],
+      "templates": ["T2", "T3", "T8", "T9", "T10"],
+      "scope_in": ["ADR", "tech spec", "how-to guide", "release notes", "quick reference"],
+      "scope_out": ["runbook", "training", "security policy", "ops manual"]
+    },
+    {
+      "id": "infra-security-doc",
+      "file": "skills/infra-security-doc.md",
+      "iron_law": "Every security doc MUST have Scope \u2192 Policy \u2192 Enforcement \u2192 Audit — policy without enforcement = decoration.",
+      "triggers": ["security", "RBAC", "access control", "audit", "vulnerability", "compliance", "policy"],
+      "templates": [],
+      "scope_in": ["security policy", "RBAC matrix", "audit log standards", "vulnerability disclosure"],
+      "scope_out": ["runbook", "training", "ADR", "release notes"]
+    }
+  ]
+}

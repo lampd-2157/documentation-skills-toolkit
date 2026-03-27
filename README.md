@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-3.1.0-blue)
+![Version](https://img.shields.io/badge/version-4.0.0-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-11-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -31,14 +31,17 @@
    │  infra-security-doc   → Security policy, RBAC, audit    │
    └──────────────────────────────────────────────────────────┘
 
-2. COPY TEMPLATE      Chọn template phù hợp (T1-T11) → copy → điền nội dung
-   Hoặc dùng CLI:  ./scripts/docs-toolkit new runbook "Tên service"
+2. TẠO DOCUMENT      Có 2 cách:
+   AI Agent (Recommended): Copy prompt từ prompts/ → paste vào AI agent
+   Manual:  ./scripts/docs-toolkit new runbook "Tên service" → điền nội dung
 
 3. VERIFY & PUBLISH   Lint → Review → Deploy
    markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
 ```
 
 > **Lần đầu dùng?** Đọc [Getting Started Guide](docs/getting-started.md) — hướng dẫn chi tiết từ A-Z.
+>
+> **Dùng AI agent?** Xem [Prompt Templates](prompts/) — 12 prompt templates sẵn sàng.
 
 ---
 
@@ -116,8 +119,9 @@ Copy-paste từ [templates/](templates/), hoặc dùng CLI:
 
 ```text
 documentation-skills-toolkit/
-├── skills/                    # 5 skills + template (core product)
+├── skills/                    # 5 skills + template + AGENT-CARDS.json
 ├── templates/                 # 11 document templates (T1-T11), individual files
+├── prompts/                   # 12 prompt templates cho AI agent
 ├── docs/                      # Guides: getting-started, lifecycle, recipes...
 ├── config/                    # Configs: markdownlint, cspell, pre-commit...
 ├── examples/                  # Starter configs cho project khác (mkdocs, CI, snippets)
@@ -147,6 +151,8 @@ documentation-skills-toolkit/
 | [Incident Patterns](docs/incident-patterns.md) | Failure taxonomy + prevention controls | Phân tích incident/postmortem |
 | [Training Assessment](docs/training-assessment-guide.md) | Bloom's Taxonomy + assessment design | Thiết kế bài kiểm tra |
 | [Diátaxis Mapping](docs/diataxis-mapping.md) | Map toolkit → Diátaxis framework | Organize docs theo chuẩn quốc tế |
+| [Prompt Templates](prompts/) | Prompt chuẩn cho AI agent tạo docs | Dùng AI tạo docs |
+| [AGENTS.md](AGENTS.md) | Agent context file (tool-agnostic) | AI agent đọc trước khi làm việc |
 | [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
 
 ---
@@ -157,4 +163,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 3.1.0 | 2026-03-27
+> Version 4.0.0 | 2026-03-28

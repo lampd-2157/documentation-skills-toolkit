@@ -10,12 +10,14 @@ tags: [training, git, onboarding]
 
 # Training: Git Basics for New Team Members
 
-| Field                   | Value                                        |
-| ----------------------- | -------------------------------------------- |
-| **Audience**            | Junior developers — beginner level           |
-| **Duration**            | 2 hours                                      |
-| **Prerequisites**       | Computer with internet, GitHub account       |
-| **Learning Objectives** | Clone repos, commit changes, create PRs      |
+!!! info "Course Metadata"
+
+    | Field                   | Value                                        |
+    | ----------------------- | -------------------------------------------- |
+    | **Audience**            | Junior developers — beginner level           |
+    | **Duration**            | 2 hours                                      |
+    | **Prerequisites**       | Computer with internet, GitHub account       |
+    | **Learning Objectives** | Clone repos, commit changes, create PRs      |
 
 ---
 

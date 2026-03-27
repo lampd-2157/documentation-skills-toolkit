@@ -10,12 +10,14 @@ tags: [adr, mkdocs, documentation]
 
 # ADR-001: Chọn MkDocs-Material làm Documentation Platform
 
-| Field         | Value                |
-| ------------- | -------------------- |
-| **Status**    | Accepted             |
-| **Date**      | 2026-03-26           |
-| **Author**    | Documentation Team   |
-| **Reviewers** | Infra Team, Dev Team |
+!!! info "ADR Metadata"
+
+    | Field         | Value                |
+    | ------------- | -------------------- |
+    | **Status**    | Accepted             |
+    | **Date**      | 2026-03-26           |
+    | **Author**    | Documentation Team   |
+    | **Reviewers** | Infra Team, Dev Team |
 
 ## Context
 
@@ -41,6 +43,11 @@ Chọn **MkDocs-Material** làm documentation platform chính.
 
 ## Consequences
 
-- **Positive:** Free, version control built-in, CI/CD auto-deploy, rich plugin ecosystem
-- **Negative:** Team cần học Markdown (curve thấp, ~1 ngày)
-- **Risks:** Nếu team member không quen CLI → cung cấp VS Code snippets + templates
+!!! success "Positive"
+    Free, version control built-in, CI/CD auto-deploy, rich plugin ecosystem
+
+!!! warning "Negative"
+    Team cần học Markdown (curve thấp, ~1 ngày)
+
+!!! danger "Risks"
+    Nếu team member không quen CLI → cung cấp VS Code snippets + templates

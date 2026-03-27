@@ -46,6 +46,7 @@ compatibility: "MkDocs Material >= 9.0"
 - [ ] `markdownlint` 0 errors trên tất cả `.md` files
 - [ ] Navigation structure trong `mkdocs.yml` khớp với folder thực tế
 - [ ] Mermaid diagrams render đúng trong MkDocs (test local)
+- [ ] UI standards: admonitions cho metadata/warnings, task lists cho checklists, code blocks cho long commands
 
 ---
 
