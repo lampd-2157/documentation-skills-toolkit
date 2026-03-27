@@ -11,7 +11,7 @@ build:  ## Build demo site (strict mode)
 ## Quality
 
 lint:  ## Run markdownlint on all .md files
-	npx markdownlint-cli2 "**/*.md"
+	npx markdownlint-cli2 "**/*.md" --config config/markdownlint.json
 
 validate:  ## Validate skill files structure
 	python3 scripts/validate_skill.py
@@ -22,7 +22,7 @@ spell:  ## Run spell check
 ## Setup
 
 setup:  ## One-command setup (MkDocs + markdownlint + pre-commit)
-	bash references/config/setup.sh
+	bash scripts/setup.sh
 
 ## Scaffold
 

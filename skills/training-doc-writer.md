@@ -189,7 +189,7 @@ changelog:
 ---
 ```
 
-> 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
+> 📖 **Template library đầy đủ** → [doc-templates-library.md](../templates/)
 
 ---
 
@@ -237,6 +237,6 @@ Trước khi báo "done", verify:
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết runbook / ops docs          | `ops-runbook-writer.md`                |
 | Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
+| Copy-paste doc templates         | `templates/`  |
 
 <!-- Used: 2026-03-27 -->

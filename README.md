@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-2.2.0-blue)
+![Version](https://img.shields.io/badge/version-2.2.1-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-8-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -13,11 +13,11 @@
 
 | Vấn đề                                    | Toolkit giải quyết                          |
 | ----------------------------------------- | ------------------------------------------- |
-| Docs rải rác, format không thống nhất     | **5 Skills** chuẩn hóa cách viết mọi loại doc |
+| Docs rải rác, format không thống nhất     | **5 Skills** chuẩn hóa cách viết mọi loại doc    |
 | Viết doc từ đầu mất thời gian             | **8 Templates** copy-paste, điền nội dung là xong |
-| Không biết viết runbook/guide đúng cách   | Mỗi skill có **Iron Law** + **Guardrails** hướng dẫn |
-| Docs cũ, không ai review                  | **Docs-as-Code** pipeline: lint → review → deploy → audit |
-| Mỗi người viết 1 kiểu                    | **CLI tool** tự tạo doc đúng format chuẩn    |
+| Không biết viết runbook/guide đúng cách   | Mỗi skill có **Iron Law** + **Guardrails**        |
+| Docs cũ, không ai review                  | **CI/CD pipeline**: lint → review → deploy → audit |
+| Mỗi người viết 1 kiểu                    | **CLI tool** tự tạo doc đúng format chuẩn         |
 
 ## Cách hoạt động (3 bước)
 
@@ -38,7 +38,7 @@
    markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
 ```
 
-> **Lần đầu dùng?** Đọc [Getting Started Guide](references/guides/getting-started-guide.md) — hướng dẫn chi tiết từ A-Z.
+> **Lần đầu dùng?** Đọc [Getting Started Guide](docs/getting-started.md) — hướng dẫn chi tiết từ A-Z.
 
 ---
 
@@ -50,7 +50,7 @@ git clone https://github.com/lampd-2157/documentation-skills-toolkit.git
 cd documentation-skills-toolkit
 
 # One-command setup (MkDocs + markdownlint + pre-commit)
-bash references/config/setup.sh
+bash scripts/setup.sh
 
 # Tạo doc mới từ template
 ./scripts/docs-toolkit new runbook "My Service"
@@ -80,7 +80,7 @@ Mỗi skill là một **bộ quy tắc** hướng dẫn cách viết 1 loại do
 
 ## 8 Templates (T1-T8)
 
-Copy-paste từ [doc-templates-library.md](references/templates/doc-templates-library.md), hoặc dùng CLI:
+Copy-paste từ [templates/](templates/), hoặc dùng CLI:
 
 | ID  | Template            | CLI command | Use Case |
 | --- | ------------------- | ----------- | -------- |
@@ -112,31 +112,17 @@ Copy-paste từ [doc-templates-library.md](references/templates/doc-templates-li
 
 ```text
 documentation-skills-toolkit/
-├── .github/workflows/              # CI/CD
-│   └── docs-ci.yml                # Lint + validate + build
-├── skills/                         # 5 skills + 1 template
-│   ├── docs-engineer.md            # Skill 1: MkDocs & Markdown
-│   ├── ops-runbook-writer.md       # Skill 2: Runbook & operations
-│   ├── training-doc-writer.md      # Skill 3: Training & onboarding
-│   ├── project-doc-writer.md       # Skill 4: ADR, spec, guide
-│   ├── infra-security-doc.md       # Skill 5: Security & compliance
-│   └── skill-template.md           # Template tạo skill mới
-├── evals/                          # Eval test suite cho mỗi skill
-│   ├── evals.json                  # Test prompts tổng hợp
-│   ├── docs-engineer/
-│   ├── ops-runbook-writer/
-│   ├── training-doc-writer/
-│   └── project-doc-writer/
-├── references/
-│   ├── config/                     # Configs (setup.sh, markdownlint, cspell...)
-│   ├── guides/                     # Hướng dẫn chi tiết
-│   └── templates/                  # 8 doc templates (T1-T8)
-├── scripts/                        # CLI tools
-├── demo-site/                      # MkDocs demo site (all 8 examples)
-├── Makefile                        # make serve/lint/validate/build
-├── CHANGELOG.md                    # Version history
-├── CONTRIBUTING.md                 # Hướng dẫn đóng góp
-└── LICENSE                         # MIT
+├── skills/                    # 5 skills + template (core product)
+├── templates/                 # 8 document templates (T1-T8), individual files
+├── docs/                      # Guides: getting-started, lifecycle, recipes...
+├── config/                    # Configs: markdownlint, cspell, pre-commit...
+├── examples/                  # Starter configs cho project khác (mkdocs, CI, snippets)
+├── scripts/                   # CLI tools: setup.sh, docs-toolkit, validate_skill.py
+├── evals/                     # Eval test suite cho mỗi skill
+├── demo-site/                 # MkDocs demo site (all 8 examples)
+├── .github/workflows/         # CI/CD: lint + validate + build
+├── Makefile                   # make serve/lint/validate/build
+├── README.md / CHANGELOG.md / CONTRIBUTING.md / LICENSE
 ```
 
 ---
@@ -145,13 +131,13 @@ documentation-skills-toolkit/
 
 | Doc | Mô tả | Đọc khi... |
 |-----|-------|-------------|
-| [Getting Started Guide](references/guides/getting-started-guide.md) | Hướng dẫn từ A-Z cho người mới | Lần đầu dùng toolkit |
-| [Lifecycle Guide](references/guides/docs-lifecycle-guide.md) | Write → Lint → Review → Publish → Audit | Setup Docs-as-Code pipeline |
-| [Composition Recipes](references/guides/skill-composition-recipes.md) | Kết hợp skills cho task thực tế | Không biết dùng skill nào |
-| [Quality Scorecard](references/guides/doc-quality-scorecard.md) | Chấm điểm chất lượng doc (0-10) | Review / audit docs |
-| [Anti-Patterns](references/guides/doc-anti-patterns.md) | 10 lỗi documentation phổ biến | Tránh sai lầm khi viết |
-| [Plugin Catalog](references/guides/mkdocs-plugins-catalog.md) | MkDocs plugins chọn lọc | Mở rộng MkDocs site |
-| [Infra Knowledge Base](references/guides/infra-knowledge-base.md) | Cấu trúc docs cho team infra | Team infra/ops mới bắt đầu |
+| [Getting Started](docs/getting-started.md) | Hướng dẫn từ A-Z cho người mới | Lần đầu dùng toolkit |
+| [Lifecycle Guide](docs/docs-lifecycle.md) | Write → Lint → Review → Publish → Audit | Setup Docs-as-Code pipeline |
+| [Composition Recipes](docs/skill-composition-recipes.md) | Kết hợp skills cho task thực tế | Không biết dùng skill nào |
+| [Quality Scorecard](docs/doc-quality-scorecard.md) | Chấm điểm chất lượng doc (0-10) | Review / audit docs |
+| [Anti-Patterns](docs/doc-anti-patterns.md) | 10 lỗi documentation phổ biến | Tránh sai lầm khi viết |
+| [Plugin Catalog](docs/mkdocs-plugins-catalog.md) | MkDocs plugins chọn lọc | Mở rộng MkDocs site |
+| [Infra Knowledge Base](docs/infra-knowledge-base.md) | Cấu trúc docs cho team infra | Team infra/ops mới bắt đầu |
 | [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
 
 ---
@@ -162,4 +148,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 2.2.0 | 2026-03-27
+> Version 2.2.1 | 2026-03-27

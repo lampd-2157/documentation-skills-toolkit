@@ -53,13 +53,13 @@ Successfully installed mkdocs-material-...
 ### Step 2: Copy starter config
 
 ```bash
-cp references/config/mkdocs-starter.yml mkdocs.yml
-cp references/config/markdownlint-config.json .markdownlint.json
+cp examples/mkdocs-starter.yml mkdocs.yml
+cp config/markdownlint.json .markdownlint.json
 ```
 
 !!! tip "Hoặc dùng one-command setup"
     ```bash
-    bash references/config/setup.sh
+    bash scripts/setup.sh
     ```
     Script sẽ cài tất cả: MkDocs, markdownlint, pre-commit hooks, VS Code snippets.
 

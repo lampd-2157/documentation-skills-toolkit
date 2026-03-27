@@ -128,7 +128,7 @@ markdown_extensions:
   - toc: { permalink: true }
 ```
 
-> 📖 **Plugin catalog đầy đủ** → [mkdocs-plugins-catalog.md](../references/guides/mkdocs-plugins-catalog.md)
+> 📖 **Plugin catalog đầy đủ** → [mkdocs-plugins-catalog.md](../docs/mkdocs-plugins-catalog.md)
 
 ---
 
@@ -308,7 +308,7 @@ Trước khi báo "done", verify:
 | Viết training/onboarding  | `training-doc-writer.md`               |
 | Viết ADR, guide, tech spec | `project-doc-writer.md`               |
 | Viết security/compliance docs | `infra-security-doc.md`            |
-| Plugin catalog cho MkDocs | `references/guides/mkdocs-plugins-catalog.md` |
-| Copy-paste doc templates  | `references/templates/doc-templates-library.md`  |
+| Plugin catalog cho MkDocs | `docs/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates  | `templates/`  |
 
 <!-- Used: 2026-03-26 -->

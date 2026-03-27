@@ -407,6 +407,6 @@ Trước khi báo "done", verify:
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết training / onboarding docs  | `training-doc-writer.md`               |
 | Viết ADR, guide, tech spec       | `project-doc-writer.md`                |
-| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
+| Copy-paste doc templates         | `templates/`  |
 
 <!-- Used: 2026-03-27 -->

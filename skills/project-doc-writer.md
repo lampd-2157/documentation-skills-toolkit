@@ -306,7 +306,7 @@ Trước khi báo "done", verify:
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết runbook / ops docs          | `ops-runbook-writer.md`                |
 | Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
-| MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates         | `templates/`  |
+| MkDocs plugins recommendation    | `docs/mkdocs-plugins-catalog.md` |
 
 <!-- Used: 2026-03-27 -->

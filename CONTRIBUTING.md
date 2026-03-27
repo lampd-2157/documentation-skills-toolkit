@@ -9,7 +9,7 @@
 | Loại               | Mô tả                                                      | Cần PR?    |
 | ------------------ | ---------------------------------------------------------- | ---------- |
 | **Fix typo**       | Sửa lỗi chính tả, format                                   | Yes          |
-| **Thêm template**  | Thêm template mới vào `references/templates/doc-templates-library.md` | Yes          |
+| **Thêm template**  | Thêm template mới vào `templates/` directory | Yes          |
 | **Thêm skill**     | Tạo skill mới theo `skills/skill-template.md`               | Yes + Review |
 | **Cải tiến skill** | Cập nhật nội dung skill hiện tại trong `skills/`            | Yes + Review |
 
@@ -35,7 +35,7 @@ Mọi skill **PHẢI** có đủ 6 sections theo thứ tự:
 - **File location:** Tất cả skills nằm trong `skills/` directory
 - **File name:** `kebab-case.md` — ví dụ: `ops-runbook-writer.md`
 - **Agent field:** Dùng `[Documentation Agent]` (generic, không gắn dự án cụ thể)
-- **Related Skills:** CHỈ link tới files trong `skills/` hoặc `references/` — không link ra bên ngoài
+- **Related Skills:** CHỈ link tới files trong `skills/`, `docs/`, `templates/` — không link ra bên ngoài
 
 ### Validation
 
@@ -66,29 +66,10 @@ npx markdownlint-cli2 skills/your-new-skill.md
 ### Thêm template mới
 
 1. Chọn ID tiếp theo: `T9`, `T10`, ...
-2. Viết template trong `references/templates/doc-templates-library.md`
-3. Format bắt buộc:
-
-```markdown
-## T[N]: [Template Name] Template
-
-\```markdown
-# [Document Title]
-
-| Field     | Value   |
-| --------- | ------- |
-| **Field** | [value] |
-
-## [Section 1]
-[content]
-
-## [Section 2]
-[content]
-\```
-```
-
-4. Cập nhật Template Index ở đầu file
-5. Cập nhật README.md Templates table
+2. Tạo file mới trong `templates/` — ví dụ: `templates/your-template.md`
+3. Template là file markdown thuần — copy-paste được ngay
+4. Cập nhật `templates/README.md` index table
+5. Cập nhật `README.md` Templates table
 
 ---
 
@@ -123,11 +104,13 @@ Trước khi tạo Pull Request:
 ## Directory Map
 
 ```text
-skills/                    # Skill files go here
-references/config/         # Machine-readable configs
-references/guides/         # Human-readable guides
-references/templates/      # Copy-paste document templates
-scripts/                   # CLI tools and validators
+skills/                    # 5 skills + template (core product)
+templates/                 # 8 document templates (T1-T8)
+docs/                      # Guides: getting-started, lifecycle, recipes...
+config/                    # Configs: markdownlint, cspell, pre-commit...
+examples/                  # Starter configs cho project khác
+scripts/                   # CLI tools: setup.sh, docs-toolkit, validate_skill.py
+evals/                     # Eval test suite cho mỗi skill
 demo-site/                 # MkDocs example site
 ```
 
@@ -141,4 +124,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 2.0.0 | **Cập nhật:** 2026-03-26
+> **Version:** 2.2.1 | **Cập nhật:** 2026-03-27

@@ -2,10 +2,10 @@ name: Docs CI
 
 on:
   pull_request:
-    paths: ['**.md', 'skills/**', 'references/**', 'evals/**', 'demo-site/**']
+    paths: ['**.md', 'skills/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
   push:
     branches: [main]
-    paths: ['**.md', 'skills/**', 'references/**', 'evals/**', 'demo-site/**']
+    paths: ['**.md', 'skills/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
 
 jobs:
   lint:
@@ -14,10 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Markdownlint
-        uses: DavidAnson/markdownlint-cli2-action@v19
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          globs: '**/*.md'
+          node-version: '20'
+
+      - name: Markdownlint
+        run: npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site/site" --config config/markdownlint.json
 
   validate-skills:
     name: Validate Skills

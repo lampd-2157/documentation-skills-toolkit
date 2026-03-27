@@ -528,8 +528,8 @@ cmd_validate() {
       local config_flag=""
       if [ -f ".markdownlint.json" ]; then
         config_flag="--config .markdownlint.json"
-      elif [ -f "$TOOLKIT_ROOT/references/config/markdownlint-config.json" ]; then
-        config_flag="--config $TOOLKIT_ROOT/references/config/markdownlint-config.json"
+      elif [ -f "$TOOLKIT_ROOT/config/markdownlint.json" ]; then
+        config_flag="--config $TOOLKIT_ROOT/config/markdownlint.json"
       fi
       npx markdownlint-cli2 "$file" $config_flag
     else

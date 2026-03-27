@@ -1,0 +1,18 @@
+# Document Templates
+
+> Copy-paste templates cho mỗi loại tài liệu. Chọn template → customize → deploy.
+>
+> Sources: [SkeltonThatcher/run-book-template](https://github.com/SkeltonThatcher/run-book-template), [Google Style Guide](https://developers.google.com/style), [gitlab.com/tgdp/templates](https://gitlab.com/tgdp/templates)
+
+| #  | Template | File | Use Case | Related Skill |
+|----|----------|------|----------|---------------|
+| T1 | Runbook | [runbook.md](runbook.md) | System operation procedures | ops-runbook-writer.md |
+| T2 | ADR | [adr.md](adr.md) | Design decisions log | project-doc-writer.md |
+| T3 | How-to Guide | [howto-guide.md](howto-guide.md) | Step-by-step instructions | project-doc-writer.md |
+| T4 | Training Module | [training-module.md](training-module.md) | Internal training | training-doc-writer.md |
+| T5 | Network Topology | [network-topology.md](network-topology.md) | Network documentation | ops-runbook-writer.md |
+| T6 | Incident Postmortem | [incident-postmortem.md](incident-postmortem.md) | Post-incident learning | ops-runbook-writer.md |
+| T7 | Maintenance Window | [maintenance-window.md](maintenance-window.md) | Planned change request | ops-runbook-writer.md |
+| T8 | Release Notes | [release-notes.md](release-notes.md) | Version release summary | project-doc-writer.md |
+
+> **CLI scaffold:** `./scripts/docs-toolkit new <type> <title>`

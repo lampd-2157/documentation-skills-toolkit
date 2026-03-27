@@ -11,7 +11,7 @@
 ║  Sources:                                            ║
 ║  • IPortal Request (35 skills, 7 agents)             ║
 ║  • antigravity-workflows (guardrails)                ║
-║  • tech-leads-club/agent-skills (references/)        ║
+║  • tech-leads-club/agent-skills (docs/)        ║
 ║  • planning-with-files (error journal)               ║
 ║  • ui-ux-pro-max-skill (pre-delivery checklist)      ║
 ║                                                      ║
@@ -121,7 +121,7 @@ User request
    2. Mỗi section = 1 task/concept cụ thể
    3. Code examples dùng ✅/❌ để so sánh đúng/sai
    4. Giữ mỗi section < 50 dòng (cognitive load)
-   5. Nếu section > 50 dòng → tách ra references/
+   5. Nếu section > 50 dòng → tách ra docs/
 -->
 
 ### 1.1 [Sub-section nếu cần]
@@ -149,19 +149,19 @@ const result = await fetchData(); // no timeout = hang forever
 ## 📖 References — ⚠️ OPTIONAL
 
 <!--
-💡 Hướng dẫn: Dùng references/ khi skill có:
+💡 Hướng dẫn: Dùng docs/ khi skill có:
    - Bảng lookup lớn (> 50 rows)
    - Schema definitions dài
    - Code snippets dài mà agent chỉ cần khi implement
 
-   Tạo files trong: skills/references/[skill-name]-*.md
+   Tạo files trong: skills/docs/[skill-name]-*.md
    Trong skill chính chỉ giữ summary + link.
 
    Benefit: Giảm cognitive load (token count) khi agent đọc skill.
    Pattern từ: tech-leads-club/agent-skills
 -->
 
-> 📖 **[Tên reference]** → [link-to-reference.md](references/link-to-reference.md)
+> 📖 **[Tên reference]** → [link-to-reference.md](docs/link-to-reference.md)
 >
 > [Mô tả 1 dòng: file chứa gì]
 

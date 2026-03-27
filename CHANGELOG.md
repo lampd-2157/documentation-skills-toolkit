@@ -6,6 +6,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [2.2.1] — 2026-03-27
+
+### Changed
+
+- **Project restructure** — Eliminated `references/` catch-all directory; replaced with purpose-driven directories:
+  - `config/` — project configs (markdownlint, cspell, pre-commit, link-check)
+  - `docs/` — human-readable guides (standard open-source convention)
+  - `examples/` — starter configs for other projects (mkdocs-starter, github-actions, VS Code snippets)
+  - `templates/` — promoted to top-level, split monolithic file into 8 individual template files (T1-T8)
+- **`scripts/setup.sh`** — Moved from `references/config/` to `scripts/` (consolidate all scripts)
+- **Config file renames** for consistency: `markdownlint-config.json` → `markdownlint.json`, `pre-commit-config.yaml` → `pre-commit.yaml`, `markdown-link-check.json` → `link-check.json`
+- **CI/CD** — Switched from markdownlint-cli2-action to direct `npx` with explicit `--config` flag
+- **Internal files** — Moved `AUDIT.md` and `push.md` to `.internal/` (hidden directory)
+
+### Removed
+
+- **`references/`** directory — replaced by `config/`, `docs/`, `examples/`, `templates/`
+- **Root `.markdownlint-cli2.jsonc`** — no longer needed; CI and Makefile use `--config` flag directly
+- **Monolithic `doc-templates-library.md`** — replaced by 8 individual template files in `templates/`
+
+---
+
 ## [2.2.0] — 2026-03-27
 
 ### Added

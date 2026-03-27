@@ -21,14 +21,14 @@
 |-------|-------|
 | **Primary** | `docs-engineer.md` |
 | **Secondary** | — |
-| **Templates** | `mkdocs-starter.yml`, `markdownlint-config.json` |
+| **Templates** | `mkdocs-starter.yml`, `markdownlint.json` |
 
 **Steps:**
 
 1. Setup MkDocs project (`docs-engineer` §1)
 2. Tạo folder structure (`docs-engineer` §3.1)
 3. Configure markdownlint (`docs-engineer` §2.2)
-4. Setup CI/CD (`docs-lifecycle-guide.md` Phase 4)
+4. Setup CI/CD (`docs-lifecycle.md` Phase 4)
 
 ---
 
@@ -165,8 +165,8 @@
 2. Dùng `infra-knowledge-base.md` để tạo domain folders
 3. Viết runbooks cho critical systems (`ops-runbook-writer`)
 4. Viết onboarding + training (`training-doc-writer`)
-5. Setup CI/CD auto-deploy (`docs-lifecycle-guide.md`)
-6. Quarterly audit schedule (`docs-lifecycle-guide.md` Phase 5)
+5. Setup CI/CD auto-deploy (`docs-lifecycle.md`)
+6. Quarterly audit schedule (`docs-lifecycle.md` Phase 5)
 
 ---
 

@@ -353,7 +353,7 @@ graph TB
 - [Key takeaway 3 — actionable]
 ```
 
-> 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
+> 📖 **Template library đầy đủ** → [doc-templates-library.md](../templates/)
 
 ---
 
@@ -412,7 +412,7 @@ Trước khi báo "done", verify:
 | Viết training/onboarding         | `training-doc-writer.md`               |
 | Viết ADR, guide, tech spec      | `project-doc-writer.md`                |
 | Viết security/compliance docs   | `infra-security-doc.md`                |
-| Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
-| MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
+| Copy-paste doc templates         | `templates/`  |
+| MkDocs plugins recommendation    | `docs/mkdocs-plugins-catalog.md` |
 
 <!-- Used: 2026-03-26 -->

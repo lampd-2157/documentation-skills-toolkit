@@ -208,7 +208,7 @@ Add an A record pointing `app.example.com` to the server IP.
 <!-- runbook-b.md: "See [Server Inventory](inventory.md)" -->
 ```
 
-**Prevented by:** DRY principle — link thay vì copy. `docs-lifecycle-guide.md` quarterly audit catches drift.
+**Prevented by:** DRY principle — link thay vì copy. `docs-lifecycle.md` quarterly audit catches drift.
 
 ---
 

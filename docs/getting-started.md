@@ -101,7 +101,7 @@ Write → Lint → Review → Publish → Audit
 ```bash
 git clone https://github.com/lampd-2157/documentation-skills-toolkit.git
 cd documentation-skills-toolkit
-bash references/config/setup.sh
+bash scripts/setup.sh
 ```
 
 Script sẽ tự động cài:
@@ -129,12 +129,12 @@ Demo site có ví dụ thực tế cho cả 8 templates — xem để biết out
 cd /path/to/your-project
 
 # Copy configs
-cp /path/to/toolkit/references/config/mkdocs-starter.yml mkdocs.yml
-cp /path/to/toolkit/references/config/markdownlint-config.json .markdownlint.json
-cp /path/to/toolkit/references/config/pre-commit-config.yaml .pre-commit-config.yaml
+cp /path/to/toolkit/examples/mkdocs-starter.yml mkdocs.yml
+cp /path/to/toolkit/config/markdownlint.json .markdownlint.json
+cp /path/to/toolkit/config/pre-commit.yaml .pre-commit-config.yaml
 
 # Setup
-pip install -r /path/to/toolkit/references/config/requirements.txt
+pip install -r /path/to/toolkit/config/requirements.txt
 pre-commit install
 
 # Tạo cấu trúc docs
@@ -231,7 +231,7 @@ Bạn cần viết gì?
   │     └── Release notes cho version mới?        → T8 Release Notes
   │
   └── Không biết chọn gì?
-        └── Xem references/guides/skill-composition-recipes.md
+        └── Xem docs/skill-composition-recipes.md
 ```
 
 ### Ví dụ thực tế
@@ -339,7 +339,7 @@ Dùng template gần nhất rồi customize. Hoặc tạo skill mới:
 
 ### "Docs-as-Code nghe phức tạp, team tôi chưa quen Git"
 
-Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifecycle-guide.md)):
+Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifecycle.md)):
 1. Docs trong Git repo (commit + push)
 2. Dùng markdownlint (tự chạy qua pre-commit hook)
 3. Sau đó mới thêm PR review, CI/CD, quarterly audit
@@ -373,7 +373,7 @@ Cần viết doc?
 | File | Mục đích |
 |------|----------|
 | `skills/` | Đọc khi cần biết **cách viết đúng** |
-| `references/templates/doc-templates-library.md` | Đọc khi cần **file mẫu copy-paste** |
+| `templates/` | Đọc khi cần **file mẫu copy-paste** |
 | `scripts/docs-toolkit` | Dùng khi cần **tạo doc mới nhanh** |
 
 ---

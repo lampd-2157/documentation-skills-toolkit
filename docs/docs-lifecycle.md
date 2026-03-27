@@ -45,7 +45,7 @@ graph LR
 ### Phase 1: Write
 
 1. Chọn **skill phù hợp** từ Skill Map (xem `README.md`)
-2. Copy **template** từ `references/templates/doc-templates-library.md`
+2. Copy **template** từ `templates/`
 3. Điền nội dung theo **Iron Law** và **Guardrails** của skill
 4. Thêm **YAML metadata header**:
 
@@ -69,7 +69,7 @@ npx markdownlint-cli2 "docs/**/*.md" --config .markdownlint.json
 
 # Hoặc dùng pre-commit hook (setup 1 lần)
 pip install pre-commit
-cp references/config/pre-commit-config.yaml .pre-commit-config.yaml
+cp config/pre-commit.yaml .pre-commit-config.yaml
 pre-commit install
 # Từ giờ git commit sẽ tự chạy lint
 ```
@@ -97,7 +97,7 @@ pre-commit install
 mkdocs gh-deploy --force
 
 # Option B: CI/CD auto-deploy (recommended)
-# Copy references/config/github-actions-docs.yml → .github/workflows/docs.yml
+# Copy examples/github-actions-docs.yml → .github/workflows/docs.yml
 # Push to main → auto lint → build → deploy
 ```
 
@@ -143,9 +143,9 @@ mv docs/operations/old-runbook.md docs/archive/
 cp -r skills/ /new-project/docs-skills/
 
 # Copy configs
-cp references/config/mkdocs-starter.yml /new-project/mkdocs.yml
-cp references/config/markdownlint-config.json /new-project/.markdownlint.json
-cp references/config/pre-commit-config.yaml /new-project/.pre-commit-config.yaml
+cp examples/mkdocs-starter.yml /new-project/mkdocs.yml
+cp config/markdownlint.json /new-project/.markdownlint.json
+cp config/pre-commit.yaml /new-project/.pre-commit-config.yaml
 ```
 
 ### Step 2: Install tools
@@ -168,7 +168,7 @@ pip install pre-commit && pre-commit install
 ```bash
 # Copy GitHub Actions workflow
 mkdir -p .github/workflows
-cp references/config/github-actions-docs.yml .github/workflows/docs.yml
+cp examples/github-actions-docs.yml .github/workflows/docs.yml
 ```
 
 ### Step 4: Create docs structure
@@ -181,7 +181,7 @@ mkdir -p docs/{getting-started,operations/{runbooks,server,network},training/{on
 echo "# Project Documentation" > docs/index.md
 ```
 
-> 💡 **Team infra/ops:** Xem `references/guides/infra-knowledge-base.md` để có starter structure sẵn cho network, Proxmox, Google Workspace, automation, GitHub, incidents.
+> 💡 **Team infra/ops:** Xem `docs/infra-knowledge-base.md` để có starter structure sẵn cho network, Proxmox, Google Workspace, automation, GitHub, incidents.
 
 ### Step 5: Verify
 

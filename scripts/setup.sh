@@ -9,7 +9,7 @@
 #   chmod +x setup.sh && ./setup.sh
 #
 # Hoặc từ toolkit root:
-#   bash references/config/setup.sh
+#   bash scripts/setup.sh
 # ============================================================
 
 set -e
@@ -55,8 +55,8 @@ fi
 echo "Installing MkDocs + plugins..."
 if [ -f "requirements.txt" ]; then
   $PIP_CMD install -r requirements.txt
-elif [ -f "references/config/requirements.txt" ]; then
-  $PIP_CMD install -r references/config/requirements.txt
+elif [ -f "config/requirements.txt" ]; then
+  $PIP_CMD install -r config/requirements.txt
 else
   $PIP_CMD install mkdocs-material \
     mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin \
@@ -88,8 +88,8 @@ if command -v pre-commit &> /dev/null || $PIP_CMD install pre-commit; then
   if [ -f ".pre-commit-config.yaml" ]; then
     pre-commit install
     echo "  Pre-commit hooks installed"
-  elif [ -f "references/config/pre-commit-config.yaml" ]; then
-    cp references/config/pre-commit-config.yaml .pre-commit-config.yaml
+  elif [ -f "config/pre-commit.yaml" ]; then
+    cp config/pre-commit.yaml .pre-commit-config.yaml
     pre-commit install
     echo "  Pre-commit hooks installed (copied config)"
   else
@@ -101,8 +101,8 @@ fi
 echo ""
 echo "Setting up VS Code snippets..."
 SNIPPETS_SRC=""
-if [ -f "references/config/docs.code-snippets" ]; then
-  SNIPPETS_SRC="references/config/docs.code-snippets"
+if [ -f "examples/docs.code-snippets" ]; then
+  SNIPPETS_SRC="examples/docs.code-snippets"
 elif [ -f "docs.code-snippets" ]; then
   SNIPPETS_SRC="docs.code-snippets"
 fi
@@ -131,8 +131,8 @@ fi
 echo ""
 echo "Setting up markdownlint config..."
 if [ ! -f ".markdownlint.json" ]; then
-  if [ -f "references/config/markdownlint-config.json" ]; then
-    cp references/config/markdownlint-config.json .markdownlint.json
+  if [ -f "config/markdownlint.json" ]; then
+    cp config/markdownlint.json .markdownlint.json
     echo "  .markdownlint.json created"
   fi
 else
@@ -143,8 +143,8 @@ fi
 echo ""
 echo "Setting up spell check config..."
 if [ ! -f ".cspell.json" ]; then
-  if [ -f "references/config/cspell.json" ]; then
-    cp references/config/cspell.json .cspell.json
+  if [ -f "config/cspell.json" ]; then
+    cp config/cspell.json .cspell.json
     echo "  .cspell.json created"
   fi
 else
@@ -155,8 +155,8 @@ fi
 echo ""
 echo "Setting up link check config..."
 if [ ! -f ".markdown-link-check.json" ]; then
-  if [ -f "references/config/markdown-link-check.json" ]; then
-    cp references/config/markdown-link-check.json .markdown-link-check.json
+  if [ -f "config/link-check.json" ]; then
+    cp config/link-check.json .markdown-link-check.json
     echo "  .markdown-link-check.json created"
   fi
 else
