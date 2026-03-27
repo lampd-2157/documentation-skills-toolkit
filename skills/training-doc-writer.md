@@ -160,6 +160,37 @@ graph LR
     L4 --> M8[Mentoring Others]
 ```
 
+### 1.4 Knowledge Validation Patterns
+
+Three validation patterns for training documents:
+
+**Pattern 1: Q&A Collapsible (MkDocs compatible)**
+
+```markdown
+??? question "Câu hỏi: [question text]"
+    **Đáp án:** [answer]
+    **Giải thích:** [why this is correct]
+```
+
+**Pattern 2: Scenario-based Assessment**
+
+```markdown
+## Scenario: [situation description]
+Given: [context]
+When: [action/trigger]
+Expected: [what learner should do/answer]
+```
+
+**Pattern 3: Competency Matrix**
+
+```markdown
+| Skill | Beginner | Intermediate | Advanced |
+|-------|----------|-------------|----------|
+| [skill] | Can explain concept | Can apply in practice | Can teach others |
+```
+
+> 📖 **Assessment guide đầy đủ** → [training-assessment-guide.md](../docs/training-assessment-guide.md)
+
 ---
 
 ## 2. Doc Review Process

@@ -57,6 +57,18 @@
           "prompt": "Viết maintenance window plan cho database migration",
           "expected_trigger": "ops-runbook-writer",
           "expected_output": "Maintenance window template: pre-checks, steps với commands, post-checks, rollback plan"
+        },
+        {
+          "id": 6,
+          "prompt": "Phân tích incident theo failure category — database connection pool exhausted",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Postmortem với failure category classification (Database/Resource), 5 Whys root cause analysis, SLA impact table, connection pool investigation checklist, prevention controls"
+        },
+        {
+          "id": 7,
+          "prompt": "Viết postmortem cho cascading failure khi 1 service down kéo theo cả hệ thống",
+          "expected_trigger": "ops-runbook-writer",
+          "expected_output": "Cascading failure pattern analysis, circuit breaker status review, dependency chain trace, retry storm investigation, bulkhead + graceful degradation recommendations"
         }
       ]
     },
@@ -80,6 +92,18 @@
           "prompt": "Thiết kế learning path cho team infrastructure",
           "expected_trigger": "training-doc-writer",
           "expected_output": "Mermaid diagram learning path: Beginner → Intermediate → Advanced → Expert"
+        },
+        {
+          "id": 4,
+          "prompt": "Tạo bài kiểm tra kiến thức cho module Docker basics",
+          "expected_trigger": "training-doc-writer",
+          "expected_output": "Knowledge check template with multiple choice + scenario questions + pass criteria"
+        },
+        {
+          "id": 5,
+          "prompt": "Thiết kế competency matrix cho team DevOps",
+          "expected_trigger": "training-doc-writer",
+          "expected_output": "Competency matrix with 4 levels (Beginner → Expert), skills mapped, assessment criteria"
         }
       ]
     },

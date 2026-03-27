@@ -16,6 +16,7 @@
 | T8 | Release Notes | [release-notes.md](release-notes.md) | Version release summary | project-doc-writer.md |
 | T9 | ADR (MADR) | [adr-madr.md](adr-madr.md) | Complex decisions, structured evaluation | project-doc-writer.md |
 | T10 | ADR (Lightweight) | [adr-lightweight.md](adr-lightweight.md) | Quick decisions, POC, experiments | project-doc-writer.md |
+| T11 | Knowledge Check | [knowledge-check.md](knowledge-check.md) | Training assessment & validation | training-doc-writer.md |
 
 > **CLI scaffold:** `./scripts/docs-toolkit new <type> <title>`
 >
