@@ -137,13 +137,19 @@ Mở file bằng editor, thay từng `[placeholder]` theo hướng dẫn trong s
 
 ## Bước 6: Verify document
 
+Mở terminal, **đảm bảo đang ở thư mục root** của toolkit (nơi có file `Makefile`):
+
 ```bash
-# Lint markdown
+cd ~/documentation-skills-toolkit
+
+# Kiểm tra format markdown (tất cả file .md trong project)
 make lint
 
-# Validate (nếu là skill file)
+# Kiểm tra cấu trúc skill files (chỉ cần khi sửa files trong skills/)
 make validate
 ```
+
+> `make lint` chạy `markdownlint` trên tất cả `.md` files. `make validate` chạy `validate_skill.py` kiểm tra 6-section structure.
 
 **Kết quả mong đợi:**
 
