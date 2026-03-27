@@ -77,6 +77,9 @@ Skill
 | Phân tích sau sự cố | T6 Postmortem | `docs-toolkit new postmortem "Tên"` |
 | Lên kế hoạch bảo trì | T7 Maintenance | `docs-toolkit new maintenance "Tên"` |
 | Tóm tắt version release | T8 Release Notes | `docs-toolkit new release-notes "vX.Y"` |
+| Complex architecture decision | T9 ADR (MADR) | `docs-toolkit new adr-madr "Decision"` |
+| Quick decision, POC | T10 ADR (Lightweight) | Copy `templates/adr-lightweight.md` |
+| Kiểm tra kiến thức | T11 Knowledge Check | `docs-toolkit new knowledge-check "Topic"` |
 
 ### Pipeline = "Quy trình"
 

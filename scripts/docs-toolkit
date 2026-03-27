@@ -3,7 +3,7 @@
 # Documentation Skills Toolkit — CLI Tool
 # Author: DulapReal (https://github.com/lampd-2157)
 # License: MIT
-# Version: 3.0.0
+# Version: 3.1.0
 # ============================================================
 # Usage:
 #   ./scripts/docs-toolkit new <type> <title>
@@ -502,9 +502,9 @@ gen_knowledge_check() {
 ---
 title: "Knowledge Check: $title"
 description: "Bài kiểm tra kiến thức — $title"
-author: "$AUTHOR"
-created: $TODAY
-updated: $TODAY
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
 status: draft
 tags: [training, assessment, knowledge-check]
 ---
@@ -563,9 +563,9 @@ gen_security_policy() {
 ---
 title: "Security Policy: $title"
 description: "Chính sách bảo mật — $title"
-author: "$AUTHOR"
-created: $TODAY
-updated: $TODAY
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
 status: draft
 tags: [security, policy, compliance]
 ---
@@ -577,7 +577,7 @@ tags: [security, policy, compliance]
 | **Policy ID**      | SEC-001                |
 | **Version**        | 1.0                    |
 | **Status**         | Draft                  |
-| **Effective date** | $TODAY                 |
+| **Effective date** | $(today)               |
 | **Review date**    | [+6 months from today] |
 | **Owner**          | [Team/Person]          |
 | **Approved by**    | [Manager/CISO]         |
@@ -618,9 +618,9 @@ gen_quick_reference() {
 ---
 title: "$title — Quick Reference"
 description: "Quick reference card — $title"
-author: "$AUTHOR"
-created: $TODAY
-updated: $TODAY
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
 status: draft
 tags: [reference, cheat-sheet]
 ---
@@ -681,9 +681,9 @@ gen_adr_madr() {
 ---
 title: "ADR-$adr_num: $title"
 description: "Architecture Decision Record (MADR) — $title"
-author: "$AUTHOR"
-created: $TODAY
-updated: $TODAY
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
 status: proposed
 tags: [adr, architecture, decision]
 ---
@@ -691,8 +691,8 @@ tags: [adr, architecture, decision]
 # $title
 
 - Status: proposed
-- Date: $TODAY
-- Decision-makers: [$AUTHOR]
+- Date: $(today)
+- Decision-makers: [$(get_author)]
 - Consulted: [names]
 - Informed: [names]
 

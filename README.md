@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-3.0.0-blue)
+![Version](https://img.shields.io/badge/version-3.1.0-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-11-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -107,6 +107,7 @@ Copy-paste từ [templates/](templates/), hoặc dùng CLI:
 | Lint | `npx markdownlint-cli2 "**/*.md"` | Kiểm tra markdown format |
 | Spell | `npx cspell "**/*.md"` | Kiểm tra chính tả |
 | Preview | `mkdocs serve` | Xem trước trên localhost:8000 |
+| Score | `python3 scripts/score_docs.py` | Chấm điểm chất lượng doc (6 criteria) |
 | Build | `mkdocs build --strict` | Build production |
 
 ---
@@ -156,4 +157,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 3.0.0 | 2026-03-27
+> Version 3.1.0 | 2026-03-27

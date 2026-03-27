@@ -3,7 +3,7 @@
 # Documentation Skills Toolkit — One-Command Setup
 # Author: DulapReal (https://github.com/lampd-2157)
 # License: MIT
-# Version: 2.0.0
+# Version: 3.1.0
 # ============================================================
 # Usage:
 #   chmod +x setup.sh && ./setup.sh

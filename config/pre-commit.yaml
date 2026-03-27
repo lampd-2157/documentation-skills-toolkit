@@ -1,5 +1,5 @@
 # Pre-commit hooks template — copy to project root as .pre-commit-config.yaml
-# Requires: setup.sh to create .markdownlint.json, .cspell.json, .markdown-link-check.json
+# Requires: setup.sh to create .markdownlint.json, .cspell.json, link-check.json
 #
 # Setup:
 #   pip install pre-commit
@@ -45,5 +45,5 @@ repos:
     rev: v3.12.2
     hooks:
       - id: markdown-link-check
-        args: ["--quiet", "--config", ".markdown-link-check.json"]
+        args: ["--quiet", "--config", "link-check.json"]
         types: [markdown]

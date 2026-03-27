@@ -115,7 +115,7 @@ Mỗi mảng có 1 `index.md` theo format chuẩn:
 
 ## 🔗 Template Mapping
 
-Mỗi loại doc map tới template cụ thể trong `doc-templates-library.md`:
+Mỗi loại doc map tới template cụ thể trong [templates/](../templates/README.md):
 
 | Loại doc         | Template | Skill hướng dẫn            |
 | ---------------- | -------- | -------------------------- |

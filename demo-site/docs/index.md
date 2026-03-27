@@ -14,7 +14,7 @@ hide:
   <p class="hero-subtitle">Tài liệu vận hành, hướng dẫn, và training cho team<br>Powered by Documentation Skills Toolkit</p>
   <div class="hero-badges">
     <span class="hero-badge">&#10003; Production Ready</span>
-    <span class="hero-badge">&#128196; 8 Templates</span>
+    <span class="hero-badge">&#128196; 11 Templates</span>
     <span class="hero-badge">&#9881; Auto Lint</span>
     <span class="hero-badge">&#127793; Docs-as-Code</span>
   </div>
@@ -22,7 +22,7 @@ hide:
 
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-value">8</div>
+    <div class="stat-value">11</div>
     <div class="stat-label">Templates</div>
   </div>
   <div class="stat">
@@ -30,12 +30,12 @@ hide:
     <div class="stat-label">Skills</div>
   </div>
   <div class="stat">
-    <div class="stat-value">9</div>
+    <div class="stat-value">12</div>
     <div class="stat-label">Examples</div>
   </div>
   <div class="stat">
-    <div class="stat-value">5</div>
-    <div class="stat-label">Guides</div>
+    <div class="stat-value">12</div>
+    <div class="stat-label">Docs</div>
   </div>
 </div>
 
@@ -130,6 +130,24 @@ hide:
   <div class="template-id">T8 Release Notes</div>
   <div class="template-name">v2.5.0 Release</div>
   <div class="template-desc">Features, bug fixes, breaking changes, upgrade</div>
+</a>
+
+<a class="template-item" href="development/adr/adr-002-choose-postgresql/">
+  <div class="template-id">T9 ADR (MADR)</div>
+  <div class="template-name">Choose PostgreSQL</div>
+  <div class="template-desc">Complex decision, structured pros/cons, multiple options</div>
+</a>
+
+<a class="template-item" href="development/adr/adr-003-api-versioning/">
+  <div class="template-id">T10 ADR (Lightweight)</div>
+  <div class="template-name">API Versioning Strategy</div>
+  <div class="template-desc">Quick decision, minimal format, POC/spike</div>
+</a>
+
+<a class="template-item" href="training/docker-basics-knowledge-check/">
+  <div class="template-id">T11 Knowledge Check</div>
+  <div class="template-name">Docker Basics Assessment</div>
+  <div class="template-desc">Multiple choice, scenario-based, collapsible answers</div>
 </a>
 
 </div>
