@@ -168,7 +168,7 @@ Simply configure the reverse proxy and obviously you'll need to
 just update the DNS records. It's easy.
 ```
 
-```markdown
+````markdown
 <!-- GOOD -->
 ### Step 1: Configure the reverse proxy
 
@@ -184,7 +184,7 @@ server {
 ### Step 2: Update DNS records
 
 Add an A record pointing `app.example.com` to the server IP.
-```
+````
 
 **Prevented by:** `docs-engineer.md` §2.3 — Google Writing Style (active voice, present tense, short sentences)
 

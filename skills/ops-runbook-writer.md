@@ -127,7 +127,7 @@ Adapted từ [SkeltonThatcher/run-book-template](https://github.com/SkeltonThatc
 
 ### 1.2 Good / Bad Examples
 
-```markdown
+````markdown
 <!-- ✅ GOOD — có command + expected output + actual troubleshooting -->
 ### Check disk usage
 ```bash
@@ -141,7 +141,7 @@ sudo /opt/scripts/cleanup-logs.sh --older-than 7d
 ### Check disk usage
 Check the disk usage on the data partition. If it's too high,
 clean up old logs. Contact the infrastructure team if needed.
-```
+````
 
 ---
 
@@ -149,7 +149,7 @@ clean up old logs. Contact the infrastructure team if needed.
 
 ### 2.1 System Inventory Template
 
-```markdown
+````markdown
 ## System Inventory
 
 | System     | IP/Hostname | OS           | Role          | Owner |
@@ -178,7 +178,7 @@ graph TD
 - [ ] Log review — no critical errors
 - [ ] Certificate expiry — > 30 days remaining
 - [ ] Disk usage — < 80% on all servers
-```
+````
 
 ### 2.2 SLA Definitions
 
@@ -197,7 +197,7 @@ graph TD
 
 ### 3.1 Network Topology Template
 
-```markdown
+````markdown
 ## Network Topology
 
 ```mermaid
@@ -229,7 +229,7 @@ graph TB
 | 3   | PROD App | DB VLAN   | 5432 | TCP      | ALLOW  | PostgreSQL    |
 | 4   | MGMT     | ALL VLANs | 22   | TCP      | ALLOW  | SSH admin     |
 | 5   | ANY      | ANY       | ANY  | ANY      | DENY   | Default deny  |
-```
+````
 
 ### 3.2 Certificate & Backup Matrix
 

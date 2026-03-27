@@ -199,7 +199,7 @@ User request
 
 ### 3.1 Audit Log Requirements
 
-```markdown
+````markdown
 ## Audit Log Standards — [Organization/System]
 
 ### What MUST be logged
@@ -246,7 +246,7 @@ User request
 - API keys, tokens, secrets
 - Full credit card numbers (mask: `****1234`)
 - Personal data beyond what's necessary (GDPR)
-```
+````
 
 ---
 

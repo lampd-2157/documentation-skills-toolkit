@@ -105,6 +105,7 @@ bash scripts/setup.sh
 ```
 
 Script sẽ tự động cài:
+
 - MkDocs + Material theme + plugins
 - markdownlint-cli2 (lint markdown)
 - Pre-commit hooks (tự lint khi commit)
@@ -130,7 +131,7 @@ cd /path/to/your-project
 
 # Copy configs
 cp /path/to/toolkit/examples/mkdocs-starter.yml mkdocs.yml
-cp /path/to/toolkit/config/markdownlint.json .markdownlint.json
+cp /path/to/toolkit/config/.markdownlint.json .markdownlint.json
 cp /path/to/toolkit/config/pre-commit.yaml .pre-commit-config.yaml
 
 # Setup
@@ -161,6 +162,7 @@ mkdocs serve
 **Bước 2:** Mở skill để biết quy tắc
 
 Mở `skills/ops-runbook-writer.md`, đọc:
+
 - **Iron Law:** "Every runbook MUST have copy-paste commands AND expected output"
 - **Guardrails:** Test commands, contact info up-to-date, severity defined, backup procedure
 
@@ -326,6 +328,7 @@ Có. Ngay cả doc đơn giản cũng nên có YAML header + markdown lint. Dùn
 ### "Skill file dài quá, đọc hết mất thời gian"
 
 Không cần đọc hết. Chỉ cần đọc:
+
 1. **Iron Law** (1 câu) — quy tắc quan trọng nhất
 2. **Guardrails** (3-5 checkboxes) — verify trước khi viết
 3. **Remember** (bảng cuối) — quick reference
@@ -333,6 +336,7 @@ Không cần đọc hết. Chỉ cần đọc:
 ### "Tôi muốn viết loại doc mà không có template"
 
 Dùng template gần nhất rồi customize. Hoặc tạo skill mới:
+
 1. Copy `skills/skill-template.md`
 2. Điền 6 sections bắt buộc
 3. Submit PR (xem `CONTRIBUTING.md`)
@@ -340,6 +344,7 @@ Dùng template gần nhất rồi customize. Hoặc tạo skill mới:
 ### "Docs-as-Code nghe phức tạp, team tôi chưa quen Git"
 
 Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifecycle.md)):
+
 1. Docs trong Git repo (commit + push)
 2. Dùng markdownlint (tự chạy qua pre-commit hook)
 3. Sau đó mới thêm PR review, CI/CD, quarterly audit
@@ -347,6 +352,7 @@ Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifec
 ### "Toolkit này dùng cho AI agent được không?"
 
 Có. Skills được thiết kế để cả human và AI agent đọc hiểu:
+
 - Context table → agent biết scope
 - Iron Law → agent biết constraint tuyệt đối
 - Decision tree → agent biết khi nào activate skill

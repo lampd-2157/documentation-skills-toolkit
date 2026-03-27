@@ -91,9 +91,11 @@ Mỗi tiêu chí cho điểm **0 / 0.5 / 1**. Tổng điểm tối đa: **10**.
 - **Score thấp nhất thường là #10 (non-author test)** — Đây cũng là tiêu chí quan trọng nhất. Hãy pair-review docs.
 - **#2 và #4 liên quan chặt** — Nếu commands không testable thì expected results cũng sẽ thiếu.
 - **#8 (Freshness) là automatic** — Setup quarterly audit script:
+
   ```bash
   find docs/ -name "*.md" -mtime +90 -type f | sort
   ```
+
 - **Aim for 8+** — Score 7 là minimum acceptable cho production docs.
 
 ---

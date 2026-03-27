@@ -255,14 +255,14 @@ tags: [operations, network, server]
 
 ### 4.3 Mermaid Diagrams
 
-```markdown
+````markdown
 ```mermaid
 graph LR
     A[User] --> B[Web Server]
     B --> C[App Server]
     C --> D[(Database)]
 ```
-```
+````
 
 ---
 

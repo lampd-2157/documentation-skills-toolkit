@@ -20,7 +20,7 @@ jobs:
           node-version: '20'
 
       - name: Markdownlint
-        run: npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site/site" --config config/markdownlint.json
+        run: npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json
 
   validate-skills:
     name: Validate Skills

@@ -131,8 +131,8 @@ fi
 echo ""
 echo "Setting up markdownlint config..."
 if [ ! -f ".markdownlint.json" ]; then
-  if [ -f "config/markdownlint.json" ]; then
-    cp config/markdownlint.json .markdownlint.json
+  if [ -f "config/.markdownlint.json" ]; then
+    cp config/.markdownlint.json .markdownlint.json
     echo "  .markdownlint.json created"
   fi
 else

@@ -156,7 +156,7 @@ User request
 
 ### 2.1 Guide Structure (Google Style)
 
-```markdown
+````markdown
 # How to [Complete Task]
 
 > **Audience:** [Who is this for]
@@ -178,7 +178,7 @@ command-to-run --flag value
 ```
 
 **Expected result:**
-```
+```text
 output mong đợi
 ```
 
@@ -201,11 +201,11 @@ output mong đợi
 ## Next Steps
 - [Related guide 1](link)
 - [Related guide 2](link)
-```
+````
 
 ### 2.2 Good / Bad Examples
 
-```markdown
+````markdown
 <!-- ✅ GOOD — có prerequisites, steps rõ ràng, expected result -->
 ## Prerequisites
 - Node.js ≥ 18 installed
@@ -222,7 +222,7 @@ cd project
 ### Setup
 Clone the project and install dependencies.
 Then configure the environment variables and start the server.
-```
+````
 
 ---
 
@@ -230,7 +230,7 @@ Then configure the environment variables and start the server.
 
 ### 3.1 Cheat Sheet Template
 
-````markdown
+`````markdown
 # [Tool/System] — Quick Reference
 
 ## Essential Commands
@@ -259,7 +259,7 @@ command pattern here
 | -------- | ------------------------------ |
 | [Term 1] | [Giải thích ngắn gọn, ≤ 20 từ] |
 | [Term 2] | [Giải thích]                   |
-````
+`````
 
 ---
 

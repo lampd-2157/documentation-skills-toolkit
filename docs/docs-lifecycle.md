@@ -144,7 +144,7 @@ cp -r skills/ /new-project/docs-skills/
 
 # Copy configs
 cp examples/mkdocs-starter.yml /new-project/mkdocs.yml
-cp config/markdownlint.json /new-project/.markdownlint.json
+cp config/.markdownlint.json /new-project/.markdownlint.json
 cp config/pre-commit.yaml /new-project/.pre-commit-config.yaml
 ```
 

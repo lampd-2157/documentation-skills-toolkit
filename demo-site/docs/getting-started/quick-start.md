@@ -54,7 +54,7 @@ Successfully installed mkdocs-material-...
 
 ```bash
 cp examples/mkdocs-starter.yml mkdocs.yml
-cp config/markdownlint.json .markdownlint.json
+cp config/.markdownlint.json .markdownlint.json
 ```
 
 !!! tip "Hoặc dùng one-command setup"

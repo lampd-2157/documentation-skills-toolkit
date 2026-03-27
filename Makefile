@@ -11,7 +11,7 @@ build:  ## Build demo site (strict mode)
 ## Quality
 
 lint:  ## Run markdownlint on all .md files
-	npx markdownlint-cli2 "**/*.md" --config config/markdownlint.json
+	npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json
 
 validate:  ## Validate skill files structure
 	python3 scripts/validate_skill.py
