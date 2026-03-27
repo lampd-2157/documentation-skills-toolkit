@@ -71,7 +71,7 @@ jobs:
             mkdocs-awesome-pages-plugin \
             mkdocs-git-revision-date-localized-plugin \
             mkdocs-minify-plugin \
-            mkdocs-mermaid2-plugin \
+
             mkdocs-glightbox
 
       - name: Build docs
@@ -107,7 +107,7 @@ jobs:
             mkdocs-awesome-pages-plugin \
             mkdocs-git-revision-date-localized-plugin \
             mkdocs-minify-plugin \
-            mkdocs-mermaid2-plugin \
+
             mkdocs-glightbox
 
       - name: Configure Git

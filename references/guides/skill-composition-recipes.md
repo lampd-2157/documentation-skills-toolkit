@@ -183,8 +183,11 @@
 | How-to guide | project-doc + docs-engineer | T3 |
 | Plan maintenance | ops-runbook | T7 |
 | Release notes | project-doc | T8 |
-| Full docs site | All 4 skills | All templates |
+| Security policy | infra-security-doc | — |
+| Access control matrix | infra-security-doc | — |
+| Security review | infra-security-doc + ops-runbook | — |
+| Full docs site | All 5 skills | All templates |
 
 ---
 
-> **Version:** 1.0.0 | **Cập nhật:** 2026-03-26
+> **Version:** 1.1.0 | **Cập nhật:** 2026-03-27

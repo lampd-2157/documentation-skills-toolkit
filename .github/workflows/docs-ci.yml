@@ -1,0 +1,52 @@
+name: Docs CI
+
+on:
+  pull_request:
+    paths: ['**.md', 'skills/**', 'references/**', 'evals/**', 'demo-site/**']
+  push:
+    branches: [main]
+    paths: ['**.md', 'skills/**', 'references/**', 'evals/**', 'demo-site/**']
+
+jobs:
+  lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: '**/*.md'
+          config: 'references/config/markdownlint-config.json'
+
+  validate-skills:
+    name: Validate Skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate skill files
+        run: python3 scripts/validate_skill.py
+
+  build-demo:
+    name: Build Demo Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install mkdocs-material
+
+      - name: Build MkDocs (strict)
+        run: cd demo-site && mkdocs build --strict

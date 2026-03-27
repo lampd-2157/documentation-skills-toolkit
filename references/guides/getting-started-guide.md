@@ -45,6 +45,7 @@ Mỗi skill là một file `.md` chứa bộ quy tắc cho 1 loại documentatio
 | **Ops Runbook Writer** | Runbook vận hành, network docs, incident docs | `skills/ops-runbook-writer.md` |
 | **Training Doc Writer** | Training, onboarding, curriculum, learning path | `skills/training-doc-writer.md` |
 | **Project Doc Writer** | ADR, tech spec, how-to guide, quick reference | `skills/project-doc-writer.md` |
+| **Infra Security Doc** | Security policy, RBAC, audit log, vulnerability | `skills/infra-security-doc.md` |
 
 Mỗi skill có cấu trúc giống nhau:
 

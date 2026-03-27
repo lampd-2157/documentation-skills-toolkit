@@ -307,6 +307,7 @@ Trước khi báo "done", verify:
 | Viết runbook/ops docs     | `ops-runbook-writer.md`                |
 | Viết training/onboarding  | `training-doc-writer.md`               |
 | Viết ADR, guide, tech spec | `project-doc-writer.md`               |
+| Viết security/compliance docs | `infra-security-doc.md`            |
 | Plugin catalog cho MkDocs | `references/guides/mkdocs-plugins-catalog.md` |
 | Copy-paste doc templates  | `references/templates/doc-templates-library.md`  |
 

@@ -154,7 +154,7 @@ cp references/config/pre-commit-config.yaml /new-project/.pre-commit-config.yaml
 # Python packages (MkDocs)
 pip install mkdocs-material mkdocs-awesome-pages-plugin \
   mkdocs-git-revision-date-localized-plugin mkdocs-minify-plugin \
-  mkdocs-mermaid2-plugin mkdocs-glightbox
+  mkdocs-glightbox
 
 # Node package (Markdown lint)
 npm install -g markdownlint-cli2

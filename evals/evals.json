@@ -111,6 +111,35 @@
           "expected_output": "Quick reference: Essential Commands table, Common Patterns, Glossary"
         }
       ]
+    },
+    {
+      "skill_name": "infra-security-doc",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Viết security policy cho team infrastructure",
+          "expected_trigger": "infra-security-doc",
+          "expected_output": "Security policy template: Policy ID, Scope, Policy Statements, Enforcement table, Review date"
+        },
+        {
+          "id": 2,
+          "prompt": "Tạo access control matrix RBAC cho production environment",
+          "expected_trigger": "infra-security-doc",
+          "expected_output": "RBAC matrix: Role definitions, Permission matrix (resource x role), Access review schedule"
+        },
+        {
+          "id": 3,
+          "prompt": "Định nghĩa audit log standards cho hệ thống",
+          "expected_trigger": "infra-security-doc",
+          "expected_output": "Audit log standards: Event categories, JSON log format, Retention policy, Exclusion list"
+        },
+        {
+          "id": 4,
+          "prompt": "Review bảo mật trước khi deploy service mới",
+          "expected_trigger": "infra-security-doc",
+          "expected_output": "Pre-deploy security checklist: Auth, Network, Data, Monitoring, Dependency sections"
+        }
+      ]
     }
   ]
 }

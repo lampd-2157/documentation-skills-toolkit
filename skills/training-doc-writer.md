@@ -236,6 +236,7 @@ Trước khi báo "done", verify:
 | Viết ADR, tech spec, how-to     | `project-doc-writer.md`                |
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết runbook / ops docs          | `ops-runbook-writer.md`                |
+| Viết security/compliance docs   | `infra-security-doc.md`                |
 | Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
 
 <!-- Used: 2026-03-27 -->

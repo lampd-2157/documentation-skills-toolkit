@@ -1,7 +1,7 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-2.1.0-blue)
-![Skills](https://img.shields.io/badge/skills-4-green)
+![Version](https://img.shields.io/badge/version-2.2.0-blue)
+![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-8-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
@@ -13,7 +13,7 @@
 
 | Vấn đề                                    | Toolkit giải quyết                          |
 | ----------------------------------------- | ------------------------------------------- |
-| Docs rải rác, format không thống nhất     | **4 Skills** chuẩn hóa cách viết mọi loại doc |
+| Docs rải rác, format không thống nhất     | **5 Skills** chuẩn hóa cách viết mọi loại doc |
 | Viết doc từ đầu mất thời gian             | **8 Templates** copy-paste, điền nội dung là xong |
 | Không biết viết runbook/guide đúng cách   | Mỗi skill có **Iron Law** + **Guardrails** hướng dẫn |
 | Docs cũ, không ai review                  | **Docs-as-Code** pipeline: lint → review → deploy → audit |
@@ -22,12 +22,13 @@
 ## Cách hoạt động (3 bước)
 
 ```text
-1. CHỌN SKILL        Bạn cần viết gì? → Chọn 1 trong 4 skills hướng dẫn
+1. CHỌN SKILL        Bạn cần viết gì? → Chọn 1 trong 5 skills hướng dẫn
    ┌──────────────────────────────────────────────────────────┐
    │  docs-engineer        → Setup MkDocs, chuẩn Markdown    │
    │  ops-runbook-writer   → Runbook, network, server docs   │
    │  training-doc-writer  → Training, onboarding, curriculum │
    │  project-doc-writer   → ADR, tech spec, how-to, guide   │
+   │  infra-security-doc   → Security policy, RBAC, audit    │
    └──────────────────────────────────────────────────────────┘
 
 2. COPY TEMPLATE      Chọn template phù hợp (T1-T8) → copy → điền nội dung
@@ -56,11 +57,16 @@ bash references/config/setup.sh
 
 # Xem demo site
 cd demo-site && pip install -r requirements.txt && mkdocs serve
+
+# Hoặc dùng Makefile
+make setup    # One-command setup
+make serve    # Start dev server
+make all      # lint + validate + build
 ```
 
 ---
 
-## 4 Skills
+## 5 Skills
 
 Mỗi skill là một **bộ quy tắc** hướng dẫn cách viết 1 loại documentation cụ thể. Tất cả skills tuân thủ cùng cấu trúc 6 sections: Context → Iron Law → Guardrails → Red Flags → Remember → Related Skills.
 
@@ -70,6 +76,7 @@ Mỗi skill là một **bộ quy tắc** hướng dẫn cách viết 1 loại do
 | [ops-runbook-writer](skills/ops-runbook-writer.md) | Viết runbook, ops manual, network/server docs | "Every runbook MUST have copy-paste commands AND expected output" |
 | [training-doc-writer](skills/training-doc-writer.md) | Viết training, onboarding, curriculum, learning path | "Every training doc MUST have Prerequisites → Steps → Expected Result → Troubleshooting" |
 | [project-doc-writer](skills/project-doc-writer.md) | Viết ADR, tech spec, how-to guide, quick reference | "Every project doc MUST have Context → Decision/Steps → Consequences/Result" |
+| [infra-security-doc](skills/infra-security-doc.md) | Viết security policy, RBAC, audit log, vulnerability | "Every security doc MUST have Scope → Policy → Enforcement → Audit" |
 
 ## 8 Templates (T1-T8)
 
@@ -105,11 +112,14 @@ Copy-paste từ [doc-templates-library.md](references/templates/doc-templates-li
 
 ```text
 documentation-skills-toolkit/
-├── skills/                         # 4 skills + 1 template
+├── .github/workflows/              # CI/CD
+│   └── docs-ci.yml                # Lint + validate + build
+├── skills/                         # 5 skills + 1 template
 │   ├── docs-engineer.md            # Skill 1: MkDocs & Markdown
 │   ├── ops-runbook-writer.md       # Skill 2: Runbook & operations
 │   ├── training-doc-writer.md      # Skill 3: Training & onboarding
 │   ├── project-doc-writer.md       # Skill 4: ADR, spec, guide
+│   ├── infra-security-doc.md       # Skill 5: Security & compliance
 │   └── skill-template.md           # Template tạo skill mới
 ├── evals/                          # Eval test suite cho mỗi skill
 │   ├── evals.json                  # Test prompts tổng hợp
@@ -123,6 +133,7 @@ documentation-skills-toolkit/
 │   └── templates/                  # 8 doc templates (T1-T8)
 ├── scripts/                        # CLI tools
 ├── demo-site/                      # MkDocs demo site (all 8 examples)
+├── Makefile                        # make serve/lint/validate/build
 ├── CHANGELOG.md                    # Version history
 ├── CONTRIBUTING.md                 # Hướng dẫn đóng góp
 └── LICENSE                         # MIT
@@ -151,4 +162,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 2.1.0 | 2026-03-27
+> Version 2.2.0 | 2026-03-27

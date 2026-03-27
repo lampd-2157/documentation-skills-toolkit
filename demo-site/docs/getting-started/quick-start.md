@@ -28,26 +28,26 @@ tags: [getting-started, mkdocs, setup]
 === ":material-linux: Linux / WSL"
 
     ```bash
-    pip install mkdocs-material mkdocs-mermaid2-plugin
+    pip install mkdocs-material
     export PATH="$HOME/.local/bin:$PATH"
     ```
 
 === ":material-apple: macOS"
 
     ```bash
-    pip3 install mkdocs-material mkdocs-mermaid2-plugin
+    pip3 install mkdocs-material
     ```
 
 === ":material-microsoft-windows: Windows"
 
     ```powershell
-    pip install mkdocs-material mkdocs-mermaid2-plugin
+    pip install mkdocs-material
     ```
 
 **Expected result:**
 
 ```text
-Successfully installed mkdocs-material-... mkdocs-mermaid2-plugin-...
+Successfully installed mkdocs-material-...
 ```
 
 ### Step 2: Copy starter config
@@ -102,14 +102,6 @@ mkdocs serve
     # Để fix vĩnh viễn:
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
-    ```
-
-??? warning "Error: `mermaid2 plugin not found`"
-    **Cause:** Plugin chưa cài hoặc sai version.
-
-    **Fix:**
-    ```bash
-    pip install mkdocs-mermaid2-plugin --upgrade
     ```
 
 ---

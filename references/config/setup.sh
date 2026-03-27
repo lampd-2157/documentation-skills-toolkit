@@ -58,7 +58,7 @@ if [ -f "requirements.txt" ]; then
 elif [ -f "references/config/requirements.txt" ]; then
   $PIP_CMD install -r references/config/requirements.txt
 else
-  $PIP_CMD install mkdocs-material mkdocs-mermaid2-plugin \
+  $PIP_CMD install mkdocs-material \
     mkdocs-awesome-pages-plugin mkdocs-git-revision-date-localized-plugin \
     mkdocs-minify-plugin mkdocs-glightbox
 fi

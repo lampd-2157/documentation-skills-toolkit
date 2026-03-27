@@ -127,6 +127,9 @@ Mỗi loại doc map tới template cụ thể trong `doc-templates-library.md`:
 | Maintenance      | T7       | `ops-runbook-writer.md`    |
 | Training         | T4       | `training-doc-writer.md`   |
 | Release notes    | T8       | `project-doc-writer.md`    |
+| Security policy  | —        | `infra-security-doc.md`    |
+| Access control   | —        | `infra-security-doc.md`    |
+| Audit log standards | —     | `infra-security-doc.md`    |
 
 ---
 

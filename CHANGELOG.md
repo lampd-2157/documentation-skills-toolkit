@@ -6,6 +6,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [2.2.0] — 2026-03-27
+
+### Added
+
+- **`skills/infra-security-doc.md`** — New skill: security policy, RBAC/ABAC access control matrix, audit log standards, vulnerability disclosure, security checklist for infra changes
+- **Incident Postmortem template (§4.3)** in `ops-runbook-writer.md` — Full postmortem structure with 5 Whys root cause analysis, timeline, impact assessment, action items
+- **`.github/workflows/docs-ci.yml`** — GitHub Actions CI/CD: markdownlint + validate_skill.py + mkdocs build (strict) on PR and push to main
+- **`Makefile`** at root — `make serve/lint/validate/build/setup/all` + scaffold shortcuts (`make new-runbook TITLE="..."`)
+- **Evals for infra-security-doc** in `evals/` directory
+
+### Changed
+
+- **README.md** — Updated to 5 skills, added Makefile and CI/CD to project structure, version bump to 2.2.0
+- **`ops-runbook-writer.md`** — Added comprehensive §4.3 Incident Postmortem Template (5 Whys, timeline, action items table)
+
+---
+
 ## [2.1.0] — 2026-03-27
 
 ### Added

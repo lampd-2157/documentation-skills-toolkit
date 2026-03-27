@@ -292,6 +292,67 @@ graph TB
 - [ ] Stakeholders notified: maintenance complete
 ```
 
+### 4.3 Incident Postmortem Template
+
+```markdown
+# Postmortem: [Incident Title]
+
+| Field                  | Value                          |
+| ---------------------- | ------------------------------ |
+| **Date**               | YYYY-MM-DD                     |
+| **Duration**           | HH:MM — HH:MM (X giờ Y phút)  |
+| **Severity**           | P1 / P2 / P3                   |
+| **Services affected**  | [List]                         |
+| **Author**             | [Name]                         |
+| **Reviewers**          | [Names]                        |
+
+## Impact
+- **User impact:** [Số user bị ảnh hưởng, symptoms họ gặp phải]
+- **Business impact:** [Revenue loss, SLA breach, reputation damage]
+- **Data impact:** [Data loss/corruption nếu có]
+
+## Timeline
+| Time (UTC+7) | Event                              |
+| ------------- | --------------------------------- |
+| HH:MM         | Incident detected (alert/report)  |
+| HH:MM         | On-call paged                     |
+| HH:MM         | Investigation started             |
+| HH:MM         | Root cause identified             |
+| HH:MM         | Fix deployed                      |
+| HH:MM         | Service restored                  |
+| HH:MM         | All-clear confirmed               |
+
+## Root Cause Analysis (5 Whys)
+1. **Why:** [Symptom xảy ra] → vì [cause 1]
+2. **Why:** [Cause 1] → vì [cause 2]
+3. **Why:** [Cause 2] → vì [cause 3]
+4. **Why:** [Cause 3] → vì [cause 4]
+5. **Why:** [Cause 4] → vì [ROOT CAUSE]
+
+**Root cause summary:** [1-2 câu tóm tắt nguyên nhân gốc]
+
+## What Went Well
+- [Điều gì hoạt động tốt trong quá trình xử lý]
+- [Detection nhanh? Rollback plan có sẵn? Team phối hợp tốt?]
+
+## What Went Wrong
+- [Điều gì không hoạt động hoặc chậm trễ]
+- [Thiếu monitoring? Docs outdated? Escalation chậm?]
+
+## Action Items
+| # | Action                    | Type       | Owner  | Due date   | Status |
+|---|---------------------------|------------|--------|------------|--------|
+| 1 | [Preventive action]       | Prevent    | [Team] | YYYY-MM-DD | Open   |
+| 2 | [Detection improvement]   | Detect     | [Team] | YYYY-MM-DD | Open   |
+| 3 | [Process improvement]     | Process    | [Team] | YYYY-MM-DD | Open   |
+| 4 | [Documentation update]    | Document   | [Team] | YYYY-MM-DD | Open   |
+
+## Lessons Learned
+- [Key takeaway 1 — actionable]
+- [Key takeaway 2 — actionable]
+- [Key takeaway 3 — actionable]
+```
+
 > 📖 **Template library đầy đủ** → [doc-templates-library.md](../references/templates/doc-templates-library.md)
 
 ---
@@ -350,6 +411,7 @@ Trước khi báo "done", verify:
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết training/onboarding         | `training-doc-writer.md`               |
 | Viết ADR, guide, tech spec      | `project-doc-writer.md`                |
+| Viết security/compliance docs   | `infra-security-doc.md`                |
 | Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
 | MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
 

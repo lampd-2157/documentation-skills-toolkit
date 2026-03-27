@@ -64,7 +64,6 @@ plugins:
       type: timeago
   - minify:
       minify_html: true
-  - mermaid2                   # Mermaid diagrams
   - glightbox                  # Image lightbox
   # - print-site               # Uncomment khi cần print/PDF
 
@@ -84,7 +83,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
   # Tabs
   - pymdownx.tabbed:

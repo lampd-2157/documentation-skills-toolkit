@@ -305,6 +305,7 @@ Trước khi báo "done", verify:
 | Viết training / onboarding docs  | `training-doc-writer.md`               |
 | Setup MkDocs, markdown standards | `docs-engineer.md`                     |
 | Viết runbook / ops docs          | `ops-runbook-writer.md`                |
+| Viết security/compliance docs   | `infra-security-doc.md`                |
 | Copy-paste doc templates         | `references/templates/doc-templates-library.md`  |
 | MkDocs plugins recommendation    | `references/guides/mkdocs-plugins-catalog.md` |
 
