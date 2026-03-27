@@ -2,10 +2,10 @@ name: Docs CI
 
 on:
   pull_request:
-    paths: ['**.md', 'skills/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
+    paths: ['**.md', 'skills/**', 'scripts/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
   push:
     branches: [main]
-    paths: ['**.md', 'skills/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
+    paths: ['**.md', 'skills/**', 'scripts/**', 'docs/**', 'config/**', 'templates/**', 'evals/**', 'demo-site/**']
 
 jobs:
   lint:

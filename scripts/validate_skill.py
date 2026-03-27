@@ -9,7 +9,6 @@ Usage:
 
 import re
 import sys
-import os
 from pathlib import Path
 
 # ── Colors ───────────────────────────────────────────────
@@ -20,7 +19,7 @@ BLUE = "\033[94m"
 BOLD = "\033[1m"
 RESET = "\033[0m"
 
-# ── Required Sections ────────────────────────────────────
+# ── Configuration ────────────────────────────────────────
 REQUIRED_SECTIONS = [
     ("Context / Bối cảnh", r"##\s+Context\s*/\s*Bối cảnh"),
     ("THE IRON LAW", r"##\s+⛔\s+THE IRON LAW"),
@@ -38,6 +37,40 @@ OPTIONAL_SECTIONS = [
 
 CONTEXT_FIELDS = ["Category", "Priority", "Triggers", "Output", "Scope"]
 VERSION_FIELDS = ["Version", "Last Updated"]
+REQUIRED_FRONTMATTER = ["name", "description"]
+
+# ── Limits ───────────────────────────────────────────────
+TOKEN_WARNING = 8000        # ~800 lines, warn if exceeded
+SECTION_LINE_LIMIT = 100    # warn if any section > 100 lines
+HARD_LINE_LIMIT = 1000      # fail if total > 1000 lines
+RELATED_SKILLS_MAX = 5      # max entries in Related Skills
+CHARS_PER_TOKEN = 4         # rough estimation ratio
+
+
+def estimate_tokens(text):
+    """Rough token estimation: ~4 chars per token."""
+    return len(text) // CHARS_PER_TOKEN
+
+
+def get_sections(content):
+    """Split content into sections by ## headings. Returns list of (name, content, line_count)."""
+    sections = []
+    current_name = "(preamble)"
+    current_lines = []
+
+    for line in content.split("\n"):
+        if re.match(r"^##\s+", line):
+            if current_lines:
+                sections.append((current_name, "\n".join(current_lines), len(current_lines)))
+            current_name = line.strip()
+            current_lines = []
+        else:
+            current_lines.append(line)
+
+    if current_lines:
+        sections.append((current_name, "\n".join(current_lines), len(current_lines)))
+
+    return sections
 
 
 def validate_skill(filepath):
@@ -50,13 +83,38 @@ def validate_skill(filepath):
     content = path.read_text(encoding="utf-8")
     lines = content.split("\n")
     total_lines = len(lines)
+    tokens = estimate_tokens(content)
 
     print(f"\n{BLUE}{BOLD}Validating: {path.name}{RESET}")
-    print(f"  Lines: {total_lines}")
+    print(f"  Lines: {total_lines} | Tokens: ~{tokens:,}")
 
     passes = 0
     fails = 0
     warnings = 0
+
+    # ── Check YAML frontmatter ──────────────────────────
+    frontmatter_match = re.match(r"^---\s*\n(.*?)\n---", content, re.DOTALL)
+    if frontmatter_match:
+        fm_text = frontmatter_match.group(1)
+        fm_keys = re.findall(r"^(\w[\w-]*):", fm_text, re.MULTILINE)
+
+        missing_fm = [f for f in REQUIRED_FRONTMATTER if f not in fm_keys]
+        if not missing_fm:
+            print(f"  {GREEN}✅ YAML frontmatter: name, description{RESET}")
+            passes += 1
+        else:
+            print(f"  {RED}❌ YAML frontmatter missing: {', '.join(missing_fm)}{RESET}")
+            fails += 1
+
+        if "compatibility" in fm_keys:
+            print(f"  {GREEN}✅ Compatibility field present{RESET}")
+            passes += 1
+        else:
+            print(f"  {YELLOW}⚠️  Missing compatibility field (recommended){RESET}")
+            warnings += 1
+    else:
+        print(f"  {RED}❌ YAML frontmatter: MISSING (required: ---\\nname:\\ndescription:\\n---){RESET}")
+        fails += 1
 
     # ── Check required sections ──────────────────────────
     for name, pattern in REQUIRED_SECTIONS:
@@ -85,7 +143,6 @@ def validate_skill(filepath):
                 print(f"  {RED}❌ Context missing field: {field}{RESET}")
                 fails += 1
 
-        # Check version fields
         for field in VERSION_FIELDS:
             if re.search(rf"\*\*{field}\*\*", context_block):
                 passes += 1
@@ -99,7 +156,6 @@ def validate_skill(filepath):
     )
     if iron_match:
         iron_text = iron_match.group(1).strip()
-        # Check it's roughly one sentence (no period-separated sentences)
         sentence_count = len([s for s in iron_text.split(". ") if s.strip()])
         if sentence_count <= 2:
             print(f"  {GREEN}✅ Iron Law: 1 sentence{RESET}")
@@ -130,13 +186,11 @@ def validate_skill(filepath):
         r"##\s+🚩\s+Red Flags(.*?)(?=\n##\s)", content, re.DOTALL
     )
     if red_match:
-        # Count table rows (lines starting with |, excluding header/separator)
         table_rows = [
             l
             for l in red_match.group(1).split("\n")
             if l.strip().startswith("|") and not re.match(r"\|\s*-", l.strip())
         ]
-        # Subtract header row
         row_count = max(0, len(table_rows) - 1)
         if 3 <= row_count <= 6:
             print(f"  {GREEN}✅ Red Flags: {row_count} entries (3-6 required){RESET}")
@@ -163,7 +217,7 @@ def validate_skill(filepath):
             print(f"  {YELLOW}⚠️  Remember: {row_count} rules (should be ≤6){RESET}")
             warnings += 1
 
-    # ── Check Related Skills count (≤4) ──────────────────
+    # ── Check Related Skills count (≤5) ──────────────────
     related_match = re.search(
         r"##\s+🔗\s+Related Skills(.*?)(?=\n##\s|\Z)", content, re.DOTALL
     )
@@ -174,22 +228,35 @@ def validate_skill(filepath):
             if l.strip().startswith("|") and not re.match(r"\|\s*-", l.strip())
         ]
         row_count = max(0, len(table_rows) - 1)
-        if row_count <= 4:
-            print(f"  {GREEN}✅ Related Skills: {row_count} entries (≤4 required){RESET}")
+        if row_count <= RELATED_SKILLS_MAX:
+            print(f"  {GREEN}✅ Related Skills: {row_count} entries (≤{RELATED_SKILLS_MAX}){RESET}")
             passes += 1
         else:
-            print(f"  {YELLOW}⚠️  Related Skills: {row_count} entries (should be ≤4){RESET}")
+            print(f"  {YELLOW}⚠️  Related Skills: {row_count} entries (should be ≤{RELATED_SKILLS_MAX}){RESET}")
             warnings += 1
 
-    # ── Check total lines ────────────────────────────────
-    if total_lines > 500:
-        print(f"  {RED}❌ Total lines: {total_lines} (max 500){RESET}")
-        fails += 1
-    elif total_lines > 300:
-        print(f"  {YELLOW}⚠️  Total lines: {total_lines} (recommended ≤250){RESET}")
+    # ── Token-based size check ───────────────────────────
+    if tokens > TOKEN_WARNING:
+        print(f"  {YELLOW}⚠️  Token count: ~{tokens:,} (recommended ≤{TOKEN_WARNING:,}){RESET}")
         warnings += 1
     else:
-        print(f"  {GREEN}✅ Total lines: {total_lines}{RESET}")
+        print(f"  {GREEN}✅ Token count: ~{tokens:,}{RESET}")
+        passes += 1
+
+    # ── Hard line limit (safety net) ─────────────────────
+    if total_lines > HARD_LINE_LIMIT:
+        print(f"  {RED}❌ Total lines: {total_lines} (hard limit: {HARD_LINE_LIMIT}){RESET}")
+        fails += 1
+
+    # ── Section length check ─────────────────────────────
+    sections = get_sections(content)
+    oversized = [(name, count) for name, _, count in sections if count > SECTION_LINE_LIMIT]
+    if oversized:
+        for name, count in oversized:
+            print(f"  {YELLOW}⚠️  Section too long: {name[:50]} ({count} lines, limit {SECTION_LINE_LIMIT}){RESET}")
+            warnings += 1
+    else:
+        print(f"  {GREEN}✅ All sections ≤{SECTION_LINE_LIMIT} lines{RESET}")
         passes += 1
 
     return passes, fails, warnings
@@ -199,10 +266,8 @@ def main():
     args = sys.argv[1:]
 
     if not args:
-        # Default: validate all skills/ directory
         skills_dir = Path("skills")
         if not skills_dir.exists():
-            # Try relative to script location
             script_dir = Path(__file__).parent.parent
             skills_dir = script_dir / "skills"
 
