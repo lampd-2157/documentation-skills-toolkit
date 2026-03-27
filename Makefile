@@ -11,13 +11,37 @@ build:  ## Build demo site (strict mode)
 ## Quality
 
 lint:  ## Run markdownlint on all .md files
-	npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json
+	@npx markdownlint-cli2 "**/*.md" "#node_modules" "#demo-site" "#templates" --config config/.markdownlint.json || \
+	(echo "" && \
+	echo "=========================================" && \
+	echo "How to fix lint errors:" && \
+	echo "" && \
+	echo "  AI Agent: paste the errors above into your AI agent and ask it to fix" && \
+	echo "  Manual:   open file:line shown above, fix the issue, run 'make lint' again" && \
+	echo "" && \
+	echo "Common fixes:" && \
+	echo "  MD022 — add blank line after heading" && \
+	echo "  MD031 — add blank line around code fence" && \
+	echo "  MD032 — add blank line around list" && \
+	echo "  MD040 — add language to code fence (bash/text/yaml)" && \
+	echo "=========================================" && \
+	exit 1)
 
 link-check:  ## Check internal/external links in docs
 	find skills/ docs/ -name '*.md' | xargs npx markdown-link-check --config config/link-check.json --quiet
 
 validate:  ## Validate skill files structure
-	python3 scripts/validate_skill.py
+	@python3 scripts/validate_skill.py || \
+	(echo "" && \
+	echo "=========================================" && \
+	echo "How to fix validation errors:" && \
+	echo "" && \
+	echo "  AI Agent: paste the errors above into your AI agent and ask:" && \
+	echo "            'fix this skill file to match the 6-section model'" && \
+	echo "  Manual:   read skills/skill-template.md for required structure" && \
+	echo "            6 sections: Context, Iron Law, Guardrails, Red Flags, Remember, Related Skills" && \
+	echo "=========================================" && \
+	exit 1)
 
 spell:  ## Run spell check
 	npx cspell "**/*.md"

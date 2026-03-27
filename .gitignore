@@ -16,3 +16,9 @@ site/
 
 # Internal docs
 .internal/
+
+# Generated configs (created by setup.sh, do not commit)
+.markdownlint.json
+.cspell.json
+.markdown-link-check.json
+.pre-commit-config.yaml
