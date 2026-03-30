@@ -1,8 +1,8 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-5.3.0-blue)
+![Version](https://img.shields.io/badge/version-5.4.0-blue)
 ![Skills](https://img.shields.io/badge/skills-6-green)
-![Templates](https://img.shields.io/badge/templates-13-orange)
+![Templates](https://img.shields.io/badge/templates-14-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
 > **Bộ skill chuẩn hóa cho documentation** — dùng được cho mọi dự án, không phụ thuộc vào bất kỳ hệ thống cụ thể nào.
@@ -160,7 +160,9 @@ documentation-skills-toolkit/
 | [Security Placeholders](docs/security-placeholders.md) | Quy chuẩn placeholder cho sensitive data | Docs chứa IPs, passwords, tokens |
 | [Case Study: Ansible](docs/case-study-ansible-network.md) | Ví dụ thực tế v5.0.0 workflow end-to-end (Smart Routing + Interview) | Xem toolkit hoạt động thế nào |
 | [AGENTS.md](AGENTS.md) | Agent context file (tool-agnostic) | AI agent đọc trước khi làm việc |
+| [Routing Playground](docs/routing-playground.md) | Test Smart Routing với natural language input | Hiểu cách routing hoạt động |
 | [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
+| [Community Skills](skills/community/) | Marketplace cho community-contributed skills | Muốn đóng góp skill mới |
 
 ---
 
@@ -170,4 +172,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 5.0.0 | 2026-03-30
+> Version 5.4.0 | 2026-03-30

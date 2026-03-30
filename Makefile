@@ -1,4 +1,4 @@
-.PHONY: serve lint link-check validate score build setup all check route wizard health-dashboard
+.PHONY: serve lint link-check validate score build setup all check route wizard health-dashboard bump-version check-versions
 
 ## Development
 
@@ -106,7 +106,35 @@ wizard:  ## Interactive doc creation wizard
 health-dashboard:  ## Generate doc health dashboard
 	python3 scripts/generate_health_dashboard.py
 
+## Version Management
+
+bump-version:  ## Bump version: make bump-version V=5.4.0
+	bash scripts/bump-version.sh "$(V)"
+
+check-versions:  ## Verify all version footers match CHANGELOG
+	@LATEST=$$(grep -m1 '^\#\# \[' CHANGELOG.md | grep -oP '\d+\.\d+\.\d+'); \
+	echo "Latest version in CHANGELOG: $$LATEST"; \
+	MISMATCHES=0; \
+	for f in README.md AGENTS.md CONTRIBUTING.md prompts/README.md prompts/interview-before-create.md; do \
+		if ! grep -q "$$LATEST" "$$f" 2>/dev/null; then \
+			echo "  MISMATCH: $$f"; \
+			MISMATCHES=$$((MISMATCHES + 1)); \
+		fi; \
+	done; \
+	if ! grep -q "\"$$LATEST\"" skills/AGENT-CARDS.json 2>/dev/null; then \
+		echo "  MISMATCH: skills/AGENT-CARDS.json"; \
+		MISMATCHES=$$((MISMATCHES + 1)); \
+	fi; \
+	if [ $$MISMATCHES -eq 0 ]; then \
+		echo "All version footers match $$LATEST"; \
+	else \
+		echo ""; \
+		echo "$$MISMATCHES file(s) have outdated versions."; \
+		echo "Fix: make bump-version V=$$LATEST"; \
+		exit 1; \
+	fi
+
 ## Combined
 
 all: lint validate build  ## Run lint + validate + build
-check: lint link-check validate  ## Run all quality checks
+check: lint link-check validate check-versions  ## Run all quality checks

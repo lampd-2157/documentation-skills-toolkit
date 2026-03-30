@@ -32,7 +32,9 @@
 | Lên kế hoạch bảo trì | [create-maintenance.md](create-maintenance.md) | ops-runbook-writer | T7 |
 | Viết release notes | [create-release-notes.md](create-release-notes.md) | project-doc-writer | T8 |
 | Tạo bài kiểm tra kiến thức | [create-knowledge-check.md](create-knowledge-check.md) | training-doc-writer | T11 |
-| Viết security policy | [create-security-policy.md](create-security-policy.md) | infra-security-doc | — |
+| Tạo architecture diagram | [create-architecture-diagram.md](create-architecture-diagram.md) | project-doc-writer | T12 |
+| Viết API docs | [create-api-reference.md](create-api-reference.md) | api-doc-writer | T13 |
+| Viết security policy | [create-security-policy.md](create-security-policy.md) | infra-security-doc | T14 |
 | Không biết dùng gì | [select-skill.md](select-skill.md) | — | — |
 | Review doc hiện có | [review-doc.md](review-doc.md) | — | — |
 | **Interview trước khi tạo** | [interview-before-create.md](interview-before-create.md) | — | — |
@@ -59,4 +61,4 @@ Interview (3 câu)  →  Chọn prompt  →  Sửa <<<< >>>>  →  Paste vào AI
 
 ---
 
-> **Version:** 5.0.0 | **Updated:** 2026-03-30
+> **Version:** 5.4.0 | **Updated:** 2026-03-30

@@ -28,7 +28,7 @@ jobs:
           npx markdown-link-check \
             --config config/link-check.json \
             --quiet \
-            $(find skills/ docs/ -name '*.md' ! -name 'skill-template.md' | head -30)
+            $(find skills/ docs/ -name '*.md' ! -name 'skill-template.md')
 
   validate-skills:
     name: Validate Skills
@@ -41,8 +41,18 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate skill files
+      - name: Validate core skill files
         run: python3 scripts/validate_skill.py
+
+      - name: Validate community skill files
+        run: |
+          for f in skills/community/*.md; do
+            [ "$f" = "skills/community/README.md" ] && continue
+            [ "$f" = "skills/community/SKILL-TEMPLATE.md" ] && continue
+            [ -f "$f" ] || continue
+            echo "Validating community skill: $f"
+            python3 scripts/validate_skill.py "$f"
+          done
 
   score-docs:
     name: Doc Quality Score

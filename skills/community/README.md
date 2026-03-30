@@ -64,3 +64,18 @@ Create a PR with:
 - Red Flags must cover real failure scenarios
 - Scope IN/OUT must be clear — no overlap with core skills
 - Token count ≤ 8K, section length ≤ 100 lines
+
+## Contribution Template
+
+Use [SKILL-TEMPLATE.md](SKILL-TEMPLATE.md) as starting point — nó có đầy đủ cấu trúc + comments
+hướng dẫn cho từng section.
+
+## Review Process
+
+1. **Automated:** CI chạy `validate_skill.py` trên mọi file trong `skills/community/`
+2. **Manual review:** Maintainer kiểm tra Iron Law quality, scope overlap, và completeness
+3. **Merge criteria:**
+   - Tất cả CI checks pass
+   - Có test cases trong `evals/`
+   - Không overlap scope với core skills
+   - Iron Law specific + actionable (không generic như "docs must be good")

@@ -174,6 +174,46 @@
 
 ---
 
+### R10: API Reference + Security Review
+
+| Field | Value |
+|-------|-------|
+| **Primary** | `api-doc-writer.md` |
+| **Secondary** | `infra-security-doc.md` |
+| **Templates** | T13 (API Reference) + T14 (Security Policy) |
+
+**Steps:**
+
+1. Document API endpoints, request/response examples (`api-doc-writer` §1-§3)
+2. Add authentication section with security best practices (`infra-security-doc` §1)
+3. Document rate limiting + abuse prevention
+4. Add security checklist for API changes (`infra-security-doc` §5)
+5. Review: mỗi endpoint có auth + error codes + rate limits
+
+**When to use:** Khi API expose ra external hoặc cần PCI/SOC2 compliance. Internal-only API chỉ cần R10 step 1-3.
+
+---
+
+### R11: Architecture Diagram + ADR
+
+| Field | Value |
+|-------|-------|
+| **Primary** | `project-doc-writer.md` |
+| **Secondary** | `docs-engineer.md` |
+| **Templates** | T12 (Architecture Diagram) + T2/T9 (ADR) |
+
+**Steps:**
+
+1. Tạo architecture diagram trước (`project-doc-writer`, template T12)
+2. Viết ADR cho mỗi major architecture decision — reference diagram (`project-doc-writer`, template T2/T9)
+3. Cross-link: ADR → diagram section, diagram → ADR list
+4. Ensure Mermaid diagrams render trong MkDocs (`docs-engineer` §2)
+5. Review: mỗi component trong diagram có ADR giải thích "why"
+
+**When to use:** Khi setup hệ thống mới hoặc major refactor. Diagram giúp team hình dung tổng quan, ADR giải thích reasoning.
+
+---
+
 ## Quick Lookup
 
 | Task | Skills needed | Template |
@@ -189,7 +229,9 @@
 | Release notes | project-doc | T8 |
 | Security policy | infra-security-doc | — |
 | Access control matrix | infra-security-doc | — |
-| Security review | infra-security-doc + ops-runbook | — |
-| Full docs site | All 5 skills | All templates |
+| Security review | infra-security-doc + ops-runbook | T14 |
+| API docs + security | api-doc + infra-security-doc | T13 + T14 |
+| Architecture + ADR | project-doc + docs-engineer | T12 + T2/T9 |
+| Full docs site | All 6 skills | All templates |
 
 ---

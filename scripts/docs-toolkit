@@ -3,7 +3,7 @@
 # Documentation Skills Toolkit — CLI Tool
 # Author: DulapReal (https://github.com/lampd-2157)
 # License: MIT
-# Version: 5.1.0
+# Version: 5.3.0
 # ============================================================
 # Usage:
 #   ./scripts/docs-toolkit new <type> <title>
@@ -39,7 +39,8 @@ usage() {
   echo "  $(basename "$0") wizard                 Interactive doc creation wizard"
   echo ""
   echo "Types: runbook, adr, adr-madr, howto, training, knowledge-check, network,"
-  echo "       postmortem, maintenance, release-notes, security-policy, quick-reference"
+  echo "       postmortem, maintenance, release-notes, security-policy, quick-reference,"
+  echo "       architecture-diagram, api-reference"
   echo ""
   echo "Examples:"
   echo "  $(basename "$0") new runbook \"Nginx Load Balancer\""
@@ -501,6 +502,197 @@ tags: [release, changelog]
 EOF
 }
 
+# ── Generator: architecture-diagram (T12) ────────────────
+gen_architecture_diagram() {
+  local title="$1"
+  cat <<EOF
+---
+title: "Architecture: ${title}"
+description: "System architecture documentation for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [architecture, diagram]
+---
+
+# ${title} — Architecture
+
+!!! info "Document Metadata"
+    | Field | Value |
+    |-------|-------|
+    | **Owner** | [team/person] |
+    | **Status** | Draft |
+    | **Last reviewed** | $(today) |
+    | **Scope** | [what this diagram covers] |
+
+## Context Diagram
+
+\`\`\`mermaid
+graph TB
+    U[Users] -->|HTTPS| SYS[${title}]
+    SYS -->|API| EXT1[External Service 1]
+    SYS -->|Events| EXT2[Message Queue]
+\`\`\`
+
+| Actor / System | Interaction | Protocol | Notes |
+|----------------|-------------|----------|-------|
+| Users | [what they do] | HTTPS | [notes] |
+| External Service 1 | [integration type] | REST API | [notes] |
+
+## Component Diagram
+
+\`\`\`mermaid
+graph LR
+    subgraph Frontend
+        WEB[Web App]
+    end
+    subgraph Backend
+        API[API Gateway]
+        SVC1[Service A]
+        SVC2[Service B]
+    end
+    subgraph Data
+        DB[(Database)]
+        CACHE[(Cache)]
+    end
+    WEB --> API --> SVC1 & SVC2 --> DB & CACHE
+\`\`\`
+
+| Component | Responsibility | Technology | Owner |
+|-----------|---------------|------------|-------|
+| API Gateway | Request routing, auth | [tech] | [team] |
+| Service A | [core domain logic] | [tech] | [team] |
+
+## Data Flow
+
+\`\`\`mermaid
+sequenceDiagram
+    participant U as User
+    participant API as API Gateway
+    participant SVC as Service
+    participant DB as Database
+
+    U->>API: Request
+    API->>SVC: Validated request
+    SVC->>DB: Read/Write
+    DB-->>SVC: Result
+    SVC-->>API: Response
+    API-->>U: Result
+\`\`\`
+
+## Technology Stack
+
+| Layer | Technology | Version | Purpose |
+|-------|-----------|---------|---------|
+| Frontend | [framework] | [ver] | [why chosen] |
+| Backend | [language] | [ver] | [why chosen] |
+| Database | [DB engine] | [ver] | [why chosen] |
+| Infrastructure | [cloud/on-prem] | — | [why chosen] |
+EOF
+}
+
+# ── Generator: api-reference (T13) ──────────────────────
+gen_api_reference() {
+  local title="$1"
+  cat <<EOF
+---
+title: "API Reference: ${title}"
+description: "API documentation for ${title}"
+author: "$(get_author)"
+created: $(today)
+updated: $(today)
+status: draft
+tags: [api, reference]
+---
+
+# ${title} — API Reference
+
+!!! info "API Overview"
+    | Field | Value |
+    |-------|-------|
+    | **Base URL** | \`https://api.example.com/v1\` |
+    | **Version** | v1.0.0 |
+    | **Format** | JSON |
+    | **Auth** | Bearer token |
+
+## Authentication
+
+\`\`\`bash
+curl -X GET https://api.example.com/v1/resource \\
+  -H "Authorization: Bearer <API_TOKEN>" \\
+  -H "Content-Type: application/json"
+\`\`\`
+
+## Endpoints
+
+### \`GET /resource\`
+
+List all resources.
+
+**Request:**
+
+\`\`\`bash
+curl -X GET https://api.example.com/v1/resource \\
+  -H "Authorization: Bearer <API_TOKEN>"
+\`\`\`
+
+**Response (200 OK):**
+
+\`\`\`json
+{
+  "data": [],
+  "pagination": {
+    "page": 1,
+    "per_page": 20,
+    "total": 0
+  }
+}
+\`\`\`
+
+### \`POST /resource\`
+
+Create a new resource.
+
+**Request:**
+
+\`\`\`bash
+curl -X POST https://api.example.com/v1/resource \\
+  -H "Authorization: Bearer <API_TOKEN>" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "example"}'
+\`\`\`
+
+**Response (201 Created):**
+
+\`\`\`json
+{
+  "id": "res-001",
+  "name": "example",
+  "created_at": "$(today)T00:00:00Z"
+}
+\`\`\`
+
+## Error Codes
+
+| Status | Code | Description |
+|--------|------|-------------|
+| 400 | bad_request | Invalid request body |
+| 401 | unauthorized | Missing or invalid token |
+| 403 | forbidden | Insufficient permissions |
+| 404 | not_found | Resource not found |
+| 429 | rate_limited | Too many requests |
+| 500 | internal_error | Server error |
+
+## Rate Limits
+
+| Plan | Limit | Burst |
+|------|-------|-------|
+| Free | 60/min | 10 |
+| Pro | 300/min | 50 |
+EOF
+}
+
 # ── Generator: knowledge-check (T11) ────────────────────
 gen_knowledge_check() {
   local title="$1"
@@ -764,9 +956,11 @@ cmd_list() {
   echo "  maintenance      Maintenance window plan (T7)"
   echo "  release-notes    Version release notes (T8)"
   echo "  adr-madr         ADR — MADR format for complex decisions (T9)"
-  echo "  knowledge-check  Training knowledge check (T11)"
-  echo "  security-policy  Infrastructure security policy"
-  echo "  quick-reference  Quick reference / cheat sheet"
+  echo "  knowledge-check       Training knowledge check (T11)"
+  echo "  architecture-diagram  System architecture visualization (T12)"
+  echo "  api-reference         REST/GraphQL/gRPC API documentation (T13)"
+  echo "  security-policy       Infrastructure security policy (T14)"
+  echo "  quick-reference       Quick reference / cheat sheet"
   echo ""
   echo -e "Usage: ${GREEN}$(basename "$0") new <type> <title>${NC}"
 }
@@ -880,6 +1074,16 @@ cmd_new() {
       output_dir="docs/training"
       filename="${slug}-knowledge-check.md"
       content=$(gen_knowledge_check "$title")
+      ;;
+    architecture-diagram)
+      output_dir="docs/development"
+      filename="${slug}-architecture.md"
+      content=$(gen_architecture_diagram "$title")
+      ;;
+    api-reference)
+      output_dir="docs/development/api"
+      filename="${slug}-api-reference.md"
+      content=$(gen_api_reference "$title")
       ;;
     security-policy)
       output_dir="docs/security"

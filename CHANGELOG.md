@@ -6,6 +6,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.4.0] — 2026-03-30
+
+### Added
+
+- **T14: Security Policy template** — `templates/security-policy.md`: Purpose, Scope, Policy Statements, Enforcement, Audit Schedule, Compliance Mapping
+- **`prompts/create-architecture-diagram.md`** — Prompt template cho AI agents tạo architecture diagram (T12)
+- **Demo-site examples** — T12 Architecture Diagram (E-Commerce Platform) + T13 API Reference (Task Management API)
+- **Routing Playground** — `docs/routing-playground.md`: interactive guide test Smart Routing với ví dụ high/medium/low confidence
+- **Community Skills Marketplace** — `skills/community/SKILL-TEMPLATE.md` full template + review process + CI validation cho community skills
+- **Health Dashboard CI** — `.github/workflows/health-dashboard.yml`: weekly auto-generate dashboard → GitHub issue
+- **Conventional Commits config** — `config/commitlint.yaml`: types, scopes, rules, examples cho commit message chuẩn
+- **Version automation** — `scripts/bump-version.sh` + `make bump-version V=X.Y.Z` auto-update tất cả version footers
+- **Version drift detection** — `make check-versions` kiểm tra footers match CHANGELOG, tích hợp vào `make check`
+- **CLI generators** — `docs-toolkit new architecture-diagram` + `docs-toolkit new api-reference` (T12, T13)
+- **Composition recipes R10, R11** — API Reference + Security, Architecture Diagram + ADR
+
+### Fixed
+
+- **Version sync** — 6 files version footer lệch (README 5.0.0, AGENTS 5.0.0, CONTRIBUTING 4.2.0, prompts 5.0.0/4.2.0, AGENT-CARDS 5.2.0) → tất cả 5.4.0
+- **Missing index entries** — templates/README thiếu T12+T13, prompts/README thiếu create-api-reference + create-architecture-diagram
+- **Orphaned T12** — Architecture Diagram template không được registered → gán vào project-doc-writer trong AGENT-CARDS
+- **AGENTS.md outdated** — Cập nhật từ "5 skills, 11 templates" → "6 skills, 14 templates, 15 prompts" + CLI commands mới
+- **CI link checker** — Bỏ `head -30` limit, giờ check toàn bộ `skills/` + `docs/`
+
+### Changed
+
+- **`skills/AGENT-CARDS.json`** — v5.4.0: T12 sections → project-doc-writer, T14 sections → infra-security-doc
+- **`scripts/docs-toolkit`** — v5.3.0: thêm architecture-diagram + api-reference generators, `list` hiển thị T12-T14
+- **`docs/getting-started.md`** — Smart Routing section header v5.0.0 → v5.0.0+ với note v5.3.0 CLI enhancements
+- **`Makefile`** — Thêm `bump-version`, `check-versions` targets; `check` bao gồm `check-versions`
+
+---
+
 ## [5.3.0] — 2026-03-30
 
 ### Added
