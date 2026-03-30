@@ -8,6 +8,7 @@ description: "Viết tài liệu training và onboarding nội bộ (.md): train
   đào tạo, learning path, curriculum, lab, knowledge check, assessment,
   peer review docs → trigger skill này."
 compatibility: "MkDocs Material >= 9.0"
+skill_version: "1.0.0"
 ---
 
 # Skill: Training Doc Writer

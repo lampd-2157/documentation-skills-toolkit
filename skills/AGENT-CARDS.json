@@ -1,6 +1,6 @@
 {
-  "version": "5.0.0",
-  "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 5 skill files (~16K tokens). See config/routing-signals.yaml for smart routing.",
+  "version": "5.2.0",
+  "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 6 skill files (~20K tokens). See config/routing-signals.yaml for smart routing.",
   "template_tiers": {
     "required": "MUST exist in output — reject if missing",
     "recommended": "SHOULD exist — warn if missing",
@@ -68,6 +68,18 @@
       "templates": [],
       "scope_in": ["security policy", "RBAC matrix", "audit log standards", "vulnerability disclosure"],
       "scope_out": ["runbook", "training", "ADR", "release notes"]
+    },
+    {
+      "id": "api-doc-writer",
+      "file": "skills/api-doc-writer.md",
+      "iron_law": "Every API doc MUST have request example + response example + error codes for EVERY endpoint — docs without examples = useless docs.",
+      "triggers": ["API", "endpoint", "REST", "GraphQL", "gRPC", "webhook", "SDK", "OpenAPI", "Swagger"],
+      "templates": ["T13"],
+      "template_sections": {
+        "T13": {"required": ["Overview", "Endpoints", "Error Codes"], "recommended": ["Authentication", "Rate Limits", "Changelog"], "optional": ["SDKs", "Webhooks", "Migration Guide"]}
+      },
+      "scope_in": ["REST API reference", "GraphQL docs", "gRPC docs", "webhook docs", "SDK guides"],
+      "scope_out": ["runbook", "training", "security policy", "architecture decisions"]
     }
   ]
 }

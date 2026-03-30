@@ -112,6 +112,13 @@ def validate_skill(filepath):
         else:
             print(f"  {YELLOW}⚠️  Missing compatibility field (recommended){RESET}")
             warnings += 1
+
+        if "skill_version" in fm_keys:
+            print(f"  {GREEN}✅ Skill version field present{RESET}")
+            passes += 1
+        else:
+            print(f"  {YELLOW}⚠️  Missing skill_version field (recommended){RESET}")
+            warnings += 1
     else:
         print(f"  {RED}❌ YAML frontmatter: MISSING (required: ---\\nname:\\ndescription:\\n---){RESET}")
         fails += 1

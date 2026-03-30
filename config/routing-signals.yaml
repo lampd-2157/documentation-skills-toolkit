@@ -1,6 +1,6 @@
 # ============================================================
 # Documentation Skills Toolkit — Routing Signals
-# Version: 5.0.0
+# Version: 5.2.0
 # ============================================================
 # Dùng để tự động chọn skill + template dựa trên keywords trong
 # user request. AI agent đọc file này để routing thông minh.
@@ -95,6 +95,27 @@ skills:
     templates: {}
     confidence_base: 0.5
 
+  api-doc-writer:
+    keywords:
+      - API
+      - endpoint
+      - REST
+      - GraphQL
+      - gRPC
+      - webhook
+      - SDK
+      - OpenAPI
+      - Swagger
+      - request
+      - response
+      - HTTP method
+      - rate limit
+      - bearer token
+      - pagination
+    templates:
+      api-reference: T13
+    confidence_base: 0.5
+
   docs-engineer:
     keywords:
       - mkdocs
@@ -147,6 +168,15 @@ composition_rules:
       secondary_iron_law: project-doc-writer
       note: "Content từ security skill, structure ADR từ project-doc (T2/T9)"
     example: "ADR: Chọn HashiCorp Vault cho secret management"
+
+  - name: "API docs with security"
+    signals: ["api-doc-writer", "infra-security-doc"]
+    when: "API docs cần auth/security sections chi tiết"
+    result:
+      primary: api-doc-writer
+      secondary_iron_law: infra-security-doc
+      note: "Structure từ api-doc (T13), security depth từ infra-security"
+    example: "API reference cho internal service có OAuth2 + RBAC"
 
   - name: "Docs setup + any content"
     signals: ["docs-engineer"]
