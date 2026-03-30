@@ -1,4 +1,9 @@
 <!-- Template T10: Lightweight ADR — Copy this file and customize -->
+<!-- sections:
+  required: [Problem, Decision]
+  recommended: [Reason, Impact]
+  optional: [Alternatives, References]
+-->
 <!-- Best for: quick decisions, experiments, POC, small scope changes -->
 
 # ADR: [Decision Title]

@@ -1,4 +1,9 @@
 <!-- Template T1: Runbook — Copy this file and customize -->
+<!-- sections:
+  required: [Overview, Health Checks, Troubleshooting]
+  recommended: [Architecture, Start/Stop/Restart, Escalation]
+  optional: [Backup & Restore, Monitoring, Security Notes, Rollback]
+-->
 # Runbook: [System/Service Name]
 
 > Last verified: YYYY-MM-DD | Owner: [Team]

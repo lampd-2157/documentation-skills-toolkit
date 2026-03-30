@@ -1,4 +1,9 @@
 <!-- Template T3: How-to Guide — Copy this file and customize -->
+<!-- sections:
+  required: [Prerequisites, Steps, Verify]
+  recommended: [Troubleshooting, Next Steps]
+  optional: [Rollback, Security Notes, FAQ]
+-->
 # How to [Action Verb + Object]
 
 !!! info "Document Metadata"

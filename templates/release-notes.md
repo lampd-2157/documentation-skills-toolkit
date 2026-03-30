@@ -1,4 +1,9 @@
 <!-- Template T8: Release Notes — Copy this file and customize -->
+<!-- sections:
+  required: [Highlights, New Features]
+  recommended: [Bug Fixes, Breaking Changes, Upgrade Instructions]
+  optional: [Known Issues, Performance Improvements, Deprecations, Contributors]
+-->
 # Release Notes — v[X.Y.Z]
 
 **Date:** YYYY-MM-DD | **Author:** [name]

@@ -63,11 +63,22 @@ make score      # Score doc quality
 make build      # Build demo site (strict)
 ```
 
+## Template Section Tiers
+
+Templates have 3 tiers (defined in each template's header comment + `skills/AGENT-CARDS.json`):
+
+- **Required** — MUST exist in output, reject if missing
+- **Recommended** — SHOULD exist, warn if missing
+- **Optional** — MAY include when relevant (e.g., Rollback, Security Notes, FAQ)
+
+> Đọc `skills/AGENT-CARDS.json` → `template_sections` để biết sections nào required/recommended/optional cho mỗi template.
+
 ## Validation Rules
 
 - Every new doc MUST be added to `mkdocs.yml` nav section to appear on site — update nav after creating the file
 - Every doc MUST pass `make lint` (0 errors)
 - Every doc MUST have YAML frontmatter with title + status
+- Every doc MUST include all `required` sections from template tier
 - Runbooks MUST have copy-paste commands + expected output
 - ADRs MUST have Context → Decision → Consequences
 - Training docs MUST have Prerequisites → Steps → Expected Result
@@ -96,4 +107,4 @@ make build      # Build demo site (strict)
 
 ---
 
-> **Version:** 4.2.0 | **Updated:** 2026-03-30
+> **Version:** 4.3.0 | **Updated:** 2026-03-30

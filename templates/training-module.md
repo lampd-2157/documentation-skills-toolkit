@@ -1,4 +1,9 @@
 <!-- Template T4: Training Module — Copy this file and customize -->
+<!-- sections:
+  required: [Lesson, Assessment]
+  recommended: [Concepts, Hands-on Lab, Knowledge Check]
+  optional: [Prerequisites, Resources, Instructor Notes]
+-->
 # Training: [Module Name]
 
 !!! info "Document Metadata"

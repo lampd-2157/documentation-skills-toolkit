@@ -1,4 +1,9 @@
 <!-- Template T6: Incident Postmortem — Copy this file and customize -->
+<!-- sections:
+  required: [Summary, Timeline, Root Cause, Action Items]
+  recommended: [What Went Wrong, What Went Right, Lessons Learned]
+  optional: [SLA Impact, Blameless Retro Principles, Communication Log, Cost Impact]
+-->
 # Postmortem: [Incident Title]
 
 !!! info "Document Metadata"

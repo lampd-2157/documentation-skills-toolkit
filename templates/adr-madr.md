@@ -1,4 +1,9 @@
 <!-- Template T9: MADR (Markdown Any Decision Records) — Copy this file and customize -->
+<!-- sections:
+  required: [Context and Problem Statement, Considered Options, Decision Outcome]
+  recommended: [Decision Drivers, Pros and Cons of the Options]
+  optional: [Confirmation, More Information, Related ADRs]
+-->
 <!-- Best for: complex decisions with multiple stakeholders, structured option evaluation -->
 <!-- Source: https://adr.github.io/madr/ -->
 

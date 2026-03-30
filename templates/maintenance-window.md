@@ -1,4 +1,9 @@
 <!-- Template T7: Maintenance Window — Copy this file and customize -->
+<!-- sections:
+  required: [Pre-checks, Procedure, Rollback, Post-checks]
+  recommended: [Communication Plan]
+  optional: [Risk Assessment, Monitoring Dashboard, Lessons Learned]
+-->
 # Maintenance: [Title]
 
 !!! info "Document Metadata"

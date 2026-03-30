@@ -6,6 +6,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [4.3.0] — 2026-03-30
+
+### Added
+
+- **Flexible template tiers** — Mỗi template (T1-T11) có 3 tiers: `required` / `recommended` / `optional`
+- **Section tier metadata** — HTML comment block trong mỗi template file định nghĩa tiers
+- **`AGENT-CARDS.json` `template_sections`** — AI agent biết sections nào required/optional cho mỗi template
+
+### Changed
+
+- **Templates (T1-T11)** — Thêm `<!-- sections: required/recommended/optional -->` metadata
+- **`skills/AGENT-CARDS.json`** — v4.3.0, thêm `template_tiers` + `template_sections` per skill
+- **Prompts (10 files)** — Thêm "Flexible Sections" rule
+- **`AGENTS.md`** — Thêm "Template Section Tiers" section + validation rule
+
+---
+
 ## [4.2.0] — 2026-03-30
 
 ### Added

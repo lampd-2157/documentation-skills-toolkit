@@ -1,4 +1,9 @@
 <!-- Template T2: ADR — Copy this file and customize -->
+<!-- sections:
+  required: [Context, Decision, Consequences]
+  recommended: [Alternatives Considered]
+  optional: [References, Related ADRs, Migration Plan]
+-->
 # ADR-[NNN]: [Decision Title]
 
 !!! info "Document Metadata"

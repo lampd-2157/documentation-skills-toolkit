@@ -1,4 +1,9 @@
 <!-- Template T11: Knowledge Check -->
+<!-- sections:
+  required: [Multiple Choice Questions, Assessment Summary]
+  recommended: [Scenario-based Questions]
+  optional: [Hands-on Verification, Resources, Retake Policy]
+-->
 
 # Knowledge Check: [Module/Topic Name]
 

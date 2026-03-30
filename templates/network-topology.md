@@ -1,4 +1,9 @@
 <!-- Template T5: Network Topology — Copy this file and customize -->
+<!-- sections:
+  required: [Topology Diagram, Server Inventory]
+  recommended: [VLAN Layout, Firewall Rules]
+  optional: [Certificate Register, DNS Records, VPN Config, Monitoring Endpoints]
+-->
 # Network Documentation: [Environment Name]
 
 !!! info "Document Metadata"

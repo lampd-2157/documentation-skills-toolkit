@@ -72,6 +72,11 @@ UI Standards:
 Security:
 - KHÔNG hardcode IP, password, token, internal URL — dùng placeholders: <INTERNAL_IP>, <PASSWORD>, <API_TOKEN>
 
+Flexible Sections:
+- Required sections: PHẢI có (xem template header comment)
+- Recommended sections: NÊN có nếu relevant
+- Optional sections: ĐƯỢC thêm nếu phù hợp context (ví dụ: Rollback, Security Notes, FAQ)
+
 Tự kiểm tra trước khi hoàn thành:
 - [ ] Ít nhất 3 câu multiple choice
 - [ ] Ít nhất 1 scenario-based question
