@@ -1,6 +1,9 @@
+<!-- markdownlint-disable MD046 -->
 # Case Study: Tạo "Ansible for Network" bằng v4.0.0 Workflow
 
-> Tài liệu này mô tả chi tiết quá trình AI agent tạo ra file [ansible-network-howto.md](../demo-site/docs/guides/how-to/ansible-network-howto.md) — từ chọn skill tới push code. Đọc để hiểu toolkit hoạt động thế nào trong thực tế.
+> Mô tả chi tiết quá trình AI agent tạo ra file
+> [ansible-network-howto.md](../demo-site/docs/guides/how-to/ansible-network-howto.md) —
+> từ chọn skill tới push code.
 
 ---
 
