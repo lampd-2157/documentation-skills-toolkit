@@ -100,5 +100,3 @@ Các patterns sau sẽ bị `security-scan` flag:
 | Slack webhook | `hooks\.slack\.com/services/` | Slack webhook URL |
 
 ---
-
-> **Version:** 4.1.0 | **Updated:** 2026-03-30

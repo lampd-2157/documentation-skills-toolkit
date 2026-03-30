@@ -222,5 +222,3 @@ Trước khi share bộ toolkit cho team:
 - [ ] Team đã demo/training 15 phút về cách dùng
 
 ---
-
-> **Version:** 4.0.0 | **Cập nhật:** 2026-03-28

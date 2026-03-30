@@ -103,5 +103,3 @@ pip install \
 - [squidfunk/mkdocs-material](https://squidfunk.github.io/mkdocs-material/) — Official Material theme docs
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

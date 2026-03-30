@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.0.1] — 2026-03-30
+
+### Fixed
+
+- **Version footers removed** — Xóa footer `> **Version:** X.X.X` khỏi tất cả docs/ và demo-site/ files; `README.md` + `CHANGELOG.md` là single source of truth cho version
+- **`ansible-network-howto.md`** — Updated for v5.0.0 workflow: Phase 0 Interview Context block,
+  Smart Routing build log, enhanced YAML frontmatter (skill/template/routing fields)
+- **`case-study-ansible-network.md`** — Rewritten for v5.0.0: Phase 0 Smart Routing analysis,
+  composition rule, interview Layer 1+2, section tiers decision, Step 6 Security Scan
+- **`docs/getting-started.md`** — Added Section 5b: Smart Routing — confidence scoring, composition rules table, Phase 0 interview, template section tiers
+- **`docs/skill-composition-recipes.md`** — Added routing reference note pointing to `config/routing-signals.yaml`
+- **`README.md`** — Case study row updated to v5.0.0 workflow (Smart Routing + Interview)
+
+---
+
 ## [5.0.0] — 2026-03-30
 
 ### Added

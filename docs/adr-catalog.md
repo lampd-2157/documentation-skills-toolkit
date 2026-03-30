@@ -131,5 +131,3 @@ Mỗi project nên có `docs/development/adr/README.md` làm registry:
 - Viết ADR quá dài (> 2 pages) — split thành Tech Spec + ADR
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30
