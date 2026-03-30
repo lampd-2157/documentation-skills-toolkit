@@ -1,4 +1,4 @@
-.PHONY: serve lint link-check validate score build setup all check
+.PHONY: serve lint link-check validate score build setup all check route wizard health-dashboard
 
 ## Development
 
@@ -94,6 +94,17 @@ new-security-policy:  ## Create new security policy: make new-security-policy TI
 
 new-quick-reference:  ## Create new quick reference: make new-quick-reference TITLE="Tool"
 	./scripts/docs-toolkit new quick-reference "$(TITLE)"
+
+## Intelligence
+
+route:  ## Analyze routing: make route DESC="viết API docs cho payment"
+	./scripts/docs-toolkit route "$(DESC)"
+
+wizard:  ## Interactive doc creation wizard
+	./scripts/docs-toolkit wizard
+
+health-dashboard:  ## Generate doc health dashboard
+	python3 scripts/generate_health_dashboard.py
 
 ## Combined
 

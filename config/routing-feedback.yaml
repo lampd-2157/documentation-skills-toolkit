@@ -1,0 +1,52 @@
+# ============================================================
+# Documentation Skills Toolkit — Routing Feedback
+# Version: 5.3.0
+# ============================================================
+# Tracks routing decisions and user corrections to improve
+# keyword confidence over time.
+#
+# How it works:
+#   1. After routing, log the decision (skill chosen, confidence)
+#   2. If user corrects the choice, log correction
+#   3. Over time, boost/penalize keywords based on feedback
+#   4. AI agent reads this file to adjust routing behavior
+# ============================================================
+
+# Feedback log format (append new entries at bottom)
+# Each entry records a routing decision and whether it was correct
+feedback_log: []
+  # - date: "2026-03-30"
+  #   input: "Tạo API reference cho payment service"
+  #   routed_to: "api-doc-writer"
+  #   confidence: 0.80
+  #   correct: true
+  #   user_correction: null
+  #
+  # - date: "2026-03-30"
+  #   input: "Viết hướng dẫn deploy Docker trên server"
+  #   routed_to: "ops-runbook-writer"
+  #   confidence: 0.60
+  #   correct: false
+  #   user_correction: "project-doc-writer"
+  #   reason: "User wanted a how-to guide, not a runbook"
+
+# Keyword adjustments derived from feedback
+# Positive adjustments boost confidence, negative reduce it
+# These are applied ON TOP of routing-signals.yaml base values
+keyword_adjustments: {}
+  # "deploy":
+  #   boost: -0.05
+  #   reason: "Often routed to ops but user wanted how-to"
+  # "Docker":
+  #   boost: +0.05
+  #   for_skill: "training-doc-writer"
+  #   reason: "Docker requests are often training-related"
+
+# Configuration
+config:
+  # Minimum feedback entries before adjustments take effect
+  min_samples: 5
+  # Maximum boost/penalty per keyword
+  max_adjustment: 0.2
+  # Auto-expire feedback older than N days
+  feedback_ttl_days: 90

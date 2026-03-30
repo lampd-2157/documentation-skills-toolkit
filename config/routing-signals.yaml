@@ -1,6 +1,6 @@
 # ============================================================
 # Documentation Skills Toolkit — Routing Signals
-# Version: 5.2.0
+# Version: 5.3.0
 # ============================================================
 # Dùng để tự động chọn skill + template dựa trên keywords trong
 # user request. AI agent đọc file này để routing thông minh.
