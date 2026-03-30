@@ -1,5 +1,5 @@
 {
-  "version": "5.2.0",
+  "version": "5.4.0",
   "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 6 skill files (~20K tokens). See config/routing-signals.yaml for smart routing.",
   "template_tiers": {
     "required": "MUST exist in output — reject if missing",
@@ -49,13 +49,14 @@
       "file": "skills/project-doc-writer.md",
       "iron_law": "Every project doc MUST have clear structure with Context \u2192 Decision/Steps \u2192 Consequences/Result — ambiguous docs = wasted decisions.",
       "triggers": ["ADR", "tech spec", "how-to", "guide", "release notes", "decision", "quick reference"],
-      "templates": ["T2", "T3", "T8", "T9", "T10"],
+      "templates": ["T2", "T3", "T8", "T9", "T10", "T12"],
       "template_sections": {
         "T2": {"required": ["Context", "Decision", "Consequences"], "recommended": ["Alternatives Considered"], "optional": ["References", "Related ADRs", "Migration Plan"]},
         "T3": {"required": ["Prerequisites", "Steps", "Verify"], "recommended": ["Troubleshooting", "Next Steps"], "optional": ["Rollback", "Security Notes", "FAQ"]},
         "T8": {"required": ["Highlights", "New Features"], "recommended": ["Bug Fixes", "Breaking Changes", "Upgrade Instructions"], "optional": ["Known Issues", "Performance", "Deprecations"]},
         "T9": {"required": ["Context and Problem Statement", "Considered Options", "Decision Outcome"], "recommended": ["Decision Drivers", "Pros and Cons"], "optional": ["Confirmation", "More Information"]},
-        "T10": {"required": ["Problem", "Decision"], "recommended": ["Reason", "Impact"], "optional": ["Alternatives", "References"]}
+        "T10": {"required": ["Problem", "Decision"], "recommended": ["Reason", "Impact"], "optional": ["Alternatives", "References"]},
+        "T12": {"required": ["Context Diagram", "Component Diagram", "Data Flow"], "recommended": ["Technology Stack", "Deployment View"], "optional": ["Security Boundaries", "Performance Characteristics", "Evolution Roadmap"]}
       },
       "scope_in": ["ADR", "tech spec", "how-to guide", "release notes", "quick reference"],
       "scope_out": ["runbook", "training", "security policy", "ops manual"]
@@ -65,7 +66,10 @@
       "file": "skills/infra-security-doc.md",
       "iron_law": "Every security doc MUST have Scope \u2192 Policy \u2192 Enforcement \u2192 Audit — policy without enforcement = decoration.",
       "triggers": ["security", "RBAC", "access control", "audit", "vulnerability", "compliance", "policy"],
-      "templates": [],
+      "templates": ["T14"],
+      "template_sections": {
+        "T14": {"required": ["Purpose", "Scope", "Policy Statements", "Enforcement"], "recommended": ["Audit Schedule", "Related Documents"], "optional": ["Exceptions", "Compliance Mapping", "Revision History"]}
+      },
       "scope_in": ["security policy", "RBAC matrix", "audit log standards", "vulnerability disclosure"],
       "scope_out": ["runbook", "training", "ADR", "release notes"]
     },

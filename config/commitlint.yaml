@@ -1,0 +1,59 @@
+# Conventional Commits — Configuration
+# Reference: https://www.conventionalcommits.org/
+#
+# Format: <type>(<scope>): <description>
+#
+# Dùng file này làm reference khi commit.
+# Tích hợp với CI qua commitlint hoặc git hooks.
+
+types:
+  - feat       # Tính năng mới (skill, template, prompt, script)
+  - fix        # Fix bug hoặc lỗi trong docs/scripts
+  - docs       # Thay đổi documentation content
+  - style      # Formatting, lint fixes (không thay đổi logic)
+  - refactor   # Restructure code/docs không thay đổi behavior
+  - test       # Thêm hoặc sửa test cases / evals
+  - chore      # Maintenance tasks (bump version, update deps)
+  - ci         # CI/CD workflow changes
+  - perf       # Performance improvements (build time, script speed)
+
+scopes:
+  - project     # Project-wide changes (README, CHANGELOG, AGENTS)
+  - skill       # Skill files (skills/)
+  - template    # Template files (templates/)
+  - prompt      # Prompt files (prompts/)
+  - docs        # Documentation files (docs/)
+  - demo-site   # Demo site (demo-site/)
+  - eval        # Evaluation test cases (evals/)
+  - routing     # Routing system (config/routing-*, route_analyzer)
+  - cli         # CLI tool (scripts/docs-toolkit)
+  - ci          # CI/CD pipelines (.github/)
+  - lint        # Linting configs and fixes
+  - security    # Security-related changes
+  - build       # Build system (Makefile, scripts/setup.sh)
+
+examples:
+  - "feat(skill): add api-doc-writer skill"
+  - "fix(template): fix broken mermaid syntax in T5"
+  - "docs(demo-site): add case study to demo-site nav"
+  - "chore(project): bump version to 5.4.0"
+  - "test(eval): add implicit trigger test for ops-runbook-writer"
+  - "ci: add health dashboard weekly workflow"
+  - "fix(lint): fix MD013 + disable MD046 in case-study"
+  - "refactor(routing): simplify confidence scoring logic"
+
+rules:
+  # Header
+  header_max_length: 72
+  header_pattern: "^(feat|fix|docs|style|refactor|test|chore|ci|perf)(\\(.+\\))?: .+"
+
+  # Body
+  body_max_line_length: 100
+  body_leading_blank: true
+
+  # Footer
+  footer_leading_blank: true
+
+  # Scope
+  scope_required: false
+  scope_case: kebab-case

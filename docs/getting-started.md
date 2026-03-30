@@ -289,9 +289,11 @@ Bạn cần viết gì?
 
 ---
 
-## 5b. Smart Routing (v5.0.0)
+## 5b. Smart Routing (v5.0.0+)
 
 Thay vì tự quyết định skill/template, bạn có thể để **AI tự routing** dựa trên keywords trong request.
+
+> **v5.3.0:** Routing nay có thêm **CLI mode** (`docs-toolkit route`) và **Wizard mode** (`docs-toolkit wizard`) — xem chi tiết tại [CHANGELOG](../CHANGELOG.md).
 
 ### Cách hoạt động
 

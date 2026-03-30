@@ -131,4 +131,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 4.2.0 | **Updated:** 2026-03-30
+> **Version:** 5.4.0 | **Updated:** 2026-03-30

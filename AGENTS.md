@@ -4,18 +4,18 @@
 
 ## Project Overview
 
-Bộ toolkit chuẩn hóa technical documentation. 5 skills, 11 templates (T1-T11), 13 prompt templates, CLI tool.
+Bộ toolkit chuẩn hóa technical documentation. 6 skills, 14 templates (T1-T14), 15 prompt templates, CLI tool.
 
 ## Project Structure
 
 ```text
-skills/        → 5 skill files (quy tắc viết doc) + AGENT-CARDS.json
-templates/     → 11 document templates (T1-T11)
-prompts/       → 13 prompt templates cho AI agent
+skills/        → 6 skill files (quy tắc viết doc) + AGENT-CARDS.json
+templates/     → 14 document templates (T1-T14)
+prompts/       → 15 prompt templates cho AI agent
 docs/          → Guides và references
-scripts/       → CLI tools (docs-toolkit, validate, score)
+scripts/       → CLI tools (docs-toolkit, validate, score, route, wizard)
 demo-site/     → MkDocs demo site
-config/        → Lint, spell, pre-commit configs
+config/        → Lint, spell, pre-commit, routing configs
 ```
 
 ## How to Create Documentation
@@ -48,7 +48,9 @@ config/        → Lint, spell, pre-commit configs
 | Plan maintenance window | ops-runbook-writer | T7 |
 | Write release notes | project-doc-writer | T8 |
 | Create knowledge check | training-doc-writer | T11 |
-| Write security policy | infra-security-doc | — |
+| Create architecture diagram | project-doc-writer | T12 |
+| Write API reference | api-doc-writer | T13 |
+| Write security policy | infra-security-doc | T14 |
 | Setup MkDocs site | docs-engineer | — |
 
 > **Smart Routing:** Đọc `config/routing-signals.yaml` để tự động chọn skill dựa trên keywords.
@@ -57,11 +59,15 @@ config/        → Lint, spell, pre-commit configs
 ## Commands
 
 ```bash
-make serve      # Preview demo site (localhost:8000)
-make lint       # Lint all markdown
-make validate   # Validate skill files
-make score      # Score doc quality
-make build      # Build demo site (strict)
+make serve            # Preview demo site (localhost:8000)
+make lint             # Lint all markdown
+make validate         # Validate skill files
+make score            # Score doc quality
+make build            # Build demo site (strict)
+make route            # Interactive routing CLI — AI chọn skill dựa trên request (v5.3.0)
+make wizard           # Wizard mode — guided doc creation from start to finish (v5.3.0)
+make health-dashboard # Doc health dashboard — freshness, quality, coverage (v5.3.0)
+make security-scan    # Scan for hardcoded secrets
 ```
 
 ## Template Section Tiers
@@ -108,4 +114,4 @@ Templates have 3 tiers (defined in each template's header comment + `skills/AGEN
 
 ---
 
-> **Version:** 5.0.0 | **Updated:** 2026-03-30
+> **Version:** 5.4.0 | **Updated:** 2026-03-30
