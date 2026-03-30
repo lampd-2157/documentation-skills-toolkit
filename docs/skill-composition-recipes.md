@@ -1,6 +1,10 @@
 # Skill Composition Recipes
 
 > Hướng dẫn kết hợp skills khi thực hiện task thực tế. Real-world tasks thường cần **nhiều hơn 1 skill**.
+>
+> **v5.0.0 — Smart Routing:** Các recipes đã được tự động hóa trong
+> [`config/routing-signals.yaml`](../config/routing-signals.yaml) — AI agent tự chọn skill + composition rule.
+> File này hữu ích cho manual path hoặc muốn hiểu reasoning đằng sau.
 
 ---
 
@@ -189,5 +193,3 @@
 | Full docs site | All 5 skills | All templates |
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

@@ -75,5 +75,3 @@ User cần documentation
 - Bỏ qua "Reference" — đây là doc type được dùng nhiều nhất khi on-call
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

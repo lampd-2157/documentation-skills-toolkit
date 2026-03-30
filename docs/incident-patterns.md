@@ -217,5 +217,3 @@ Incident xảy ra
 > **Mục tiêu cuối cùng:** Mỗi postmortem phải classify được failure category → giúp team tracking trends và đầu tư prevention đúng chỗ.
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

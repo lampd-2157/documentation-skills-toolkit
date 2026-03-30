@@ -277,5 +277,3 @@ Manual:
 > **Danh sách đầy đủ:** `./scripts/docs-toolkit list`
 
 ---
-
-> **Version:** 4.2.0 | **Updated:** 2026-03-30

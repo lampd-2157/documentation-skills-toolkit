@@ -289,6 +289,69 @@ Bạn cần viết gì?
 
 ---
 
+## 5b. Smart Routing (v5.0.0)
+
+Thay vì tự quyết định skill/template, bạn có thể để **AI tự routing** dựa trên keywords trong request.
+
+### Cách hoạt động
+
+```text
+User request → routing-signals.yaml → keyword match → confidence score → chọn skill
+```
+
+**Confidence scoring:**
+
+| Score | Ý nghĩa | Hành động |
+|-------|---------|-----------|
+| >= 0.8 | High confidence | AI tự chọn, không hỏi |
+| 0.5 – 0.8 | Medium confidence | AI gợi ý + hỏi confirm |
+| < 0.5 | Low confidence | Dùng `prompts/select-skill.md` |
+
+**Keyword boost:** Mỗi keyword match +0.1. Ví dụ: "runbook" + "incident" + "server" = 0.5 + 0.3 = **0.8** → auto-select `ops-runbook-writer`.
+
+### Composition Rules — Kết hợp nhiều skills
+
+Khi request match nhiều skills, AI áp dụng composition rule thay vì chọn 1 skill:
+
+| Rule | Khi nào | Primary | Secondary Iron Law |
+|------|--------|---------|-------------------|
+| How-to with commands | How-to guide có network/server commands | project-doc-writer (T3) | ops-runbook-writer |
+| Runbook with security | Runbook cho hệ thống có security requirements | ops-runbook-writer (T1) | infra-security-doc |
+| Training with hands-on ops | Training có lab với real infrastructure | training-doc-writer (T4) | ops-runbook-writer |
+| Security policy + ADR | Security decision cần document dạng ADR | infra-security-doc | project-doc-writer |
+
+> File config: [config/routing-signals.yaml](../config/routing-signals.yaml) — đọc để hiểu logic chi tiết.
+
+### Phase 0 Interview (v5.0.0)
+
+Trước khi tạo doc, AI hỏi 3 câu **bắt buộc** (Layer 1 Universal):
+
+1. **AUDIENCE** — Ai đọc doc này? (role, kinh nghiệm, context)
+2. **SCOPE** — Doc cover gì? Không cover gì? (tránh over-engineer)
+3. **ENVIRONMENT** — OS, versions, tools cụ thể? (để examples chính xác)
+
+> File prompt: [prompts/interview-before-create.md](../prompts/interview-before-create.md)
+
+**Ví dụ:** "Viết runbook cho Redis cluster" → AI hỏi:
+
+- Audience: SRE mới hay experienced? (ảnh hưởng step detail level)
+- Scope: Standalone hay cluster? Có Sentinel không? (ảnh hưởng commands)
+- Environment: Ubuntu 22.04? Redis 7.x? (ảnh hưởng package names và paths)
+
+### Template Section Tiers (v4.3.0)
+
+Mỗi template có 3 tiers — không cần include tất cả sections:
+
+| Tier | Ý nghĩa | Bỏ qua? |
+|------|---------|---------|
+| **required** | PHẢI có — thiếu = doc incomplete | Không |
+| **recommended** | NÊN có — cảnh báo nếu thiếu | Được nếu N/A |
+| **optional** | CÓ THỂ thêm khi relevant | Thoải mái |
+
+Ví dụ T3 How-to: `Prerequisites` + `Steps` + `Verify` là required. `Troubleshooting` là recommended. `FAQ`, `Rollback` là optional.
+
+---
+
 ## 6. Workflow hàng ngày
 
 ### Viết doc mới
@@ -434,5 +497,3 @@ Cần viết doc?
 | `scripts/docs-toolkit` | Dùng khi cần **tạo doc mới nhanh** |
 
 ---
-
-> **Version:** 4.2.0 | **Updated:** 2026-03-30

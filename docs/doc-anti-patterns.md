@@ -278,5 +278,3 @@ docs/
 | 10 | Kitchen Sink | Doc > 500 lines | Split by purpose |
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

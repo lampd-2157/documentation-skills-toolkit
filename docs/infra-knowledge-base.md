@@ -148,5 +148,3 @@ echo "# Infrastructure Documentation" > docs/index.md
 ```
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30

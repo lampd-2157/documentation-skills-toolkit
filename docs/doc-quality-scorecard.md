@@ -100,5 +100,3 @@ Mỗi tiêu chí cho điểm **0 / 0.5 / 1**. Tổng điểm tối đa: **10**.
 - **Aim for 8+** — Score 7 là minimum acceptable cho production docs.
 
 ---
-
-> **Version:** 4.0.0 | **Updated:** 2026-03-30
