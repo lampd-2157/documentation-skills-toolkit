@@ -130,3 +130,5 @@ nav:
     - How-to:
       - Google Workspace New User (T3): guides/how-to/google-workspace-new-user.md
       - Ansible Network Automation (T3): guides/how-to/ansible-network-howto.md
+    - Case Study:
+      - "Ansible Network — v5.3.0 Workflow": guides/case-study-ansible-network.md
