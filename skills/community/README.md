@@ -45,6 +45,7 @@ All checks must pass before submitting.
 ### 5. Submit
 
 Create a PR with:
+
 - Skill file in `skills/community/`
 - Test cases in `evals/community-my-skill/test-cases.md`
 - (Optional) Template in `templates/` if your skill needs one

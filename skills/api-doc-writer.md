@@ -111,7 +111,7 @@ Changelog
 
 Mỗi endpoint PHẢI theo format:
 
-```text
+````text
 ### `METHOD /path/:param`
 
 [1-line description]
@@ -128,7 +128,7 @@ curl example
 ```json
 {response}
 ```
-```
+````
 
 ### §1.3 GraphQL Schema Docs
 

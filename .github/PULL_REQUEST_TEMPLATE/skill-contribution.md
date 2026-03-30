@@ -1,12 +1,12 @@
-## New Skill Contribution
+# New Skill Contribution
 
-### Skill Details
+## Skill Details
 
 - **Name:** `skills/community/<name>.md`
 - **Author:** @
 - **Version:** 1.0.0
 
-### Checklist
+## Checklist
 
 - [ ] Skill file follows 6-section structure
 - [ ] YAML frontmatter has `name`, `description`, `compatibility`, `skill_version`
@@ -17,7 +17,7 @@
 - [ ] Test cases in `evals/community-<name>/test-cases.md`
 - [ ] Token count ≤ 8K
 
-### Optional
+## Optional
 
 - [ ] Template file in `templates/`
 - [ ] Prompt file in `prompts/create-<type>.md`

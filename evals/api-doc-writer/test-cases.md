@@ -6,6 +6,7 @@
 
 **Expected trigger:** `api-doc-writer`
 **Expected output:**
+
 - [ ] Has `### GET /users` style endpoint headers
 - [ ] Each endpoint has curl request example
 - [ ] Each endpoint has JSON response example
@@ -19,6 +20,7 @@
 
 **Expected trigger:** `api-doc-writer`
 **Expected output:**
+
 - [ ] Schema overview with types
 - [ ] Query examples with variables
 - [ ] Mutation examples with input + response
@@ -31,6 +33,7 @@
 
 **Expected trigger:** `api-doc-writer`
 **Expected output:**
+
 - [ ] Event types table (event + trigger + payload)
 - [ ] Payload JSON example
 - [ ] Signature verification code example
@@ -43,6 +46,7 @@
 
 **Expected trigger:** `api-doc-writer` + `infra-security-doc` (composition rule)
 **Expected output:**
+
 - [ ] Standard API reference structure (T13)
 - [ ] Detailed auth section (OAuth2 flow)
 - [ ] RBAC permissions per endpoint
