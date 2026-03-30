@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.1.0] — 2026-03-30
+
+### Added
+
+- **Doc Freshness Alerts** — `score_docs.py` hiển thị dedicated warning section cho docs >90 ngày chưa update
+- **CI Doc Scoring PR Comment** — GitHub Actions tự post doc quality score table vào PR comment (update, không spam)
+- **Markdown output format** — `score_docs.py --markdown` cho PR-friendly output, `--ci` cho GitHub Actions annotations
+- **MkDocs Tag-based Navigation** — Tags plugin enabled, tags hiển thị trên mỗi page, tags index page
+- **ADR Auto-linking** — `docs-toolkit adr link <adr1> <adr2>` tự update "Related ADRs" section trong cả 2 files
+- **VS Code Snippets T9-T11** — Thêm snippets cho ADR MADR (T9), ADR Lightweight (T10), Knowledge Check (T11), Phase 0 Interview
+
+### Fixed
+
+- **`.internal/push.md`** — Fix stale `references/` paths (removed in v2.2.1), add missing scopes (`prompts/`, `config/`, `examples/`, `.github/`, `.internal/`)
+- **`docs-toolkit`** — Updated to v5.1.0, added `adr link` subcommand with usage help
+
+---
+
 ## [5.0.1] — 2026-03-30
 
 ### Fixed

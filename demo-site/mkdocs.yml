@@ -57,6 +57,7 @@ theme:
 plugins:
   - search:
       lang: [vi, en]
+  - tags
 
 markdown_extensions:
   - admonition
@@ -107,6 +108,7 @@ copyright: "Copyright &copy; 2026 DulapReal — Documentation Skills Toolkit"
 
 nav:
   - Home: index.md
+  - Tags: tags.md
   - Getting Started:
     - Quick Start: getting-started/quick-start.md
   - Operations:

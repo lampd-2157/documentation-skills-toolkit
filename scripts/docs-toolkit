@@ -3,12 +3,14 @@
 # Documentation Skills Toolkit — CLI Tool
 # Author: DulapReal (https://github.com/lampd-2157)
 # License: MIT
-# Version: 4.0.0
+# Version: 5.1.0
 # ============================================================
 # Usage:
 #   ./scripts/docs-toolkit new <type> <title>
 #   ./scripts/docs-toolkit list
 #   ./scripts/docs-toolkit validate <file>
+#   ./scripts/docs-toolkit adr list
+#   ./scripts/docs-toolkit adr link <adr1> <adr2>
 # ============================================================
 
 set -e
@@ -31,6 +33,8 @@ usage() {
   echo "  $(basename "$0") new <type> <title>    Create a new document from template"
   echo "  $(basename "$0") list                  List available document types"
   echo "  $(basename "$0") validate <file>       Validate a skill or markdown file"
+  echo "  $(basename "$0") adr list              List all ADRs"
+  echo "  $(basename "$0") adr link <a1> <a2>    Link two ADRs (bidirectional)"
   echo ""
   echo "Types: runbook, adr, adr-madr, howto, training, knowledge-check, network,"
   echo "       postmortem, maintenance, release-notes, security-policy, quick-reference"
@@ -966,12 +970,82 @@ cmd_adr() {
       echo ""
       echo -e "  Total: $(ls "$adr_dir"/[0-9]*.md 2>/dev/null | wc -l) ADR(s)"
       ;;
+    link)
+      local adr1="$2"
+      local adr2="$3"
+      if [ -z "$adr1" ] || [ -z "$adr2" ]; then
+        echo -e "${RED}Error: specify two ADR identifiers${NC}"
+        echo "Usage: $(basename "$0") adr link <adr1> <adr2>"
+        echo "Example: $(basename "$0") adr link 0001 0002"
+        exit 1
+      fi
+
+      # Find ADR files by number or filename
+      local file1="" file2=""
+      for f in "$adr_dir"/*"$adr1"*.md; do
+        [ -f "$f" ] && file1="$f" && break
+      done
+      for f in "$adr_dir"/*"$adr2"*.md; do
+        [ -f "$f" ] && file2="$f" && break
+      done
+
+      if [ -z "$file1" ]; then
+        echo -e "${RED}ADR not found: $adr1${NC}"
+        exit 1
+      fi
+      if [ -z "$file2" ]; then
+        echo -e "${RED}ADR not found: $adr2${NC}"
+        exit 1
+      fi
+
+      local title1 title2
+      title1=$(grep -m1 "^# " "$file1" | sed 's/^# //')
+      title2=$(grep -m1 "^# " "$file2" | sed 's/^# //')
+
+      local rel_path1 rel_path2
+      rel_path1=$(basename "$file1")
+      rel_path2=$(basename "$file2")
+
+      # Add link to file1 → file2
+      _adr_add_related "$file1" "$rel_path2" "$title2"
+      # Add link to file2 → file1
+      _adr_add_related "$file2" "$rel_path1" "$title1"
+
+      echo -e "${GREEN}Linked:${NC}"
+      echo "  $file1 ↔ $file2"
+      ;;
     *)
       echo -e "${RED}Unknown adr subcommand: $subcmd${NC}"
-      echo "Usage: $(basename "$0") adr list"
+      echo "Usage:"
+      echo "  $(basename "$0") adr list              List all ADRs"
+      echo "  $(basename "$0") adr link <a1> <a2>    Link two ADRs"
       exit 1
       ;;
   esac
+}
+
+# Helper: add a Related ADR entry to a file
+_adr_add_related() {
+  local file="$1"
+  local link_path="$2"
+  local link_title="$3"
+  local link_entry="- [$link_title]($link_path)"
+
+  # Check if already linked
+  if grep -qF "$link_path" "$file" 2>/dev/null; then
+    echo -e "  ${YELLOW}Already linked in $(basename "$file")${NC}"
+    return
+  fi
+
+  # Check if "Related ADRs" section exists
+  if grep -q "^## Related ADRs" "$file"; then
+    # Append to existing section (before next ## or end of file)
+    sed -i "/^## Related ADRs/a\\$link_entry" "$file"
+  else
+    # Add new section at end
+    printf "\n## Related ADRs\n\n%s\n" "$link_entry" >> "$file"
+  fi
+  echo -e "  ${GREEN}Added link in $(basename "$file") → $link_title${NC}"
 }
 
 # ── Main ─────────────────────────────────────────────────
@@ -983,7 +1057,7 @@ case "${1:-}" in
     cmd_list
     ;;
   adr)
-    cmd_adr "$2"
+    cmd_adr "$2" "$3" "$4"
     ;;
   validate)
     cmd_validate "$2"
