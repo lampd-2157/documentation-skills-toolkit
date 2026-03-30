@@ -7,7 +7,7 @@ updated: 2026-03-30
 status: approved
 tags: [network, ansible, automation, cisco-ios, how-to]
 skill: ["project-doc-writer", "ops-runbook-writer"]
-template: "T3"
+doc_template: "T3"
 routing: "composition-rule: How-to with commands"
 ---
 
@@ -29,7 +29,7 @@ routing: "composition-rule: How-to with commands"
     **Audience:** Network Engineer / Junior SysAdmin — biết Linux cơ bản, chưa dùng Ansible trước đây.
     **Scope:** Cài đặt Ansible, cấu hình inventory, viết playbook để backup config và deploy VLAN. Không cover initial network topology setup.
     **Environment:** Linux (Ubuntu/CentOS), Ansible 2.16+, Cisco IOS/IOS-XE devices, SSH connectivity có sẵn.
-    **Special notes:** Credentials phải qua Ansible Vault — xem [docs/security-placeholders.md](../../../docs/security-placeholders.md) cho quy chuẩn placeholder.
+    **Special notes:** Credentials phải qua Ansible Vault — xem `docs/security-placeholders.md` cho quy chuẩn placeholder.
 
 ---
 
@@ -47,7 +47,7 @@ Trước khi bắt đầu, đảm bảo có đủ:
     Luôn test playbook trên môi trường lab/staging trước production. Một playbook sai có thể disconnect toàn bộ thiết bị mạng.
 
 !!! danger "Không hardcode credentials"
-    Dùng Ansible Vault cho mọi password và sensitive data. Xem Step 3.2. Tham khảo [docs/security-placeholders.md](../../../docs/security-placeholders.md) cho quy chuẩn placeholder khi viết docs.
+    Dùng Ansible Vault cho mọi password và sensitive data. Xem Step 3.2. Tham khảo `docs/security-placeholders.md` cho quy chuẩn placeholder khi viết docs.
 
 ---
 
