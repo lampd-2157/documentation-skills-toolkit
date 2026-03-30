@@ -7,6 +7,7 @@ description: "Quản lý nền tảng MkDocs và tiêu chuẩn Markdown (.md): s
   gọi đích danh là 'docs engineer'. Khi có từ khóa: MkDocs, markdown, lint, docs
   setup, documentation platform, tạo site tài liệu → trigger skill này."
 compatibility: "MkDocs Material >= 9.0"
+skill_version: "1.0.0"
 ---
 
 # Skill: Docs Engineer

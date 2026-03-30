@@ -8,6 +8,7 @@ description: "Viết tài liệu phát triển dự án (.md): ADR (Architecture
   how-to, hướng dẫn sử dụng, quick reference, cheat sheet, PRD, design doc,
   API contract → trigger skill này."
 compatibility: "MkDocs Material >= 9.0"
+skill_version: "1.0.0"
 ---
 
 # Skill: Project Doc Writer

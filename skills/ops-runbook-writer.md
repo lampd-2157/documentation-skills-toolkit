@@ -8,6 +8,7 @@ description: "Viết tài liệu vận hành hệ thống (.md): runbook, SOP, i
   incident, outage, ops, infra, server, network, SOP, playbook, postmortem,
   disaster recovery → trigger skill này."
 compatibility: "MkDocs Material >= 9.0"
+skill_version: "1.0.0"
 ---
 
 # Skill: Ops Runbook Writer

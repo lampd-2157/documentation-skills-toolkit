@@ -176,6 +176,35 @@
           "expected_output": "Pre-deploy security checklist: Auth, Network, Data, Monitoring, Dependency sections"
         }
       ]
+    },
+    {
+      "skill_name": "api-doc-writer",
+      "evals": [
+        {
+          "id": 1,
+          "prompt": "Tạo API reference cho User Management API — CRUD endpoints, Bearer auth, JSON format",
+          "expected_trigger": "api-doc-writer",
+          "expected_output": "API reference: endpoint headers, curl request examples, JSON response examples, error codes table, authentication section"
+        },
+        {
+          "id": 2,
+          "prompt": "Document GraphQL API cho e-commerce: queries, mutations, subscriptions",
+          "expected_trigger": "api-doc-writer",
+          "expected_output": "GraphQL docs: schema overview, query examples with variables, mutation examples, error handling, auth method"
+        },
+        {
+          "id": 3,
+          "prompt": "Viết webhook docs cho payment system — event types, payload format, retry policy",
+          "expected_trigger": "api-doc-writer",
+          "expected_output": "Webhook docs: event types table, payload JSON example, signature verification, retry policy"
+        },
+        {
+          "id": 4,
+          "prompt": "API reference cho internal microservice có OAuth2 + RBAC permissions",
+          "expected_trigger": "api-doc-writer",
+          "expected_output": "API reference + security composition: T13 structure, OAuth2 auth flow, RBAC permissions per endpoint"
+        }
+      ]
     }
   ]
 }

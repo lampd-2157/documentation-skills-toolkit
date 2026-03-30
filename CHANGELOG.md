@@ -6,6 +6,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.2.0] — 2026-03-30
+
+### Added
+
+- **T12: Architecture Diagram template** — `templates/architecture-diagram.md`: Context diagram, Component diagram, Data flow, Technology stack, Deployment view, Security boundaries (all Mermaid-ready)
+- **T13: API Reference template** — `templates/api-reference.md`: Endpoints with request/response examples, error codes, authentication, rate limits, changelog
+- **`api-doc-writer` skill** — New skill (6th): REST API, GraphQL, gRPC, webhook, SDK docs. Iron Law: every endpoint MUST have request + response + error codes
+- **`prompts/create-api-reference.md`** — Prompt template for AI agents to generate API docs
+- **Skill Versioning** — All skills now have `skill_version` field in YAML frontmatter, validated by `validate_skill.py`
+- **Skill Marketplace** — `skills/community/` directory with README, contribution guide, and PR template for custom skill submissions
+- **Routing: api-doc-writer signals** — `config/routing-signals.yaml` updated with API keywords + "API docs with security" composition rule
+- **Evals: api-doc-writer** — 4 test cases (REST API, GraphQL, webhook, API+security composition)
+
+### Changed
+
+- **`skills/AGENT-CARDS.json`** — v5.2.0: 6 skills (added api-doc-writer with T13 template sections)
+- **Templates count** — 11 → 13 (T12 Architecture Diagram, T13 API Reference)
+- **Skills count** — 5 → 6 (added api-doc-writer)
+
+---
+
 ## [5.1.0] — 2026-03-30
 
 ### Added

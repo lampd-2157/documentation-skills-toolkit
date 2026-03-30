@@ -8,6 +8,7 @@ description: "Viết tài liệu bảo mật hạ tầng (.md): security policy,
   bảo mật, RBAC, access control, audit, vulnerability, compliance, hardening,
   firewall policy, secret management, encryption → trigger skill này."
 compatibility: "MkDocs Material >= 9.0"
+skill_version: "1.0.0"
 ---
 
 # Skill: Infra Security Doc
