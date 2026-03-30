@@ -157,6 +157,7 @@ documentation-skills-toolkit/
 | [Training Assessment](docs/training-assessment-guide.md) | Bloom's Taxonomy + assessment design | Thiết kế bài kiểm tra |
 | [Diátaxis Mapping](docs/diataxis-mapping.md) | Map toolkit → Diátaxis framework | Organize docs theo chuẩn quốc tế |
 | [Prompt Templates](prompts/) | Prompt chuẩn cho AI agent tạo docs | Dùng AI tạo docs |
+| [Case Study: Ansible](docs/case-study-ansible-network.md) | Ví dụ thực tế v4.0.0 workflow end-to-end | Xem toolkit hoạt động thế nào |
 | [AGENTS.md](AGENTS.md) | Agent context file (tool-agnostic) | AI agent đọc trước khi làm việc |
 | [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
 

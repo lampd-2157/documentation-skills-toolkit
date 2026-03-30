@@ -127,3 +127,4 @@ nav:
   - Guides:
     - How-to:
       - Google Workspace New User (T3): guides/how-to/google-workspace-new-user.md
+      - Ansible Network Automation (T3): guides/how-to/ansible-network-howto.md
