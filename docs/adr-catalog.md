@@ -132,4 +132,4 @@ Mỗi project nên có `docs/development/adr/README.md` làm registry:
 
 ---
 
-> **Version:** 1.0.0 | **Cập nhật:** 2026-03-27
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

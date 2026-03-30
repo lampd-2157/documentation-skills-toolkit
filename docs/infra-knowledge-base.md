@@ -149,4 +149,4 @@ echo "# Infrastructure Documentation" > docs/index.md
 
 ---
 
-> **Version:** 1.0.0 | **Cập nhật:** 2026-03-26
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

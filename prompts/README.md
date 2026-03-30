@@ -54,3 +54,7 @@ Chọn prompt  →  Copy prompt  →  Sửa phần <<<< >>>>  →  Paste vào AI
 - **Thêm context:** Đính kèm thông tin hệ thống, config, logs khi paste prompt — AI sẽ tạo doc chính xác hơn
 - **Review luôn:** AI tạo draft tốt nhưng bạn cần verify thông tin kỹ thuật (IP, commands, thông số)
 - **Iterate:** Nếu output chưa đúng ý, yêu cầu AI sửa cụ thể — không cần chạy lại từ đầu
+
+---
+
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

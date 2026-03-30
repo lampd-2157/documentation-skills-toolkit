@@ -134,3 +134,7 @@ Expert (Month 9+)
 ---
 
 > 📖 **Related:** [Knowledge Check Template](../templates/knowledge-check.md) | [Training Doc Writer Skill](../skills/training-doc-writer.md)
+
+---
+
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

@@ -82,3 +82,7 @@ make build      # Build demo site (strict)
 - DO NOT modify files in `skills/` unless explicitly asked
 - DO NOT skip lint validation
 - DO NOT generate content without reading the relevant skill file first
+
+---
+
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

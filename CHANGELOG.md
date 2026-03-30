@@ -17,9 +17,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ### Changed
 
-- **`docs/getting-started.md`** — Restructure: AI Agent (Recommended) + Manual workflow, thêm Prompts concept section
-- **`docs/walkthrough-first-doc.md`** — Thêm Bước 2.5 chọn cách tiếp cận, trỏ tới prompt templates
-- **`README.md`** — v4.0.0, thêm `prompts/` vào project structure + guides table, update workflow diagram
+- **Templates (T1-T11)** — UI/UX upgrade: admonitions cho metadata, task lists cho checklists, step-by-step code blocks cho procedures
+- **Demo site (7 files)** — Apply UI patterns, responsive tables CSS, sortable tables JS
+- **`demo-site/mkdocs.yml`** — Enable `pymdownx.tasklist`, `navigation.instant.prefetch`, sortable tables
+- **`demo-site/extra.css`** — Responsive tables, expanded width (68rem), cell borders, zebra striping
+- **`docs/getting-started.md`** — Prerequisites table, AI Agent (Recommended) + Manual workflow, Prompts concept section
+- **`docs/walkthrough-first-doc.md`** — Full 11-step workflow với pass/fail handling cho mỗi bước
+- **`docs/doc-quality-scorecard.md`** — Gộp #5 Visual & UI/UX (giữ thang 10)
+- **`scripts/score_docs.py`** — Thêm `visual_uiux` criterion (mermaid + admonitions + task lists)
+- **`scripts/docs-toolkit`** — Auto-register new docs in mkdocs.yml nav
+- **`Makefile`** — Lint/validate error guidance (AI Agent + Manual fix hints)
+- **`.gitignore`** — Thêm generated config files (setup.sh tạo ở root)
+- **`README.md`** — v4.0.0, workflow 3 bước dạng table, thêm `prompts/`
 - **`CONTRIBUTING.md`** — Update directory map, thêm `prompts/` contribution guide
 
 ---

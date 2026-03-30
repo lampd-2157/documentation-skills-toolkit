@@ -215,3 +215,7 @@ Incident xảy ra
 - Cross-reference với [danluu/post-mortems](https://github.com/danluu/post-mortems) để tìm incident tương tự từ các công ty khác
 
 > **Mục tiêu cuối cùng:** Mỗi postmortem phải classify được failure category → giúp team tracking trends và đầu tư prevention đúng chỗ.
+
+---
+
+> **Version:** 4.0.0 | **Updated:** 2026-03-30

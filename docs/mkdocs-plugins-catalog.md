@@ -26,7 +26,7 @@
 
 | Plugin                                                                 | Mô tả                   | Install                              |
 | ---------------------------------------------------------------------- | ----------------------- | ------------------------------------ |
-| [mkdocs-mermaid2](https://pypi.org/project/mkdocs-mermaid2-plugin/)       | Mermaid diagrams native | `pip install mkdocs-mermaid2-plugin` |
+| ~~mkdocs-mermaid2~~ | ~~Mermaid diagrams~~ | **Không cần cho Material >= 9.x** — Mermaid đã built-in qua `pymdownx.superfences` |
 | [mkdocs-drawio](https://pypi.org/project/mkdocs-drawio-exporter/)        | Embed draw.io diagrams  | `pip install mkdocs-drawio-exporter` |
 | [mkdocs-glightbox](https://pypi.org/project/mkdocs-glightbox/)           | Image lightbox zoom     | `pip install mkdocs-glightbox`       |
 
@@ -89,12 +89,11 @@ pip install \
   mkdocs-awesome-pages-plugin \
   mkdocs-git-revision-date-localized-plugin \
   mkdocs-minify-plugin \
-  mkdocs-mermaid2-plugin \
   mkdocs-glightbox \
   mkdocs-print-site-plugin
 ```
 
-**Tổng: 7 plugins** — đủ cho hầu hết documentation projects.
+**Tổng: 6 plugins** — đủ cho hầu hết documentation projects.
 
 ---
 
@@ -102,3 +101,7 @@ pip install \
 
 - [mkdocs/catalog](https://github.com/mkdocs/catalog) — 300+ MkDocs plugins & projects
 - [squidfunk/mkdocs-material](https://squidfunk.github.io/mkdocs-material/) — Official Material theme docs
+
+---
+
+> **Version:** 4.0.0 | **Updated:** 2026-03-30
