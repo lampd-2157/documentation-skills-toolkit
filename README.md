@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-5.2.0-blue)
+![Version](https://img.shields.io/badge/version-5.3.0-blue)
 ![Skills](https://img.shields.io/badge/skills-6-green)
 ![Templates](https://img.shields.io/badge/templates-13-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)

@@ -35,6 +35,8 @@ usage() {
   echo "  $(basename "$0") validate <file>       Validate a skill or markdown file"
   echo "  $(basename "$0") adr list              List all ADRs"
   echo "  $(basename "$0") adr link <a1> <a2>    Link two ADRs (bidirectional)"
+  echo "  $(basename "$0") route \"description\"   Analyze routing for a description"
+  echo "  $(basename "$0") wizard                 Interactive doc creation wizard"
   echo ""
   echo "Types: runbook, adr, adr-madr, howto, training, knowledge-check, network,"
   echo "       postmortem, maintenance, release-notes, security-policy, quick-reference"
@@ -1048,6 +1050,85 @@ _adr_add_related() {
   echo -e "  ${GREEN}Added link in $(basename "$file") → $link_title${NC}"
 }
 
+# ── Command: wizard ──────────────────────────────────────
+cmd_wizard() {
+  echo -e "${BLUE}${BOLD}"
+  echo "  ╔══════════════════════════════════════════════╗"
+  echo "  ║   Documentation Wizard — Phase 0 Interview   ║"
+  echo "  ╚══════════════════════════════════════════════╝"
+  echo -e "${NC}"
+
+  # Layer 1: Universal questions
+  echo -e "${BOLD}Layer 1: Universal Context${NC}"
+  echo ""
+
+  echo -n "  What do you want to create? (describe in 1-2 sentences): "
+  read -r wiz_description
+  if [ -z "$wiz_description" ]; then
+    echo -e "${RED}Description is required.${NC}"
+    exit 1
+  fi
+
+  echo -n "  Audience (who will read this? role + level): "
+  read -r wiz_audience
+
+  echo -n "  Scope (what does this cover? what is excluded?): "
+  read -r wiz_scope
+
+  echo -n "  Environment (OS, tools, versions, constraints): "
+  read -r wiz_environment
+
+  echo ""
+
+  # Run routing analysis
+  echo -e "${BLUE}Analyzing routing...${NC}"
+  echo ""
+  python3 "$SCRIPT_DIR/route_analyzer.py" "$wiz_description"
+
+  echo ""
+  echo -e "${BOLD}Layer 2: Document Setup${NC}"
+  echo ""
+
+  echo -n "  Title for the document: "
+  read -r wiz_title
+
+  if [ -z "$wiz_title" ]; then
+    echo -e "${RED}Title is required.${NC}"
+    exit 1
+  fi
+
+  echo -n "  Document type ($(basename "$0") list for options): "
+  read -r wiz_type
+
+  if [ -z "$wiz_type" ]; then
+    echo -e "${YELLOW}No type specified. Skipping doc creation.${NC}"
+    echo ""
+    echo -e "${BOLD}Interview Context (copy to your AI agent):${NC}"
+    echo ""
+    echo "  Audience: $wiz_audience"
+    echo "  Scope: $wiz_scope"
+    echo "  Environment: $wiz_environment"
+    echo "  Description: $wiz_description"
+    exit 0
+  fi
+
+  # Create the doc
+  echo ""
+  echo -e "${BLUE}Creating document...${NC}"
+  cmd_new "$wiz_type" "$wiz_title"
+
+  echo ""
+  echo -e "${BOLD}Phase 0 Interview Context (add to your doc):${NC}"
+  echo ""
+  echo -e "  ${GREEN}!!! note \"Interview Context — Phase 0\"${NC}"
+  echo "      Audience: $wiz_audience"
+  echo "      Scope: $wiz_scope"
+  echo "      Environment: $wiz_environment"
+  echo "      Description: $wiz_description"
+  echo ""
+  echo -e "${GREEN}Next: Open the file and fill in content using the prompt from prompts/create-${wiz_type}.md${NC}"
+}
+
 # ── Main ─────────────────────────────────────────────────
 case "${1:-}" in
   new)
@@ -1058,6 +1139,13 @@ case "${1:-}" in
     ;;
   adr)
     cmd_adr "$2" "$3" "$4"
+    ;;
+  route)
+    shift
+    python3 "$SCRIPT_DIR/route_analyzer.py" "$@"
+    ;;
+  wizard)
+    cmd_wizard
     ;;
   validate)
     cmd_validate "$2"

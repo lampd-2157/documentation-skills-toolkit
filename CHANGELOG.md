@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.3.0] — 2026-03-30
+
+### Added
+
+- **Interactive Routing CLI** — `docs-toolkit route "description"` analyzes keywords, shows confidence scores with visual bars, detects composition rules
+- **Wizard Mode** — `docs-toolkit wizard` interactive Phase 0 interview in terminal: asks context questions, runs routing, creates doc
+- **AI Feedback Loop** — `config/routing-feedback.yaml` structure for logging routing decisions and keyword adjustments over time
+- **Doc Health Dashboard** — `scripts/generate_health_dashboard.py` generates Markdown overview: quality scores, freshness alerts, skill coverage
+- **`scripts/route_analyzer.py`** — Standalone routing engine: parses `routing-signals.yaml`, matches keywords, calculates confidence, detects composition rules
+- **Makefile targets** — `make route`, `make wizard`, `make health-dashboard`
+
+---
+
 ## [5.2.0] — 2026-03-30
 
 ### Added
