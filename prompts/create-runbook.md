@@ -30,6 +30,18 @@ Sau đó mở file vừa tạo, đọc `skills/ops-runbook-writer.md` (phần Ir
 
 ---
 
+## Phase 0: Interview (Recommended)
+
+Trước khi tạo doc, hãy hỏi user để gather context. Copy câu hỏi từ [interview-before-create.md](interview-before-create.md) hoặc hỏi tối thiểu 3 câu:
+
+1. **Audience:** Ai đọc doc này? Role + level?
+2. **Scope:** Cover gì? Không cover gì?
+3. **Environment:** Production/lab? OS? Versions?
+
+> Có answers rồi? Tiếp tục với prompt bên dưới — thay thông tin vào đoạn `<<<< SỬA >>>>`.
+
+---
+
 ## Prompt
 
 ```text

@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [4.2.0] — 2026-03-30
+
+### Added
+
+- **Interview flow** — `prompts/interview-before-create.md`: 3-layer interview (Universal → Type-specific → Deep-dive) trước khi tạo doc
+- **Phase 0 Interview** trong tất cả 13 `create-*.md` prompts — AI hỏi Audience, Scope, Environment trước khi generate
+
+### Changed
+
+- **`AGENTS.md`** — Workflow thêm bước Interview, boundary "DO NOT generate without interviewing"
+- **`prompts/README.md`** — Workflow 6 bước (interview → chọn → copy → paste → review → validate)
+- **Prompt count** — 12 → 13 templates (thêm interview-before-create.md)
+
+---
+
 ## [4.1.0] — 2026-03-30
 
 ### Added

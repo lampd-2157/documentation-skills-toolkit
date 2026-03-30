@@ -278,4 +278,4 @@ Manual:
 
 ---
 
-> **Version:** 4.0.0 | **Updated:** 2026-03-30
+> **Version:** 4.2.0 | **Updated:** 2026-03-30

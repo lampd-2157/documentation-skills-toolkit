@@ -106,7 +106,7 @@ Trước khi tạo Pull Request:
 ```text
 skills/                    # 5 skills + template + AGENT-CARDS.json
 templates/                 # 11 document templates (T1-T11)
-prompts/                   # 12 prompt templates cho AI agent
+prompts/                   # 13 prompt templates cho AI agent
 docs/                      # Guides: getting-started, lifecycle, recipes...
 config/                    # Configs: markdownlint, cspell, pre-commit...
 examples/                  # Starter configs cho project khác
@@ -131,4 +131,4 @@ demo-site/                 # MkDocs example site
 
 ---
 
-> **Version:** 4.0.0 | **Cập nhật:** 2026-03-28
+> **Version:** 4.2.0 | **Updated:** 2026-03-30

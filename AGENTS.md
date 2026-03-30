@@ -4,14 +4,14 @@
 
 ## Project Overview
 
-Bộ toolkit chuẩn hóa technical documentation. 5 skills, 11 templates (T1-T11), 12 prompt templates, CLI tool.
+Bộ toolkit chuẩn hóa technical documentation. 5 skills, 11 templates (T1-T11), 13 prompt templates, CLI tool.
 
 ## Project Structure
 
 ```text
 skills/        → 5 skill files (quy tắc viết doc) + AGENT-CARDS.json
 templates/     → 11 document templates (T1-T11)
-prompts/       → 12 prompt templates cho AI agent
+prompts/       → 13 prompt templates cho AI agent
 docs/          → Guides và references
 scripts/       → CLI tools (docs-toolkit, validate, score)
 demo-site/     → MkDocs demo site
@@ -22,10 +22,11 @@ config/        → Lint, spell, pre-commit configs
 
 ### Recommended: AI Agent Workflow
 
-1. Đọc `prompts/README.md` để chọn prompt phù hợp
-2. Đọc prompt template tương ứng (ví dụ: `prompts/create-runbook.md`)
-3. Làm theo hướng dẫn trong prompt: đọc skill → đọc template → tạo doc
-4. Validate: `make lint`
+1. **Interview** — Hỏi user 3 câu trước: Audience? Scope? Environment? (xem `prompts/interview-before-create.md`)
+2. Đọc `prompts/README.md` để chọn prompt phù hợp
+3. Đọc prompt template tương ứng (ví dụ: `prompts/create-runbook.md`)
+4. Làm theo hướng dẫn trong prompt: đọc skill → đọc template → tạo doc
+5. Validate: `make lint` + `make security-scan`
 
 ### Alternative: Manual Workflow
 
@@ -90,8 +91,9 @@ make build      # Build demo site (strict)
 - DO NOT modify files in `skills/` unless explicitly asked
 - DO NOT skip lint validation
 - DO NOT generate content without reading the relevant skill file first
+- DO NOT generate content without interviewing user first (Audience, Scope, Environment)
 - DO NOT hardcode real credentials, IPs, or tokens in documentation
 
 ---
 
-> **Version:** 4.1.0 | **Updated:** 2026-03-30
+> **Version:** 4.2.0 | **Updated:** 2026-03-30

@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-4.1.0-blue)
+![Version](https://img.shields.io/badge/version-4.2.0-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-11-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -46,7 +46,7 @@ markdownlint ✅ → PR review ✅ → mkdocs gh-deploy ✅
 
 > **Lần đầu dùng?** Đọc [Getting Started Guide](docs/getting-started.md) — hướng dẫn chi tiết từ A-Z.
 >
-> **Dùng AI agent?** Xem [Prompt Templates](prompts/) — 12 prompt templates sẵn sàng.
+> **Dùng AI agent?** Xem [Prompt Templates](prompts/) — 13 prompt templates sẵn sàng.
 
 ---
 
@@ -126,7 +126,7 @@ Copy-paste từ [templates/](templates/), hoặc dùng CLI:
 documentation-skills-toolkit/
 ├── skills/                    # 5 skills + template + AGENT-CARDS.json
 ├── templates/                 # 11 document templates (T1-T11), individual files
-├── prompts/                   # 12 prompt templates cho AI agent
+├── prompts/                   # 13 prompt templates cho AI agent
 ├── docs/                      # Guides: getting-started, lifecycle, recipes...
 ├── config/                    # Configs: markdownlint, cspell, pre-commit...
 ├── examples/                  # Starter configs cho project khác (mkdocs, CI, snippets)
@@ -170,4 +170,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 4.1.0 | 2026-03-30
+> Version 4.2.0 | 2026-03-30

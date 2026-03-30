@@ -6,11 +6,12 @@
 
 **AI Agent (Recommended):**
 
-1. Chọn prompt phù hợp từ bảng bên dưới
-2. Mở file prompt → copy phần **Prompt**
-3. Paste vào AI agent → sửa đoạn có dấu `<<<< SỬA ... >>>>` bằng thông tin thực tế
-4. AI tạo doc → bạn review và chỉnh sửa
-5. Validate: `make lint`
+1. **Interview trước** — copy [interview-before-create.md](interview-before-create.md) → AI hỏi bạn 3 câu (Audience, Scope, Environment)
+2. Chọn prompt phù hợp từ bảng bên dưới
+3. Mở file prompt → copy phần **Prompt**
+4. Paste vào AI agent → sửa đoạn có dấu `<<<< SỬA ... >>>>` bằng thông tin thực tế
+5. AI tạo doc → bạn review và chỉnh sửa
+6. Validate: `make lint` + `make security-scan`
 
 **Manual:**
 
@@ -34,11 +35,12 @@
 | Viết security policy | [create-security-policy.md](create-security-policy.md) | infra-security-doc | — |
 | Không biết dùng gì | [select-skill.md](select-skill.md) | — | — |
 | Review doc hiện có | [review-doc.md](review-doc.md) | — | — |
+| **Interview trước khi tạo** | [interview-before-create.md](interview-before-create.md) | — | — |
 
 ## Workflow
 
 ```text
-Chọn prompt  →  Copy prompt  →  Sửa phần <<<< >>>>  →  Paste vào AI agent
+Interview (3 câu)  →  Chọn prompt  →  Sửa <<<< >>>>  →  Paste vào AI agent
                                                      ↓
                                               AI tạo document
                                                      ↓
@@ -57,4 +59,4 @@ Chọn prompt  →  Copy prompt  →  Sửa phần <<<< >>>>  →  Paste vào AI
 
 ---
 
-> **Version:** 4.0.0 | **Updated:** 2026-03-30
+> **Version:** 4.2.0 | **Updated:** 2026-03-30

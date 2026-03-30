@@ -65,7 +65,7 @@ Skill
 
 ### Prompts = "Prompt cho AI"
 
-12 prompt templates trong [prompts/](../prompts/) giúp AI agent tạo doc đúng chuẩn. Hoạt động với mọi AI agent (Claude, ChatGPT, Antigravity, Copilot...):
+13 prompt templates trong [prompts/](../prompts/) giúp AI agent tạo doc đúng chuẩn. Hoạt động với mọi AI agent (Claude, ChatGPT, Antigravity, Copilot...):
 
 | Khi bạn cần... | Dùng prompt | AI sẽ đọc skill + template |
 |---|---|---|
@@ -397,7 +397,7 @@ Bắt đầu từ Level 2 (xem Maturity Model trong [Lifecycle Guide](docs-lifec
 
 Có, đây là cách tiếp cận **recommended**. Toolkit có sẵn:
 
-- **12 prompt templates** trong `prompts/` — copy-paste vào AI agent
+- **13 prompt templates** trong `prompts/` — copy-paste vào AI agent
 - **AGENT-CARDS.json** — agent scan nhanh tất cả skills
 - **AGENTS.md** — agent context file tự động load
 - Skills có cấu trúc chuẩn → AI đọc hiểu ngay (Iron Law, Guardrails, Decision Tree)
@@ -435,4 +435,4 @@ Cần viết doc?
 
 ---
 
-> **Version:** 4.0.0 | **Cập nhật:** 2026-03-28
+> **Version:** 4.2.0 | **Updated:** 2026-03-30
