@@ -1,6 +1,6 @@
 {
-  "version": "4.3.0",
-  "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 5 skill files (~16K tokens).",
+  "version": "5.0.0",
+  "description": "Quick-reference skill cards for AI agents. Scan this file instead of reading all 5 skill files (~16K tokens). See config/routing-signals.yaml for smart routing.",
   "template_tiers": {
     "required": "MUST exist in output — reject if missing",
     "recommended": "SHOULD exist — warn if missing",

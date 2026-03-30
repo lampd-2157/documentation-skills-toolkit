@@ -59,4 +59,4 @@ Interview (3 câu)  →  Chọn prompt  →  Sửa <<<< >>>>  →  Paste vào AI
 
 ---
 
-> **Version:** 4.3.0 | **Updated:** 2026-03-30
+> **Version:** 5.0.0 | **Updated:** 2026-03-30

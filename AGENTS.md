@@ -51,7 +51,8 @@ config/        → Lint, spell, pre-commit configs
 | Write security policy | infra-security-doc | — |
 | Setup MkDocs site | docs-engineer | — |
 
-> Không biết chọn gì? Dùng `prompts/select-skill.md` hoặc đọc `skills/AGENT-CARDS.json` để scan nhanh.
+> **Smart Routing:** Đọc `config/routing-signals.yaml` để tự động chọn skill dựa trên keywords.
+> Không biết chọn gì? Dùng `prompts/select-skill.md` — AI sẽ phân tích keywords + confidence score.
 
 ## Commands
 
@@ -107,4 +108,4 @@ Templates have 3 tiers (defined in each template's header comment + `skills/AGEN
 
 ---
 
-> **Version:** 4.3.0 | **Updated:** 2026-03-30
+> **Version:** 5.0.0 | **Updated:** 2026-03-30
