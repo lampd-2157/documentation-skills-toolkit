@@ -1,9 +1,13 @@
 <!-- markdownlint-disable MD046 -->
-# Case Study: Tạo "Ansible for Network" bằng v5.0.0 Workflow (Smart Routing + Interview)
+# Case Study: Tạo "Ansible for Network" bằng v5.3.0 Workflow
 
 > Mô tả chi tiết quá trình AI agent tạo ra file
 > [ansible-network-howto.md](../demo-site/docs/guides/how-to/ansible-network-howto.md) —
-> từ Smart Routing + Phase 0 Interview tới push code.
+> từ **Routing CLI** + **Phase 0 Interview** + **Health Dashboard** tới push code.
+>
+> v5.3.0 bổ sung: `docs-toolkit route` (CLI phân tích tự động), `docs-toolkit wizard`
+> (interactive mode), `generate_health_dashboard.py` (quality overview), và
+> `routing-feedback.yaml` (feedback loop).
 
 ---
 
@@ -15,43 +19,115 @@
 
 ---
 
-## Phase 0: Smart Routing + Interview (NEW in v5.0.0)
+## Phase 0: Smart Routing + Interview (v5.3.0)
 
-### 0.1: Routing Analysis
+### 0.1: Routing CLI — `docs-toolkit route`
 
-**User request:** "Viết hướng dẫn sử dụng Ansible để quản lý thiết bị mạng Cisco IOS"
+**NEW in v5.3.0:** Thay vì đọc thủ công `routing-signals.yaml`, chạy 1 lệnh:
 
-AI agent đọc `config/routing-signals.yaml` → phân tích keywords:
+```bash
+./scripts/docs-toolkit route "Viết how-to guide sử dụng Ansible cho network automation, có troubleshooting và copy-paste commands"
+```
 
-| Keyword | Matches skill | Boost |
-|---------|--------------|-------|
-| "hướng dẫn" / "guide" | `project-doc-writer` | +0.1 |
-| "step-by-step" | `project-doc-writer` | +0.1 |
-| "network" | `ops-runbook-writer` | +0.1 |
-| "troubleshooting" | `ops-runbook-writer` | +0.1 |
+**Output thực tế:**
 
-**Confidence scores:**
+```text
+Smart Routing Analysis
+──────────────────────────────────────────────────
+Input: Viết how-to guide sử dụng Ansible cho network automation,
+       có troubleshooting và copy-paste commands
+──────────────────────────────────────────────────
 
-- `project-doc-writer`: 0.5 base + 0.2 = **0.7** (dưới ngưỡng auto-select 0.8)
-- `ops-runbook-writer`: 0.5 base + 0.2 = **0.7** (dưới ngưỡng auto-select 0.8)
+Skill Scores:
 
-**Result:** Hai skills cùng match → kiểm tra `composition_rules` trong routing-signals.yaml:
+  ██████████████░░░░░░ 0.70 project-doc-writer ASK USER ★
+  Keywords: how-to, guide
+  Templates: adr=T2, howto=T3, release-notes=T8, adr-madr=T9, adr-lightweight=T10
 
-!!! success "Composition Rule Applied: \"How-to with commands\""
-    **Signals:** `project-doc-writer` + `ops-runbook-writer`
-    **When:** Request là how-to guide nhưng có network/server commands
-    **Result:**
-    - Primary: `project-doc-writer` → structure T3 (Prerequisites → Steps → Verify)
-    - Secondary Iron Law: `ops-runbook-writer` → "Every command MUST be copy-paste ready + expected output"
+  ████████████░░░░░░░░ 0.60 ops-runbook-writer ASK USER
+  Keywords: troubleshooting
+  Templates: runbook=T1, network=T5, postmortem=T6, maintenance=T7
 
-!!! tip "Tại sao dùng composition rule?"
-    Nếu chỉ dùng `project-doc-writer`, các commands có thể thiếu expected output.
-    Nếu chỉ dùng `ops-runbook-writer`, doc sẽ có dạng SOP/runbook thay vì how-to guide.
-    Composition rule kết hợp: structure từ project-doc + command quality từ ops-runbook Iron Law.
+Composition Rule: How-to with commands
+  Primary: project-doc-writer
+  Secondary Iron Law: ops-runbook-writer
+
+Recommendation: Suggest project-doc-writer but confirm with user (confidence 0.70)
+```
+
+**Phân tích output:**
+
+| Element | Ý nghĩa |
+|---------|---------|
+| `0.70 project-doc-writer ★` | Skill score cao nhất, được đề xuất. Keywords match: "how-to", "guide" |
+| `0.60 ops-runbook-writer` | Skill thứ 2 match. Keyword: "troubleshooting" |
+| `ASK USER` | Confidence < 0.8 → CLI suggest nhưng hỏi user confirm |
+| `Composition Rule: How-to with commands` | Hai skills match → auto-detect composition rule |
+| `Primary: project-doc-writer` | Structure T3 (Prerequisites → Steps → Verify) |
+| `Secondary Iron Law: ops-runbook-writer` | "Every command MUST be copy-paste ready + expected output" |
+
+!!! tip "So sánh: v5.3.0 CLI vs v5.0.0 manual"
+    **v5.0.0:** AI phải đọc `routing-signals.yaml` → tự parse keywords → tính confidence thủ công.
+    **v5.3.0:** 1 lệnh CLI → output visual với confidence bars, keyword matches, composition rules.
+    Kết quả: nhanh hơn, minh bạch hơn, reproducible (chạy lại luôn cho cùng kết quả).
+
+!!! note "JSON mode cho automation"
+    ```bash
+    ./scripts/docs-toolkit route --json "Viết how-to guide..."
+    ```
+    Trả về JSON — dùng trong CI pipeline hoặc script tự động.
+
+### 0.1b: Alternative — Wizard Mode (v5.3.0)
+
+Thay vì chạy `route` + tự customize prompt, dùng **wizard** cho workflow tất-cả-trong-một:
+
+```bash
+./scripts/docs-toolkit wizard
+```
+
+Wizard hỏi interactive:
+
+```text
+╔══════════════════════════════════════╗
+║   Documentation Wizard - Phase 0    ║
+╚══════════════════════════════════════╝
+
+Mô tả ngắn về doc cần tạo:
+> Viết how-to guide sử dụng Ansible cho network automation
+
+[Routing Analysis]
+  ★ project-doc-writer (0.60) — Keywords: hướng dẫn
+  Composition: How-to with commands
+
+Audience (ai sẽ đọc doc này?):
+> Network engineer, biết Linux cơ bản, chưa dùng Ansible
+
+Scope (doc bao gồm những gì?):
+> Cài đặt Ansible, inventory, playbook backup + deploy VLAN
+
+Environment (môi trường/tools):
+> Ubuntu/CentOS, Ansible 2.16+, Cisco IOS/IOS-XE, SSH
+
+Ghi chú thêm (Enter để bỏ qua):
+> Credentials qua Ansible Vault
+
+Chọn template [T3]:
+> T3
+
+Tên file (không cần .md):
+> ansible-network-howto
+
+✅ Created: output/ansible-network-howto.md
+```
+
+!!! success "Wizard = Route + Interview + Scaffold trong 1 lệnh"
+    Wizard chạy routing analysis tự động, hỏi Phase 0 interview questions,
+    rồi tạo file doc từ template — tất cả trong terminal.
+    Dùng khi muốn workflow nhanh nhất. Dùng `route` riêng khi chỉ cần phân tích.
 
 ### 0.2: Phase 0 Interview
 
-AI agent chạy interview trước khi generate theo `prompts/interview-before-create.md`:
+Dù dùng wizard hay manual, interview context là:
 
 **Layer 1 — Universal (luôn hỏi):**
 
@@ -82,14 +158,14 @@ AI agent chạy interview trước khi generate theo `prompts/interview-before-c
 
 | Section | Tier | Quyết định | Lý do |
 |---------|------|-----------|-------|
-| Prerequisites | Required | ✅ INCLUDE | Critical — setup validation |
-| Steps | Required | ✅ INCLUDE | 6 steps chính |
-| Verify | Required | ✅ INCLUDE | Trong mỗi step có verify block |
-| Troubleshooting | Recommended | ✅ INCLUDE | 4 lỗi phổ biến thực tế |
-| Rollback | Optional | ⏭️ SKIP | Không có rollback cho cài đặt Ansible |
-| Security Notes | Optional | ✅ INCLUDE | Vault là phần thiết yếu của flow |
-| FAQ | Optional | ⏭️ SKIP | Troubleshooting đủ chi tiết rồi |
-| Next Steps | Optional | ✅ INCLUDE | Hướng dẫn tiếp tục sau khi setup xong |
+| Prerequisites | Required | INCLUDE | Critical — setup validation |
+| Steps | Required | INCLUDE | 6 steps chính |
+| Verify | Required | INCLUDE | Trong mỗi step có verify block |
+| Troubleshooting | Recommended | INCLUDE | 4 lỗi phổ biến thực tế |
+| Rollback | Optional | SKIP | Không có rollback cho cài đặt Ansible |
+| Security Notes | Optional | INCLUDE | Vault là phần thiết yếu của flow |
+| FAQ | Optional | SKIP | Troubleshooting đủ chi tiết rồi |
+| Next Steps | Optional | INCLUDE | Hướng dẫn tiếp tục sau khi setup xong |
 
 ---
 
@@ -97,7 +173,7 @@ AI agent chạy interview trước khi generate theo `prompts/interview-before-c
 
 ### AI Agent đã làm gì?
 
-Smart Routing từ Phase 0 đã tự động xác định:
+Smart Routing CLI từ Phase 0 đã tự động xác định:
 
 - **Primary skill:** `project-doc-writer` → structure T3 How-to Guide
 - **Secondary Iron Law:** `ops-runbook-writer` → commands quality standards
@@ -113,7 +189,7 @@ Smart Routing từ Phase 0 đã tự động xác định:
 
 !!! success "Result"
     Skill: `project-doc-writer` + `ops-runbook-writer` Iron Law | Template: T3
-    **Tự động** từ composition rule — không cần manual decision.
+    **Tự động** từ composition rule — `docs-toolkit route` xác nhận.
 
 ---
 
@@ -194,7 +270,7 @@ Scope: Không cover initial topology setup.
 
 ---
 
-## Step 4: Verify — Lint + Score
+## Step 4: Verify — Lint + Score + Security + Health
 
 ### 4.1: Lint
 
@@ -215,22 +291,22 @@ make lint
 python3 scripts/score_docs.py demo-site/docs/guides/how-to/ansible-network-howto.md
 ```
 
-**Kết quả mong đợi:**
+**Kết quả thực tế:**
 
 ```text
-PASS 5.5/6 ansible-network-howto.md [structure:1 | commands:1 | prerequisites:1 | metadata:1 | visual_uiux:1 | freshness:0.5]
+PASS 6.0/6 ansible-network-howto.md [structure:1 | commands:1 | prerequisites:1 | metadata:1 | visual_uiux:1 | freshness:1]
 ```
 
 | Criterion | Score | Lý do |
 |-----------|-------|-------|
-| structure | 1 | YAML frontmatter đầy đủ (+ skill/template/routing fields mới) |
+| structure | 1 | YAML frontmatter đầy đủ (+ skill/template/routing fields) |
 | commands | 1 | Copy-paste commands + expected output (ops-runbook Iron Law) |
 | prerequisites | 1 | Prerequisites section rõ ràng với task list |
 | metadata | 1 | YAML đầy đủ: title, description, author, status, tags, skill, template |
 | visual_uiux | 1 | Admonitions + task lists + mermaid diagram |
-| freshness | 0.5 | File mới tạo hôm nay |
+| freshness | 1 | File mới tạo/updated gần đây |
 
-### 4.3: Security Scan (NEW in v5.0.0)
+### 4.3: Security Scan
 
 ```bash
 make security-scan
@@ -244,8 +320,50 @@ PASS: No hardcoded IPs, credentials, or tokens found
 File uses safe patterns: 10.0.x.x (example range), vault variables, placeholders
 ```
 
+### 4.4: Health Dashboard (NEW in v5.3.0)
+
+Sau khi verify file mới, chạy dashboard để xem tổng quan quality toàn project:
+
+```bash
+make health-dashboard
+# hoặc: python3 scripts/generate_health_dashboard.py
+```
+
+**Output thực tế (trích):**
+
+```text
+# Doc Health Dashboard
+> Auto-generated: 2026-03-30 16:25
+
+## Overview
+| Metric | Count |
+|--------|-------|
+| Skills | 6 |
+| Templates | 14 |
+| Prompts | 15 |
+| Eval test cases | 29 |
+| Documentation files | 18 |
+
+## Quality Scores
+| File | Score | Status | Freshness |
+|------|-------|--------|-----------|
+| ansible-network-howto.md | 6.0/6 | PASS | 0d old |     ← file vừa tạo
+| docs-engineer.md | 5.5/6 | PASS | 4d old |
+| project-doc-writer.md | 5.5/6 | PASS | 3d old |
+| ...
+| adr-catalog.md | 1.5/6 | FAIL | no date found |       ← cần cải thiện
+| getting-started.md | 2.5/6 | FAIL | no date found |
+
+Average: 3.1/6 | Pass: 6 | Warn: 3 | Fail: 11
+```
+
+!!! info "Health Dashboard giúp gì?"
+    Sau khi tạo doc mới, dashboard cho thấy **toàn cảnh quality** — không chỉ file vừa tạo
+    mà cả project. Phát hiện docs cũ cần update, files thiếu metadata, freshness alerts.
+    Team lead nhìn vào 1 bảng biết ngay trạng thái documentation.
+
 !!! success "Result"
-    Lint: 0 errors | Score: >= 4/6 PASS | Security: PASS
+    Lint: 0 errors | Score: 6.0/6 PASS | Security: PASS | Dashboard: overview generated
 
 ---
 
@@ -288,7 +406,7 @@ Kiểm tra:
 
 ```bash
 git add demo-site/docs/guides/how-to/ansible-network-howto.md demo-site/mkdocs.yml
-git commit -m "docs(guides): add Ansible network automation how-to (T3, v5.0.0 workflow)"
+git commit -m "docs(guides): add Ansible network automation how-to (T3, v5.3.0 workflow)"
 git push
 ```
 
@@ -297,38 +415,76 @@ git push
 
 ---
 
-## Tổng kết: Workflow v5.0.0 trong thực tế
+## Step 6: Log Feedback (NEW in v5.3.0)
 
-```text
-Phase 0  ROUTING     → routing-signals.yaml → composition rule    (~1 phút)
-Phase 0  INTERVIEW   → Layer 1+2 questions → context gathered     (~3 phút)
-Phase 0  SECTIONS    → T3 tier decision table                     (~1 phút)
-Step 1   CHỌN        → Auto từ composition rule + cross-check     (~1 phút)
-Step 2   PROMPT      → prompts/create-howto.md → customize        (~2 phút)
-Step 3   AI BUILD    → AI đọc skill + template → generate doc     (~5 phút)
-Step 4   VERIFY      → lint + score + security scan               (~3 phút)
-Step 5   PUBLISH     → mkdocs.yml + make serve + commit           (~3 phút)
-                                                         Total: ~19 phút
+Sau khi doc hoàn thành, log routing decision vào feedback loop:
+
+```yaml
+# config/routing-feedback.yaml — append entry:
+feedback_log:
+  - date: "2026-03-30"
+    input: "Viết how-to guide sử dụng Ansible cho network automation"
+    routed_to: "project-doc-writer"
+    confidence: 0.70
+    correct: true
+    user_correction: null
 ```
 
-### So sánh: v5.0.0 vs v4.0.0 vs Manual
+!!! tip "Feedback loop cải thiện routing theo thời gian"
+    Sau khi tích lũy đủ entries (`min_samples: 5`), hệ thống tự động
+    điều chỉnh `keyword_adjustments` — tăng confidence cho patterns đúng,
+    giảm cho patterns sai. Ví dụ: nếu "network" luôn route đúng tới
+    `ops-runbook-writer` → boost +0.05 cho keyword đó.
 
-| Metric | v5.0.0 AI Agent | v4.0.0 AI Agent | Manual (v3.x) |
-|--------|-----------------|-----------------|----------------|
-| **Thời gian** | ~19 phút | ~15 phút | ~60-90 phút |
-| **Skill selection** | Auto (composition rule) | Manual | Manual |
-| **Context quality** | High (interview Layer 1+2) | Basic | Biến thiên |
-| **Section control** | Explicit tier decision | Không có | Không có |
-| **Security check** | Có (Step 4.3) | Không | Không |
-| **Consistency** | Rất cao | Cao | Thấp |
-| **Quality score** | 5-6/6 | 4-5/6 | 3-4/6 |
+    Config: `max_adjustment: 0.2`, `feedback_ttl_days: 90`
+
+---
+
+## Tổng kết: Workflow v5.3.0 trong thực tế
+
+```text
+Phase 0  ROUTE CLI   → docs-toolkit route → visual analysis     (~30 giây)
+Phase 0  INTERVIEW   → Layer 1+2 questions → context gathered    (~3 phút)
+Phase 0  SECTIONS    → T3 tier decision table                    (~1 phút)
+Step 1   CHỌN        → Auto từ composition rule + cross-check    (~1 phút)
+Step 2   PROMPT      → prompts/create-howto.md → customize       (~2 phút)
+Step 3   AI BUILD    → AI đọc skill + template → generate doc    (~5 phút)
+Step 4   VERIFY      → lint + score + security + health dashboard(~3 phút)
+Step 5   PUBLISH     → mkdocs.yml + make serve + commit          (~3 phút)
+Step 6   FEEDBACK    → Log routing decision                      (~30 giây)
+                                                        Total: ~19 phút
+```
+
+### So sánh: v5.3.0 vs v5.0.0 vs v4.0.0 vs Manual
+
+| Metric | v5.3.0 AI Agent | v5.0.0 AI Agent | v4.0.0 AI Agent | Manual (v3.x) |
+|--------|-----------------|-----------------|-----------------|----------------|
+| **Routing** | CLI 1 lệnh (`route`) | Đọc YAML thủ công | Manual | Manual |
+| **Interview** | Wizard hoặc manual | Manual | Không có | Không có |
+| **Section control** | Explicit tier decision | Explicit tier | Không có | Không có |
+| **Verify** | lint + score + security + **dashboard** | lint + score + security | lint + score | lint |
+| **Feedback loop** | `routing-feedback.yaml` | Không có | Không có | Không có |
+| **Consistency** | Rất cao | Rất cao | Cao | Thấp |
+| **Quality score** | 6/6 | 5-6/6 | 4-5/6 | 3-4/6 |
+
+### v5.3.0 Tools cheat sheet
+
+| Tool | Command | Khi nào dùng |
+|------|---------|-------------|
+| Route | `docs-toolkit route "mô tả"` | Phân tích keywords + confidence trước khi tạo doc |
+| Route JSON | `docs-toolkit route --json "mô tả"` | Dùng trong CI/script automation |
+| Wizard | `docs-toolkit wizard` | Tạo doc interactive (route + interview + scaffold) |
+| Score | `python3 scripts/score_docs.py <file>` | Chấm điểm 1 file cụ thể |
+| Dashboard | `make health-dashboard` | Xem quality overview toàn project |
+| Security | `make security-scan` | Scan secrets/credentials trong docs |
 
 ### Lessons Learned
 
-1. **AI over-generates** — có thể thêm sections không thuộc template. Luôn review vs tier decision table từ Phase 0
-2. **Composition rule tự động** — không cần manual decision, routing-signals.yaml xử lý
-3. **Interview context = output tốt hơn** — "Cisco IOS + Ubuntu + Ansible 2.16+" cho output cụ thể hơn "network automation"
-4. **Tier decision trước** — quyết định optional sections trước khi generate → ít phải xóa sau
-5. **Security scan là bước bắt buộc** — đặc biệt với docs có IP, credentials, tokens
-6. **mkdocs.yml là bước dễ quên nhất** — cần checklist reminder hoặc automation
-7. **Layer 3 interview** — bỏ qua được cho how-to guide đơn giản, cần cho runbook phức tạp hoặc security policy
+1. **`docs-toolkit route` thay thế đọc YAML thủ công** — 1 lệnh cho output visual, reproducible, shareable
+2. **Composition rule auto-detect** — CLI tự phát hiện khi 2+ skills match, không cần nhớ rules
+3. **Wizard cho người mới** — không cần biết prompt structure, wizard hỏi từng bước
+4. **Health Dashboard sau mỗi doc mới** — phát hiện knock-on effects (docs cũ, freshness alerts)
+5. **Feedback loop là investment dài hạn** — routing accuracy tăng theo thời gian khi log đủ entries
+6. **AI over-generates** — có thể thêm sections không thuộc template. Luôn review vs tier decision
+7. **Interview context = output tốt hơn** — "Cisco IOS + Ubuntu + Ansible 2.16+" cho output cụ thể hơn "network automation"
+8. **mkdocs.yml là bước dễ quên nhất** — cần checklist reminder hoặc automation

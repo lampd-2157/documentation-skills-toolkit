@@ -11,19 +11,37 @@ doc_template: "T3"
 routing: "composition-rule: How-to with commands"
 ---
 
+<!-- markdownlint-disable MD025 MD046 -->
+
 # Hướng dẫn sử dụng Ansible cho Network Automation
 
-> **Build log:** Doc này được tạo theo v5.0.0 workflow — Phase 0 Interview + Smart Routing (composition rule: How-to with commands) → Primary: `project-doc-writer` (structure T3) + Secondary: `ops-runbook-writer` Iron Law (commands + expected output).
+> **Build log:** Doc này được tạo theo v5.3.0 workflow — `docs-toolkit route` phân tích keywords
+> → Composition Rule "How-to with commands" auto-detect → Phase 0 Interview (Layer 1+2)
+> → Primary: `project-doc-writer` (structure T3) + Secondary: `ops-runbook-writer` Iron Law.
 
 !!! info "Về guide này"
     **Skill áp dụng:** `project-doc-writer` (how-to structure) + `ops-runbook-writer` (commands + expected output)
     **Template:** T3 How-to Guide | **Sections:** Prerequisites + Steps + Verify (required), Troubleshooting (recommended)
     **Audience:** Network Engineer / Junior SysAdmin — biết Linux cơ bản, chưa dùng Ansible
     **Phase 0:** Interview thực hiện trước khi tạo doc — xem block bên dưới
+    **Routing:** `docs-toolkit route` → confidence 0.70 (project-doc-writer) + 0.60 (ops-runbook-writer) → composition rule applied
 
 ---
 
 ## Phase 0: Interview Context
+
+!!! note "Routing CLI output (v5.3.0)"
+    ```text
+    ./scripts/docs-toolkit route "Viết how-to guide sử dụng Ansible cho network automation,
+                                   có troubleshooting và copy-paste commands"
+
+    Skill Scores:
+      ██████████████░░░░░░ 0.70 project-doc-writer ★ — Keywords: how-to, guide
+      ████████████░░░░░░░░ 0.60 ops-runbook-writer   — Keywords: troubleshooting
+
+    Composition Rule: How-to with commands
+      Primary: project-doc-writer | Secondary Iron Law: ops-runbook-writer
+    ```
 
 !!! note "Interview answers — Layer 1 (Universal)"
     **Audience:** Network Engineer / Junior SysAdmin — biết Linux cơ bản, chưa dùng Ansible trước đây.
@@ -81,7 +99,7 @@ pip3 install ansible ansible-lint
 
 **Expected result:**
 
-```
+```text
 Successfully installed ansible-9.x.x ansible-core-2.x.x ansible-lint-x.x.x
 ```
 
@@ -93,7 +111,7 @@ ansible-galaxy collection install cisco.ios
 
 **Expected result:**
 
-```
+```text
 Starting galaxy collection install process
 cisco.ios 6.x.x was installed successfully
 ```
@@ -107,7 +125,7 @@ ansible-galaxy collection list | grep cisco
 
 **Expected result:**
 
-```
+```text
 ansible [core 2.x.x]
   python version = 3.x.x
 
@@ -133,7 +151,7 @@ cd ansible-network
 
 **Expected result:**
 
-```
+```text
 ansible-network/
 ├── inventory/
 ├── playbooks/
@@ -206,7 +224,7 @@ ansible-vault create group_vars/all/vault.yml
 
 **Expected result:**
 
-```
+```text
 New Vault password:
 Confirm New Vault password:
 # File group_vars/all/vault.yml được tạo (encrypted)
@@ -270,7 +288,7 @@ ansible-playbook playbooks/gather-facts.yml --ask-vault-pass
 
 **Expected result:**
 
-```
+```text
 PLAY [Gather network device facts] *******
 
 TASK [Collect device facts] **************
@@ -347,7 +365,7 @@ ansible-playbook playbooks/backup-config.yml --ask-vault-pass
 
 **Expected result:**
 
-```
+```text
 PLAY RECAP *******************************
 router-01  : ok=5  changed=2  failed=0
 router-02  : ok=5  changed=2  failed=0
@@ -424,7 +442,7 @@ ls -la backups/2026-03-30/
 
 **Expected result khi PASS:**
 
-```
+```text
 TASK [Assert VLAN exists] ****************
 ok: [sw-core-01] =>
   msg: VLAN 100 created OK
@@ -530,5 +548,6 @@ diff backups/pre-sw-core-01-*.cfg backups/2026-03-30/sw-core-01.cfg
 - Ansible Vault — quản lý secrets nâng cao
 - Network Topology Documentation — dùng `docs-toolkit new network` để tạo
 - Scheduled backup via cron + Git version control cho backup files
+- Health Dashboard — chạy `make health-dashboard` định kỳ để monitor quality
 
 ---
