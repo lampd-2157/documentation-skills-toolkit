@@ -29,20 +29,17 @@ bao gồm setup môi trường, coding conventions, và Git workflow.
 ```text
 Tôi đang dùng Documentation Skills Toolkit. Hãy giúp tôi chọn skill và template phù hợp.
 
-Đọc file skills/AGENT-CARDS.json để hiểu danh sách skills:
-- docs-engineer — Setup MkDocs, chuẩn hóa markdown
-- ops-runbook-writer — Runbook, network docs, incident docs
-- training-doc-writer — Training, onboarding, curriculum
-- project-doc-writer — ADR, tech spec, how-to guide
-- infra-security-doc — Security policy, RBAC, audit
+Bước 1: Đọc file config/routing-signals.yaml để hiểu routing logic.
+Bước 2: Đọc file skills/AGENT-CARDS.json để hiểu danh sách skills.
 
 Tôi cần: viết tài liệu hướng dẫn deploy ứng dụng lên Kubernetes
 cho team DevOps, bao gồm commands và troubleshooting.
 <<<< SỬA ĐOẠN NÀY THÀNH NHU CẦU CỦA BẠN >>>>
 
-Hãy recommend:
-1. Skill nào phù hợp nhất (và tại sao)
-2. Template nào nên dùng (T1-T11)
-3. File prompt nào trong prompts/ để bắt đầu
-4. Nếu cần kết hợp nhiều skills, gợi ý thứ tự
+Hãy phân tích theo routing signals:
+1. Keywords nào match? Confidence score bao nhiêu?
+2. Primary skill nào? (và tại sao)
+3. Cần kết hợp secondary skill không? (check composition_rules)
+4. Template nào nên dùng? (T1-T11)
+5. File prompt nào trong prompts/ để bắt đầu?
 ```

@@ -1,0 +1,168 @@
+# ============================================================
+# Documentation Skills Toolkit — Routing Signals
+# Version: 5.0.0
+# ============================================================
+# Dùng để tự động chọn skill + template dựa trên keywords trong
+# user request. AI agent đọc file này để routing thông minh.
+#
+# Cách hoạt động:
+#   1. Parse user request → extract keywords
+#   2. Match keywords → skill signals
+#   3. Nếu multiple skills match → apply composition rules
+#   4. Confidence < 0.8 → hỏi user confirm
+# ============================================================
+
+skills:
+  ops-runbook-writer:
+    keywords:
+      - runbook
+      - SOP
+      - ops
+      - incident
+      - outage
+      - server
+      - troubleshooting
+      - health check
+      - backup
+      - restore
+      - network topology
+      - VLAN
+      - firewall
+      - maintenance
+      - postmortem
+      - on-call
+    templates:
+      runbook: T1
+      network: T5
+      postmortem: T6
+      maintenance: T7
+    confidence_base: 0.5
+
+  project-doc-writer:
+    keywords:
+      - ADR
+      - architecture decision
+      - tech spec
+      - how-to
+      - guide
+      - step-by-step
+      - hướng dẫn
+      - release notes
+      - changelog
+      - version
+      - decision
+      - quick reference
+      - cheat sheet
+    templates:
+      adr: T2
+      howto: T3
+      release-notes: T8
+      adr-madr: T9
+      adr-lightweight: T10
+    confidence_base: 0.5
+
+  training-doc-writer:
+    keywords:
+      - training
+      - onboarding
+      - curriculum
+      - learning
+      - knowledge check
+      - quiz
+      - assessment
+      - module
+      - hands-on
+      - lab
+    templates:
+      training: T4
+      knowledge-check: T11
+    confidence_base: 0.5
+
+  infra-security-doc:
+    keywords:
+      - security
+      - RBAC
+      - access control
+      - audit
+      - vulnerability
+      - compliance
+      - policy
+      - encryption
+      - firewall rules
+      - IAM
+      - SOC2
+      - ISO27001
+    templates: {}
+    confidence_base: 0.5
+
+  docs-engineer:
+    keywords:
+      - mkdocs
+      - setup docs
+      - documentation site
+      - markdown
+      - plugins
+      - theme
+      - nav structure
+    templates: {}
+    confidence_base: 0.4
+
+# ============================================================
+# Composition Rules
+# Khi user request match multiple skills, kết hợp thông minh
+# ============================================================
+composition_rules:
+  - name: "How-to with commands"
+    signals: ["project-doc-writer", "ops-runbook-writer"]
+    when: "Request là how-to guide nhưng có network/server commands"
+    result:
+      primary: project-doc-writer
+      secondary_iron_law: ops-runbook-writer
+      note: "Structure từ project-doc (T3), commands quality từ ops-runbook Iron Law"
+    example: "Hướng dẫn cài Ansible cho network automation"
+
+  - name: "Runbook with security"
+    signals: ["ops-runbook-writer", "infra-security-doc"]
+    when: "Runbook cho hệ thống có security requirements"
+    result:
+      primary: ops-runbook-writer
+      secondary_iron_law: infra-security-doc
+      note: "Structure từ ops-runbook (T1), security sections từ infra-security"
+    example: "Runbook vận hành Vault cluster"
+
+  - name: "Training with hands-on ops"
+    signals: ["training-doc-writer", "ops-runbook-writer"]
+    when: "Training module có hands-on lab với real infrastructure"
+    result:
+      primary: training-doc-writer
+      secondary_iron_law: ops-runbook-writer
+      note: "Structure từ training (T4), lab commands quality từ ops-runbook Iron Law"
+    example: "Training Docker cho team DevOps"
+
+  - name: "Security policy + ADR"
+    signals: ["infra-security-doc", "project-doc-writer"]
+    when: "Security decision cần document dạng ADR"
+    result:
+      primary: infra-security-doc
+      secondary_iron_law: project-doc-writer
+      note: "Content từ security skill, structure ADR từ project-doc (T2/T9)"
+    example: "ADR: Chọn HashiCorp Vault cho secret management"
+
+  - name: "Docs setup + any content"
+    signals: ["docs-engineer"]
+    when: "Request liên quan tới MkDocs setup/config (luôn standalone)"
+    result:
+      primary: docs-engineer
+      secondary_iron_law: null
+      note: "docs-engineer không kết hợp — chỉ dùng cho infrastructure"
+    example: "Setup MkDocs Material cho project mới"
+
+# ============================================================
+# Confidence Scoring
+# ============================================================
+confidence:
+  keyword_match_boost: 0.1      # Mỗi keyword match +0.1
+  max_confidence: 1.0
+  auto_select_threshold: 0.8    # >= 0.8 → auto select, không hỏi user
+  ask_user_threshold: 0.5       # 0.5-0.8 → suggest nhưng hỏi confirm
+  no_match_threshold: 0.5       # < 0.5 → dùng prompts/select-skill.md

@@ -6,6 +6,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [5.0.0] — 2026-03-30
+
+### Added
+
+- **Smart Routing** — `config/routing-signals.yaml`: keyword-based skill selection + confidence scoring + composition rules
+- **Composition rules** — 5 pre-defined multi-skill combinations (how-to+ops, runbook+security, training+ops, security+ADR, docs standalone)
+- **Confidence scoring** — Auto-select >= 0.8, ask confirm 0.5-0.8, fallback select-skill < 0.5
+
+### Changed
+
+- **`prompts/select-skill.md`** — AI đọc routing-signals.yaml, phân tích keywords + confidence
+- **`skills/AGENT-CARDS.json`** — v5.0.0, reference routing-signals.yaml
+- **`AGENTS.md`** — Smart Routing note trong Skill Selection
+
+---
+
 ## [4.3.0] — 2026-03-30
 
 ### Added
