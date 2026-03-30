@@ -1,6 +1,6 @@
 # Documentation Skills Toolkit
 
-![Version](https://img.shields.io/badge/version-4.0.0-blue)
+![Version](https://img.shields.io/badge/version-4.1.0-blue)
 ![Skills](https://img.shields.io/badge/skills-5-green)
 ![Templates](https://img.shields.io/badge/templates-11-orange)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -157,6 +157,7 @@ documentation-skills-toolkit/
 | [Training Assessment](docs/training-assessment-guide.md) | Bloom's Taxonomy + assessment design | Thiết kế bài kiểm tra |
 | [Diátaxis Mapping](docs/diataxis-mapping.md) | Map toolkit → Diátaxis framework | Organize docs theo chuẩn quốc tế |
 | [Prompt Templates](prompts/) | Prompt chuẩn cho AI agent tạo docs | Dùng AI tạo docs |
+| [Security Placeholders](docs/security-placeholders.md) | Quy chuẩn placeholder cho sensitive data | Docs chứa IPs, passwords, tokens |
 | [Case Study: Ansible](docs/case-study-ansible-network.md) | Ví dụ thực tế v4.0.0 workflow end-to-end | Xem toolkit hoạt động thế nào |
 | [AGENTS.md](AGENTS.md) | Agent context file (tool-agnostic) | AI agent đọc trước khi làm việc |
 | [Contributing](CONTRIBUTING.md) | Cách đóng góp skills & templates | Muốn thêm skill/template mới |
@@ -169,4 +170,4 @@ MIT — [LICENSE](LICENSE)
 
 > **Created by [DulapReal](https://github.com/lampd-2157)** — Infrastructure & Automation Engineer
 >
-> Version 4.0.0 | 2026-03-28
+> Version 4.1.0 | 2026-03-30

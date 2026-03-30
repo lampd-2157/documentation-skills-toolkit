@@ -77,12 +77,21 @@ make build      # Build demo site (strict)
 - Commit format: conventional commits (`feat`/`fix`/`docs`)
 - Always run `make lint` before commit
 
+## Security
+
+- KHÔNG hardcode sensitive data: IP nội bộ, password, token, internal URL
+- Dùng placeholders: `<INTERNAL_IP>`, `<PASSWORD>`, `<API_TOKEN>`, `<INTERNAL_URL>`
+- Dùng `example.com` cho domains, `192.0.2.x` cho demo IPs (RFC 5737)
+- Chi tiết: đọc `docs/security-placeholders.md`
+- Scan: `make security-scan`
+
 ## Boundaries
 
 - DO NOT modify files in `skills/` unless explicitly asked
 - DO NOT skip lint validation
 - DO NOT generate content without reading the relevant skill file first
+- DO NOT hardcode real credentials, IPs, or tokens in documentation
 
 ---
 
-> **Version:** 4.0.0 | **Updated:** 2026-03-30
+> **Version:** 4.1.0 | **Updated:** 2026-03-30

@@ -49,6 +49,9 @@ spell:  ## Run spell check
 score:  ## Score documentation quality
 	python3 scripts/score_docs.py
 
+security-scan:  ## Scan docs for hardcoded secrets
+	bash scripts/docs-secret-scan.sh
+
 ## Setup
 
 setup:  ## One-command setup (MkDocs + markdownlint + pre-commit)

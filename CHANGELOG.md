@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This pr
 
 ---
 
+## [4.1.0] — 2026-03-30
+
+### Added
+
+- **Security framework** — Placeholder standards cho sensitive data (`docs/security-placeholders.md`)
+- **`scripts/docs-secret-scan.sh`** — Scan docs tìm hardcoded secrets (IPs, passwords, tokens, webhooks)
+- **`make security-scan`** — Makefile target chạy secret scanner
+- **Case study: Ansible Network** — Real-world v4.0.0 workflow example (`docs/case-study-ansible-network.md`)
+- **Demo: Ansible Network How-to** — T3 example tạo bởi AI agent (`demo-site/docs/guides/how-to/ansible-network-howto.md`)
+
+### Changed
+
+- **`AGENTS.md`** — Thêm Security section + boundary "DO NOT hardcode credentials"
+- **Prompts (10 files)** — Thêm Security rule vào tất cả `create-*.md`
+- **All docs** — Version footers sync to 4.x.0
+
+---
+
 ## [4.0.0] — 2026-03-28
 
 ### Added

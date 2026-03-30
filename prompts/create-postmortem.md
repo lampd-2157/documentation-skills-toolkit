@@ -66,6 +66,9 @@ UI Standards:
 - Dùng task lists (- [ ]) cho checklists
 - Commands dài (>60 chars) đặt trong code blocks, không trong table cells
 
+Security:
+- KHÔNG hardcode IP, password, token, internal URL — dùng placeholders: <INTERNAL_IP>, <PASSWORD>, <API_TOKEN>
+
 Tự kiểm tra trước khi hoàn thành:
 - [ ] Impact assessment: ai bị ảnh hưởng, bao lâu, severity
 - [ ] Timeline đầy đủ từ detect tới recovery
